@@ -1,0 +1,643 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"lorem",
+				"lorem\tLorem ipsum"
+			],
+			[
+				"obj",
+				"objReader"
+			],
+			[
+				"ob",
+				"objWriter"
+			],
+			[
+				"cveMa",
+				"cveMateria"
+			],
+			[
+				"id",
+				"idPeriodo"
+			],
+			[
+				"dia",
+				"diaf"
+			],
+			[
+				"scr",
+				"scroll"
+			],
+			[
+				"ove",
+				"overflow-y"
+			],
+			[
+				"end",
+				"endforeach"
+			],
+			[
+				"db_li",
+				"db_limit\tCI - Active Record DB Helper Functions"
+			],
+			[
+				"ba",
+				"background"
+			],
+			[
+				"ab",
+				"absolute"
+			],
+			[
+				"wi",
+				"width"
+			],
+			[
+				"arr",
+				"arrInsert"
+			],
+			[
+				"foto",
+				"foto"
+			],
+			[
+				"s",
+				"style\tHTML - Stylesheet link"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"margin",
+				"margin-left"
+			],
+			[
+				"max",
+				"max-width"
+			],
+			[
+				"load",
+				"load_library\tCI - Load Library"
+			],
+			[
+				"var",
+				"var_dump"
+			],
+			[
+				"love",
+				"love_model"
+			],
+			[
+				"style",
+				"style\tTag"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"dea",
+				"deathLine"
+			],
+			[
+				"da",
+				"database"
+			],
+			[
+				"contr",
+				"controls\tAttr"
+			],
+			[
+				"libra",
+				"libraries"
+			],
+			[
+				"fi",
+				"filename"
+			],
+			[
+				"ex",
+				"excel"
+			],
+			[
+				"base_",
+				"base_url"
+			],
+			[
+				"total",
+				"totalResgistros"
+			],
+			[
+				"idP",
+				"idPlan"
+			],
+			[
+				"btn-daf",
+				"btn-default"
+			],
+			[
+				"padd",
+				"padding-left"
+			],
+			[
+				"pa",
+				"padding"
+			],
+			[
+				"mar",
+				"margin"
+			],
+			[
+				"base",
+				"base_url"
+			],
+			[
+				"ha",
+				"hashtag"
+			],
+			[
+				"nom",
+				"nombreCompleto"
+			],
+			[
+				"idU",
+				"idUsuario"
+			],
+			[
+				"comm",
+				"common_model"
+			],
+			[
+				"cveM",
+				"cveMaestro"
+			],
+			[
+				"jso",
+				"json_encode"
+			],
+			[
+				"getMater",
+				"getMateriasByCveMateriaByPlan"
+			],
+			[
+				"materia",
+				"materiaCheck"
+			],
+			[
+				"twee",
+				"tweets"
+			],
+			[
+				"fon",
+				"font-family"
+			],
+			[
+				"le",
+				"left"
+			],
+			[
+				"marg",
+				"margin-top"
+			],
+			[
+				"for",
+				"foreach\tPHP: foreach {value} statement"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "p",
+		"selected_items":
+		[
+			[
+				"p",
+				"Package Control: Install Package"
+			],
+			[
+				"packa",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 444.0
+	},
+	"console":
+	{
+		"height": 130.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Applications/XAMPP/xamppfiles/htdocs",
+		"/Applications/XAMPP/xamppfiles/htdocs/DAAD-70",
+		"/Applications/XAMPP/xamppfiles/htdocs/DAAD-70/practica2"
+	],
+	"file_history":
+	[
+		"/Applications/XAMPP/xamppfiles/htdocs/DAAD-70/practica2/index.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/DAAD-70/practica2/index.html",
+		"/Users/melchorleal/OneDrive/UAQ/2018-1/DRIVE/DAAD_MA-JU_11-13_70/1er Parcial/PRACTICAS/EQUIPO 1/146874_PRACTICA1",
+		"/Users/melchorleal/OneDrive/UAQ/2018-1/DRIVE/DAAD_MA-JU_11-13_70/1er Parcial/PRACTICAS/EQUIPO 1/equipo_PRACTICA8.txt",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/controllers/scultural.php",
+		"/Users/melchorleal/OneDrive/UAQ/2018-1/CURSOS/Evaluación educativa/figura1.png",
+		"/Users/melchorleal/OneDrive/UAQ/2018-1/CURSOS/Evaluación educativa/1ra_sesion.txt",
+		"/Users/melchorleal/Desktop/Captura de pantalla 2018-01-13 a la(s) 12.17.59.png",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/models/common_model.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/models/file_model.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/config/routes.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/views/app/fragments/root/sa/sa_reporte_horario_fragment.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/views/app/fragments/root/sa/sa_carga_fragment.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/views/app/fragments/root/sa/sa_reporte_horario_filtro_fragment.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/views/app/fragments/root/docs/doc_horarios_reporte_fragment.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/libraries/PHPExcel/Classes/PHPExcel/IOFactory.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/libraries/phpexcel_lib.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/controllers/root.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/models/sa_model.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/models/root_model.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/controllers/sacademia.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/libraries/PHPExcel.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/libraries/PHPExcel/Classes/PHPExcel/Autoloader.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/controllers/alumno.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/models/alumno_model.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/models/profesor_model.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/static/dist/js/horarios.js",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/views/app/fragments/sa/cargaAcademica/agregar_aulas_fragment.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/views/app/fragments/sa/cargaAcademica/load_materias_to_add_fragment.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/views/app/fragments/sa/cargaAcademica/horario_fragment.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/config/database.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/models/user_model.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/models/auth_model.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/views/app/fragments/sa/docs/doc_preregistro_view.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/assets/js/jquery.min.js",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/assets/css/main.css",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/assets/js/clock.js",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/application/controllers/love.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/application/models/love_model.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/application/controllers/login.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/application/views/wait_view.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/application/models/file_model.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/application/views/login_view.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/application/config/autoload.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/application/config/routes.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/application/models/auth_model.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/assets/js/index.js",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/assets/css/style.css",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/application/views/main_view.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/application/controllers/sesion.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/assets/css/demo.css",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/application/config/tables.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/application/config/smileys.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/application/config/sesiones.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/application/helpers/lehelper_helper.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/assets/js/skel-viewport.min.js",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/assets/js/util.js",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/assets/css/buttons.css",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/assets/js/kinetic.js",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/assets/js/main.js",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/assets/js/gulpfile.js",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/assets/js/skel.min.js",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/.htaccess",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/application/.htaccess",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/application/views/clock.html",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/application/controllers/wait.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/fotos/index.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/sftp-config.json",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/assets/js/jquery-1.11.0.min.js",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/application/config/config.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/application/config/database.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/assets/css/clock.css",
+		"/Applications/XAMPP/xamppfiles/htdocs/mym/index.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/views/app/fragments/sa/add_horario_fragment.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/views/app/components/menu/sa_component.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/views/app/fragments/sa/body_horario_fragment.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/views/app/fragments/sa/docs/doc_profesor_view.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/views/app/fragments/sa/docs/doc_plan_view.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/views/app/fragments/sa/docs/main_view.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/libraries/PHPExcel/Classes/PHPExcel/RichText.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/libraries/PHPExcel/Classes/PHPExcel/Writer/Excel2007.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/libraries/PHPExcel/Classes/PHPExcel.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/PHPExcel-1.8/Examples/01simple-download-pdf.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/PHPExcel-1.8/Examples/01pharSimple.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/PHPExcel-1.8/Examples/01simple-download-xlsx.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/PHPExcel-1.8/Examples/05featuredemo.inc.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/libraries/excel_xml_lib.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/PHPExcel-1.8/Examples/05featuredemo.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/libraries/PHPExcel/IOFactory.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/utc/siines2016/application/controllers/docentes.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/system/core/Controller.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/system/core/Loader.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/helpers/app_helper.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/DB/tablasNuevas.sql",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/controllers/login.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/libraries/dompdf/dompdf_config.inc.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/libraries/dompdf/dompdf_config.custom.inc.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/views/app/fragments/sa/docs/doc_pre_alumnos_view.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/utfv/application/models/escolares_model.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/utfv/application/config/routes.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/utfv/application/controllers/escolares.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/utfv/application/config/database.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/utfv/application/config/config.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/twitter/carga_imagen.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/twitter/tl.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/twitter/tweetear.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/views/app/fragments/sa/preregistro_fragment.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portal.v2/application/controllers/sacademia.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/views/app/components/menu/profesor_component.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/views/app/components/menu/alumno_component.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/views/app/fragments/sa/inputs_edit_horario_fragment.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/views/app/fragments/sa/materia_carga_profesor_fragment.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/views/app/main_no_menu_view.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/views/app/fragments/sa/edit_horario_fragment.php",
+		"/Applications/XAMPP/xamppfiles/etc/php.ini",
+		"/Users/melchorleal/Projects/metodos/file/prueba.txt",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/static/dist/js/configuracion.js",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/views/app/fragments/sa/aula_horario_fragment.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/static/dist/js/custom-cd.js",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/views/app/main_view.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/users.txt",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/DB/fif_portal2_sa_2017-11-17.sql",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/application/config/config.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/portalfif/.htaccess",
+		"/Applications/XAMPP/xamppfiles/htdocs/twitter/db.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/twitter/sesion.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/twitter/css/app.css",
+		"/Applications/XAMPP/xamppfiles/htdocs/twitter/index.php"
+	],
+	"find":
+	{
+		"height": 33.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"diagno",
+			"read_xls",
+			"fif_portal2",
+			"getHorarios",
+			"fif_portal2",
+			"2",
+			"portal2",
+			"fif_portal2",
+			"portalInformatica/portal-informatica-administracion-horarios",
+			"data-hf=\"'.($k+2).'\"",
+			"simu",
+			"simula",
+			"hrf",
+			"width: 105px; height: 70px;",
+			"($horas+2)",
+			"$aula,",
+			"NULL,",
+			"$hri,",
+			"$hrf,",
+			"$",
+			"vi",
+			"\"asignado\" => $asignado",
+			"h3",
+			"data-idDia",
+			"<div class=\"haa-element-2 \" draggable=\"true\" ondragstart=\"drag(event)\" style=\"height:'.$altura.'px; border:solid #000 1px;  font-color:#000 !important; font-size:9px;\" id=\"item-'.$row->idHorario.'-'.$i.'\" data-id=\"'.$row->idHorario.'\">",
+			"<a class=\"pull-right delete-item-horario-ajax\" href=\"'.$row->idHorario.'\" data-id=\"'.$i.'\"><i class=\"fa fa-times-circle-o fa-2x\"></i></a>",
+			"pdf",
+			"do_upload",
+			"enctype=\"\"",
+			"inner",
+			".iner",
+			"iner",
+			"$this->tablas['usuario']",
+			"iniciarsesion",
+			"ordinaryUser",
+			"\t",
+			"width:50%;",
+			"pic",
+			"poptrox-popup",
+			"pic",
+			"h3",
+			"button-rounded",
+			"button button-primary button-rounded button-small",
+			"<td>",
+			"countdown",
+			"base_url",
+			"assets",
+			"img",
+			"e941749986723697f43423d99246ba6c",
+			"bg.jpg",
+			"sav",
+			"save",
+			"n save",
+			"save",
+			"5",
+			"setValue(",
+			"();",
+			",",
+			"setValue('",
+			"titulo",
+			",",
+			"A",
+			"a",
+			"A",
+			"B1",
+			"B1'",
+			"od1",
+			"1 ",
+			"objDrawing",
+			"echo",
+			"objPHPExcel",
+			"PHPExcel_Shared_Date",
+			"LU",
+			"'',",
+			"lu",
+			"IOFa",
+			"IO",
+			"++",
+			"--",
+			"row",
+			"pag",
+			"$pag",
+			"portal-informatica-secretaria-academica-carga-academica-get-profesor-materias",
+			"$pag",
+			"/8",
+			"idMateria",
+			"getHorarioByPeriodoMaestro",
+			"700px",
+			"portal-informatica-secretaria-academica-carga-academica-profesor-pdf",
+			"&#186;",
+			"°",
+			"border:solid 1px #aaa;",
+			"border: solid 1px #aaa;",
+			"margin: 0 !important;",
+			"padding:0;",
+			"h3 style=\"",
+			"h2 style=\"",
+			"h2",
+			"300px",
+			"pdf",
+			"border: solid 1px #aaa;",
+			"add",
+			"pdf",
+			"border:solid 1px #000;",
+			"h4",
+			"h3",
+			"portal-informatica-secretaria-academica-carga-academica-profesor-pdf",
+			"escuelasProcedencia",
+			"estadisticas-aspirantes",
+			"n getMa",
+			"delete-item-horario-ajax",
+			"lu",
+			"control",
+			"h5",
+			"materias",
+			"profesor_model",
+			"getHorario",
+			"getMa",
+			"getMateriasBy",
+			"h3",
+			"<?=base_url()?>",
+			"remote",
+			"documentoPDF",
+			"li-delete-grupo",
+			"udpate",
+			"$idMateria = $materiaCheck->idMateria;",
+			"die(var_dump($idMateria));",
+			"idMateria"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 33.0
+	},
+	"input":
+	{
+		"height": 72.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
+	{
+		"height": 144.0
+	},
+	"pinned_build_system": "",
+	"project": "untitled.sublime-project",
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 166.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

@@ -1,0 +1,3 @@
+<li class="<?=($app_sub_menu == 'inicio')? 'actual' : ''?>"><a href="<?=base_url()?>"> <i class="fa fa-home"></i> Regresar</a> </li>
+<li class="<?=($app_sub_menu == 'contrasena')? 'actual' : ''?>"><a href="<?=base_url()?>portal-informatica-mi-cuenta-cambiar-cotrasena"> <i class="fa fa-unlock-alt"></i> Cambiar contraseña</a> </li>
+<!--<li class="<?=($app_sub_menu == 'mis-datos')? 'actual' : ''?>"><a href="<?=base_url()?>portal-informatica-mi-cuenta-mis-datos"> <i class="fa fa-folder-o"></i> Mis datos</a> </li>-->
