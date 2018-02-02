@@ -9,8 +9,14 @@ jQuery(document).ready(function($){
 
   $(".tr-notifi-alumno").click(function(){
     var data = $(this).attr('data');
-    alert(data);
+    // alert(data);
     window.location.href = base_url()+'portal-informatica-alumnos-tramites-datos/'+data;
+  });
+
+  $(".tr-notifi").click(function(){
+    var data = $(this).attr('data');
+    // alert($(this).attr('data'));
+    window.location.href = base_url()+'portal-informatica-tramites-datos/'+data;
   });
 
 

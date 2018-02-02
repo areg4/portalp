@@ -65,4 +65,8 @@ $route['portal-informatica-alumnos-tramites-datos/(:num)']		  = 'tramitessa/tram
 /**
  * tramites de Secretaría Académica
  */
-$route['prueba-archivos']											            = 'tramitessa/index';
+$route['portal-informatica-tramites']											            = 'tramitessa/index';
+$route['portal-informatica-tramites-alta/(:any)']                     = 'tramitessa/tramitesAlta/$1';
+$route['portal-informatica-tramites-notificaciones']                  = 'tramitessa/tramitesNotificaciones';
+$route['portal-informatica-tramites-archivo']                         = 'tramitessa/tramitesArchivo';
+$route['portal-informatica-tramites-datos/(:num)']		                = 'tramitessa/tramitesDatos/$1';

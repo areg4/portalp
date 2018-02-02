@@ -34,23 +34,83 @@ class Tramitessa extends CI_Controller {
 
 	}
 
-	// public function index()
-	// {
-	// 	$data['sys_app_title'] 	= 'TRAMITES';
-	// 	$data['app_title'] 	= '<i class="fa fa-user"></i>  TRAMITES';
-	// 	$data['app_sub_menu'] 	= 'inicio';
-	// 	// $data['user']      	= $this->usuario;
-	// 	$data['menu_app']   = $this->load->view('app/components/menu/tramitessa_component', $data, TRUE);
-	// 	$data['menu'] 		= $this->load->view('app/components/head_component',$data,TRUE);
-  //
-	// 	$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/dashboard_fragment', $data, TRUE);
-	// 	$this->load->view('app/main_view', $data, FALSE);
-	// }
+	public function index()
+	{
+		$data['sys_app_title'] 	= 'TRAMITES';
+		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRAMITES';
+		$data['app_sub_menu'] 	= 'inicio';
+		$data['app_sub_menu_item'] = '';
+		// $data['user']      	= $this->usuario;
+		$data['menu_app']   = $this->load->view('app/components/menu/tramitessa_component', $data, TRUE);
+		$data['menu'] 		= $this->load->view('app/components/head_component',$data,TRUE);
+
+		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/dashboard_fragment', $data, TRUE);
+		$this->load->view('app/main_view', $data, FALSE);
+	}
+
+	public function tramitesAlta($tTramite)
+	{
+		$data['sys_app_title'] 	= 'TRAMITES ALTA';
+		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRAMITES';
+		$data['app_sub_menu'] 	= 'iTramite';
+		$data['app_sub_menu_item'] = $tTramite;
+		// $data['user']      	= $this->usuario;
+		$data['tTramite']		=	$tTramite;
+		$data['menu_app']   = $this->load->view('app/components/menu/tramitessa_component', $data, TRUE);
+		$data['menu'] 		= $this->load->view('app/components/head_component',$data,TRUE);
+
+		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/tramites_alta', $data, TRUE);
+		$this->load->view('app/main_view', $data, FALSE);
+	}
+
+	public function tramitesNotificaciones()
+	{
+		$data['sys_app_title'] 	= 'TRAMITES ALTA';
+		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRAMITES';
+		$data['app_sub_menu'] 	= 'notifiTramites';
+		$data['app_sub_menu_item'] = '';
+		// $data['user']      	= $this->usuario;
+		$data['js']       = array('tramites');
+		$data['menu_app']   = $this->load->view('app/components/menu/tramitessa_component', $data, TRUE);
+		$data['menu'] 		= $this->load->view('app/components/head_component',$data,TRUE);
+
+		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/tramites_notificaciones', $data, TRUE);
+		$this->load->view('app/main_view', $data, FALSE);
+	}
+
+	public function tramitesDatos($idTramite)
+	{
+		$data['sys_app_title'] 	= 'TRAMITES';
+		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRAMITES';
+		$data['app_sub_menu'] 	= 'notifiTramites';
+		// $data['user']      	= $this->usuario;
+		$data['menu_app']   = $this->load->view('app/components/menu/tramitessa_component', $data, TRUE);
+		$data['menu'] 		= $this->load->view('app/components/head_component',$data,TRUE);
+    $data['js']       = array('tramites');
+    $data['idTramite']       = $idTramite;
+		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/tramites_datos_tramite_fragment', $data, TRUE);
+		$this->load->view('app/main_view', $data, FALSE);
+	}
+
+	public function tramitesArchivo()
+	{
+		$data['sys_app_title'] 	= 'TRAMITES ALTA';
+		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRAMITES';
+		$data['app_sub_menu'] 	= 'archivoTramites';
+		$data['app_sub_menu_item'] = '';
+		// $data['user']      	= $this->usuario;
+		$data['js']       = array('tramites');
+		$data['menu_app']   = $this->load->view('app/components/menu/tramitessa_component', $data, TRUE);
+		$data['menu'] 		= $this->load->view('app/components/head_component',$data,TRUE);
+
+		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/tramites_archivo', $data, TRUE);
+		$this->load->view('app/main_view', $data, FALSE);
+	}
 
   public function tramitesAlumno()
   {
     $data['sys_app_title'] 	= 'TRAMITES ALUMNO';
-		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRAMITES';
+		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRAMITES ALUMNO';
 		$data['app_sub_menu'] 	= 'iTramite';
 		// $data['user']      	= $this->usuario;
 		$data['menu_app']   = $this->load->view('app/components/menu/alumno_component', $data, TRUE);
@@ -63,7 +123,7 @@ class Tramitessa extends CI_Controller {
   public function tramitesAlumnoAlta()
   {
     $data['sys_app_title'] 	= 'TRAMITES ALUMNO';
-		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRAMITES';
+		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRAMITES ALUMNO';
 		$data['app_sub_menu'] 	= 'iTramite';
 		// $data['user']      	= $this->usuario;
 		$data['menu_app']   = $this->load->view('app/components/menu/alumno_component', $data, TRUE);
@@ -76,7 +136,7 @@ class Tramitessa extends CI_Controller {
   public function tramitesAlumnoNotificaciones()
   {
     $data['sys_app_title'] 	= 'TRAMITES ALUMNO';
-		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRAMITES';
+		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRAMITES ALUMNO';
 		$data['app_sub_menu'] 	= 'notifiTramites';
 		// $data['user']      	= $this->usuario;
 		$data['menu_app']   = $this->load->view('app/components/menu/alumno_component', $data, TRUE);
@@ -89,7 +149,7 @@ class Tramitessa extends CI_Controller {
   public function tramitesAlumnoDatos($idTramite)
   {
     $data['sys_app_title'] 	= 'TRAMITES ALUMNO';
-		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRAMITES';
+		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRAMITES ALUMNO';
 		$data['app_sub_menu'] 	= 'notifiTramites';
 		// $data['user']      	= $this->usuario;
 		$data['menu_app']   = $this->load->view('app/components/menu/alumno_component', $data, TRUE);
