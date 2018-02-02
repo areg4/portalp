@@ -119,7 +119,9 @@ div.margin-top-login{
 	}
 	#page-wrapper{
 		width: 100% !important;
+		/*margin-top: 50px !important;*/
 		margin: 0 !important;
+		margin-left: 10px;
 	}
 }
 
@@ -568,6 +570,7 @@ th{
 	color: #3A4659;
 	background: #E2E2E2;
 	padding: 5px;
+	font-weight: bold;
 }
 
 
@@ -592,6 +595,44 @@ td{
 	border-bottom: 1px dotted rgba(0,0,0,.1);
 }
 
+@media
+	only screen and (max-width: 760px),
+	(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+		/* Force table to not be like tables anymore */
+		table, thead, tbody, th, td, tr {
+			display: block;
+		}
+
+		/* Hide table headers (but not display: none;, for accessibility) */
+		thead tr {
+			position: absolute;
+			top: -9999px;
+			left: -9999px;
+		}
+
+		tr { border: 1px solid #ccc; }
+
+		td {
+			border: none;
+			border-bottom: 1px solid #eee;
+			position: relative;
+			padding-left: 50% !important;
+		}
+		td:before {
+			/* Now like a table header */
+			position: absolute;
+
+			top: 6px;
+			left: 6px;
+			width: 45%;
+			padding-right: 10px;
+			white-space: nowrap;
+		}
+		td:nth-of-type(1):before { content: "Tipo de trámite";  }
+		td:nth-of-type(2):before { content: "Status"; }
+		td:nth-of-type(3):before { content: "Observaciones"; }
+	}
 
 /*FICHAS==========================*/
 
