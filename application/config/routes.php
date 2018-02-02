@@ -55,3 +55,14 @@ $route['default_controller'] 				= 'alumno';
 // $route['portal-informatica-cerrar-sesion']	= 'sesion/logout/login';
 /***** ALUMNOS **/
 $route['portal-informatica-alumnos']											= 'alumno/index';
+
+//alumno tramitessa
+$route['portal-informatica-alumnos-tramites']							      = 'tramitessa/tramitesAlumno';
+$route['portal-informatica-alumnos-tramites-alta']							= 'tramitessa/tramitesAlumnoAlta';
+$route['portal-informatica-alumnos-tramites-notificaciones']		= 'tramitessa/tramitesAlumnoNotificaciones';
+$route['portal-informatica-alumnos-tramites-datos/(:num)']		  = 'tramitessa/tramitesAlumnoDatos/$1';
+
+/**
+ * tramites de Secretaría Académica
+ */
+$route['prueba-archivos']											            = 'tramitessa/index';

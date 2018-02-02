@@ -35,3 +35,14 @@
 		<i class="fa fa-pencil-square-o "></i> Evaluación de tutoría Grupal
 	</a>
 </li> -->
+
+<li class="<?=($app_sub_menu == 'iTramite')? 'actual' : ''?>">
+	<a href="<?=base_url()?>portal-informatica-alumnos-tramites">
+		<i class="fa fa-tags"></i> Tramites
+	</a>
+</li>
+<li class="<?=($app_sub_menu == 'notifiTramites')? 'actual' : ''?>">
+	<a href="<?=base_url()?>portal-informatica-alumnos-tramites-notificaciones">
+		<i class="fa fa-tags"></i> Notifiaciones Tramites
+	</a>
+</li>
