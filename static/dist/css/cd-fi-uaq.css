@@ -11,7 +11,6 @@ html, body{
 	/*background-color: #fff;*/
 	background: url(../../img/bg.gif)repeat !important;
 }
-
 #page-wrapper{
 	background: #fff none repeat scroll 0 0!important; 
     border-radius: 2px !important;
@@ -121,7 +120,8 @@ div.margin-top-login{
 		width: 100% !important;
 		/*margin-top: 50px !important;*/
 		margin: 0 !important;
-		margin-left: 10px;
+		/*margin-top: 80px !important;*/
+		padding-top: 100px !important;
 	}
 }
 
@@ -575,7 +575,7 @@ th{
 
 
 tr{
-	color: #6F7A8C;
+	color: rgba(0,0,0,.7);
 }
 
 tr:hover{
@@ -591,38 +591,36 @@ tr:nth-child(even) {
 }
 
 td{
-	padding: 5px;
+	padding: 8px;
+	box-sizing: border-box;
 	border-bottom: 1px dotted rgba(0,0,0,.1);
+	cursor: pointer !important;
 }
 
 @media
 	only screen and (max-width: 760px),
 	(min-device-width: 768px) and (max-device-width: 1024px)  {
 
-		/* Force table to not be like tables anymore */
 		table, thead, tbody, th, td, tr {
 			display: block;
 		}
 
-		/* Hide table headers (but not display: none;, for accessibility) */
 		thead tr {
 			position: absolute;
 			top: -9999px;
 			left: -9999px;
 		}
 
-		tr { border: 1px solid #ccc; }
+		/*tr { border: 1px solid #ccc; }*/
 
 		td {
 			border: none;
-			border-bottom: 1px solid #eee;
+			/*border-bottom: 1px solid transparent;*/
 			position: relative;
 			padding-left: 50% !important;
 		}
 		td:before {
-			/* Now like a table header */
 			position: absolute;
-
 			top: 6px;
 			left: 6px;
 			width: 45%;
@@ -633,6 +631,15 @@ td{
 		td:nth-of-type(2):before { content: "Status"; }
 		td:nth-of-type(3):before { content: "Observaciones"; }
 	}
+.realizado{
+	background: rgba(114,218,11,.5) !important;
+}
+.denegado{
+	background: rgba(218,11,11,.5) !important;
+}
+.proceso{
+	background: rgba(218,218,11,.5) !important;
+}
 
 /*FICHAS==========================*/
 
@@ -979,3 +986,123 @@ div.columna div.item span{
 	margin-top: 20px; 
 	display: block; 
 }
+/*ESTILOS SOBRE TRAMITES(FERNANDA)*/
+.ficha{
+	border: 1px solid rgba(0,0,0,.05);
+	padding: 10px;
+	box-sizing: border-box;
+	margin-left: 1% !important;
+	margin-bottom: 2% !important;
+	float: left;
+	position: relative;
+	height: 280px;
+	overflow-y: auto !important;
+	overflow: none;
+	cursor: pointer;
+}
+.ficha:hover{
+	background: rgba(0,0,0,.06);
+}
+	.ficha>h3{
+		margin-top: 0px !important;
+	}
+	.ficha>p{
+		text-align: justify;
+	}
+	.ficha>ul{
+		list-style: decimal;
+		padding-left: 30px;
+		box-sizing: border-box;
+	}
+	.ficha>ul>li{
+		font-weight: bold;
+		padding-bottom: 5px;
+		box-sizing: border-box;
+	}
+	.ficha>button{
+		margin-left: 35%;
+		color: #fff;
+	}
+.file{
+	height: 80px;
+	display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+    /*border: 1px solid #a8abb2;*/
+    padding: 10px;
+    box-sizing: border-box;
+
+}
+input[type=file]::-webkit-file-upload-button{
+	border: 1px solid #a8abb2 !important;
+	font-family:;
+	border-radius: 2px;
+	height: 30px;
+  	cursor: pointer;
+  	background: #fff !important;
+  	float: left;
+  	position: relative;
+  	outline: none;
+  	color: rgba(0,0,0,.8);
+  	font-weight: 600;
+  	font-size: .9em;
+  	margin-right: 10px;
+  	box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+
+input[type=file]::-webkit-file-upload-button:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+}
+
+.right{
+	margin-top: 20px;
+}
+	.right>button{
+		float: right;
+	}
+
+.row{
+	margin-top: 30px !important;
+}
+.row .form-control{
+	height: 34px !important;
+}
+.div{
+	border-bottom: 1px solid #ccc;
+}
+/*Scroll (preguntar si se puede cambiar) */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: #c7c7c7;
+  border: 0px ridge #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-track {
+  background: #f5f5f5;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+input[type=file]::-webkit-file-upload-button{
+	border: none;
+	font-family:;
+	border-radius: 5px;
+	height: 30px;
+  	cursor: pointer;
+  	background:red;
+}
+
+	

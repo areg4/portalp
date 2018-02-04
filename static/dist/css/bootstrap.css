@@ -3020,6 +3020,7 @@ select[multiple].input-lg {
   background-image: none;
   border: 1px solid transparent;
   border-radius: 4px;
+  outline: none !important; 
 }
 .btn:focus,
 .btn:active:focus,
@@ -3027,7 +3028,7 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
-  outline: 5px auto -webkit-focus-ring-color;
+  /*outline: 5px auto -webkit-focus-ring-color;*/
   outline-offset: -2px;
 }
 .btn:hover,
@@ -3060,6 +3061,7 @@ fieldset[disabled] a.btn {
   color: #333;
   background-color: #fff;
   border-color: #ccc;
+  outline: none;
 }
 .btn-default:focus,
 .btn-default.focus {
@@ -3075,9 +3077,10 @@ fieldset[disabled] a.btn {
 .btn-default:active,
 .btn-default.active,
 .open > .dropdown-toggle.btn-default {
-  color: #333;
+  /*color: #333;
   background-color: #e6e6e6;
-  border-color: #adadad;
+  border-color: #adadad;*/
+  outline: none;
 }
 .btn-default:active:hover,
 .btn-default.active:hover,
@@ -3829,6 +3832,7 @@ tbody.collapse.in {
   float: left;
   width: 100%;
   margin-bottom: 0;
+  outline: none !important;
 }
 .input-group .form-control:focus {
   z-index: 3;

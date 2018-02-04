@@ -1,28 +1,28 @@
 <div class="">
-  <h1>Notifiaciones Tramite Alumno</h1>
+  <h1 class="h1 text-center">Notificaciones Trámite Alumno</h1>
 </div>
 
 <div class="">
   <table class="table responsive">
     <thead>
-      <tr>
+      <tr class="">
         <th>Tipo de trámite</th>
         <th>Estatus</th>
         <th>Observaciones</th>
       </tr>
     </thead>
     <tbody>
-      <tr class="tr-notifi-alumno" data="1">
+      <tr class="tr-notifi-alumno denegado" data="1" title="Ir a más información">
         <td>Examen Voluntario</td>
         <td>En Proceso</td>
-        <td>No hay respuesta sobre la entrega del kardex del alumno</td>
+        <td>La materia seleccionada no es válida para realizar examen voluntario</td>
       </tr>
-      <tr class="tr-notifi-alumno" data="2">
+      <tr class="tr-notifi-alumno proceso" data="2">
         <td>tt</td>
         <td>status</td>
         <td>obser</td>
       </tr>
-      <tr class="tr-notifi-alumno" data="3">
+      <tr class="tr-notifi-alumno denegado" data="3">
         <td>tt</td>
         <td>status</td>
         <td>obser</td>
