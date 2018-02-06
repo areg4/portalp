@@ -120,7 +120,7 @@ class Tramitessa extends CI_Controller {
 		$this->load->view('app/main_view', $data, FALSE);
   }
 
-  public function tramitesAlumnoAlta()
+  public function tramitesAlumnoAlta($tTramite)
   {
     $data['sys_app_title'] 	= 'TRAMITES ALUMNO';
 		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRAMITES ALUMNO';
@@ -129,6 +129,7 @@ class Tramitessa extends CI_Controller {
 		$data['menu_app']   = $this->load->view('app/components/menu/alumno_component', $data, TRUE);
 		$data['menu'] 		= $this->load->view('app/components/head_component',$data,TRUE);
     $data['js']       = array('tramites');
+		$data['tTramite']		=	$tTramite;
 		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/tramites_alta_alumno_fragment', $data, TRUE);
 		$this->load->view('app/main_view', $data, FALSE);
   }

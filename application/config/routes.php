@@ -58,7 +58,7 @@ $route['portal-informatica-alumnos']											= 'alumno/index';
 
 //alumno tramitessa
 $route['portal-informatica-alumnos-tramites']							      = 'tramitessa/tramitesAlumno';
-$route['portal-informatica-alumnos-tramites-alta']							= 'tramitessa/tramitesAlumnoAlta';
+$route['portal-informatica-alumnos-tramites-alta/(:any)']				= 'tramitessa/tramitesAlumnoAlta/$1';
 $route['portal-informatica-alumnos-tramites-notificaciones']		= 'tramitessa/tramitesAlumnoNotificaciones';
 $route['portal-informatica-alumnos-tramites-datos/(:num)']		  = 'tramitessa/tramitesAlumnoDatos/$1';
 
