@@ -37,7 +37,7 @@
 
 <li class="<?=($app_sub_menu == 'notifiTramites')? 'actual' : ''?>">
 	<a href="<?=base_url()?>portal-informatica-tramites-notificaciones">
-		<i class="fa fa-tags"></i> Notifiaciones Tramites
+		<i class="fa fa-tags"></i> Notifiaciones<i class="fa fa-bell not"></i>
 	</a>
 </li>
 

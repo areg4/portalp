@@ -1,4 +1,56 @@
-<div class="">
+<div class="col-xs-12 col-sm-12 text-center">
+  <h1 class="h1 ">Formulario de alta para trámite <?php echo $tTramite; ?></h1>
+</div>
+<div class="col-xs-12">
+<br>
+  <form>
+    <div class="form-group col-xs-12 col-sm-12 col-md-5">
+      <label for="nombre">Nombre:</label>
+      <input class="form-control" id="nombre" type="text" name="nombre" >
+    </div>
+    <div class="form-group col-xs-12 col-sm-12 col-md-3">
+      <label for="text">Expediente:</label>
+      <input class="form-control"  id="" type="text" name="" >
+    </div>
+    <div class="form-group col-xs-12 col-sm-12 col-md-4">
+      <label for="text">Materia:</label>
+      <input class="form-control"  id="materia" type="text" name="materia">
+    </div>
+    <div class="form-group col-xs-12 col-sm-12 col-md-4">
+      <label for="text">Profesor:</label>
+      <input class="form-control"  id="materia" type="text" name="materia">
+    </div>
+
+    <div class="form-group col-xs-12 col-sm-12">
+      
+    </div>
+
+
+    <div class="col-xs-12 col-sm-12 col-md-4 file">
+      <label for="text">Documento a</label>
+      <input class="ocultar"  id="" type="file" name="">
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 file">
+      <label for="text">Documento b</label>
+      <input class=" btn-menta"  id="" type="file" name="">
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 file">
+      <label for="text">Documento c</label>
+      <input class="btn-menta"  id="" type="file" name="">
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 file">
+      <label for="text">Documento d</label>
+      <input class="btn-menta"  id="" type="file" name="">
+    </div>
+
+    <div class="form-group text-center col-xs-12">
+      <button type="submit" class="btn btn-success">Tramitar</button>
+    </div>
+  </form>
+</div>
+
+
+<!-- <div class="">
   <h1 class="h1">Formulario de alta para trmite <?php echo $tTramite; ?></h1>
 </div>
 <div>
@@ -13,3 +65,4 @@
     <input type="submit" name="" value="Dar de Alta">
   </form>
 </div>
+ -->

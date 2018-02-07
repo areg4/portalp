@@ -1,5 +1,5 @@
 <div class="col-xs-12">
-  <h1 class="h1 text-center">Buscar trámite por expediente</h1>
+  <h2 class="h1 text-center">Buscar trámite por expediente</h2>
   <br>
 </div>
 
@@ -17,12 +17,12 @@
 <!-- <div class="row div"></div> -->
 
 <br>
-<div class="">
+<div class="" id="tabla">
   <table class="table responsive">
     <thead>
       <tr class="">
-      	<th>Expediente</th>
-      	<th>Folio</th>
+      	<th class="">Expediente</th>
+      	<th class="">Folio</th>
         <th class="">Tipo de trámite</th>
         <th class="">Estatus</th>
         <th class="">Observaciones</th>
@@ -30,32 +30,32 @@
     </thead>
     <tbody>
       <tr class="tr-notifi denegado" data="1">
-      	<td>234661</td>
-      	<td>52418</td>
-        <td>Examen Voluntario</td>
-        <td>En Proceso</td>
-        <td>La materia seleccionada no es válida para realizar examen voluntario</td>
+      	<td data-title="Expediente">234661</td>
+      	<td data-title="Folio">52418</td>
+        <td data-title="Tipo de trámite">Examen Voluntario</td>
+        <td data-title="Estatus">En Proceso</td>
+        <td data-title="Observaciones">La materia seleccionada no es válida para realizar examen voluntario</td>
       </tr>
       <tr class="tr-notifi proceso" data="2">
-      	<td>exp</td>
-      	<td>fo</td>
-        <td>tt</td>
-        <td>status</td>
-        <td>obser</td>
+      	<td data-title="Expediente">exp</td>
+      	<td data-title="Folio">fo</td>
+        <td data-title="Tipo de trámite">tt</td>
+        <td data-title="Estatus">status</td>
+        <td data-title="Observaciones">obser</td>
       </tr>
       <tr class="tr-notifi denegado" data="3">
-        <td>exp</td>
-      	<td>fo</td>
-        <td>tt</td>
-        <td>status</td>
-        <td>obser</td>
+        <td data-title="Expediente">exp</td>
+      	<td data-title="Folio">fo</td>
+        <td data-title="Tipo de trámite">tt</td>
+        <td data-title="Estatus">status</td>
+        <td data-title="Observaciones">obser</td>
       </tr>
       <tr class="tr-notifi" data="4">
-        <td>exp</td>
-      	<td>fo</td>
-        <td>tt</td>
-        <td>status</td>
-        <td>obser</td>
+        <td data-title="Expediente">exp</td>
+      	<td data-title="Folio">fo</td>
+        <td data-title="Tipo de trámite">tt</td>
+        <td data-title="Estatus">status</td>
+        <td data-title="Observaciones">obser</td>
       </tr>
     </tbody>
   </table>

@@ -1187,6 +1187,7 @@ h6,
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
+  cursor: default !important;
 }
 h1 small,
 h2 small,
@@ -2564,6 +2565,17 @@ output {
        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
           transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
+
+.read{
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.read:focus{
+  border-color: none !important;
+  box-shadow: none !important;
+}
+
 .form-control:focus {
   border-color: #66afe9;
   outline: 0;

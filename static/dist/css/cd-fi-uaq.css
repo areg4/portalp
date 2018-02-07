@@ -11,16 +11,25 @@ html, body{
 	/*background-color: #fff;*/
 	background: url(../../img/bg.gif)repeat !important;
 }
+h1, h2, h3{
+	cursor: default !important;
+}
+
 #page-wrapper{
 	background: #fff none repeat scroll 0 0!important; 
     border-radius: 2px !important;
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1) !important;
     box-sizing: border-box !important;
     float: right !important;
-    margin-right: 2% !important;
-    margin-top: 80px !important;
+    margin-right: 3% !important;
+    margin-top: 70px !important;
     padding: 15px !important;
-    width: 80vw !important;
+    width: 80% !important;
+    min-height: 650px !important;
+    overflow-y: scroll;
+}
+#page-wrapper h2{
+	margin-top: 5px !important;
 }
 body.login{
 	height: 100%;
@@ -417,7 +426,7 @@ ol.breadcrumb-cd-fi > .active {
 }
 /*GRID=============================================================*/
 
-.div1,.div2,.div3,.div4,.div5,.div6,.div7,.div8,.div9,.div10,.div11,.div12,.div1-5{
+.div1,.div2,.div3,.div4,.div5,.div6,.div7,.div8,.div9,.div10,.div11,.div12,.div1-5,.div1-c{
 	float: left; 
 	margin-right: 1%;
 	margin-bottom: 10px; 
@@ -430,6 +439,10 @@ ol.breadcrumb-cd-fi > .active {
 .div1-5{ 
 	width: 11%;
 	height:500px;
+	margin-left: 2px;
+}
+.div1-c{ 
+	width: 11%;
 	margin-left: 2px;
 }
 .div2{ 
@@ -561,6 +574,10 @@ button:hover{
 /*TABLA============================================================*/
 
 table{
+	width: 95% !important;
+	margin-left: 2.5% !important;
+	margin-right: 2.5% !important;
+	margin-top: 15px !important;
 	border-collapse: collapse;
 }
 
@@ -571,6 +588,7 @@ th{
 	background: #E2E2E2;
 	padding: 5px;
 	font-weight: bold;
+	text-align: center !important	;
 }
 
 
@@ -595,6 +613,7 @@ td{
 	box-sizing: border-box;
 	border-bottom: 1px dotted rgba(0,0,0,.1);
 	cursor: pointer !important;
+	text-align: center;
 }
 
 @media
@@ -612,7 +631,6 @@ td{
 		}
 
 		/*tr { border: 1px solid #ccc; }*/
-
 		td {
 			border: none;
 			/*border-bottom: 1px solid transparent;*/
@@ -627,10 +645,13 @@ td{
 			padding-right: 10px;
 			white-space: nowrap;
 		}
-		td:nth-of-type(1):before { content: "Tipo de trámite";  }
-		td:nth-of-type(2):before { content: "Status"; }
-		td:nth-of-type(3):before { content: "Observaciones"; }
-	}
+		/*td:nth-of-type(1):before { content: "Tipo de trámite";font-weight: bold !important;  }
+		td:nth-of-type(2):before { content: "Status"; font-weight: bold !important;}
+		td:nth-of-type(3):before { content: "Observaciones"; font-weight: bold !important;}*/
+		/*td:nth-of-type(n):before { content: attr(title); }*/
+		#tabla td:nth-of-type(n):before { content: attr(data-title); font-weight: bold !important; }
+		/**#tabla td:nth-of-type(n):before { content: attr(href); }*/
+  }
 .realizado{
 	background: rgba(114,218,11,.5) !important;
 }
@@ -987,41 +1008,45 @@ div.columna div.item span{
 	display: block; 
 }
 /*ESTILOS SOBRE TRAMITES(FERNANDA)*/
-.ficha{
+.ficha2{
 	border: 1px solid rgba(0,0,0,.05);
 	padding: 10px;
 	box-sizing: border-box;
-	margin-left: 1% !important;
 	margin-bottom: 2% !important;
 	float: left;
 	position: relative;
-	height: 280px;
+	height: 380px;
 	overflow-y: auto !important;
-	overflow: none;
-	cursor: pointer;
+	overflow-x: none !important;
+	display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+	/*background: rgba(0,0,0.09);*/
 }
-.ficha:hover{
+.ficha2:hover{
 	background: rgba(0,0,0,.06);
 }
-	.ficha>h3{
+	.ficha2>h3{
 		margin-top: 0px !important;
 	}
-	.ficha>p{
+	.ficha2>p{
 		text-align: justify;
 	}
-	.ficha>ul{
+	.ficha2>ul{
 		list-style: decimal;
-		padding-left: 30px;
+		/*padding-left: 30px;*/
 		box-sizing: border-box;
 	}
-	.ficha>ul>li{
+	.ficha2>ul>li{
 		font-weight: bold;
 		padding-bottom: 5px;
 		box-sizing: border-box;
 	}
-	.ficha>button{
-		margin-left: 35%;
+	.ficha2>button{
 		color: #fff;
+		bottom: 5px;
 	}
 .file{
 	height: 80px;
@@ -1077,8 +1102,16 @@ input[type=file]::-webkit-file-upload-button:focus {
 .div{
 	border-bottom: 1px solid #ccc;
 }
-/*Scroll (preguntar si se puede cambiar) */
 
+/*estilos notificación sidebar-nav*/
+.not{
+	font-size: 1em !important;
+	float: right;
+	position: relative;
+	margin-top: 3px;
+}
+
+/*Scroll (preguntar si se puede cambiar) */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;

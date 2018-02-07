@@ -1,8 +1,8 @@
-<div class="col-xs-12">
-  <h1 class="h1 text-center">Notificaciones Trámite Alumno</h1>
+<div class="">
+  <h1 class="h1 text-center">Notificaciones trámites del alumno</h1>
 </div>
 
-<div class="">
+<div class="" id="tabla">
   <table class="table responsive">
     <thead>
       <tr class="">
@@ -13,24 +13,24 @@
     </thead>
     <tbody>
       <tr class="tr-notifi denegado" data="1">
-        <td>Examen Voluntario</td>
-        <td>En Proceso</td>
-        <td>La materia seleccionada no es válida para realizar examen voluntario</td>
+        <td data-title="Tipo de trámite">Examen Voluntario</td>
+        <td data-title="Estatus">En Proceso</td>
+        <td data-title="Observaciones">La materia seleccionada no es válida para realizar examen voluntario</td>
       </tr>
       <tr class="tr-notifi proceso" data="2">
-        <td>tt</td>
-        <td>status</td>
-        <td>obser</td>
+        <td data-title="Tipo de trámite">tt</td>
+        <td data-title="Estatus">status</td>
+        <td data-title="Observaciones">obser</td>
       </tr>
       <tr class="tr-notifi denegado" data="3">
-        <td>tt</td>
-        <td>status</td>
-        <td>obser</td>
+        <td data-title="Tipo de trámite">tt</td>
+        <td data-title="Estatus">status</td>
+        <td data-title="Observaciones">obser</td>
       </tr>
-      <tr class="tr-notifi" data="4">
-        <td>tt</td>
-        <td>status</td>
-        <td>obser</td>
+      <tr class="tr-notifi realizado" data="4">
+        <td data-title="Tipo de trámite">tt</td>
+        <td data-title="Estatus">status</td>
+        <td data-title="Observaciones">obser</td>
       </tr>
     </tbody>
   </table>
