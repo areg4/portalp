@@ -8,7 +8,7 @@
 		<li>Carta de examen voluntario</li>
 		<li>Recibo de pago</li>
 	</ul>
-	<button class="btn menta color" type="button" name="button" id="btnTramite">Realizar</button>
+	<button class="btn menta color btnTramite" type="button" name="button" data="tramite-1">Realizar</button>
 </div>
 
 <div class="div1-c hidden-xs"></div>
@@ -22,7 +22,7 @@
 		<li>Documento c</li>
 		<li>Documento d</li>
 	</ul>
-	<button class="btn menta" type="button" name="button" id="btnTramite">Realizar</button>
+	<button class="btn menta btnTramite" type="button" name="button" data="tramite-2">Realizar</button>
 </div>
 
 <div class="div1-c hidden-xs"></div>
@@ -81,7 +81,7 @@
 		<li>Documento a</li>
 		<li>Documento b</li>
 	</ul>
-	<button class="btn menta center" type="button" name="button" id="btnTramite">Aceptar</button>
+	<button class="btn menta center btnTramite" type="button" name="button" data="tramite-3">Aceptar</button>
 </div>
 
 

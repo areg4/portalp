@@ -1,9 +1,11 @@
 jQuery(document).ready(function($){
 
-  $("#btnTramite").click(function(){
+  $(".btnTramite").click(function(){
     // alert("hoa");
-    var tipoTramiteA = $("#tipoTramiteA").val();
-    window.location.href = base_url()+'portal-informatica-alumnos-tramites-alta';
+    // var tipoTramiteA = $("#tipoTramiteA").val();
+    var data = $(this).attr('data');
+    // alert(data);
+    window.location.href = base_url()+'portal-informatica-alumnos-tramites-alta/'+data;
     // alert(tipoTramiteA);
   });
 
