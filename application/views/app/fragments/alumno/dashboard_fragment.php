@@ -10,10 +10,10 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-md-6">
+	<div class="col-xs-12 col-md-5">
 		<img src="<?=base_url()?>static/img/bienvenido.png" alt="Bienvenido" class="img img-responsive">	
 	</div>
-    <div class="col-md-6 panel panel-info">
+    <div class="col-xs-12 col-md-6 panel panel-info">
         <h1 class="h1">Avisos </h1>
 
         <?php if (!is_null($avisos)){ ?>

@@ -1,5 +1,5 @@
 <div class="col-xs-12 col-sm-12 text-center">
-  <h1 class="h1 ">Formulario de alta para trámite tipo A<?php echo $tTramite; ?></h1>
+  <h1 class="h1 ">Formulario de alta para <?php echo $tTramite; ?></h1>
 </div>
 <div class="col-xs-12">
 <br>
@@ -26,6 +26,9 @@
     </div>
 
 
+    <div class="col-xs-12 leyenda">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc hendrerit lectus purus, in porttitor tortor congue nona </p>
+    </div>
     <div class="col-xs-12 col-sm-12 col-md-4 file">
       <label for="text">Documento a</label>
       <input class="ocultar"  id="" type="file" name="">
@@ -38,11 +41,12 @@
       <label for="text">Documento c</label>
       <input class="btn-menta"  id="" type="file" name="">
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-4 file">
-      <label for="text">Documento d</label>
-      <input class="btn-menta"  id="" type="file" name="">
-    </div>
 
+
+    <div class="col-xs-12 leyenda">
+      <p> <b>Recuerda:</b>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc hendrerit lectus purus, in porttitor tortor congue nona </p>
+      <br>
+    </div>
     <div class="form-group text-center col-xs-12">
       <button type="submit" class="btn btn-success">Tramitar</button>
     </div>

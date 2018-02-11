@@ -10,7 +10,7 @@
 </li> -->
 
 <li class="dropdown <?=($app_sub_menu == 'iTramite')? 'actual open':''?>">
-	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+	<!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 		<i class="fa fa-clock-o"></i> Tramites<b class="caret"></b>
 	</a>
 	<ul class="dropdown-menu">
@@ -32,7 +32,7 @@
 				<i class="fa fa-angle-right"></i> Tramite 3
 			</a>
 		</li>
-	</ul>
+	</ul> -->
 </li>
 
 <li class="<?=($app_sub_menu == 'notifiTramites')? 'actual' : ''?>">

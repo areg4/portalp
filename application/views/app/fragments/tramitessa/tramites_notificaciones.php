@@ -6,31 +6,18 @@
   <table class="table responsive">
     <thead>
       <tr class="">
+        <th class="">Expediente</th>
+        <th class="">Folio</th>
         <th class="">Tipo de trámite</th>
-        <th class="">Estatus</th>
-        <th class="">Observaciones</th>
+        <th class=""></th>
       </tr>
     </thead>
     <tbody>
-      <tr class="tr-notifi denegado" data="1">
+      <tr>
+        <td data-title="Expediente">234661</td>
+        <td data-title="Folio">0001</td>
         <td data-title="Tipo de trámite">Examen Voluntario</td>
-        <td data-title="Estatus">En Proceso</td>
-        <td data-title="Observaciones">La materia seleccionada no es válida para realizar examen voluntario</td>
-      </tr>
-      <tr class="tr-notifi proceso" data="2">
-        <td data-title="Tipo de trámite">tt</td>
-        <td data-title="Estatus">status</td>
-        <td data-title="Observaciones">obser</td>
-      </tr>
-      <tr class="tr-notifi denegado" data="3">
-        <td data-title="Tipo de trámite">tt</td>
-        <td data-title="Estatus">status</td>
-        <td data-title="Observaciones">obser</td>
-      </tr>
-      <tr class="tr-notifi realizado" data="4">
-        <td data-title="Tipo de trámite">tt</td>
-        <td data-title="Estatus">status</td>
-        <td data-title="Observaciones">obser</td>
+        <td data-title="">ícono</td>
       </tr>
     </tbody>
   </table>

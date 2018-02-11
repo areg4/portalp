@@ -1,6 +1,11 @@
 <div class="">
-  <h1 class="h1 text-center">Notificaciones Trámite Alumno</h1>
+  <h1 class="h1 text-center">Notificaciones</h1>
 </div>
+
+<div class="col-xs-12">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc hendrerit lectus purus, in porttitor tortor congue non.</p>
+</div>
+
 
 <div class="" id="tabla">
   <table class="table responsive">

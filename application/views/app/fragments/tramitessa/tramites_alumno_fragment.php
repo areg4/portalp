@@ -1,87 +1,33 @@
 <!-- propuesta de diseño -->
 <!-- propuesta 1  -->
-<div class="col-xs-12 col-sm-12 col-md-3  center ficha2">
-	<h3 class="h3 text-center">Examen <br> voluntario</h3>
-	<p>Recuerda que al realizar este trámite, deberás contar con estos documentos escaneados:</p>
-	<ul class="">
-		<li>Kárdex</li>
-		<li>Carta de examen voluntario</li>
-		<li>Recibo de pago</li>
-	</ul>
-	<button class="btn menta color btnTramite" type="button" name="button" data="tramite-1">Realizar</button>
+<div class="col-xs-12">
+	<h3 class="h3">Licenciatura</h3>
 </div>
 
-<div class="div1-c hidden-xs"></div>
+<div class="col-xs-12 col-sm-12 col-md-3  center ficha2">
+	<h3 class="h3 text-center">Examen <br> voluntario</h3>
+	<p>Recuerda que al realizar este trámite, deberás contar con los siguientes requisitos: </p>
+	<ul class="">
+		<li>Estar reinscrito (recibo de pago) </li>
+		<li>No tener NA en la materia</li>
+		<li>Kárdex</li>
+	</ul>
+	<button class="btn color btnTramite menta" type="button" name="button" data="tramite-1">Realizar</button>
+</div>
 
 <div class="col-xs-12 col-sm-12 col-md-3 center ficha2">
-	<h3 class="h3 text-center">Carta de <br> readquisición</h3>
-	<p>Recuerda que al realizar este trámite, los requisitos necesarios son:</p>
-	<ul>
-		<li>Documento a</li>
-		<li>Documento b</li>
-		<li>Documento c</li>
-		<li>Documento d</li>
+	<h3 class="h3 text-center">Titulación por<br> Promedio</h3>
+	<p>Recuerda que al realizar este trámite, deberás contar con los siguientes requisitos: </p>
+	<ul class="">
+		<li>Solicitud de titulación por promedio</li>
+		<li>Estado Académico de CU</li>
+		<li>Promedio de 9 y 8 vectores</li>
 	</ul>
 	<button class="btn menta btnTramite" type="button" name="button" data="tramite-2">Realizar</button>
 </div>
 
-<div class="div1-c hidden-xs"></div>
-
-<div class="col-xs-12 col-sm-12 col-md-3 center ficha2">
-	<h3 class="h3 text-center">Tipo de <br> Trámite A</h3>
-	<p>Recuerda que al realizar este trámite, debes tener los siguientes documentos en formato PDF:</p>
-	<ul>
-		<li>Documento a</li>
-		<li>Documento b</li>
-		<li>Documento c</li>
-		<li>Documento d</li>
-		<li>Documento e</li>
-		<li>Documento a</li>
-		<li>Documento b</li>
-	</ul>
-	<button class="btn menta center" type="button" name="button" id="btnTramite">Aceptar</button>
-</div>
-
-<div class="col-xs-12 col-sm-12 col-md-3  center ficha2">
-	<h3 class="h3 text-center">Examen <br> voluntario</h3>
-	<p>Recuerda que al realizar este trámite, deberás contar con estos documentos escaneados:</p>
-	<ul class="">
-		<li>Kárdex</li>
-		<li>Carta de examen voluntario</li>
-		<li>Recibo de pago</li>
-	</ul>
-	<button class="btn menta color" type="button" name="button" id="btnTramite">Realizar</button>
-</div>
-
-<div class="div1-c hidden-xs"></div>
-
-<div class="col-xs-12 col-sm-12 col-md-3 center ficha2">
-	<h3 class="h3 text-center">Carta de <br> readquisición</h3>
-	<p>Recuerda que al realizar este trámite, los requisitos necesarios son:</p>
-	<ul>
-		<li>Documento a</li>
-		<li>Documento b</li>
-		<li>Documento c</li>
-		<li>Documento d</li>
-	</ul>
-	<button class="btn menta" type="button" name="button" id="btnTramite">Realizar</button>
-</div>
-
-<div class="div1-c hidden-xs"></div>
-
-<div class="col-xs-12 col-sm-12 col-md-3 center ficha2">
-	<h3 class="h3 text-center">Tipo de <br> Trámite A</h3>
-	<p>Recuerda que al realizar este trámite, debes tener los siguientes documentos en formato PDF:</p>
-	<ul>
-		<li>Documento a</li>
-		<li>Documento b</li>
-		<li>Documento c</li>
-		<li>Documento d</li>
-		<li>Documento e</li>
-		<li>Documento a</li>
-		<li>Documento b</li>
-	</ul>
-	<button class="btn menta center btnTramite" type="button" name="button" data="tramite-3">Aceptar</button>
+<div class="col-xs-12">
+	<h3 class="h3">Posgrado</h3>
 </div>
 
 

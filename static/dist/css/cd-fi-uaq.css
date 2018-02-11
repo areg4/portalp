@@ -25,8 +25,10 @@ h1, h2, h3{
     margin-top: 70px !important;
     padding: 15px !important;
     width: 80% !important;
-    min-height: 650px !important;
-    overflow-y: scroll;
+    max-height: 620px !important;
+    min-height: 620px !important;
+    overflow-y: auto;
+    overflow-x:hidden !important;
 }
 #page-wrapper h2{
 	margin-top: 5px !important;
@@ -131,6 +133,10 @@ div.margin-top-login{
 		margin: 0 !important;
 		/*margin-top: 80px !important;*/
 		padding-top: 100px !important;
+		min-height: 650px !important;
+	}
+	.ficha2{
+		margin-left: 0% !important;
 	}
 }
 
@@ -438,12 +444,12 @@ ol.breadcrumb-cd-fi > .active {
 }
 .div1-5{ 
 	width: 11%;
-	height:500px;
+	height: 500px;
 	margin-left: 2px;
 }
 .div1-c{ 
 	width: 11%;
-	margin-left: 2px;
+	margin-left: 10px;
 }
 .div2{ 
 	width: 15.66%;
@@ -630,10 +636,8 @@ td{
 			left: -9999px;
 		}
 
-		/*tr { border: 1px solid #ccc; }*/
 		td {
 			border: none;
-			/*border-bottom: 1px solid transparent;*/
 			position: relative;
 			padding-left: 50% !important;
 		}
@@ -1008,22 +1012,25 @@ div.columna div.item span{
 	display: block; 
 }
 /*ESTILOS SOBRE TRAMITES(FERNANDA)*/
+/*Secciónn: Trámite alumnos*/
 .ficha2{
 	border: 1px solid rgba(0,0,0,.05);
 	padding: 10px;
 	box-sizing: border-box;
+	margin-top: 1% !important;
 	margin-bottom: 2% !important;
+	margin-left: 6.5%;
 	float: left;
 	position: relative;
-	height: 380px;
+	height: 300px;
 	overflow-y: auto !important;
-	overflow-x: none !important;
-	display: flex;
+	overflow-x: hidden !important;
+/*	display: flex;
     justify-content: space-around;
     flex-direction: column;
     align-items: center;
-    align-content: center;
-	/*background: rgba(0,0,0.09);*/
+    align-content: center;*/
+    border-radius: 5px;
 }
 .ficha2:hover{
 	background: rgba(0,0,0,.06);
@@ -1037,7 +1044,9 @@ div.columna div.item span{
 	.ficha2>ul{
 		list-style: decimal;
 		/*padding-left: 30px;*/
-		box-sizing: border-box;
+		width: 80%;
+		margin-left: 10%;
+		margin-right: 10%;
 	}
 	.ficha2>ul>li{
 		font-weight: bold;
@@ -1047,7 +1056,11 @@ div.columna div.item span{
 	.ficha2>button{
 		color: #fff;
 		bottom: 5px;
+		width: 30%;
+		margin-left: 35%;
+		margin-right: 35%;
 	}
+/*Sección: Realizar trámite*/
 .file{
 	height: 80px;
 	display: flex;
@@ -1057,7 +1070,6 @@ div.columna div.item span{
     align-content: center;
     padding-bottom: 10px;
     box-sizing: border-box;
-    /*border: 1px solid #a8abb2;*/
     padding: 10px;
     box-sizing: border-box;
 
@@ -1078,23 +1090,20 @@ input[type=file]::-webkit-file-upload-button{
   	margin-right: 10px;
   	box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
 }
-
-input[type=file]::-webkit-file-upload-button:focus {
-  border-color: #66afe9;
-  outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
-          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
-}
-
-.right{
-	margin-top: 20px;
-}
-	.right>button{
-		float: right;
+	input[type=file]::-webkit-file-upload-button:focus {
+	  border-color: #66afe9;
+	  outline: 0;
+	  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+	          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
 	}
+.leyenda{
+	font-size: .9em !important;
+	text-align: center;
+}
 
 .row{
 	margin-top: 30px !important;
+	font-size: 1em;
 }
 .row .form-control{
 	height: 34px !important;
@@ -1137,5 +1146,4 @@ input[type=file]::-webkit-file-upload-button{
   	cursor: pointer;
   	background:red;
 }
-
-	
+/*ESTILOS SOBRE TRAMITES(FERNANDA) ---------FIN-----------*/	
