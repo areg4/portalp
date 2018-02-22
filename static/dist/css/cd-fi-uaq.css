@@ -1022,9 +1022,10 @@ div.columna div.item span{
 	margin-left: 6.5%;
 	float: left;
 	position: relative;
-	height: 300px;
+	height: 260px;
 	overflow-y: auto !important;
 	overflow-x: hidden !important;
+	cursor: pointer;
 /*	display: flex;
     justify-content: space-around;
     flex-direction: column;
@@ -1034,6 +1035,9 @@ div.columna div.item span{
 }
 .ficha2:hover{
 	background: rgba(0,0,0,.06);
+}
+.ficha2:link{
+	background: rgba(0,0,0,.09);	
 }
 	.ficha2>h3{
 		margin-top: 0px !important;
@@ -1052,13 +1056,6 @@ div.columna div.item span{
 		font-weight: bold;
 		padding-bottom: 5px;
 		box-sizing: border-box;
-	}
-	.ficha2>button{
-		color: #fff;
-		bottom: 5px;
-		width: 30%;
-		margin-left: 35%;
-		margin-right: 35%;
 	}
 /*Sección: Realizar trámite*/
 .file{
