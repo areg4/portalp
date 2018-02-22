@@ -70,3 +70,13 @@ $config['tablas']['turnoticket'] 		  		 = 'tickets.turnoticket';
 /**************** ASISTENCIAS */
 
 $config['tablas']['asistencias']				   = 'asistencias_verificadas';
+
+
+
+/********TRÁMITES*********/
+$config['tablas']['catTramites']				           = 'cat_tramite';
+$config['tablas']['catRequisitos']				         = 'cat_requisito';
+$config['tablas']['catTramiteRequisito']				   = 'cat_tramite_requisito';
+$config['tablas']['tramites']				               = 'app_tramite';
+$config['tablas']['rutaTramites']				           = 'app_ruta_tramite';
+$config['tablas']['observacionesTramites']				 = 'app_observacion_tramite';

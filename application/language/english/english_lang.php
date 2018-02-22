@@ -28,3 +28,7 @@ $lang['evaluacionRespondidaProf']		   = "Gracias por contestar la Evaluación en
 
 //avisos asistencia
 $lang['cveDocenteFail']			   = "La clave del docente es incorrecta";
+
+//TRÁMITES
+$lang['altaTramiteOk']			   = "El trámite ha sido dado de alta correctamente";
+$lang['updateFileOk']			     = "El archivo ha sido actualizado correctamente";

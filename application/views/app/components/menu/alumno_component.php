@@ -36,7 +36,7 @@
 	</a>
 </li> -->
 
-<li class="<?=($app_sub_menu == 'iTramite')? 'actual' : ''?>">
+<!-- <li class="<?=($app_sub_menu == 'iTramite')? 'actual' : ''?>">
 	<a href="<?=base_url()?>portal-informatica-alumnos-tramites">
 		<i class="fa fa-tags"></i> Tramites
 	</a>
@@ -45,4 +45,31 @@
 	<a href="<?=base_url()?>portal-informatica-alumnos-tramites-notificaciones">
 		<i class="fa fa-tags"></i> Notifiaciones <i class="fa fa-bell not"></i>
 	</a>
+</li> -->
+
+
+<li class="dropdown <?=($app_sub_menu == 'iTramite')? 'actual open':''?>">
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		<i class="fa fa-clock-o"></i> Tramites<b class="caret"></b>
+	</a>
+	<ul class="dropdown-menu">
+		<?php $subnav = ($app_sub_menu_item == 'altaTramiteA')? 'active':''; ?>
+		<li class="<?=$subnav?>">
+			<a href="<?=base_url()?>portal-informatica-alumnos-tramites">
+					<i class="fa fa-angle-right"></i> Alta
+			</a>
+		</li>
+		<?php $subnav = ($app_sub_menu_item == 'tramitesProcesoA')? 'active':''; ?>
+		<li class="<?=$subnav?>">
+			<a href="<?=base_url()?>portal-informatica-alumnos-tramites-proceso" >
+				<i class="fa fa-angle-right"></i>  Proceso
+			</a>
+		</li>
+		<?php $subnav = ($app_sub_menu_item == 'tramitesFinalizadosA')? 'active':''; ?>
+		<li class="<?=$subnav?>">
+			<a href="<?=base_url()?>portal-informatica-alumnos-tramites-finalizados" >
+				<i class="fa fa-angle-right"></i> Finalizados
+			</a>
+		</li>
+	</ul>
 </li>

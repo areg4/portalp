@@ -59,14 +59,19 @@ $route['portal-informatica-alumnos']											= 'alumno/index';
 //alumno tramitessa
 $route['portal-informatica-alumnos-tramites']							      = 'tramitessa/tramitesAlumno';
 $route['portal-informatica-alumnos-tramites-alta/(:any)']				= 'tramitessa/tramitesAlumnoAlta/$1';
-$route['portal-informatica-alumnos-tramites-notificaciones']		= 'tramitessa/tramitesAlumnoNotificaciones';
+$route['portal-informatica-alumnos-tramites-proceso']		        = 'tramitessa/tramitesAlumnoProceso';
 $route['portal-informatica-alumnos-tramites-datos/(:num)']		  = 'tramitessa/tramitesAlumnoDatos/$1';
+$route['portal-informatica-alumnos-tramites-finalizados']		    = 'tramitessa/tramitesAlumnoFinalizados';
+
+$route['portal-informatica-alumnos-tramites-add']				        = 'tramitessa/tramitesAlumnoAdd';
+$route['portal-informatica-alumnos-tramites-updateFile']				= 'tramitessa/updateFile';
+$route['portal-informatica-alumnos-tramites-updateTramite']			= 'tramitessa/updateTramite';
 
 /**
  * tramites de Secretaría Académica
  */
 $route['portal-informatica-tramites']											            = 'tramitessa/index';
-$route['portal-informatica-tramites-alta/(:any)']                     = 'tramitessa/tramitesAlta/$1';
+$route['portal-informatica-tramites-alta/(:num)']                     = 'tramitessa/tramitesAlta/$1';
 $route['portal-informatica-tramites-notificaciones']                  = 'tramitessa/tramitesNotificaciones';
 $route['portal-informatica-tramites-archivo']                         = 'tramitessa/tramitesArchivo';
 $route['portal-informatica-tramites-datos/(:num)']		                = 'tramitessa/tramitesDatos/$1';
