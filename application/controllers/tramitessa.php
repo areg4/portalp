@@ -87,19 +87,6 @@ class Tramitessa extends CI_Controller {
 
 	public function tramitesDatos($idTramite)
 	{
-		$data['sys_app_title'] 	= 'TRÁMITES ALTA';
-		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRÁMITES';
-		$data['app_sub_menu'] 	= 'notifiTramites';
-		$data['app_sub_menu_item'] = '';
-		// $data['user']      	= $this->usuario;
-		$data['js']       = array('tramites');
-		$data['menu_app']   = $this->load->view('app/components/menu/tramitessa_component', $data, TRUE);
-		$data['menu'] 		= $this->load->view('app/components/head_component',$data,TRUE);
-
-		$alumno = $this->alumno_model->getAlumno($tramite->idAlumno);
-
-	public function tramitesDatos($idTramite)
-	{
 		$data['sys_app_title'] 	= 'TRÁMITES';
 		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRÁMITES';
 		$data['app_sub_menu'] 	= 'notifiTramites';
