@@ -91,6 +91,7 @@ class Tramitessa extends CI_Controller {
 
 		$alumno = $this->alumno_model->getAlumno($tramite->idAlumno);
 
+		$archivos = $this->tramitessa_model->getArchivosByTramite($idTramite);
 
 		$data['sys_app_title'] 	= 'TRAMITES';
 		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRAMITES';
@@ -105,25 +106,83 @@ class Tramitessa extends CI_Controller {
 		$data['alumno']     = $alumno;
 		$data['catTramites'] = $this->catTramites();
 		$data['observacion'] = $this->tramitessa_model->getObservacionByTramite($idTramite);
-		$data['archivos']		 = $this->tramitessa_model->getArchivosByTramite($idTramite);
+
+
 
 		if ($tramite->estatus =='ALTA') {
-			if ($this->updateTramiteToProceso($idTramite)) {
+			if ($this->updateTramiteTo($idTramite, 'PROCESO')) {
 				$tramite = $this->tramitessa_model->getTramitePById($idTramite);
 			}
 		}
+
+		if (!is_null($archivos)) {
+			foreach ($archivos as $archivo) {
+				if ($archivo->estatus=="RECIBIDO") {
+					if ($this->updateArchivoTo($archivo->idRT, "REVISANDO")) {
+						$archivos = $this->tramitessa_model->getArchivosByTramite($idTramite);
+					}
+				}
+			}
+		}
+
+		$data['archivos']		 = $archivos;
 		$data['tramite']		=	$tramite;
 		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/tramites_datos_tramite_fragment', $data, TRUE);
 		$this->load->view('app/main_view', $data, FALSE);
 	}
 
-	private function updateTramiteToProceso($idTramite)
+	private function updateTramiteTo($idTramite, $estatus)
 	{
 		$arrUpdate = array(
-			'estatus' => 'PROCESO',
+			'estatus' => 	$estatus,
 			'feculmod' => $this->fecha
 		);
 		return $this->tramitessa_model->updateTramite($idTramite, $arrUpdate);
+	}
+
+	private function updateArchivoTo($idRT, $estatus)
+	{
+		$arrUpdate = array(
+			'estatus' => $estatus
+		);
+		return $this->tramitessa_model->updateRutaTramite($idRT, $arrUpdate);
+	}
+
+	public function tramitesArchivoUpdateAR()
+	{
+		$idRT 		= $this->input->post('idRT');
+		$estatus 	= $this->input->post('estatus');
+		if ($this->updateArchivoTo($idRT, $estatus)) {
+			echo "OK";
+		}else{
+			echo "ERROR";
+		}
+	}
+
+	public function tramitesAddComentario()
+	{
+		$idTramite 	= $this->input->post('idTramite');
+		$idAlumno 	=	$this->input->post('idAlumno');
+		$comentario = $this->input->post('comentario');
+
+		$arrInsert = array(
+			'idTramite' 		=> $idTramite,
+			'idAlumno'			=> $idAlumno,
+			'observacion' 	=> $comentario,
+			// 'usumod'				=> $idUsuario,
+			'fecha'					=> $this->fecha,
+			'habilitado'		=> 1
+		);
+
+		if ($this->tramitessa_model->insertObservacion($arrInsert)) {
+			if ($this->updateTramiteTo($idTramite, 'OBSERVACIONES')) {
+				echo "OK";
+			}else{
+				echo "ERROR";
+			}
+		}else {
+			echo "ERROR";
+		}
 	}
 
 	public function tramitesArchivo()

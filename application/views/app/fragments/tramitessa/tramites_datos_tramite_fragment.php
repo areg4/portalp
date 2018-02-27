@@ -57,6 +57,16 @@
     </div>
 
     <div class="form-group col-xs-12 col-sm-12 col-md-3">
+      <label for="text">Email:</label>
+      <?php if (!is_null($alumno->emailUsuario) AND $alumno->emailUsuario != ""): ?>
+        <p><?=$alumno->emailUsuario?></p>
+      <?php else: ?>
+        <p>No hay dato</p>
+      <?php endif; ?>
+
+    </div>
+
+    <div class="form-group col-xs-12 col-sm-12 col-md-3">
       <label for="text">Fecha Inicio Trámite:</label>
       <p name="fecIniTram" id="fecIniTram"><?= fancy_date($tramite->fechaInicio); ?></p>
     </div>
@@ -101,25 +111,36 @@
       <?php foreach ($archivos as $archivo): ?>
         <div class="col-xs-12 col-sm-12 col-md-4 file"> K
           <a href="<?=base_url()?>docs/tramites/<?=$alumno->expediente?>/<?=$archivo->idTramite?>/<?=$archivo->ruta?>" target="_blank" class="btn">Descargar</a>
-          <input type="radio" class="aprobFile" data-id="<?=$archivo->idRT?>" name="aprobado-<?=$archivo->idRT?>" <?php if ($archivo->estatus == "APROBADO") { echo "checked";} ?> >Aprobado
-          <input type="radio" class="aprobFile" data-id="<?=$archivo->idRT?>" name="aprobado-<?=$archivo->idRT?>" <?php if ($archivo->estatus == "RECHAZADO") { echo "checked";} ?> >Rechazado
+          <input type="radio" class="aprobFile" data-id="<?=$archivo->idRT?>" name="aprobado-<?=$archivo->idRT?>" <?php if ($archivo->estatus == "APROBADO") { echo "checked";} ?> value="APROBADO" >Aprobado
+          <input type="radio" class="aprobFile" data-id="<?=$archivo->idRT?>" name="aprobado-<?=$archivo->idRT?>" <?php if ($archivo->estatus == "RECHAZADO") { echo "checked";} ?> value="RECHAZADO" >Rechazado
         </div>
       <?php endforeach; ?>
     <?php endif; ?>
 
     <div class="form-group col-xs-12 col-sm-12"><br></div>
 
-    <div class="col-xs-12">
-      <h4>Comentario(s):</h4>
-      <br>
-      <textarea name="comentarios" rows="8" cols="80"></textarea>
-      <br>
-    </div>
+    <?php if (!is_null($observacion)): ?>
+      <div class="form-group col-xs-12 col-sm-12 col-md-11">
+        <h4>Comentario(s):</h4>
+        <br>
+        <p>Hay observaciones pendientes por atender</p>
+      </div>
+    <?php else: ?>
+      <div class="col-xs-12">
+        <h4>Comentario(s):</h4>
+        <br>
+        <textarea id="comentarios" rows="8" cols="80"></textarea>
+        <br>
+      </div>
+    <?php endif; ?>
 
     <div class="form-group text-center col-xs-12">
       <button type="submit" class="btn btn-success" data-id="<?=$tramite->idTramite?>">Enviar a CA</button>
       <button type="submit" class="btn btn-success" data-id="<?=$tramite->idTramite?>">Enviar a CI</button>
-      <button type="submit" class="btn btn-success" data-id="<?=$tramite->idTramite?>">Enviar Observación</button>
+
+      <?php if (is_null($observacion)): ?>
+        <button type="submit" class="btn btn-success" id="btn-enviar-observacion" data-id="<?=$tramite->idTramite?>" data-id-u="<?=$alumno->idAlumno?>" >Enviar Observación</button>
+      <?php endif; ?>
       <button type="submit" class="btn btn-success" data-id="<?=$tramite->idTramite?>">Enviar Respuesta</button>
     </div>
 </div>

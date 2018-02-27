@@ -75,3 +75,6 @@ $route['portal-informatica-tramites-alta/(:num)']                     = 'tramite
 $route['portal-informatica-tramites-proceso']                         = 'tramitessa/tramitesProceso';
 $route['portal-informatica-tramites-archivo']                         = 'tramitessa/tramitesArchivo';
 $route['portal-informatica-tramites-datos/(:num)']		                = 'tramitessa/tramitesDatos/$1';
+
+$route['portal-informatica-tramites-updateFileAR']                    = 'tramitessa/tramitesArchivoUpdateAR';
+$route['portal-informatica-tramites-addComentario']                   = 'tramitessa/tramitesAddComentario';

@@ -73,4 +73,54 @@ jQuery(document).ready(function($){
   //   $("div#add-materia-carga").load(base_url()+'portal-informatica-secretaria-academica-aulas-load/'+aula+'/'+width);
   //  });
 
+  $(".aprobFile").change(function () {
+    var idRT = $(this).attr('data-id');
+    var estatus = $(this).val();
+
+    parametros = {
+      'idRT' : idRT,
+      'estatus' : estatus
+    };
+
+    $.ajax({
+      url     : base_url()+"portal-informatica-tramites-updateFileAR",
+      type    : 'post',
+      data    : parametros,
+      success : function(data){
+        // console.log(data);
+        if (data=='OK') {
+          window.location.reload();
+        }
+      }
+    });
+  });
+
+  $("#btn-enviar-observacion").click(function () {
+    var idTramite = $(this).attr('data-id');
+    var idAlumno  = $(this).attr('data-id-u');
+    var comentario = $("#comentarios").val();
+    comentario = $.trim(comentario);
+    if (comentario != "") {
+
+      parametros = {
+        'idTramite'   : idTramite,
+        'idAlumno'    : idAlumno,
+        'comentario'  : comentario
+      };
+      $.ajax({
+        url     : base_url()+"portal-informatica-tramites-addComentario",
+        type    : 'post',
+        data    : parametros,
+        success : function (data) {
+          if (data=='OK') {
+            window.location.reload();
+          }
+        }
+      });
+      // alert(comentario);
+    }else{
+      alert("El comentario no puede ir vacío");
+    }
+  });
+
 });

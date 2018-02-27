@@ -207,6 +207,13 @@ class Tramitessa_model extends CI_Model {
 		$query = $this->db_b->get($a);
 		return ($query->num_rows() >= 1) ? $query->result() : NULL;
 	}
+
+	public function insertObservacion($arrInsert)
+	{
+		$a = $this->tablas['observacionesTramites'];
+		$this->db_b->insert($a, $arrInsert);
+		return true;
+	}
 }
 
 /* End of file root_model.php */
