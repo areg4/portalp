@@ -20,8 +20,8 @@
                       <div class="perfil-image"><img src="<?=base_url()?>static/img/avatar-1.png" class="ajustar-img"></div>
                       
                     </a>
-                    <ul class="dropdown-menu dropdown-user">
-                      <li><h5 style="padding: 3px 20px;"><i class="fa fa-user"></i> <?=ucfirst(strtolower($user->nombre)).' '.ucfirst(strtolower($user->apellidoPaterno)).' '.ucfirst(strtolower($user->apellidoMaterno))?></h5></li>
+                    <ul class="dropdown-menu dropdown-user col-md-6 col-xs-6">
+                      <li><h5 style=""><i class="fa fa-user"></i> <?=ucfirst(strtolower($user->nombre)).' '.ucfirst(strtolower($user->apellidoPaterno)).' '.ucfirst(strtolower($user->apellidoMaterno))?></h5></li>
                       <li class="divider"></li>
                       <li><a href="<?=base_url()?>portal-informatica-mi-cuenta"><i class="fa fa-gear"></i> Mi cuenta</a></li>
                       <li class="divider"></li>

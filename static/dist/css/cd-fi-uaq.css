@@ -14,6 +14,17 @@ html, body{
 h1, h2, h3{
 	cursor: default !important;
 }
+	.tamañoh1{
+		font-size: 1.9em !important;
+		font-weight: bold;
+		padding-bottom: 15px;
+		border-bottom: 1px solid rgba(0,0,0,.1);
+	}
+	.tamañoh4{
+		font-weight: bold;
+		padding-bottom: 15px;
+		border-bottom: 1px solid rgba(0,0,0,.1);
+	}
 
 #page-wrapper{
 	background: #fff none repeat scroll 0 0!important; 
@@ -25,8 +36,8 @@ h1, h2, h3{
     margin-top: 70px !important;
     padding: 15px !important;
     width: 80% !important;
-    max-height: 620px !important;
-    min-height: 620px !important;
+    max-height: 630px !important;
+    min-height: 630px !important;
     overflow-y: auto;
     overflow-x:hidden !important;
 }
@@ -136,6 +147,16 @@ div.margin-top-login{
 		min-height: 650px !important;
 	}
 	.ficha2{
+		margin-left: 0% !important;
+	}
+	.archivos{
+		display: flex;
+	    justify-content: space-around !important;
+	    flex-direction: column;
+	    align-items: center;
+	    align-content: center;
+	}
+	.archivo{
 		margin-left: 0% !important;
 	}
 }
@@ -253,6 +274,7 @@ div.margin-top-login{
 		}
 	.dropdown-toggle-menu{
 		padding: 0 !important;
+		padding: 10px !important;
 	}
 	.user-dropdown > ul {
 		background-color: white;
@@ -263,8 +285,7 @@ div.margin-top-login{
 
 	#menu-lateral>li.dropdown>ul.dropdown-menu {
 		position: relative;
-		min-width: 160px;
-		
+		min-width: 280px;
 		margin: 0;
 		padding: 0;
 		border: none;
@@ -344,6 +365,12 @@ div.margin-top-login{
 					text-align: center;
 					margin: 0 !important;
 				}
+.size{
+	font-size: .6em !important;
+	float: right !important; 
+	vertical-align: middle !important;
+	margin-top: 5px;
+}
 
 /*ESTILOS DEL CONTENIDO*/
 
@@ -583,7 +610,7 @@ table{
 	width: 95% !important;
 	margin-left: 2.5% !important;
 	margin-right: 2.5% !important;
-	margin-top: 15px !important;
+	margin-top: 6px !important;
 	border-collapse: collapse;
 }
 
@@ -592,14 +619,16 @@ th{
 	font-weight: bold;
 	color: #3A4659;
 	background: #E2E2E2;
-	padding: 5px;
+	padding: 10px;
+	box-sizing: border-box;
 	font-weight: bold;
-	text-align: center !important	;
+	text-align: center !important;
 }
 
 
 tr{
 	color: rgba(0,0,0,.7);
+	border-bottom: 1px solid rgba(0,0,0,.09);
 }
 
 tr:hover{
@@ -617,9 +646,10 @@ tr:nth-child(even) {
 td{
 	padding: 8px;
 	box-sizing: border-box;
-	border-bottom: 1px dotted rgba(0,0,0,.1);
 	cursor: pointer !important;
 	text-align: center;
+	border-bottom: none !important;
+	/*border-bottom: 1px solid rgba(0,0,0,.09);*/
 }
 
 @media
@@ -640,6 +670,7 @@ td{
 			border: none;
 			position: relative;
 			padding-left: 50% !important;
+			font-size: .9em;
 		}
 		td:before {
 			position: absolute;
@@ -649,21 +680,24 @@ td{
 			padding-right: 10px;
 			white-space: nowrap;
 		}
-		/*td:nth-of-type(1):before { content: "Tipo de trámite";font-weight: bold !important;  }
-		td:nth-of-type(2):before { content: "Status"; font-weight: bold !important;}
-		td:nth-of-type(3):before { content: "Observaciones"; font-weight: bold !important;}*/
-		/*td:nth-of-type(n):before { content: attr(title); }*/
-		#tabla td:nth-of-type(n):before { content: attr(data-title); font-weight: bold !important; }
-		/**#tabla td:nth-of-type(n):before { content: attr(href); }*/
+		#tabla td:nth-of-type(n):before{
+			content: attr(data-title);
+			font-weight: bold !important; 
+			padding: 5px;
+			box-sizing: border-box;
+		}
   }
-.realizado{
-	background: rgba(114,218,11,.5) !important;
+.finalizado{
+	background: rgba(63,255,6,.5) !important;
 }
-.denegado{
-	background: rgba(218,11,11,.5) !important;
+.observaciones{
+	background: rgba(255,6,6,.5) !important;
 }
-.proceso{
-	background: rgba(218,218,11,.5) !important;
+.nproceso{
+	background: rgba(255,242,6,.5) !important;
+}
+.alta{
+	background: rgba(6,56,255,.5) !important;
 }
 
 /*FICHAS==========================*/
@@ -1014,7 +1048,7 @@ div.columna div.item span{
 /*ESTILOS SOBRE TRAMITES(FERNANDA)*/
 /*Secciónn: Trámite alumnos*/
 .ficha2{
-	border: 1px solid rgba(0,0,0,.05);
+	background: rgba(0,0,0,.1);
 	padding: 10px;
 	box-sizing: border-box;
 	margin-top: 1% !important;
@@ -1026,28 +1060,22 @@ div.columna div.item span{
 	overflow-y: auto !important;
 	overflow-x: hidden !important;
 	cursor: pointer;
-/*	display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;*/
     border-radius: 5px;
 }
 .ficha2:hover{
-	background: rgba(0,0,0,.06);
-}
-.ficha2:link{
-	background: rgba(0,0,0,.09);	
+	box-shadow: 0px 0px 5px 0px rgba(0,68,168,.9);
 }
 	.ficha2>h3{
-		margin-top: 0px !important;
+		margin-top: 8px !important;
+		font-weight: bold;
+		font-size: 1.3em;
+		color: #37474F;
 	}
 	.ficha2>p{
 		text-align: justify;
 	}
 	.ficha2>ul{
 		list-style: decimal;
-		/*padding-left: 30px;*/
 		width: 80%;
 		margin-left: 10%;
 		margin-right: 10%;
@@ -1057,45 +1085,139 @@ div.columna div.item span{
 		padding-bottom: 5px;
 		box-sizing: border-box;
 	}
-/*Sección: Realizar trámite*/
-.file{
-	height: 80px;
-	display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
-    padding-bottom: 10px;
-    box-sizing: border-box;
-    padding: 10px;
-    box-sizing: border-box;
-
-}
-input[type=file]::-webkit-file-upload-button{
-	border: 1px solid #a8abb2 !important;
-	font-family:;
-	border-radius: 2px;
-	height: 30px;
-  	cursor: pointer;
-  	background: #fff !important;
-  	float: left;
-  	position: relative;
-  	outline: none;
-  	color: rgba(0,0,0,.8);
-  	font-weight: 600;
-  	font-size: .9em;
-  	margin-right: 10px;
-  	box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-}
-	input[type=file]::-webkit-file-upload-button:focus {
-	  border-color: #66afe9;
-	  outline: 0;
-	  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
-	          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+	.ficha2>button{
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		background: transparent;
+		z-index: 999999;
+		top: 0px;
+		outline: none !important;s
 	}
+/*Sección: Realizar trámite*/
+.mtop{
+	margin-top: 10px;
+}
+.archivos{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+
+.archivo{
+	height: 150px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 0px;
+	float: left;
+	position: relative;
+	display: block;
+	cursor: pointer;
+	overflow: hidden;
+}
+	.centrado_p{
+		margin-left: calc(50% - 100px);
+		margin-bottom: 10px;
+	}
+	.file{
+		height: 70%;
+		display: flex;
+	    justify-content: space-around;
+	    flex-direction: column;
+	    align-items: center;
+	    align-content: center;
+	    padding: 10px;
+	    box-sizing: border-box;
+	    background: rgba(55,88,115,.7);
+	    text-align: center;
+	    border-radius: 10px;
+
+	}	.file>img{
+			height: 60px;
+		}
+
+		.archivo p{
+			width: 100%;
+			text-align: center !important;
+			font-size: .9em;
+			font-weight: bold;
+		}
+		.file:hover figcaption{
+			-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+			filter: alpha(opacity=700);
+			opacity: 1;
+			top: 0;
+		}
+
+		figcaption{
+			-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+			filter: alpha(opacity=0);
+			opacity: 0;
+			position: absolute;
+			height: 70%;
+			top: 18.5% !important;
+			width: 85%;
+			border-radius: 10px;
+			background: rgba(0,0,0,.4);
+			color: #fff;
+			transition: all .1s ease;
+			transition-delay: .0s;
+			text-align: center;
+			display: flex;
+			justify-content: space-around;
+		    flex-direction: column;
+			align-content: center;
+			align-items: center;
+			box-sizing: border-box;
+		}
+		figcaption a{
+			display: inline-block;
+			padding: 6px 10px;
+			margin-bottom: 0;
+			font-size: 14px;
+			font-weight: normal;
+			line-height: 1.42857143;
+			text-align: center;
+			color: rgba(0,0,0,.8);
+			white-space: nowrap;
+			vertical-align: middle;
+			-ms-touch-action: manipulation;
+			   touch-action: manipulation;
+			cursor: pointer;
+			-webkit-user-select: none;
+			   user-select: none;
+			background: rgba(255,255,255,.8);
+			border: 1px solid transparent;
+			border-radius: 4px;
+			outline: none !important; 
+			margin-top: 5px;
+			text-decoration: none !important;
+		}
+		figcaption input{
+			color: rgba(0,0,0,.8);
+			margin-top: -3px;
+		}
+
+	input[type=file]{
+		height: 80% !important;
+		top: 16% !important;
+		width: 90%;
+		position: absolute;
+		cursor: pointer;
+		outline: none !important;
+	}
+	input[type=file]::-webkit-file-upload-button{
+		outline: none !important;
+		background: none !important;
+		display: none;
+	}
+
 .leyenda{
 	font-size: .9em !important;
 	text-align: center;
+	/*border-bottom: 1px solid rgba(0,0,0,.07);*/
+	margin-bottom: 10px;
 }
 
 .row{

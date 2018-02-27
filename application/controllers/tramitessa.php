@@ -40,8 +40,8 @@ class Tramitessa extends CI_Controller {
 
 	public function index()
 	{
-		$data['sys_app_title'] 	= 'TRAMITES';
-		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRAMITES';
+		$data['sys_app_title'] 	= 'TRÁMITES';
+		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRÁMITES';
 		$data['app_sub_menu'] 	= 'inicio';
 		$data['app_sub_menu_item'] = '';
 		// $data['user']      	= $this->usuario;
@@ -54,8 +54,8 @@ class Tramitessa extends CI_Controller {
 
 	public function tramitesAlta($tTramite)
 	{
-		$data['sys_app_title'] 	= 'TRAMITES ALTA';
-		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRAMITES';
+		$data['sys_app_title'] 	= 'TRÁMITES ALTA';
+		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRÁMITES';
 		$data['app_sub_menu'] 	= 'iTramite';
 		$data['app_sub_menu_item'] = $tTramite;
 		// $data['user']      	= $this->usuario;
@@ -69,8 +69,8 @@ class Tramitessa extends CI_Controller {
 
 	public function tramitesNotificaciones()
 	{
-		$data['sys_app_title'] 	= 'TRAMITES ALTA';
-		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRAMITES';
+		$data['sys_app_title'] 	= 'TRÁMITES ALTA';
+		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRÁMITES';
 		$data['app_sub_menu'] 	= 'notifiTramites';
 		$data['app_sub_menu_item'] = '';
 		// $data['user']      	= $this->usuario;
@@ -84,8 +84,8 @@ class Tramitessa extends CI_Controller {
 
 	public function tramitesDatos($idTramite)
 	{
-		$data['sys_app_title'] 	= 'TRAMITES';
-		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRAMITES';
+		$data['sys_app_title'] 	= 'TRÁMITES';
+		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRÁMITES';
 		$data['app_sub_menu'] 	= 'notifiTramites';
 		// $data['user']      	= $this->usuario;
 		$data['menu_app']   = $this->load->view('app/components/menu/tramitessa_component', $data, TRUE);
@@ -98,8 +98,8 @@ class Tramitessa extends CI_Controller {
 
 	public function tramitesArchivo()
 	{
-		$data['sys_app_title'] 	= 'TRAMITES ALTA';
-		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRAMITES';
+		$data['sys_app_title'] 	= 'TRÁMITES ALTA';
+		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRÁMITES';
 		$data['app_sub_menu'] 	= 'archivoTramites';
 		$data['app_sub_menu_item'] = '';
 		// $data['user']      	= $this->usuario;
@@ -113,8 +113,8 @@ class Tramitessa extends CI_Controller {
 
   public function tramitesAlumno()
   {
-    $data['sys_app_title'] 	= 'TRAMITES ALUMNO';
-		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRAMITES ALUMNO';
+    $data['sys_app_title'] 	= 'TRÁMITES ALUMNO';
+		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRÁMITES ALUMNO';
 		$data['app_sub_menu'] 	= 'iTramite';
 		$data['app_sub_menu_item'] = 'altaTramiteA';
 		// $data['alumno']      	= $this->alumno;
@@ -132,8 +132,8 @@ class Tramitessa extends CI_Controller {
   public function tramitesAlumnoAlta($idTramite)
   {
 		// $tTramite = urldecode($tTramite);
-    $data['sys_app_title'] 	= 'TRAMITES ALUMNO';
-		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRAMITES ALUMNO';
+    $data['sys_app_title'] 	= 'TRÁMITES ALUMNO';
+		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRÁMITES ALUMNO';
 		$data['app_sub_menu'] 	= 'iTramite';
 		$data['app_sub_menu_item'] = 'altaTramiteA';
 		// Se obtienen los datos del alumno para iniciar el proceso
@@ -244,8 +244,8 @@ class Tramitessa extends CI_Controller {
 
   public function tramitesAlumnoProceso()
   {
-    $data['sys_app_title'] 	= 'TRAMITES ALUMNO';
-		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRAMITES ALUMNO';
+    $data['sys_app_title'] 	= 'TRÁMITES ALUMNO';
+		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRÁMITES ALUMNO';
 		$data['app_sub_menu'] 	= 'iTramite';
 		$data['app_sub_menu_item'] = 'tramitesProcesoA';
 		// $data['user']      	= $this->usuario;

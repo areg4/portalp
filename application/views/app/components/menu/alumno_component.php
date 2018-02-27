@@ -50,13 +50,13 @@
 
 <li class="dropdown <?=($app_sub_menu == 'iTramite')? 'actual open':''?>">
 	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-		<i class="fa fa-clock-o"></i> Tramites<b class="caret"></b>
+		<i class="fa fa-clock-o"> </i> Tramites <b class="caret"></b> <!-- <i class="fa fa-circle size"></i> -->
 	</a>
 	<ul class="dropdown-menu">
 		<?php $subnav = ($app_sub_menu_item == 'altaTramiteA')? 'active':''; ?>
 		<li class="<?=$subnav?>">
 			<a href="<?=base_url()?>portal-informatica-alumnos-tramites">
-					<i class="fa fa-angle-right"></i> Alta
+					<i class="fa fa-angle-right"></i> Alta<i class="fa fa-circle size"></i>
 			</a>
 		</li>
 		<?php $subnav = ($app_sub_menu_item == 'tramitesProcesoA')? 'active':''; ?>

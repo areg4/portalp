@@ -174,3 +174,11 @@ function cerrar () {
 	}
 	return false; 
 }
+function cambiarIcon(id){
+	imagen = document.getElementById(id);
+	imagen.src = "http://localhost/portalp/static/img/upload.png";
+}
+function cambiarI(id){
+	imagen1 = document.getElementById(id);
+	imagen1.src = "http://localhost/portalp/static/img/upload.png";
+}

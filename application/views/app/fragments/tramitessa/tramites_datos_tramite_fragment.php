@@ -1,6 +1,6 @@
 <div class="text-center">
   <h3 class="h3">Datos del Trámite</h3>
-  <h4 class="h4" id="id-tramite"><?php echo $idTramite; ?></h4>
+  <h4 class="h4 tamañh4" id="id-tramite"><?php echo $idTramite; ?></h4>
 </div>
 
 <div class="col-xs-12">
