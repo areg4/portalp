@@ -10,32 +10,26 @@
 </li> -->
 
 <li class="dropdown <?=($app_sub_menu == 'iTramite')? 'actual open':''?>">
-	<!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 		<i class="fa fa-clock-o"></i> Tramites<b class="caret"></b>
 	</a>
 	<ul class="dropdown-menu">
-		<?php $subnav = ($app_sub_menu_item == 'tramite-1')? 'active':''; ?>
+		<?php $subnav = ($app_sub_menu_item == 'tramitesProceso')? 'active':''; ?>
 		<li class="<?=$subnav?>">
-			<a href="<?=base_url()?>portal-informatica-tramites-alta/tramite-1">
-					<i class="fa fa-angle-right"></i> Tramite 1
+			<a href="<?=base_url()?>portal-informatica-tramites-proceso" >
+				<i class="fa fa-angle-right"></i>  Proceso
 			</a>
 		</li>
-		<?php $subnav = ($app_sub_menu_item == 'tramite-2')? 'active':''; ?>
+		<?php $subnav = ($app_sub_menu_item == 'tramitesArchivo')? 'active':''; ?>
 		<li class="<?=$subnav?>">
-			<a href="<?=base_url()?>portal-informatica-tramites-alta/tramite-2" >
-				<i class="fa fa-angle-right"></i>  Tramite 2
+			<a href="<?=base_url()?>portal-informatica-tramites-archivo" >
+				<i class="fa fa-angle-right"></i> Archivo
 			</a>
 		</li>
-		<?php $subnav = ($app_sub_menu_item == 'tramite-3')? 'active':''; ?>
-		<li class="<?=$subnav?>">
-			<a href="<?=base_url()?>portal-informatica-tramites-alta/tramite-3" >
-				<i class="fa fa-angle-right"></i> Tramite 3
-			</a>
-		</li>
-	</ul> -->
+	</ul>
 </li>
 
-<li class="<?=($app_sub_menu == 'notifiTramites')? 'actual' : ''?>">
+<!-- <li class="<?=($app_sub_menu == 'notifiTramites')? 'actual' : ''?>">
 	<a href="<?=base_url()?>portal-informatica-tramites-notificaciones">
 		<i class="fa fa-tags"></i> Notifiaciones<i class="fa fa-bell not"></i>
 	</a>
@@ -45,4 +39,4 @@
 	<a href="<?=base_url()?>portal-informatica-tramites-archivo">
 		<i class="fa fa-tags"></i> Archivo
 	</a>
-</li>
+</li> -->

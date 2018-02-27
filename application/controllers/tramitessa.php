@@ -52,56 +52,86 @@ class Tramitessa extends CI_Controller {
 		$this->load->view('app/main_view', $data, FALSE);
 	}
 
-	public function tramitesAlta($tTramite)
+	// public function tramitesAlta($tTramite)
+	// {
+	// 	$data['sys_app_title'] 	= 'TRAMITES ALTA';
+	// 	$data['app_title'] 	= '<i class="fa fa-user"></i>  TRAMITES';
+	// 	$data['app_sub_menu'] 	= 'iTramite';
+	// 	$data['app_sub_menu_item'] = $tTramite;
+	// 	// $data['user']      	= $this->usuario;
+	// 	$data['tTramite']		=	$tTramite;
+	// 	$data['menu_app']   = $this->load->view('app/components/menu/tramitessa_component', $data, TRUE);
+	// 	$data['menu'] 		= $this->load->view('app/components/head_component',$data,TRUE);
+  //
+	// 	$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/tramites_alta', $data, TRUE);
+	// 	$this->load->view('app/main_view', $data, FALSE);
+	// }
+
+	public function tramitesProceso()
 	{
-		$data['sys_app_title'] 	= 'TRAMITES ALTA';
+		$data['sys_app_title'] 	= 'TRAMITES';
 		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRAMITES';
 		$data['app_sub_menu'] 	= 'iTramite';
-		$data['app_sub_menu_item'] = $tTramite;
-		// $data['user']      	= $this->usuario;
-		$data['tTramite']		=	$tTramite;
-		$data['menu_app']   = $this->load->view('app/components/menu/tramitessa_component', $data, TRUE);
-		$data['menu'] 		= $this->load->view('app/components/head_component',$data,TRUE);
-
-		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/tramites_alta', $data, TRUE);
-		$this->load->view('app/main_view', $data, FALSE);
-	}
-
-	public function tramitesNotificaciones()
-	{
-		$data['sys_app_title'] 	= 'TRAMITES ALTA';
-		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRAMITES';
-		$data['app_sub_menu'] 	= 'notifiTramites';
-		$data['app_sub_menu_item'] = '';
+		$data['app_sub_menu_item'] = 'tramitesProceso';
 		// $data['user']      	= $this->usuario;
 		$data['js']       = array('tramites');
 		$data['menu_app']   = $this->load->view('app/components/menu/tramitessa_component', $data, TRUE);
 		$data['menu'] 		= $this->load->view('app/components/head_component',$data,TRUE);
-
-		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/tramites_notificaciones', $data, TRUE);
+		$data['catTramites'] = $this->catTramites();
+		$data['tramites'] = $this->tramitessa_model->getTramites();
+		$data['expAlumno'] = $this->catAlumnosExp();
+		$data['observaciones'] = $this->observacionesG();
+		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/tramites_proceso', $data, TRUE);
 		$this->load->view('app/main_view', $data, FALSE);
 	}
 
 	public function tramitesDatos($idTramite)
 	{
+		$tramite = $this->tramitessa_model->getTramitePById($idTramite);
+
+		$alumno = $this->alumno_model->getAlumno($tramite->idAlumno);
+
+
 		$data['sys_app_title'] 	= 'TRAMITES';
 		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRAMITES';
-		$data['app_sub_menu'] 	= 'notifiTramites';
+		$data['app_sub_menu'] 	= 'iTramite';
+		$data['app_sub_menu_item'] = 'tramitesProceso';
 		// $data['user']      	= $this->usuario;
 		$data['menu_app']   = $this->load->view('app/components/menu/tramitessa_component', $data, TRUE);
 		$data['menu'] 		= $this->load->view('app/components/head_component',$data,TRUE);
     $data['js']       = array('tramites');
-    $data['idTramite']       = $idTramite;
+
+
+		$data['alumno']     = $alumno;
+		$data['catTramites'] = $this->catTramites();
+		$data['observacion'] = $this->tramitessa_model->getObservacionByTramite($idTramite);
+		$data['archivos']		 = $this->tramitessa_model->getArchivosByTramite($idTramite);
+
+		if ($tramite->estatus =='ALTA') {
+			if ($this->updateTramiteToProceso($idTramite)) {
+				$tramite = $this->tramitessa_model->getTramitePById($idTramite);
+			}
+		}
+		$data['tramite']		=	$tramite;
 		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/tramites_datos_tramite_fragment', $data, TRUE);
 		$this->load->view('app/main_view', $data, FALSE);
 	}
 
+	private function updateTramiteToProceso($idTramite)
+	{
+		$arrUpdate = array(
+			'estatus' => 'PROCESO',
+			'feculmod' => $this->fecha
+		);
+		return $this->tramitessa_model->updateTramite($idTramite, $arrUpdate);
+	}
+
 	public function tramitesArchivo()
 	{
-		$data['sys_app_title'] 	= 'TRAMITES ALTA';
+		$data['sys_app_title'] 	= 'TRAMITES';
 		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRAMITES';
-		$data['app_sub_menu'] 	= 'archivoTramites';
-		$data['app_sub_menu_item'] = '';
+		$data['app_sub_menu'] 	= 'iTramite';
+		$data['app_sub_menu_item'] = 'tramitesArchivo';
 		// $data['user']      	= $this->usuario;
 		$data['js']       = array('tramites');
 		$data['menu_app']   = $this->load->view('app/components/menu/tramitessa_component', $data, TRUE);
@@ -259,7 +289,7 @@ class Tramitessa extends CI_Controller {
 		$this->load->view('app/main_view', $data, FALSE);
   }
 
-	public function catTramites()
+	private function catTramites()
 	{
 		$arrayTramites = array();
 		$catTramites = $this->tramitessa_model->getCatTramites();
@@ -270,10 +300,21 @@ class Tramitessa extends CI_Controller {
 		return $arrayTramites;
 	}
 
-	public function observacionesByAlumno($idAlumno)
+	private function observacionesByAlumno($idAlumno)
 	{
 		$arrayObservaciones = array();
 		$observaciones = $this->tramitessa_model->getObserByIdA($idAlumno);
+		foreach ($observaciones as $observacion) {
+			$arrayObservaciones[$observacion->idTramite] = $observacion->observacion;
+		}
+		// die(var_dump($arrayTramites));
+		return $arrayObservaciones;
+	}
+
+	private function observacionesG()
+	{
+		$arrayObservaciones = array();
+		$observaciones = $this->tramitessa_model->getObservaciones();
 		foreach ($observaciones as $observacion) {
 			$arrayObservaciones[$observacion->idTramite] = $observacion->observacion;
 		}
@@ -400,7 +441,7 @@ class Tramitessa extends CI_Controller {
 		$this->load->view('app/main_view', $data, FALSE);
 	}
 
-	public function catRequisitos()
+	private function catRequisitos()
 	{
 		$arrayRequisitos = array();
 		$catRequisitos = $this->tramitessa_model->getCatRequisitos();
@@ -409,6 +450,17 @@ class Tramitessa extends CI_Controller {
 		}
 		// die(var_dump($arrayTramites));
 		return $arrayRequisitos;
+	}
+
+	private function catAlumnosExp()
+	{
+		$arrayExpAlumnos = array();
+		$catExpAlumnos = $this->tramitessa_model->getCatExpAlumnos();
+		foreach ($catExpAlumnos as $expAlumno) {
+			$arrayExpAlumnos[$expAlumno->idAlumno] = $expAlumno->expediente;
+		}
+		// die(var_dump($arrayTramites));
+		return $arrayExpAlumnos;
 	}
 }
 
