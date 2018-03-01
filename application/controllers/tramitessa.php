@@ -198,6 +198,66 @@ class Tramitessa extends CI_Controller {
 		$this->load->view('app/main_view', $data, FALSE);
 	}
 
+	public function tramitesBuscarArchivo()
+	{
+		$criterio = $this->input->post('criterio');
+
+		$catTramites 		= $this->catTramites();
+		$expAlumno 			= $this->catAlumnosExp();
+		$observaciones	= $this->observacionesG();
+
+		if (in_array($criterio, $expAlumno)) {
+			$criterio = array_search($criterio, $expAlumno);
+		}
+
+		if (!is_null($this->tramitessa_model->getTramitesByCriterio($criterio))) {
+			$tramites = $this->tramitessa_model->getTramitesByCriterio($criterio);
+			$strTable = '<table class="table responsive">
+		    <thead>
+		      <tr class="">
+						<th class="">ID Trámite</th>
+						<th class="">Expediente</th>
+						<th class="">Tipo de Trámite</th>
+						<th class="">Estatus</th>
+						<th class="">Observaciones</th>
+						<th class="">Fecha de Inicio</th>
+						<th class="">Fecha de Última Modificación</th>
+						<th class="">Fecha de Finalización</th>
+		      </tr>
+		    </thead>
+		    <tbody>';
+
+				foreach ($tramites as $tramite) {
+					$strTable .= '<tr class="tr-notifi" onclick="goToTramiteDatos('.$tramite->idTramite.')" data="'.$tramite->idTramite.'">
+            <td data-title="ID Trámite">'.$tramite->idTramite.'</td>
+            <td data-title="Expediente">'.$expAlumno[$tramite->idAlumno].'</td>
+            <td data-title="Tipo de Trámite">'.$catTramites[$tramite->idCatTramite].'</td>
+            <td data-title="Estatus">'.$tramite->estatus.'</td>';
+
+            if (array_key_exists ( $tramite->idTramite , $observaciones )){
+							$strTable.='<td data-title="Observaciones">'.$observaciones[$tramite->idTramite].'</td>';
+						}else{
+							$strTable.='<td data-title="Observaciones">Sin Observaciones</td>';
+						}
+
+						$strTable.='<td data-title="Fecha de Inicio">'.fancy_date($tramite->fechaInicio).'</td>
+            <td data-title="Fecha de Última Modificación">'.fancy_date($tramite->feculmod).'</td>';
+						if ($tramite->fechaFin != 0) {
+							$strTable .= '<td data-title="Fecha de Finalización">'.fancy_date($tramite->fechaFin).'</td>';
+						}else {
+							$strTable .= '<td data-title="Fecha de Finalización">Sigue en proceso</td>';
+						}
+
+          $strTable .= '</tr>';
+				}
+				$strTable .= '</tbody>
+		  </table>';
+			echo $strTable;
+		}else{
+			echo "<p>No hay coincidencias</p>";
+		}
+	}
+
   public function tramitesAlumno()
   {
     $data['sys_app_title'] 	= 'TRÁMITES ALUMNO';

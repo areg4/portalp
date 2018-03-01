@@ -96,10 +96,10 @@ jQuery(document).ready(function($){
   });
 
   $("#btn-enviar-observacion").click(function () {
-    var idTramite = $(this).attr('data-id');
-    var idAlumno  = $(this).attr('data-id-u');
-    var comentario = $("#comentarios").val();
-    comentario = $.trim(comentario);
+    var idTramite   = $(this).attr('data-id');
+    var idAlumno    = $(this).attr('data-id-u');
+    var comentario  = $("#comentarios").val();
+    comentario      = $.trim(comentario);
     if (comentario != "") {
 
       parametros = {
@@ -123,4 +123,64 @@ jQuery(document).ready(function($){
     }
   });
 
+  $(".btn-buscar-archivo").click(function () {
+    var criterio  = $("#criterioB").val();
+    criterio      = $.trim(criterio);
+    criterio      = criterio.toUpperCase();
+    parametros    = {
+      'criterio'  : criterio
+    };
+    $.ajax({
+      url     : base_url()+"portal-informatica-tramites-buscar-archivo",
+      type    : 'post',
+      data    : parametros,
+      success : function (data) {
+        $("#tabla").html(data);
+      }
+    });
+    // alert(criterio);
+  });
+
+  $("#criterioB").keyup(function () {
+    var criterio  = $("#criterioB").val();
+    criterio      = $.trim(criterio);
+    criterio      = criterio.toUpperCase();
+    parametros    = {
+      'criterio'  : criterio
+    };
+    $.ajax({
+      url     : base_url()+"portal-informatica-tramites-buscar-archivo",
+      type    : 'post',
+      data    : parametros,
+      success : function (data) {
+        $("#tabla").html(data);
+      }
+    });
+  });
+
+  $("#criterioB").keydown(function () {
+    var criterio  = $("#criterioB").val();
+    criterio      = $.trim(criterio);
+    criterio      = criterio.toUpperCase();
+    parametros    = {
+      'criterio'  : criterio
+    };
+    $.ajax({
+      url     : base_url()+"portal-informatica-tramites-buscar-archivo",
+      type    : 'post',
+      data    : parametros,
+      success : function (data) {
+        $("#tabla").html(data);
+      }
+    });
+  });
+
 });
+
+function goToTramiteDatos(idTramite) {
+  // var data = $(this).attr('data');
+  var data = idTramite;
+  // alert(data);
+  // alert($(this).attr('data'));
+  window.location.href = base_url()+'portal-informatica-tramites-datos/'+data;
+}
