@@ -1,5 +1,5 @@
 <div class="col-xs-12">
-  <h2 class="h1 text-center">Buscar trámite por expediente</h2>
+  <h2 class="h1 text-center tamañoh1">Buscar trámite por expediente</h2>
   <br>
 </div>
 

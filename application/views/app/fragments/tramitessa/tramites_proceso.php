@@ -1,5 +1,5 @@
 <div class="">
-  <h1 class="h1 text-center">Trámites en Proceso</h1>
+  <h1 class="h1 text-center tamañoh1">Trámites en Proceso</h1>
 </div>
 
 <div class="" id="tabla">
@@ -18,7 +18,15 @@
     <tbody>
       <?php if (!is_null($tramites)): ?>
         <?php foreach ($tramites as $tramite): ?>
-          <tr class="tr-notifi" data="<?=$tramite->idTramite?>">
+          <tr class="tr-notifi <?php if ($tramite->estatus == "ALTA") {
+            echo "alta";
+          } if ($tramite->estatus == "OBSERVACIONES") {
+            echo "observaciones";
+          } if ($tramite->estatus == "PROCESO") {
+            echo "nproceso";
+          } if ($tramite->estatus == "FINALIZADO") {
+            echo "finalizado";
+          }?>" data="<?=$tramite->idTramite?>">
             <td data-title="ID Trámite"><?=$tramite->idTramite?></td>
             <td data-title="Expediente"><?=$expAlumno[$tramite->idAlumno]?></td>
             <td data-title="Tipo de Trámite"><?=$catTramites[$tramite->idCatTramite]?></td>

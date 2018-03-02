@@ -25,6 +25,12 @@ h1, h2, h3{
 		padding-bottom: 15px;
 		border-bottom: 1px solid rgba(0,0,0,.1);
 	}
+	.tamañoh3{
+		font-size: 1em;
+		font-weight: bold;
+		padding-bottom: 10px;
+
+	}
 
 #page-wrapper{
 	background: #fff none repeat scroll 0 0!important; 
@@ -562,6 +568,7 @@ textarea{
 	max-height: 60px;
 	min-height: 60px;
 	max-width: 100%;
+	overflow-x: hidden !important;
 }
 
 textarea:focus{
@@ -686,7 +693,12 @@ td{
 			padding: 5px;
 			box-sizing: border-box;
 		}
-  }
+.opciones-t-sa{
+	display: flex !important;
+	justify-content: space-around !important;
+	flex-direction: column !important;
+}
+}
 .finalizado{
 	background: rgba(63,255,6,.5) !important;
 }
@@ -699,7 +711,20 @@ td{
 .alta{
 	background: rgba(6,56,255,.5) !important;
 }
-
+/*tramites sa*/
+.center{
+	display: flex;
+	justify-content: space-around;
+	flex-direction: column;
+	align-items: center;
+	align-content: center;
+}
+textarea{
+	resize: none !important;
+	padding: 10px;
+	box-sizing: border-box;
+	overflow-x: none !important;
+}
 /*FICHAS==========================*/
 
 .ficha{
@@ -1056,7 +1081,7 @@ div.columna div.item span{
 	margin-left: 6.5%;
 	float: left;
 	position: relative;
-	height: 260px;
+	height: 270px;
 	overflow-y: auto !important;
 	overflow-x: hidden !important;
 	cursor: pointer;
@@ -1066,10 +1091,11 @@ div.columna div.item span{
 	box-shadow: 0px 0px 5px 0px rgba(0,68,168,.9);
 }
 	.ficha2>h3{
-		margin-top: 8px !important;
+		margin-top: 15px !important;
 		font-weight: bold;
 		font-size: 1.3em;
 		color: #37474F;
+		height: auto;
 	}
 	.ficha2>p{
 		text-align: justify;
@@ -1077,6 +1103,7 @@ div.columna div.item span{
 	.ficha2>ul{
 		list-style: decimal;
 		width: 80%;
+		height: auto;
 		margin-left: 10%;
 		margin-right: 10%;
 	}
@@ -1106,7 +1133,6 @@ div.columna div.item span{
 }
 
 .archivo{
-	height: 150px;
 	margin-top: 10px;
 	margin-bottom: 10px;
 	padding: 0px;
@@ -1116,12 +1142,8 @@ div.columna div.item span{
 	cursor: pointer;
 	overflow: hidden;
 }
-	.centrado_p{
-		margin-left: calc(50% - 100px);
-		margin-bottom: 10px;
-	}
 	.file{
-		height: 70%;
+		height: 75%;
 		display: flex;
 	    justify-content: space-around;
 	    flex-direction: column;
@@ -1131,7 +1153,7 @@ div.columna div.item span{
 	    box-sizing: border-box;
 	    background: rgba(55,88,115,.7);
 	    text-align: center;
-	    border-radius: 10px;
+	    border-radius: 2px;
 
 	}	.file>img{
 			height: 60px;
@@ -1142,76 +1164,83 @@ div.columna div.item span{
 			text-align: center !important;
 			font-size: .9em;
 			font-weight: bold;
-		}
-		.file:hover figcaption{
-			-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
-			filter: alpha(opacity=700);
-			opacity: 1;
-			top: 0;
+			cursor: default !important;
 		}
 
-		figcaption{
-			-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-			filter: alpha(opacity=0);
-			opacity: 0;
-			position: absolute;
-			height: 70%;
-			top: 18.5% !important;
-			width: 85%;
-			border-radius: 10px;
-			background: rgba(0,0,0,.4);
-			color: #fff;
-			transition: all .1s ease;
-			transition-delay: .0s;
+		.bajar{
+			height: 100px;
+			width: 100%;
+			float: left;
+			position: relative;
+			border-radius: 5px;
+			transition: all .4s ease;
+			transition-delay: .8s;
 			text-align: center;
-			display: flex;
-			justify-content: space-around;
-		    flex-direction: column;
-			align-content: center;
-			align-items: center;
-			box-sizing: border-box;
+			display: none !important;
+			color: rgba(0,0,0,.6) !important;
 		}
-		figcaption a{
-			display: inline-block;
-			padding: 6px 10px;
-			margin-bottom: 0;
-			font-size: 14px;
-			font-weight: normal;
-			line-height: 1.42857143;
-			text-align: center;
-			color: rgba(0,0,0,.8);
-			white-space: nowrap;
-			vertical-align: middle;
-			-ms-touch-action: manipulation;
-			   touch-action: manipulation;
-			cursor: pointer;
-			-webkit-user-select: none;
-			   user-select: none;
-			background: rgba(255,255,255,.8);
-			border: 1px solid transparent;
-			border-radius: 4px;
-			outline: none !important; 
-			margin-top: 5px;
-			text-decoration: none !important;
-		}
-		figcaption input{
-			color: rgba(0,0,0,.8);
-			margin-top: -3px;
-		}
+			.bajar input[type=submit], .bajar a{
+				width: 100%;
+				float: left;
+				position: relative;
+				height: 30px;
+				background: none;
+				line-height: 15px;
+			}
+			.bajar input:hover, .bajar span:hover, .bajar a:hover{
+				background: rgba(0,0,0,.2) !important;
 
-	input[type=file]{
-		height: 80% !important;
-		top: 16% !important;
-		width: 90%;
-		position: absolute;
-		cursor: pointer;
-		outline: none !important;
-	}
-	input[type=file]::-webkit-file-upload-button{
-		outline: none !important;
-		background: none !important;
-		display: none;
-	}
+			}
+			.bajar a{
+				line-height: 30px;
+				color: rgba(0,0,0,.6) !important;
+				border-radius: 3px;
+
+			}
+			.bajar a:hover{
+				text-decoration: none;
+			}
+			.bajar span{
+				width: 100%;
+				height: 30px;
+				position: absolute;	
+				margin-left: -50%;
+				text-align: center;
+				color: rgba(0,0,0,.6);
+				border-radius: 3px;
+				line-height: 30px;
+				background: none !important;
+			}
+			.bajar input[type=file]{
+				width: 100%;
+				height: 30px;
+				float: left;
+				position: relative;
+				z-index: 9999;
+				cursor: pointer;
+				outline: none !important;
+			}
+			.bajar input[type=file]::-webkit-file-upload-button{
+				outline: none !important;
+				background: red !important;
+				display: none;
+			}
+		.ver-bajar{
+			display: block !important;
+		}
+input[type=file]{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	cursor: pointer;
+	outline: none !important;
+}
+input[type=file]::-webkit-file-upload-button{
+	outline: none !important;
+	background: none !important;
+	display: none;
+}
+
 
 .leyenda{
 	font-size: .9em !important;
@@ -1238,6 +1267,19 @@ div.columna div.item span{
 	position: relative;
 	margin-top: 3px;
 }
+
+/*estilos extras de portal-informatica-tramites-datos*/
+.opciones-t-sa{
+	height: auto;
+	margin-top: 50px;
+	margin-bottom: 20px;
+	float: right;
+	text-align: right;
+
+}
+	.opciones-t-sa>button{
+		margin-bottom: 3px !important;
+	}
 
 /*Scroll (preguntar si se puede cambiar) */
 ::-webkit-scrollbar {
