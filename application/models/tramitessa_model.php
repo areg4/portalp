@@ -214,6 +214,17 @@ class Tramitessa_model extends CI_Model {
 		$this->db_b->insert($a, $arrInsert);
 		return true;
 	}
+
+	public function getTramitesByCriterio($criterio)
+	{
+		$a = $this->tablas['tramites'];
+		$this->db_b->where("((estatus LIKE '%".$criterio."%') OR (idAlumno = '".$criterio."')) AND habilitado = 1");
+		// $this->db_b->or_where('idAlumno', $criterio);
+		// $this->db_b->or_where('estatus', $criterio);
+		// $this->db_b->or_where('idAlumno', $criterio);
+		$query = $this->db_b->get($a);
+		return ($query->num_rows() >= 1) ? $query->result() : NULL;
+	}
 }
 
 /* End of file root_model.php */
