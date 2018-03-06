@@ -47,8 +47,8 @@
       <div class="col-xs-12 col-sm-12 col-md-2 archivo">
         <p>Solicitud</p>
         <div class=" file">
-          <img src="<?=base_url()?>static/img/s.png" id="1">
-          <input class="ocultar"  id="" type="file" name="solicitudEV" required onchange="cambiarIcon(1)">
+          <img src="<?=base_url()?>static/img/s.png" id="3">
+          <input class="ocultar"  id="" type="file" name="solicitudEV" required onchange="cambiarIcon(3)">
         </div>
       </div>
 
@@ -56,8 +56,8 @@
         <div class="col-xs-12 col-sm-12 col-md-2 archivo">
           <p>Kárdex</p>
           <div class="file">
-            <img src="<?=base_url()?>static/img/k.png" id="2">
-              <input class="ocultar"  id="" type="file" name="kardexEV" required onchange="cambiarI(2)">
+            <img src="<?=base_url()?>static/img/k.png" id="4">
+              <input class="ocultar"  id="" type="file" name="kardexEV" required onchange="cambiarI(4)">
               <input type="hidden" name="idTramite" value="<?=$tramite->idCatTramite; ?>">
               <input type="hidden" name="tramite" value="<?=$tramite->tramite; ?>" >
           </div>
@@ -65,22 +65,26 @@
       <?php endif; ?>
     </div>
 
+      <div class="col-xs-12 archivos">
       <?php if ($tramite->tramite == "Prórroga de Licenciatura"): ?>
         <div class="col-xs-12 col-sm-12 col-md-2 archivo">
-          <div class="col-xs-12 col-sm-12 col-md-4 file">
-            <label for="text">Prórroga papel 1</label>
-            <input class="ocultar"  id="" type="file" name="archivoPorS[]" required>
+        <p>Prórroga Papel 1</p>
+          <div class="file">
+            <img src="<?=base_url()?>static/img/file.png" id="1">
+            <input class="ocultar"  id="" type="file" name="archivoPorS[]" required onchange="cambiarIP(1)">
           </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-2 archivo">
-          <div class="col-xs-12 col-sm-12 col-md-4 file">
-            <label for="text">Prórroga papel 2</label>
-            <input class="ocultar"  id="" type="file" name="archivoPorS[]" required>
+          <p>Prórroga Papel 2</p>
+          <div class="file">
+            <img src="<?=base_url()?>static/img/file.png" id="2">
+            <input class="ocultar"  id="" type="file" name="archivoPorS[]" required onchange="cambiarIP2(2)">
             <input type="hidden" name="idTramite" value="<?=$tramite->idCatTramite; ?>" >
             <input type="hidden" name="tramite" value="<?=$tramite->tramite; ?>" >
           </div>
         </div>
       <?php endif; ?>
+      </div>
 
     <!-- fin archivos -->
 

@@ -196,6 +196,14 @@ function cambiarI(id){
   cambio2 = document.getElementById(id);
   cambio2.src = "http://localhost/portalp/static/img/upload.png";
 }
+function cambiarIP(id){
+  cambio3 = document.getElementById(id);
+  cambio3.src = "http://localhost/portalp/static/img/upload.png";
+}
+function cambiarIP2(id){
+  cambio4 = document.getElementById(id);
+  cambio4.src = "http://localhost/portalp/static/img/upload.png";
+}
 function bajar(id){
   menu = document.getElementById(id);
   menu.style.display = "block";
