@@ -358,6 +358,14 @@ class Tramitessa extends CI_Controller {
 			if ($tramite == "Examen Voluntario") {
 				$solicitudEV	= $this->input->post('solicitudEV');
 				$kardexEV			= $this->input->post('kardexEV');
+				$nuevoArchivoS = explode(".", $_FILES['solicitudEV']["name"]);
+				$nuevoArchivoK = explode(".", $_FILES['kardexEV']["name"]);
+				//die(var_dump($nuevoArchivoS[1]));
+				if($nuevoArchivoS[1] != "pdf" || $nuevoArchivoK[1] != "pdf")
+				{
+					$this->session->set_flashdata('error', 'altaPDFFail');
+					redirect('portal-informatica-alumnos-tramites-alta/'.$idTramite);
+				}
 
 				$namesFiles = array();
 

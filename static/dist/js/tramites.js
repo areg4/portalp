@@ -132,14 +132,16 @@ jQuery(document).ready(function($){
     parametros    = {
       'criterio'  : criterio
     };
-    $.ajax({
-      url     : base_url()+"portal-informatica-tramites-buscar-archivo",
-      type    : 'post',
-      data    : parametros,
-      success : function (data) {
-        $("#tabla").html(data);
-      }
-    });
+    if(criterio != ""){
+      $.ajax({
+        url     : base_url()+"portal-informatica-tramites-buscar-archivo",
+        type    : 'post',
+        data    : parametros,
+        success : function (data) {
+          $("#tabla").html(data);
+        }
+      });
+    }
     // alert(criterio);
   });
 
@@ -150,14 +152,16 @@ jQuery(document).ready(function($){
     parametros    = {
       'criterio'  : criterio
     };
-    $.ajax({
-      url     : base_url()+"portal-informatica-tramites-buscar-archivo",
-      type    : 'post',
-      data    : parametros,
-      success : function (data) {
-        $("#tabla").html(data);
-      }
-    });
+    if(criterio != ""){
+      $.ajax({
+        url     : base_url()+"portal-informatica-tramites-buscar-archivo",
+        type    : 'post',
+        data    : parametros,
+        success : function (data) {
+          $("#tabla").html(data);
+        }
+      });
+    }
   });
 
   $("#criterioB").keydown(function () {
@@ -167,14 +171,16 @@ jQuery(document).ready(function($){
     parametros    = {
       'criterio'  : criterio
     };
-    $.ajax({
-      url     : base_url()+"portal-informatica-tramites-buscar-archivo",
-      type    : 'post',
-      data    : parametros,
-      success : function (data) {
-        $("#tabla").html(data);
-      }
-    });
+    if (criterio != ""){
+      $.ajax({
+        url     : base_url()+"portal-informatica-tramites-buscar-archivo",
+        type    : 'post',
+        data    : parametros,
+        success : function (data) {
+          $("#tabla").html(data);
+        }
+      });
+    }
   });
 
 });
