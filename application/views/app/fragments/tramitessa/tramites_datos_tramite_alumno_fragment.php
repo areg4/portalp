@@ -58,10 +58,10 @@
       <p><b>Documentos subidos</b><br>Los documentos son revisados de forma individual.</p>
     </div>
 
+    <div class="col-xs-12 archivos">
     <?php if (!is_null($archivos)): ?>
       <?php foreach ($archivos as $archivo): ?>
-          <div class="col-md-2 col-xs-hidden"></div>
-          <div class="col-xs-12 col-sm-12 col-md-2 archivo centrado_p" onmouseenter="bajar()" onmouseleave="quitar()" >
+          <div class="col-xs-12 col-sm-12 col-md-2 archivo" onmouseenter="bajar(<?=$archivo->idRT?>)" onmouseleave="quitar(<?=$archivo->idRT?>)" >
             <p>Documento </p>
             <div class="file <?php if ($archivo->estatus == "RECIBIDO") {
                   echo "alta";
@@ -72,28 +72,27 @@
                 } if ($archivo->estatus == "APROBADO") {
                   echo "finalizado";
                 }?>">
-              <img src="<?=base_url()?>static/img/s.png" id="1">
+              <img src="<?=base_url()?>static/img/file.png" id="0">
             </div>
-            <figcaption class="bajar">
+            <figcaption class="bajar" id="<?=$archivo->idRT?>">
                 <form id="form-update-file-id-<?=$archivo->idRT?>" method="post" enctype="multipart/form-data">
                   <input type="hidden" name="idRT" value="<?=$archivo->idRT?>">
                   <input type="hidden" name="idTramite" value="<?=$archivo->idTramite?>">
                   <input type="hidden" name="nombreF" value="<?=$archivo->ruta?>">
                   <?php if ($archivo->estatus == 'RECHAZADO'): ?>
-                    <span>Subir archivo</span><input class="btn"  id="file-<?=$archivo->idRT?>" type="file" name="file" required onchange="cambiarIcon(1)">
+                    <span>Subir archivo</span><input class=""  id="file-<?=$archivo->idRT?>" type="file" name="file" required onchange="cambiarIcon(1)">
                     <input class="btn" data-id="<?=$archivo->idRT?>" type="submit" name="" value="Actualizar">
                   <?php endif; ?>
-                  <a href="<?=base_url()?>docs/tramites/<?=$alumno->expediente?>/<?=$archivo->idTramite?>/<?=$archivo->ruta?>" target="_blank" class="">Descargar</a>
+                  <a href="<?=base_url()?>docs/tramites/<?=$alumno->expediente?>/<?=$archivo->idTramite?>/<?=$archivo->ruta?>" target="_blank" class="">Descargar</a> 
                 </form>
-              </figcaption>
+            </figcaption>
           </div>
-          <div class="col-xs-hidden col-md-2"></div>
       <?php endforeach; ?>
     <?php endif; ?>
+    </div>
 
     <?php if ($tramite->estatus == "OBSERVACIONES"): ?>
       <div class="form-group text-center col-xs-12">
-        <br>
         <button type="submit" class="btn btn-success btn-enviar-revision" data-id="<?=$tramite->idTramite?>">Enviar a revisión</button>
       </div>
     <?php endif; ?>

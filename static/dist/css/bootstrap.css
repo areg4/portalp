@@ -5914,12 +5914,12 @@ button.close {
   overflow-x: hidden;
   overflow-y: auto;
 }
-.modal-dialog {
+.modal-dialog, #modal-dialog{
   position: relative;
   width: auto;
   margin: 10px;
 }
-.modal-content {
+.modal-content, #modal-content{
   position: relative;
   background-color: #fff;
   -webkit-background-clip: padding-box;

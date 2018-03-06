@@ -42,8 +42,8 @@ h1, h2, h3{
     margin-top: 70px !important;
     padding: 15px !important;
     width: 80% !important;
-    max-height: 630px !important;
-    min-height: 630px !important;
+    /*max-height: 630px !important;*/
+    min-height: 610px !important;
     overflow-y: auto;
     overflow-x:hidden !important;
 }
@@ -164,6 +164,9 @@ div.margin-top-login{
 	}
 	.archivo{
 		margin-left: 0% !important;
+	}
+	textarea{
+		width: 100% !important;
 	}
 }
 
@@ -636,6 +639,7 @@ th{
 tr{
 	color: rgba(0,0,0,.7);
 	border-bottom: 1px solid rgba(0,0,0,.09);
+	margin-bottom: 3px;
 }
 
 tr:hover{
@@ -1119,7 +1123,7 @@ div.columna div.item span{
 		background: transparent;
 		z-index: 999999;
 		top: 0px;
-		outline: none !important;s
+		outline: none !important;
 	}
 /*Sección: Realizar trámite*/
 .mtop{
@@ -1128,11 +1132,13 @@ div.columna div.item span{
 .archivos{
 	display: flex;
 	justify-content: center;
-	align-items: center;
 	align-content: center;
+	align-items: center;
+	/*background: red;*/
 }
 
 .archivo{
+	height: 210px;
 	margin-top: 10px;
 	margin-bottom: 10px;
 	padding: 0px;
@@ -1141,9 +1147,10 @@ div.columna div.item span{
 	display: block;
 	cursor: pointer;
 	overflow: hidden;
+	padding-bottom: 30px;
 }
 	.file{
-		height: 75%;
+		height: 50%;
 		display: flex;
 	    justify-content: space-around;
 	    flex-direction: column;
@@ -1168,7 +1175,7 @@ div.columna div.item span{
 		}
 
 		.bajar{
-			height: 100px;
+			height: auto;
 			width: 100%;
 			float: left;
 			position: relative;
@@ -1176,7 +1183,7 @@ div.columna div.item span{
 			transition: all .4s ease;
 			transition-delay: .8s;
 			text-align: center;
-			display: none !important;
+			display: none;
 			color: rgba(0,0,0,.6) !important;
 		}
 			.bajar input[type=submit], .bajar a{
@@ -1184,10 +1191,10 @@ div.columna div.item span{
 				float: left;
 				position: relative;
 				height: 30px;
-				background: none;
-				line-height: 15px;
+				background: rgba(0,0,0,.03);
+				/*line-height: 30px;*/
 			}
-			.bajar input:hover, .bajar span:hover, .bajar a:hover{
+			.bajar input:hover, .bajar span:hover, .bajar a:hover, .bajar .radios:hover{
 				background: rgba(0,0,0,.2) !important;
 
 			}
@@ -1209,7 +1216,6 @@ div.columna div.item span{
 				color: rgba(0,0,0,.6);
 				border-radius: 3px;
 				line-height: 30px;
-				background: none !important;
 			}
 			.bajar input[type=file]{
 				width: 100%;
@@ -1219,12 +1225,41 @@ div.columna div.item span{
 				z-index: 9999;
 				cursor: pointer;
 				outline: none !important;
+				background: rgba(0,0,0,.03);
 			}
 			.bajar input[type=file]::-webkit-file-upload-button{
 				outline: none !important;
 				background: red !important;
 				display: none;
+
 			}
+			.bajar .radios{
+				width: 100%;
+				float: left;
+				position: relative;
+				height: 30px;
+				display: flex;
+				justify-content: space-around;
+				align-self: center;
+				align-items: center;
+				align-content: center;
+				/*line-height: 30px !important;*/
+				background: rgba(0,0,0,.03);
+			}
+			.bajar .radios>input[type=radio]{
+				float: left;
+				position: relative;
+				margin-right: 10px !important;
+				margin-top: -3px;
+			}
+					.bajar .radios>span:hover{
+						background: none !important;
+					}
+					.bajar .radios>span{
+						width: auto !important;
+						float: left !important;
+						position: relative !important;
+					}
 		.ver-bajar{
 			display: block !important;
 		}
@@ -1242,6 +1277,11 @@ input[type=file]::-webkit-file-upload-button{
 }
 
 
+.top{
+	/*height: 100px;*/
+	position: fixed;
+	top: 100px;
+}
 .leyenda{
 	font-size: .9em !important;
 	text-align: center;

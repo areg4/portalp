@@ -119,7 +119,9 @@ jQuery(document).ready(function($){
       });
       // alert(comentario);
     }else{
-      alert("El comentario no puede ir vacío");
+      $("#error-modal .modal-dialog > .modal-content > .modal-body").html('El comentario no puede ir vacío');
+      $('#error-modal').modal('show');
+      // alert("El comentario no puede ir vacío");
     }
   });
 
@@ -183,4 +185,22 @@ function goToTramiteDatos(idTramite) {
   // alert(data);
   // alert($(this).attr('data'));
   window.location.href = base_url()+'portal-informatica-tramites-datos/'+data;
+}
+
+function cambiarIcon(id){
+  cambio = document.getElementById(id);
+  cambio.src = "http://localhost/portalp/static/img/upload.png";
+}
+
+function cambiarI(id){
+  cambio2 = document.getElementById(id);
+  cambio2.src = "http://localhost/portalp/static/img/upload.png";
+}
+function bajar(id){
+  menu = document.getElementById(id);
+  menu.style.display = "block";
+}
+function quitar(id){
+  menu = document.getElementById(id);
+  menu.style.display = "none";
 }

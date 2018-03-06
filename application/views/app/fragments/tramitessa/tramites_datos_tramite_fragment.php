@@ -62,15 +62,11 @@
       </div>
     <?php endif; ?>
 
-
-    <div class="col-xs-12 leyenda">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at justo vel nisi porttitor interdum.</p>
-    </div>
-
+    <div class="archivos col-xs-12">
     <?php if (!is_null($archivos)): ?>
       <?php foreach ($archivos as $archivo): ?>
-        <div class="archivos col-xs-12">
-          <div class="col-xs-12 col-sm-12 col-md-2 archivo">
+          <div class="col-xs-12 col-sm-12 col-md-2 archivo" onmouseenter="bajar(<?=$archivo->idRT?>)" onmouseleave="quitar(<?=$archivo->idRT?>)">
+          <p>Documento </p>
             <div class="file <?php if ($archivo->estatus == "RECIBIDO") {
               echo "alta";
             } if ($archivo->estatus == "RECHAZADO") {
@@ -80,14 +76,21 @@
             } if ($archivo->estatus == "APROBADO") {
               echo "finalizado";
             }?>">
-              <a href="<?=base_url()?>docs/tramites/<?=$alumno->expediente?>/<?=$archivo->idTramite?>/<?=$archivo->ruta?>" target="_blank" class="btn">Descargar</a>
-              <input type="radio" class="aprobFile" data-id="<?=$archivo->idRT?>" name="aprobado-<?=$archivo->idRT?>" <?php if ($archivo->estatus == "APROBADO") { echo "checked";} ?> value="APROBADO" >Aprobado
-              <input type="radio" class="aprobFile" data-id="<?=$archivo->idRT?>" name="aprobado-<?=$archivo->idRT?>" <?php if ($archivo->estatus == "RECHAZADO") { echo "checked";} ?> value="RECHAZADO" >Rechazado
+              <img src="<?=base_url()?>static/img/file.png" id="0">
             </div>
+            <figcaption class="bajar" id="<?=$archivo->idRT?>">
+              <a href="<?=base_url()?>docs/tramites/<?=$alumno->expediente?>/<?=$archivo->idTramite?>/<?=$archivo->ruta?>" target="_blank" class="">Descargar</a>
+              <div class="radios">
+                <input type="radio" class="aprobFile" data-id="<?=$archivo->idRT?>" name="aprobado-<?=$archivo->idRT?>" <?php if ($archivo->estatus == "APROBADO") { echo "checked";} ?> value="APROBADO" ><span> Aprobado</span>
+              </div>
+              <div class="radios">
+                <input type="radio" class="aprobFile" data-id="<?=$archivo->idRT?>" name="aprobado-<?=$archivo->idRT?>" <?php if ($archivo->estatus == "RECHAZADO") { echo "checked";} ?> value="RECHAZADO" ><span>Rechazado </span>
+              </div>
+            </figcaption>
           </div>
-        </div>
       <?php endforeach; ?>
     <?php endif; ?>
+    </div>
 
     <?php if (!is_null($observacion)): ?>
       <div class="form-group col-xs-12 col-sm-12 col-md-12">

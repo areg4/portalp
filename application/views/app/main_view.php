@@ -79,6 +79,7 @@
                 </div>
                 <div class="modal-body" >
                     <?=$this->lang->line(((isset($error))?($error):(trim($this->session->flashdata('error')))))?>
+                    <p id="texto"></p>
                 </div>
                 <div class="modal-footer">
                     <button data-dismiss="modal" class="col-md-4 menta col-md-offset-4" type="button">Ok</button>

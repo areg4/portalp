@@ -174,19 +174,3 @@ function cerrar () {
 	}
 	return false; 
 }
-
-// funciones fer
-function cambiarIcon(id){
-	imagen = document.getElementById(id);
-	imagen.src = "http://localhost/portalp/static/img/upload.png";
-}
-function cambiarI(id){
-	imagen1 = document.getElementById(id);
-	imagen1.src = "http://localhost/portalp/static/img/upload.png";
-}
-function bajar(){
-	document.querySelector('.bajar').classList.add('ver-bajar');
-}
-function quitar(){
-	document.querySelector('.bajar').classList.remove('ver-bajar');
-}
