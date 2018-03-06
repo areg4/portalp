@@ -44,22 +44,22 @@
 
     <div class="col-xs-12 archivos">
     <!-- archivos -->
-      <div class="col-xs-12 col-sm-12 col-md-2 archivo">
-        <p>Solicitud</p>
-        <div class=" file">
-          <img src="<?=base_url()?>static/img/s.png" id="1">
-          <input class="ocultar"  id="" type="file" name="solicitudEV" required onchange="cambiarIcon(1)">
-        </div>
-      </div>
+
 
       <?php if ($tramite->tramite == "Examen Voluntario"): ?>
+        <div class="col-xs-12 col-sm-12 col-md-2 archivo">
+          <p>Solicitud</p>
+          <div class=" file">
+            <img src="<?=base_url()?>static/img/s.png" id="1">
+            <input class="ocultar"  id="" type="file" name="solicitudEV" accept="application/pdf" required onchange="cambiarIcon(1)">
+          </div>
+        </div>
+
         <div class="col-xs-12 col-sm-12 col-md-2 archivo">
           <p>Kárdex</p>
           <div class="file">
             <img src="<?=base_url()?>static/img/k.png" id="2">
-              <input class="ocultar"  id="" type="file" name="kardexEV" required onchange="cambiarI(2)">
-              <input type="hidden" name="idTramite" value="<?=$tramite->idCatTramite; ?>">
-              <input type="hidden" name="tramite" value="<?=$tramite->tramite; ?>" >
+              <input class="ocultar"  id="" type="file" name="kardexEV" accept="application/pdf" required onchange="cambiarI(2)">
           </div>
         </div>
       <?php endif; ?>
@@ -76,11 +76,80 @@
           <div class="col-xs-12 col-sm-12 col-md-4 file">
             <label for="text">Prórroga papel 2</label>
             <input class="ocultar"  id="" type="file" name="archivoPorS[]" required>
-            <input type="hidden" name="idTramite" value="<?=$tramite->idCatTramite; ?>" >
-            <input type="hidden" name="tramite" value="<?=$tramite->tramite; ?>" >
           </div>
         </div>
       <?php endif; ?>
+
+      <?php if ($tramite->tramite == "Readquisición de Pasantía"): ?>
+        <div class="col-xs-12 col-sm-12 col-md-2 archivo">
+          <p>Solicitud</p>
+          <div class=" file">
+            <img src="<?=base_url()?>static/img/s.png" id="1">
+            <input class="ocultar"  id="" type="file" name="solicitudRP" accept="application/pdf" required onchange="cambiarIcon(1)">
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-2 archivo">
+          <p>Carta Calificación Diplomado</p>
+          <div class="file">
+            <img src="<?=base_url()?>static/img/k.png" id="2">
+              <input class="ocultar"  id="" type="file" name="cartaCalifDiploRP" accept="application/pdf" required onchange="cambiarI(2)">
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-2 archivo">
+          <p>Recibo del Diplomado</p>
+          <div class="file">
+            <img src="<?=base_url()?>static/img/k.png" id="3">
+              <input class="ocultar"  id="" type="file" name="reciboDiploRP" accept="application/pdf" required onchange="cambiarI(3)">
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-2 archivo">
+          <p>Kardex</p>
+          <div class="file">
+            <img src="<?=base_url()?>static/img/k.png" id="4">
+              <input class="ocultar"  id="" type="file" name="kardexRP" accept="application/pdf" required onchange="cambiarI(4)">
+          </div>
+        </div>
+      <?php endif; ?>
+
+      <?php if ($tramite->tramite == "Cursos y Diplomados de Actualización y de Profundización Disciplinaria"): ?>
+        <div class="col-xs-12 col-sm-12 col-md-2 archivo">
+          <p>Solicitud</p>
+          <div class=" file">
+            <img src="<?=base_url()?>static/img/s.png" id="1">
+            <input class="ocultar"  id="" type="file" name="solicitudCD" accept="application/pdf" required onchange="cambiarIcon(1)">
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-2 archivo">
+          <p>Carta Calificación Diplomado</p>
+          <div class="file">
+            <img src="<?=base_url()?>static/img/k.png" id="2">
+              <input class="ocultar"  id="" type="file" name="cartaCalifDiploCD" accept="application/pdf" required onchange="cambiarI(2)">
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-2 archivo">
+          <p>Recibo del Diplomado</p>
+          <div class="file">
+            <img src="<?=base_url()?>static/img/k.png" id="3">
+              <input class="ocultar"  id="" type="file" name="reciboDiploCD" accept="application/pdf" required onchange="cambiarI(3)">
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-2 archivo">
+          <p>Kardex</p>
+          <div class="file">
+            <img src="<?=base_url()?>static/img/k.png" id="4">
+              <input class="ocultar"  id="" type="file" name="kardexCD" accept="application/pdf" required onchange="cambiarI(4)">
+          </div>
+        </div>
+      <?php endif; ?>
+
+      <input type="hidden" name="idTramite" value="<?=$tramite->idCatTramite; ?>">
+      <input type="hidden" name="tramite" value="<?=$tramite->tramite; ?>" >
 
     <!-- fin archivos -->
 

@@ -62,7 +62,7 @@
     <?php if (!is_null($archivos)): ?>
       <?php foreach ($archivos as $archivo): ?>
           <div class="col-xs-12 col-sm-12 col-md-2 archivo" onmouseenter="bajar(<?=$archivo->idRT?>)" onmouseleave="quitar(<?=$archivo->idRT?>)" >
-            <p>Documento </p>
+            <p><?=$archivo->ruta?> </p>
             <div class="file <?php if ($archivo->estatus == "RECIBIDO") {
                   echo "alta";
                 } if ($archivo->estatus == "RECHAZADO") {
@@ -83,7 +83,7 @@
                     <span>Subir archivo</span><input class=""  id="file-<?=$archivo->idRT?>" type="file" name="file" required onchange="cambiarIcon(1)">
                     <input class="btn" data-id="<?=$archivo->idRT?>" type="submit" name="" value="Actualizar">
                   <?php endif; ?>
-                  <a href="<?=base_url()?>docs/tramites/<?=$alumno->expediente?>/<?=$archivo->idTramite?>/<?=$archivo->ruta?>" target="_blank" class="">Descargar</a> 
+                  <a href="<?=base_url()?>docs/tramites/<?=$alumno->expediente?>/<?=$archivo->idTramite?>/<?=$archivo->ruta?>" target="_blank" class="">Descargar</a>
                 </form>
             </figcaption>
           </div>
