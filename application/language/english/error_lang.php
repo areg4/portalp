@@ -30,3 +30,4 @@ $lang['cveDocenteFail']			   = "La clave del docente es incorrecta";
 //TRÁMITES
 $lang['altaTramiteOk']			   = "El trámite ha sido dado de alta correctamente";
 $lang['updateFileOk']			 = "El archivo ha sido actualizado correctamente";
+$lang['altaPDFFail']        = "El archivo debe subirse en formato PDF";
