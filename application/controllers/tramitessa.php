@@ -391,6 +391,51 @@ class Tramitessa extends CI_Controller {
 				}
 			}
 
+			// if ($tramite == "Readquisición de Pasantía") {
+			// 	// $solicitudRP					= $this->input->post('solicitudRP');
+			// 	// $cartaCalifDiploRP		= $this->input->post('cartaCalifDiploRP');
+			// 	$nuevoArchivoSRP 				= explode(".", $_FILES['solicitudRP']["name"]);
+			// 	$nuevoArchivoCRP 				= explode(".", $_FILES['cartaCalifDiploRP']["name"]);
+			// 	$nuevoArchivoRRP 				= explode(".", $_FILES['reciboDiploRP']["name"]);
+			// 	$nuevoArchivoKRP 				= explode(".", $_FILES['kardexRP']["name"]);
+      //
+			// 	if($nuevoArchivoSRP[1] != "pdf" || $nuevoArchivoCRP[1] != "pdf" || $nuevoArchivoRRP[1] != "pdf" || $nuevoArchivoKRP[1] != "pdf")
+			// 	{
+			// 		$this->borrarTramite($tramiteProceso->idTramite);
+			// 		$this->session->set_flashdata('error', 'altaPDFFail');
+			// 		redirect('portal-informatica-alumnos-tramites-alta/'.$idTramite);
+			// 	}
+      //
+			// 	$namesFiles = array();
+      //
+			// 	// archivo de solicitud
+			// 	$file = $this->file_model->uploadNonImage("tramites/".$alumno->expediente."/".$tramiteProceso->idTramite, $data = false, 'solicitudRP', "solicitudRP-".$alumno->expediente."-".$this->fecha);
+			// 	$namesFiles[] = $file;
+      //
+			// 	// archivo de cartaCalifDiploRP
+			// 	$file = $this->file_model->uploadNonImage("tramites/".$alumno->expediente."/".$tramiteProceso->idTramite, $data = false, 'cartaCalifDiploRP', "cartaCalifDiploRP-".$alumno->expediente."-".$this->fecha);
+			// 	$namesFiles[] = $file;
+      //
+			// 	// archivo de reciboDiploRP
+			// 	$file = $this->file_model->uploadNonImage("tramites/".$alumno->expediente."/".$tramiteProceso->idTramite, $data = false, 'reciboDiploRP', "reciboDiploRP-".$alumno->expediente."-".$this->fecha);
+			// 	$namesFiles[] = $file;
+      //
+			// 	// archivo de kardexRP
+			// 	$file = $this->file_model->uploadNonImage("tramites/".$alumno->expediente."/".$tramiteProceso->idTramite, $data = false, 'kardexRP', "kardexRP-".$alumno->expediente."-".$this->fecha);
+			// 	$namesFiles[] = $file;
+      //
+			// 	foreach ($namesFiles as $nf) {
+			// 		// die(var_dump($nf));
+			// 		$arrInsert = array(
+			// 			'idTramite'		=>	$tramiteProceso->idTramite,
+			// 			'ruta'				=> 	$nf,
+			// 			'estatus'			=>	'RECIBIDO',
+			// 			'habilitado'	=>	1
+			// 		);
+			// 		$this->tramitessa_model->insertRutaTramite($arrInsert);
+			// 	}
+			// }
+
 			if ($tramite == "Readquisición de Pasantía") {
 				// $solicitudRP					= $this->input->post('solicitudRP');
 				// $cartaCalifDiploRP		= $this->input->post('cartaCalifDiploRP');
@@ -401,50 +446,7 @@ class Tramitessa extends CI_Controller {
 
 				if($nuevoArchivoSRP[1] != "pdf" || $nuevoArchivoCRP[1] != "pdf" || $nuevoArchivoRRP[1] != "pdf" || $nuevoArchivoKRP[1] != "pdf")
 				{
-					$this->session->set_flashdata('error', 'altaPDFFail');
-					redirect('portal-informatica-alumnos-tramites-alta/'.$idTramite);
-				}
-
-				$namesFiles = array();
-
-				// archivo de solicitud
-				$file = $this->file_model->uploadNonImage("tramites/".$alumno->expediente."/".$tramiteProceso->idTramite, $data = false, 'solicitudRP', "solicitudRP-".$alumno->expediente."-".$this->fecha);
-				$namesFiles[] = $file;
-
-				// archivo de cartaCalifDiploRP
-				$file = $this->file_model->uploadNonImage("tramites/".$alumno->expediente."/".$tramiteProceso->idTramite, $data = false, 'cartaCalifDiploRP', "cartaCalifDiploRP-".$alumno->expediente."-".$this->fecha);
-				$namesFiles[] = $file;
-
-				// archivo de reciboDiploRP
-				$file = $this->file_model->uploadNonImage("tramites/".$alumno->expediente."/".$tramiteProceso->idTramite, $data = false, 'reciboDiploRP', "reciboDiploRP-".$alumno->expediente."-".$this->fecha);
-				$namesFiles[] = $file;
-
-				// archivo de kardexRP
-				$file = $this->file_model->uploadNonImage("tramites/".$alumno->expediente."/".$tramiteProceso->idTramite, $data = false, 'kardexRP', "kardexRP-".$alumno->expediente."-".$this->fecha);
-				$namesFiles[] = $file;
-
-				foreach ($namesFiles as $nf) {
-					// die(var_dump($nf));
-					$arrInsert = array(
-						'idTramite'		=>	$tramiteProceso->idTramite,
-						'ruta'				=> 	$nf,
-						'estatus'			=>	'RECIBIDO',
-						'habilitado'	=>	1
-					);
-					$this->tramitessa_model->insertRutaTramite($arrInsert);
-				}
-			}
-
-			if ($tramite == "Readquisición de Pasantía") {
-				// $solicitudRP					= $this->input->post('solicitudRP');
-				// $cartaCalifDiploRP		= $this->input->post('cartaCalifDiploRP');
-				$nuevoArchivoSRP 				= explode(".", $_FILES['solicitudRP']["name"]);
-				$nuevoArchivoCRP 				= explode(".", $_FILES['cartaCalifDiploRP']["name"]);
-				$nuevoArchivoRRP 				= explode(".", $_FILES['reciboDiploRP']["name"]);
-				$nuevoArchivoKRP 				= explode(".", $_FILES['kardexRP']["name"]);
-
-				if($nuevoArchivoSRP[1] != "pdf" || $nuevoArchivoCRP[1] != "pdf" || $nuevoArchivoRRP[1] != "pdf" || $nuevoArchivoKRP[1] != "pdf")
-				{
+					$this->borrarTramite($tramiteProceso->idTramite);
 					$this->session->set_flashdata('error', 'altaPDFFail');
 					redirect('portal-informatica-alumnos-tramites-alta/'.$idTramite);
 				}
@@ -489,6 +491,7 @@ class Tramitessa extends CI_Controller {
 
 				if($nuevoArchivoSCD[1] != "pdf" || $nuevoArchivoCCD[1] != "pdf" || $nuevoArchivoRCD[1] != "pdf" || $nuevoArchivoKCD[1] != "pdf")
 				{
+					$this->borrarTramite($tramiteProceso->idTramite);
 					$this->session->set_flashdata('error', 'altaPDFFail');
 					redirect('portal-informatica-alumnos-tramites-alta/'.$idTramite);
 				}
@@ -526,13 +529,14 @@ class Tramitessa extends CI_Controller {
 			if ($tramite == "Guía del Maestro") {
 				// $solicitudRP					= $this->input->post('solicitudRP');
 				// $cartaCalifDiploRP		= $this->input->post('cartaCalifDiploRP');
-				$nuevoArchivoSCD				= explode(".", $_FILES['solicitudCD']["name"]);
-				$nuevoArchivoCCD				= explode(".", $_FILES['cartaCalifDiploCD']["name"]);
-				$nuevoArchivoRCD				= explode(".", $_FILES['reciboDiploCD']["name"]);
-				$nuevoArchivoKCD				= explode(".", $_FILES['kardexCD']["name"]);
+				$nuevoArchivoSGM				= explode(".", $_FILES['solicitudGM']["name"]);
+				$nuevoArchivoPGM				= explode(".", $_FILES['protocoloGM']["name"]);
+				$nuevoArchivoCAMRGM			= explode(".", $_FILES['cartaAeptacionMRespoGM']["name"]);
+				$nuevoArchivoKGM				= explode(".", $_FILES['kardexGM']["name"]);
 
-				if($nuevoArchivoSCD[1] != "pdf" || $nuevoArchivoCCD[1] != "pdf" || $nuevoArchivoRCD[1] != "pdf" || $nuevoArchivoKCD[1] != "pdf")
+				if($nuevoArchivoSGM[1] != "pdf" || $nuevoArchivoPGM[1] != "pdf" || $nuevoArchivoCAMRGM[1] != "pdf" || $nuevoArchivoKGM[1] != "pdf")
 				{
+					$this->borrarTramite($tramiteProceso->idTramite);
 					$this->session->set_flashdata('error', 'altaPDFFail');
 					redirect('portal-informatica-alumnos-tramites-alta/'.$idTramite);
 				}
@@ -540,19 +544,219 @@ class Tramitessa extends CI_Controller {
 				$namesFiles = array();
 
 				// archivo de solicitud
-				$file = $this->file_model->uploadNonImage("tramites/".$alumno->expediente."/".$tramiteProceso->idTramite, $data = false, 'solicitudCD', "solicitudCD-".$alumno->expediente."-".$this->fecha);
+				$file = $this->file_model->uploadNonImage("tramites/".$alumno->expediente."/".$tramiteProceso->idTramite, $data = false, 'solicitudGM', "solicitudGM-".$alumno->expediente."-".$this->fecha);
 				$namesFiles[] = $file;
 
 				// archivo de cartaCalifDiploRP
-				$file = $this->file_model->uploadNonImage("tramites/".$alumno->expediente."/".$tramiteProceso->idTramite, $data = false, 'cartaCalifDiploCD', "cartaCalifDiploCD-".$alumno->expediente."-".$this->fecha);
+				$file = $this->file_model->uploadNonImage("tramites/".$alumno->expediente."/".$tramiteProceso->idTramite, $data = false, 'protocoloGM', "protocoloGM-".$alumno->expediente."-".$this->fecha);
 				$namesFiles[] = $file;
 
 				// archivo de reciboDiploRP
-				$file = $this->file_model->uploadNonImage("tramites/".$alumno->expediente."/".$tramiteProceso->idTramite, $data = false, 'reciboDiploCD', "reciboDiploCD-".$alumno->expediente."-".$this->fecha);
+				$file = $this->file_model->uploadNonImage("tramites/".$alumno->expediente."/".$tramiteProceso->idTramite, $data = false, 'cartaAeptacionMRespoGM', "cartaAeptacionMRespoGM-".$alumno->expediente."-".$this->fecha);
 				$namesFiles[] = $file;
 
 				// archivo de kardexRP
-				$file = $this->file_model->uploadNonImage("tramites/".$alumno->expediente."/".$tramiteProceso->idTramite, $data = false, 'kardexCD', "kardexCD-".$alumno->expediente."-".$this->fecha);
+				$file = $this->file_model->uploadNonImage("tramites/".$alumno->expediente."/".$tramiteProceso->idTramite, $data = false, 'kardexGM', "kardexGM-".$alumno->expediente."-".$this->fecha);
+				$namesFiles[] = $file;
+
+				foreach ($namesFiles as $nf) {
+					// die(var_dump($nf));
+					$arrInsert = array(
+						'idTramite'		=>	$tramiteProceso->idTramite,
+						'ruta'				=> 	$nf,
+						'estatus'			=>	'RECIBIDO',
+						'habilitado'	=>	1
+					);
+					$this->tramitessa_model->insertRutaTramite($arrInsert);
+				}
+			}
+
+			if ($tramite == "Memoria de Trabajo") {
+				// $solicitudRP					= $this->input->post('solicitudRP');
+				// $cartaCalifDiploRP		= $this->input->post('cartaCalifDiploRP');
+				$nuevoArchivoSMT				= explode(".", $_FILES['solicitudMT']["name"]);
+				$nuevoArchivoPMT				= explode(".", $_FILES['protocoloMT']["name"]);
+				$nuevoArchivoCLTMT			= explode(".", $_FILES['cartaLugarTrabajoMT']["name"]);
+				$nuevoArchivoCAAMT			= explode(".", $_FILES['cartaAsesorAcadeMT']["name"]);
+
+				if($nuevoArchivoSMT[1] != "pdf" || $nuevoArchivoPMT[1] != "pdf" || $nuevoArchivoCLTMT[1] != "pdf" || $nuevoArchivoCAAMT[1] != "pdf")
+				{
+					$this->borrarTramite($tramiteProceso->idTramite);
+					$this->session->set_flashdata('error', 'altaPDFFail');
+					redirect('portal-informatica-alumnos-tramites-alta/'.$idTramite);
+				}
+
+				$namesFiles = array();
+
+				// archivo de solicitud
+				$file = $this->file_model->uploadNonImage("tramites/".$alumno->expediente."/".$tramiteProceso->idTramite, $data = false, 'solicitudMT', "solicitudMT-".$alumno->expediente."-".$this->fecha);
+				$namesFiles[] = $file;
+
+				// archivo de cartaCalifDiploRP
+				$file = $this->file_model->uploadNonImage("tramites/".$alumno->expediente."/".$tramiteProceso->idTramite, $data = false, 'protocoloMT', "protocoloMT-".$alumno->expediente."-".$this->fecha);
+				$namesFiles[] = $file;
+
+				// archivo de reciboDiploRP
+				$file = $this->file_model->uploadNonImage("tramites/".$alumno->expediente."/".$tramiteProceso->idTramite, $data = false, 'cartaLugarTrabajoMT', "cartaLugarTrabajoMT-".$alumno->expediente."-".$this->fecha);
+				$namesFiles[] = $file;
+
+				// archivo de kardexRP
+				$file = $this->file_model->uploadNonImage("tramites/".$alumno->expediente."/".$tramiteProceso->idTramite, $data = false, 'cartaAsesorAcadeMT', "cartaAsesorAcadeMT-".$alumno->expediente."-".$this->fecha);
+				$namesFiles[] = $file;
+
+				foreach ($namesFiles as $nf) {
+					// die(var_dump($nf));
+					$arrInsert = array(
+						'idTramite'		=>	$tramiteProceso->idTramite,
+						'ruta'				=> 	$nf,
+						'estatus'			=>	'RECIBIDO',
+						'habilitado'	=>	1
+					);
+					$this->tramitessa_model->insertRutaTramite($arrInsert);
+				}
+			}
+
+			if ($tramite == "Trabajo Terminado") {
+				// $solicitudRP					= $this->input->post('solicitudRP');
+				// $cartaCalifDiploRP		= $this->input->post('cartaCalifDiploRP');
+				$nuevoArchivoSTT				= explode(".", $_FILES['solicitudTT']["name"]);
+				$nuevoArchivoTTT				= explode(".", $_FILES['trabajoTT']["name"]);
+				$nuevoArchivoCAATT			= explode(".", $_FILES['cartaAsesorTT']["name"]);
+				$nuevoArchivoCTTT				= explode(".", $_FILES['cartaTrabajoTT']["name"]);
+
+				if($nuevoArchivoSTT[1] != "pdf" || $nuevoArchivoTTT[1] != "pdf" || $nuevoArchivoCAATT[1] != "pdf" || $nuevoArchivoCTTT[1] != "pdf")
+				{
+					$this->borrarTramite($tramiteProceso->idTramite);
+					$this->session->set_flashdata('error', 'altaPDFFail');
+					redirect('portal-informatica-alumnos-tramites-alta/'.$idTramite);
+				}
+
+				$namesFiles = array();
+
+				// archivo de solicitud
+				$file = $this->file_model->uploadNonImage("tramites/".$alumno->expediente."/".$tramiteProceso->idTramite, $data = false, 'solicitudTT', "solicitudTT-".$alumno->expediente."-".$this->fecha);
+				$namesFiles[] = $file;
+
+				// archivo de cartaCalifDiploRP
+				$file = $this->file_model->uploadNonImage("tramites/".$alumno->expediente."/".$tramiteProceso->idTramite, $data = false, 'trabajoTT', "trabajoTT-".$alumno->expediente."-".$this->fecha);
+				$namesFiles[] = $file;
+
+				// archivo de reciboDiploRP
+				$file = $this->file_model->uploadNonImage("tramites/".$alumno->expediente."/".$tramiteProceso->idTramite, $data = false, 'cartaAsesorTT', "cartaAsesorTT-".$alumno->expediente."-".$this->fecha);
+				$namesFiles[] = $file;
+
+				// archivo de kardexRP
+				$file = $this->file_model->uploadNonImage("tramites/".$alumno->expediente."/".$tramiteProceso->idTramite, $data = false, 'cartaTrabajoTT', "cartaTrabajoTT-".$alumno->expediente."-".$this->fecha);
+				$namesFiles[] = $file;
+
+				foreach ($namesFiles as $nf) {
+					// die(var_dump($nf));
+					$arrInsert = array(
+						'idTramite'		=>	$tramiteProceso->idTramite,
+						'ruta'				=> 	$nf,
+						'estatus'			=>	'RECIBIDO',
+						'habilitado'	=>	1
+					);
+					$this->tramitessa_model->insertRutaTramite($arrInsert);
+				}
+			}
+
+			if ($tramite == "Tesis Individual") {
+				// $solicitudRP					= $this->input->post('solicitudRP');
+				// $cartaCalifDiploRP		= $this->input->post('cartaCalifDiploRP');
+				$nuevoArchivoSTI				= explode(".", $_FILES['solicitudTI']["name"]);
+				$nuevoArchivoKTI				= explode(".", $_FILES['kardexTI']["name"]);
+
+				if($nuevoArchivoSTI[1] != "pdf" || $nuevoArchivoKTI[1] != "pdf")
+				{
+					$this->borrarTramite($tramiteProceso->idTramite);
+					$this->session->set_flashdata('error', 'altaPDFFail');
+					redirect('portal-informatica-alumnos-tramites-alta/'.$idTramite);
+				}
+
+				$namesFiles = array();
+
+				// archivo de solicitud
+				$file = $this->file_model->uploadNonImage("tramites/".$alumno->expediente."/".$tramiteProceso->idTramite, $data = false, 'solicitudTI', "solicitudTI-".$alumno->expediente."-".$this->fecha);
+				$namesFiles[] = $file;
+
+				// archivo de cartaCalifDiploRP
+				$file = $this->file_model->uploadNonImage("tramites/".$alumno->expediente."/".$tramiteProceso->idTramite, $data = false, 'kardexTI', "kardexTI-".$alumno->expediente."-".$this->fecha);
+				$namesFiles[] = $file;
+
+				foreach ($namesFiles as $nf) {
+					// die(var_dump($nf));
+					$arrInsert = array(
+						'idTramite'		=>	$tramiteProceso->idTramite,
+						'ruta'				=> 	$nf,
+						'estatus'			=>	'RECIBIDO',
+						'habilitado'	=>	1
+					);
+					$this->tramitessa_model->insertRutaTramite($arrInsert);
+				}
+			}
+
+			if ($tramite == "Promedio") {
+				// $solicitudRP					= $this->input->post('solicitudRP');
+				// $cartaCalifDiploRP		= $this->input->post('cartaCalifDiploRP');
+				$nuevoArchivoSPro				= explode(".", $_FILES['solicitudPro']["name"]);
+				$nuevoArchivoKPro				= explode(".", $_FILES['kardexPro']["name"]);
+
+				if($nuevoArchivoSPro[1] != "pdf" || $nuevoArchivoKPro[1] != "pdf")
+				{
+					$this->borrarTramite($tramiteProceso->idTramite);
+					$this->session->set_flashdata('error', 'altaPDFFail');
+					redirect('portal-informatica-alumnos-tramites-alta/'.$idTramite);
+				}
+
+				$namesFiles = array();
+
+				// archivo de solicitud
+				$file = $this->file_model->uploadNonImage("tramites/".$alumno->expediente."/".$tramiteProceso->idTramite, $data = false, 'solicitudPro', "solicitudPro-".$alumno->expediente."-".$this->fecha);
+				$namesFiles[] = $file;
+
+				// archivo de cartaCalifDiploRP
+				$file = $this->file_model->uploadNonImage("tramites/".$alumno->expediente."/".$tramiteProceso->idTramite, $data = false, 'kardexPro', "kardexPro-".$alumno->expediente."-".$this->fecha);
+				$namesFiles[] = $file;
+
+				foreach ($namesFiles as $nf) {
+					// die(var_dump($nf));
+					$arrInsert = array(
+						'idTramite'		=>	$tramiteProceso->idTramite,
+						'ruta'				=> 	$nf,
+						'estatus'			=>	'RECIBIDO',
+						'habilitado'	=>	1
+					);
+					$this->tramitessa_model->insertRutaTramite($arrInsert);
+				}
+			}
+
+			if ($tramite == "Acreditación de Posgrado") {
+				// $solicitudRP					= $this->input->post('solicitudRP');
+				// $cartaCalifDiploRP		= $this->input->post('cartaCalifDiploRP');
+				$nuevoArchivoSAP			= explode(".", $_FILES['solicitudAP']["name"]);
+				$nuevoArchivoCEMAP		= explode(".", $_FILES['cartaECMAP']["name"]);
+				$nuevoArchivoMCAP			= explode(".", $_FILES['mapaCurriAP']["name"]);
+
+				if($nuevoArchivoSAP[1] != "pdf" || $nuevoArchivoCEMAP[1] != "pdf" || $nuevoArchivoMCAP[1] != "pdf" )
+				{
+					$this->borrarTramite($tramiteProceso->idTramite);
+					$this->session->set_flashdata('error', 'altaPDFFail');
+					redirect('portal-informatica-alumnos-tramites-alta/'.$idTramite);
+				}
+
+				$namesFiles = array();
+
+				// archivo de solicitud
+				$file = $this->file_model->uploadNonImage("tramites/".$alumno->expediente."/".$tramiteProceso->idTramite, $data = false, 'solicitudAP', "solicitudAP-".$alumno->expediente."-".$this->fecha);
+				$namesFiles[] = $file;
+
+				// archivo de cartaCalifDiploRP
+				$file = $this->file_model->uploadNonImage("tramites/".$alumno->expediente."/".$tramiteProceso->idTramite, $data = false, 'cartaECMAP', "cartaECMAP-".$alumno->expediente."-".$this->fecha);
+				$namesFiles[] = $file;
+
+				// archivo de cartaCalifDiploRP
+				$file = $this->file_model->uploadNonImage("tramites/".$alumno->expediente."/".$tramiteProceso->idTramite, $data = false, 'mapaCurriAP', "mapaCurriAP-".$alumno->expediente."-".$this->fecha);
 				$namesFiles[] = $file;
 
 				foreach ($namesFiles as $nf) {
