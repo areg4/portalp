@@ -95,6 +95,7 @@
       <?php endif; ?>
       </div>
 
+      <div class="col-xs-12 archivos">
       <?php if ($tramite->tramite == "Readquisición de Pasantía"): ?>
         <div class="col-xs-12 col-sm-12 col-md-2 archivo">
           <p>Solicitud</p>
@@ -128,7 +129,9 @@
           </div>
         </div>
       <?php endif; ?>
+      </div>
 
+      <div class="archivos col-xs-12">
       <?php if ($tramite->tramite == "Cursos y Diplomados de Actualización y de Profundización Disciplinaria"): ?>
         <div class="col-xs-12 col-sm-12 col-md-2 archivo">
           <p>Solicitud</p>
@@ -162,7 +165,10 @@
           </div>
         </div>
       <?php endif; ?>
+      </div>
 
+
+      <div class="archivos col-xs-12">
       <?php if ($tramite->tramite == "Guía del Maestro"): ?>
         <div class="col-xs-12 col-sm-12 col-md-2 archivo">
           <p>Solicitud</p>
@@ -196,7 +202,9 @@
           </div>
         </div>
       <?php endif; ?>
+      </div>
 
+      <div class="archivos col-xs-12">
       <?php if ($tramite->tramite == "Memoria de Trabajo"): ?>
         <div class="col-xs-12 col-sm-12 col-md-2 archivo">
           <p>Solicitud</p>
@@ -230,7 +238,9 @@
           </div>
         </div>
       <?php endif; ?>
+      </div>
 
+      <div class="archivos col-xs-12">
       <?php if ($tramite->tramite == "Trabajo Terminado"): ?>
         <div class="col-xs-12 col-sm-12 col-md-2 archivo">
           <p>Solicitud</p>
@@ -264,7 +274,10 @@
           </div>
         </div>
       <?php endif; ?>
+      </div>
 
+
+      <div class="archivos col-xs-12">
       <?php if ($tramite->tramite == "Tesis Individual"): ?>
         <div class="col-xs-12 col-sm-12 col-md-2 archivo">
           <p>Solicitud</p>
@@ -282,7 +295,9 @@
           </div>
         </div>
       <?php endif; ?>
+      </div>
 
+      <div class="archivos col-xs-12">
       <?php if ($tramite->tramite == "Promedio"): ?>
         <div class="col-xs-12 col-sm-12 col-md-2 archivo">
           <p>Solicitud</p>
@@ -300,7 +315,9 @@
           </div>
         </div>
       <?php endif; ?>
+      </div>
 
+      <div class="archivos col-xs-12">
       <?php if ($tramite->tramite == "Acreditación de Posgrado"): ?>
         <div class="col-xs-12 col-sm-12 col-md-2 archivo">
           <p>Solicitud</p>
@@ -326,6 +343,7 @@
           </div>
         </div>
       <?php endif; ?>
+      </div>
 
       <input type="hidden" name="idTramite" value="<?=$tramite->idCatTramite; ?>">
       <input type="hidden" name="tramite" value="<?=$tramite->tramite; ?>" >
