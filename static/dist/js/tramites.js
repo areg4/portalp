@@ -22,9 +22,16 @@ jQuery(document).ready(function($){
     window.location.href = base_url()+'portal-informatica-tramites-datos/'+data;
   });
 
+  $(".ArchivoNuevo").change(function () {
+    $(".btnUpdateFile").click();
+  });
+
   $(".btnUpdateFile").click(function() {
-    var idRT = $(this).attr('data-id');
-    var fkRu = $("#file-"+idRT).val();
+    // alert("update");
+    var idRT      = $(this).attr('data-id');
+    var fkRu      = $("#file-"+idRT).val();
+    var idTramite = $(this).attr('data-tramite-id');
+    // alert(fkRu);
     if(fkRu != ""){
       var formData = new FormData($("#form-update-file-id-"+idRT)[0]);
       console.log(formData);
@@ -36,9 +43,43 @@ jQuery(document).ready(function($){
         contentType: false,
         processData: false,
         success:function(response) {
+
+          // alert(response);
+
+          if (response=="OK") {
+            window.location.reload();
+          }
+          //
+          //   $.confirm({
+          //     title: 'Confirm!',
+          //     content: 'Simple confirm!',
+          //     buttons: {
+          //         confirm: function () {
+          //             window.location.href = base_url()+'portal-informatica-alumnos-tramites-datos/'+idTramite;
+          //         },
+          //         cancel: function () {
+          //             $.alert('Canceled!');
+          //         },
+          //         somethingElse: {
+          //             text: 'Something else',
+          //             btnClass: 'btn-blue',
+          //             keys: ['enter', 'shift'],
+          //             action: function(){
+          //                 $.alert('Something else?');
+          //             }
+          //         }
+          //     }
+          // });
+
+            // if (confirm("Archivo Actualizado!")) {
+            //   location.href = base_url()+'portal-informatica-alumnos-tramites-datos/'+idTramite;
+            // }
+            // window.location.reload();
+
+          // }
           // alert(response);
           // window.location.href = base_url()+'portal-informatica-alumnos-tramites-datos/'+response;
-          window.location.reload();
+
         }
       });
     }

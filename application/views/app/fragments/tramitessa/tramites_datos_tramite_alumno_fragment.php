@@ -75,13 +75,13 @@
               <img src="<?=base_url()?>static/img/file.png" id="0">
             </div>
             <figcaption class="bajar" id="<?=$archivo->idRT?>">
-                <form id="form-update-file-id-<?=$archivo->idRT?>" method="post" enctype="multipart/form-data">
+                <form onsubmit="return false" id="form-update-file-id-<?=$archivo->idRT?>" method="post" enctype="multipart/form-data">
                   <input type="hidden" name="idRT" value="<?=$archivo->idRT?>">
                   <input type="hidden" name="idTramite" value="<?=$archivo->idTramite?>">
                   <input type="hidden" name="nombreF" value="<?=$archivo->ruta?>">
                   <?php if ($archivo->estatus == 'RECHAZADO'): ?>
-                    <span>Subir archivo</span><input class=""  id="file-<?=$archivo->idRT?>" type="file" name="file" required onchange="cambiarIcon(1)">
-                    <input class="btn" data-id="<?=$archivo->idRT?>" type="submit" name="" value="Actualizar">
+                    <span>Subir archivo</span><input class="ArchivoNuevo"  id="file-<?=$archivo->idRT?>" type="file" name="file" accept="application/pdf" required onchange="cambiarIcon(1)">
+                    <input style="display:none;" class="btn btnUpdateFile" data-tramite-id="<?=$archivo->idTramite?>" data-id="<?=$archivo->idRT?>" type="submit" name="" value="Actualizar">
                   <?php endif; ?>
                   <a href="<?=base_url()?>docs/tramites/<?=$alumno->expediente?>/<?=$archivo->idTramite?>/<?=$archivo->ruta?>" target="_blank" class="">Descargar</a>
                 </form>

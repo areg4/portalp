@@ -66,7 +66,7 @@
     <?php if (!is_null($archivos)): ?>
       <?php foreach ($archivos as $archivo): ?>
           <div class="col-xs-12 col-sm-12 col-md-2 archivo" onmouseenter="bajar(<?=$archivo->idRT?>)" onmouseleave="quitar(<?=$archivo->idRT?>)">
-          <p>Documento </p>
+          <p><?=$archivo->ruta?> </p>
             <div class="file <?php if ($archivo->estatus == "RECIBIDO") {
               echo "alta";
             } if ($archivo->estatus == "RECHAZADO") {

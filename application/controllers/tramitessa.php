@@ -900,10 +900,16 @@ class Tramitessa extends CI_Controller {
 				'habilitado'	=>	1
 			);
 
-			$this->tramitessa_model->updateRutaTramite($idRT, $arrUpdate);
-			$this->tramitessa_model->insertRutaTramite($arrInsert);
-
-			$this->session->set_flashdata('error', 'updateFileOk');
+			if ($this->tramitessa_model->updateRutaTramite($idRT, $arrUpdate)) {
+				if ($this->tramitessa_model->insertRutaTramite($arrInsert)) {
+					$this->session->set_flashdata('error', 'updateFileOk');
+					echo "OK";
+				}else{
+					echo "ERROR";
+				}
+			}else {
+				echo "ERROR";
+			}
 
 			// echo $idTramite;
 			// redirect('portal-informatica-alumnos-tramites');
