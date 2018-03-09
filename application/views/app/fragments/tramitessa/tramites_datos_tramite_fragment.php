@@ -76,15 +76,15 @@
             } if ($archivo->estatus == "APROBADO") {
               echo "finalizado";
             }?>">
-              <img src="<?=base_url()?>static/img/file.png" id="0">
+              <img src="<?=base_url()?>static/img/file.png">
             </div>
             <figcaption class="bajar" id="<?=$archivo->idRT?>">
               <a href="<?=base_url()?>docs/tramites/<?=$alumno->expediente?>/<?=$archivo->idTramite?>/<?=$archivo->ruta?>" target="_blank" class="">Descargar</a>
               <div class="radios">
-                <input type="radio" class="aprobFile" data-id="<?=$archivo->idRT?>" name="aprobado-<?=$archivo->idRT?>" <?php if ($archivo->estatus == "APROBADO") { echo "checked";} ?> value="APROBADO" ><span> Aprobado</span>
+                <label><input type="radio" class="aprobFile" data-id="<?=$archivo->idRT?>" id="<?=$archivo->idRT?>" name="aprobado-<?=$archivo->idRT?>" <?php if ($archivo->estatus == "APROBADO") { echo "checked";} ?> value="APROBADO" >&nbsp;Aprobado</label>
               </div>
               <div class="radios">
-                <input type="radio" class="aprobFile" data-id="<?=$archivo->idRT?>" name="aprobado-<?=$archivo->idRT?>" <?php if ($archivo->estatus == "RECHAZADO") { echo "checked";} ?> value="RECHAZADO" ><span>Rechazado </span>
+                <label><input type="radio" class="aprobFile" data-id="<?=$archivo->idRT?>" id="<?=$archivo->idRT?>" name="aprobado-<?=$archivo->idRT?>" <?php if ($archivo->estatus == "RECHAZADO") { echo "checked";} ?> value="RECHAZADO" >&nbsp;Rechazado</label>
               </div>
             </figcaption>
           </div>

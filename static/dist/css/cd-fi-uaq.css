@@ -1148,7 +1148,6 @@ div.columna div.item span{
 	float: left;
 	position: relative;
 	display: block;
-	cursor: pointer;
 	overflow: hidden;
 	padding-bottom: 30px;
 }
@@ -1164,6 +1163,7 @@ div.columna div.item span{
 	    background: rgba(55,88,115,.7);
 	    text-align: center;
 	    border-radius: 2px;
+	    cursor: pointer;
 
 	}	.file>img{
 			height: 60px;
@@ -1247,22 +1247,23 @@ div.columna div.item span{
 				align-self: center;
 				align-items: center;
 				align-content: center;
-				/*line-height: 30px !important;*/
+				line-height: 30px !important;
 				background: rgba(0,0,0,.03);
 			}
 			.bajar .radios>input[type=radio]{
 				float: left;
 				position: relative;
 				margin-right: 10px !important;
-				margin-top: -3px;
+				margin-top: -5px;
 			}
-					.bajar .radios>span:hover{
+					.bajar .radios>label:hover{
 						background: none !important;
 					}
-					.bajar .radios>span{
-						width: auto !important;
-						float: left !important;
-						position: relative !important;
+					.bajar .radios>label{
+						width: 100% !important;
+						margin-top: 10px;
+						font-weight: lighter !important;
+						cursor: pointer;
 					}
 		.ver-bajar{
 			display: block !important;

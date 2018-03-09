@@ -154,7 +154,11 @@ jQuery(document).ready(function($){
         data    : parametros,
         success : function (data) {
           if (data=='OK') {
-            window.location.reload();
+            setTimeout(function(){
+                window.location.reload();
+              }, 2500);
+            $("#error-modal .modal-dialog > .modal-content > .modal-body").html('Observación enviada');
+            $('#error-modal').modal('show');
           }
         }
       });
@@ -236,25 +240,14 @@ function goToTramiteDatos(idTramite) {
 
 function cambiarIcon(id){
   cambio = document.getElementById(id);
-  cambio.src = "http://localhost/portalp/static/img/upload.png";
+  cambio.src = base_url()+'static/img/upload.png';
 }
 
-function cambiarI(id){
-  cambio2 = document.getElementById(id);
-  cambio2.src = "http://localhost/portalp/static/img/upload.png";
-}
-function cambiarIP(id){
-  cambio3 = document.getElementById(id);
-  cambio3.src = "http://localhost/portalp/static/img/upload.png";
-}
-function cambiarIP2(id){
-  cambio4 = document.getElementById(id);
-  cambio4.src = "http://localhost/portalp/static/img/upload.png";
-}
 function bajar(id){
   menu = document.getElementById(id);
   menu.style.display = "block";
 }
+
 function quitar(id){
   menu = document.getElementById(id);
   menu.style.display = "none";
