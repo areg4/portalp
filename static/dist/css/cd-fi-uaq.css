@@ -1166,7 +1166,7 @@ div.columna div.item span{
 	    cursor: pointer;
 
 	}	.file>img{
-			height: 60px;
+			height: 80px;
 		}
 
 		.archivo p{
@@ -1351,5 +1351,14 @@ input[type=file]::-webkit-file-upload-button{
 	height: 30px;
   	cursor: pointer;
   	background:red;
+}
+
+/*FOTOS DEL ARCHIVO*/
+.solicitud{
+	background-image: url(base_url()+'static/img/upload.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	width: 10px;
+	height: 30px;
 }
 /*ESTILOS SOBRE TRAMITES(FERNANDA) ---------FIN-----------*/	
