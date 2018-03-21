@@ -33,7 +33,7 @@ h1, h2, h3{
 	}
 
 #page-wrapper{
-	background: #fff none repeat scroll 0 0!important; 
+	background: #fff none repeat scroll 0 0!important;
     border-radius: 2px !important;
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1) !important;
     box-sizing: border-box !important;
@@ -43,7 +43,7 @@ h1, h2, h3{
     padding: 15px !important;
     width: 80% !important;
     /*max-height: 630px !important;*/
-    min-height: 610px !important;
+    min-height: 800px !important;
     overflow-y: auto;
     overflow-x:hidden !important;
 }
@@ -117,7 +117,7 @@ div.margin-top-login{
 }
 .navbar {
 	position:fixed !important;
-	width: 100% !important; 
+	width: 100% !important;
 }
 #creditos{
 	position: absolute;
@@ -125,8 +125,8 @@ div.margin-top-login{
 	left: 0;
 }
 #creditos h4{
-	font-size: 12px; 
-	color: #fff; 
+	font-size: 12px;
+	color: #fff;
 
 }
 @media screen and (max-width: 770px) and (min-width: 1px) {
@@ -142,7 +142,7 @@ div.margin-top-login{
 
 	}
 	#app-titulo{
-		width: 100% !important; 
+		width: 100% !important;
 	}
 	#page-wrapper{
 		width: 100% !important;
@@ -150,7 +150,7 @@ div.margin-top-login{
 		margin: 0 !important;
 		/*margin-top: 80px !important;*/
 		padding-top: 100px !important;
-		min-height: 650px !important;
+		max-height: 800px !important;
 	}
 	.ficha2{
 		margin-left: 0% !important;
@@ -210,7 +210,7 @@ div.margin-top-login{
 	left: 0px;
 	top: 90px;
 	height: 100%;
-}	
+}
 
 	#menu-lateral>ul{
 		float: left;
@@ -225,7 +225,7 @@ div.margin-top-login{
 			clear: both;
 			height: auto;
 			line-height: 40px;
-			
+
 			/*padding-left: 20px;*/
 			font-size: 14px;
 			/*transition:.1s all;*/
@@ -243,7 +243,7 @@ div.margin-top-login{
 			background-color: #455A64 !important;
 			cursor: pointer;
 			color: #FFF !important;
-			
+
 
 		}
 
@@ -262,10 +262,10 @@ div.margin-top-login{
 	box-shadow: 0px 1px 1px 0px rgba(0,0,0,.3);
 	border-bottom: 1px solid #2f4a62;
 }
-	
+
 	.titulo{
 		float: left;
-		
+
 		background:rgba(0,0,0,.1);
 
 			min-width: 130px;
@@ -313,7 +313,7 @@ div.margin-top-login{
 	    color: #fff !important;
 	    cursor: pointer;
   	}
-	
+
 	.perfil{
 		width: 280px;
 		/*float: right;*/
@@ -376,7 +376,7 @@ div.margin-top-login{
 				}
 .size{
 	font-size: .6em !important;
-	float: right !important; 
+	float: right !important;
 	vertical-align: middle !important;
 	margin-top: 5px;
 }
@@ -469,57 +469,57 @@ ol.breadcrumb-cd-fi > .active {
 /*GRID=============================================================*/
 
 .div1,.div2,.div3,.div4,.div5,.div6,.div7,.div8,.div9,.div10,.div11,.div12,.div1-5,.div1-c{
-	float: left; 
+	float: left;
 	margin-right: 1%;
-	margin-bottom: 10px; 
-	box-sizing: border-box;	
+	margin-bottom: 10px;
+	box-sizing: border-box;
 }
 
-.div1{ 
+.div1{
 	width: 7.33%;
 }
-.div1-5{ 
+.div1-5{
 	width: 11%;
 	height: 500px;
 	margin-left: 2px;
 }
-.div1-c{ 
+.div1-c{
 	width: 11%;
 	margin-left: 10px;
 }
-.div2{ 
+.div2{
 	width: 15.66%;
 }
 
 .div3{
  	width: 23.99%;
- } 
+ }
 
- .div4{ 
+ .div4{
  	width: 32.33%;
- } 
+ }
 
- .div5{ 
+ .div5{
  	width: 40.65%;
  }
 
- .div6{ 
- 	width: 48.98%; 
- } 
- 
- .div7{ 
- 	width: 57.31%; 
-} 
+ .div6{
+ 	width: 48.98%;
+ }
+
+ .div7{
+ 	width: 57.31%;
+}
 .div8{
-	width: 65.64%; 
+	width: 65.64%;
 }
 
 .div9{
- 	width: 73.97%; 
+ 	width: 73.97%;
  }
 
 .div10{
-	width: 82.3%; 
+	width: 82.3%;
 }
 .div11{
 	width: 90.63%;
@@ -585,7 +585,7 @@ textarea:invalid{
 }
 
 button{
-	
+
 	font-size: 15px;
 	color: #fff;
 	border: none;
@@ -693,7 +693,7 @@ td{
 		}
 		#tabla td:nth-of-type(n):before{
 			content: attr(data-title);
-			font-weight: bold !important; 
+			font-weight: bold !important;
 			padding: 5px;
 			box-sizing: border-box;
 		}
@@ -737,7 +737,7 @@ textarea{
  	border-radius: 3px;
  	border: 1px solid rgba(0,0,0,.1);
  	position: relative;
- 	
+
 }
 
 	.ficha-nombre{
@@ -849,7 +849,7 @@ textarea{
 
 .chico{
 	width: 300px !important;
-	margin-left: -150px;	
+	margin-left: -150px;
 }
 
 .verModal{
@@ -864,22 +864,22 @@ textarea{
 }
 /*********** PREREGISTRO ************************************/
 table.table-preregistro{
-	width:100%; 
-	 border-collapse: collapse; 
+	width:100%;
+	 border-collapse: collapse;
 }
 table.table-preregistro tr td{
 	padding: 2px;
 }
 table.table-preregistro tr td {
-	
+
 	font-size: 9px;
-	text-align: center; 
+	text-align: center;
 	color: #000;
 	height: auto;
 }
 div.item2{
-	width:100%; 
-	 border-collapse: collapse; 
+	width:100%;
+	 border-collapse: collapse;
 }
 div.columna{
 	position: relative;
@@ -949,10 +949,10 @@ div.columna div.practicas a{
 	text-decoration: none !important;
 	height: 440px !important;
 	width:100% !important;
-	
+
     display: block;
     font-size: 12px;
-    
+
     margin-left: -60px;
     padding-top: 10px;
     writing-mode: sideways-rl;
@@ -1019,29 +1019,29 @@ div.columna div.item span{
 	}
 
 .haa-panel{
-	width: 17.5%; 
+	width: 17.5%;
 	border: solid 1px #ddd;
-	height: auto; 
-	float: left; 
+	height: auto;
+	float: left;
 }
 .haa-panel-hr{
-	width: 10%; 
+	width: 10%;
 	border: solid 1px #ddd;
-	height: auto; 
-	float: left; 
+	height: auto;
+	float: left;
 }
 .haa-panel .haa-element{
 	width: 100%;
-	border: solid 1px #ddd; 
-	height: 50px; 
-	float: left; 
+	border: solid 1px #ddd;
+	height: 50px;
+	float: left;
 	cursor: pointer !important;
 }
 .haa-panel .haa-element-2{
 	width: 100%;
-	border: solid 1px #ddd; 
-	height: 70px; 
-	float: left; 
+	border: solid 1px #ddd;
+	height: 70px;
+	float: left;
 	cursor: pointer !important;
 }
 .haa-panel .haa-element table,.haa-panel .haa-element table tbody, .haa-panel .haa-element table tbody tr, .haa-panel .haa-element table tbody tr{
@@ -1053,26 +1053,26 @@ div.columna div.item span{
 }
 .haa-panel-hr .haa-element-horario {
 	width: 100%;
-	border: solid 1px #ddd; 
-	height: 50px; 
-	float: left; 
+	border: solid 1px #ddd;
+	height: 50px;
+	float: left;
 	text-align: center;
 }
 .haa-panel-hr .haa-element-horario-2 {
 	width: 100%;
-	border: solid 1px #ddd; 
-	height: 70px; 
-	float: left; 
+	border: solid 1px #ddd;
+	height: 70px;
+	float: left;
 	text-align: center;
 }
 
 .haa-panel-hr .haa-element-horario span{
-	margin-top: 10px; 
-	display: block; 
+	margin-top: 10px;
+	display: block;
 }
 .haa-panel-hr .haa-element-horario-2 span{
-	margin-top: 20px; 
-	display: block; 
+	margin-top: 20px;
+	display: block;
 }
 /*ESTILOS SOBRE TRAMITES(FERNANDA)*/
 /*Secciónn: Trámite alumnos*/
@@ -1087,7 +1087,7 @@ div.columna div.item span{
 	overflow-x: hidden !important;
 	height: 270px;
 	cursor: pointer;
-    border-radius: 5px;	
+    border-radius: 5px;
 }
 .ficha2:hover{
 	box-shadow: 0px 0px 5px 0px rgba(0,68,168,.9);
@@ -1171,7 +1171,7 @@ div.columna div.item span{
 
 		.archivo p{
 			width: 100%;
-			height: 35px;
+			height: 40px;
 			text-align: center !important;
 			font-size: .9em;
 			font-weight: bold;
@@ -1214,7 +1214,7 @@ div.columna div.item span{
 			.bajar span{
 				width: 100%;
 				height: 30px;
-				position: absolute;	
+				position: absolute;
 				margin-left: -50%;
 				text-align: center;
 				color: rgba(0,0,0,.6);
@@ -1352,13 +1352,4 @@ input[type=file]::-webkit-file-upload-button{
   	cursor: pointer;
   	background:red;
 }
-
-/*FOTOS DEL ARCHIVO*/
-.solicitud{
-	background-image: url(base_url()+'static/img/upload.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	width: 10px;
-	height: 30px;
-}
-/*ESTILOS SOBRE TRAMITES(FERNANDA) ---------FIN-----------*/	
+/*ESTILOS SOBRE TRAMITES(FERNANDA) ---------FIN-----------*/

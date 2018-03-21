@@ -4,7 +4,7 @@
   <h4 class="h4 tamañoh4" id="id-tramite"><?=$catTramites[$tramite->idCatTramite] ?></h4>
 </div>
 
-<div class="col-xs-12" onclick="">
+<div class="col-xs-12">
 <br>
     <div class="form-group col-xs-12 col-sm-12 col-md-5 text-center">
       <label for="nombre">Nombre:</label>
@@ -68,7 +68,7 @@
     <div class="col-xs-12 archivos" id="contenedor">
     <?php if (!is_null($archivos)): ?>
       <?php foreach ($archivos as $archivo): ?>
-          <div class="col-xs-12 col-sm-6 col-md-2 archivo" id="archivo<?=$archivo->idRT?>" onmouseenter="bajar(<?=$archivo->idRT?>)" onmouseleave="quitar(<?=$archivo->idRT?>)">
+          <div class="col-xs-8 col-sm-6 col-md-2 archivo" id="archivo<?=$archivo->idRT?>" onmouseenter="bajar(<?=$archivo->idRT?>)" onmouseleave="quitar(<?=$archivo->idRT?>)">
             <p><?=$archivo->ruta?></p>
             <div class="file <?php if ($archivo->estatus == "RECIBIDO" ) {
                   echo "alta";

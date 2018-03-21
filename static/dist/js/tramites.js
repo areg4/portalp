@@ -318,50 +318,50 @@ function mostrarImg(){
   // var nombre_archivo = id_ruta;
   inicio = 0;
   fin  = 4;
+  console.log(ruta);
   $('#contenedor>div').each(function(e){
     subCadena =  $(this).children("p").html().substring(inicio,fin);
     if(subCadena == 'soli'){
-    var imagen = document.getElementById("img_"+this.id); 
+    var imagen = document.getElementById("img_"+this.id);
     imagen.setAttribute("src", base_url()+'static/img/solicitud.png');
   }
 
   if(subCadena == 'kard'){
-    var imagen = document.getElementById("img_"+this.id); 
+    var imagen = document.getElementById("img_"+this.id);
     imagen.setAttribute("src", base_url()+'static/img/kardex.png');
   }
 
   if(subCadena == 'cart'){
-    var imagen = document.getElementById("img_"+this.id); 
+    var imagen = document.getElementById("img_"+this.id);
     imagen.setAttribute("src", base_url()+'static/img/carta.png');
   }
 
   if(subCadena == 'trab'){
-    var imagen = document.getElementById("img_"+this.id); 
+    var imagen = document.getElementById("img_"+this.id);
     imagen.setAttribute("src", base_url()+'static/img/trabajo.png');
   }
 
   if(subCadena == 'prot'){
-    var imagen = document.getElementById("img_"+this.id); 
+    var imagen = document.getElementById("img_"+this.id);
     imagen.setAttribute("src", base_url()+'static/img/protocolo.png');
   }
 
   if(subCadena == 'pror'){
-    var imagen = document.getElementById("img_"+this.id); 
+    var imagen = document.getElementById("img_"+this.id);
     imagen.setAttribute("src", base_url()+'static/img/prorroga.png');
   }
 
   if(subCadena == 'reci'){
-    var imagen = document.getElementById("img_"+this.id); 
+    var imagen = document.getElementById("img_"+this.id);
     imagen.setAttribute("src", base_url()+'static/img/recibo.png');
   }
 
   if(subCadena == 'mapa'){
-    var imagen = document.getElementById("img_"+this.id); 
+    var imagen = document.getElementById("img_"+this.id);
     imagen.setAttribute("src", base_url()+'static/img/mapa.png');
   }
 
   });
-    
+
 
 }
-

@@ -1,3 +1,4 @@
+<body onload="mostrarImg()">
 <div class="text-center">
   <h3 class="h3">Datos del Trámite</h3>
   <h4 class="h4 tamañoh4" id="id-tramite"><?=$catTramites[$tramite->idCatTramite]?></h4>
@@ -35,11 +36,11 @@
       <p name="fecIniTram" id="fecIniTram"><?= fancy_date($tramite->fechaInicio); ?></p>
     </div>
 
-    <div class="archivos col-xs-12">
+    <div class="archivos col-xs-12" id="contenedor">
     <?php if (!is_null($archivos)): ?>
       <?php foreach ($archivos as $archivo): ?>
-          <div class="col-xs-12 col-sm-12 col-md-2 archivo" onmouseenter="bajar(<?=$archivo->idRT?>)" onmouseleave="quitar(<?=$archivo->idRT?>)">
-          <p><?=$archivo->ruta?> </p>
+          <div class="col-xs-8 col-sm-6 col-md-2 archivo" id="archivo<?=$archivo->idRT?>" onmouseenter="bajar(<?=$archivo->idRT?>)" onmouseleave="quitar(<?=$archivo->idRT?>)">
+          <p><?=$archivo->ruta?></p>
             <div class="file <?php if ($archivo->estatus == "RECIBIDO") {
               echo "alta";
             } if ($archivo->estatus == "RECHAZADO") {
@@ -48,8 +49,8 @@
               echo "nproceso";
             } if ($archivo->estatus == "APROBADO") {
               echo "finalizado";
-            }?>">
-              <img src="<?=base_url()?>static/img/file.png" id="0">
+            }?>" data-ruta="<?=$archivo->ruta?>" id="archivo">
+              <img src="" id="img_archivo<?=$archivo->idRT?>">
             </div>
             <figcaption class="bajar" id="<?=$archivo->idRT?>">
               <a href="<?=base_url()?>docs/tramites/<?=$alumno->expediente?>/<?=$archivo->idTramite?>/<?=$archivo->ruta?>" target="_blank" class="">Descargar</a>
@@ -101,3 +102,4 @@
       <button type="submit" class="btn btn-success btnRechaInves" data-id="<?=$tramite->idTramite?>">Rechazar</button>
     </div>
 </div>
+</body>
