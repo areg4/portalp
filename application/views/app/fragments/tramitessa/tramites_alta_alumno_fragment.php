@@ -290,7 +290,7 @@
         <div class="col-xs-12 col-sm-12 col-md-2 archivo">
           <p>Kardex CU</p>
           <div class="file">
-            <img src="<?=base_url()?>static/img/kardexc.png" id="2">
+            <img src="<?=base_url()?>static/img/kardex.png" id="2">
               <input class="ocultar"  id="" type="file" name="kardexTI" accept="application/pdf" required onchange="cambiarIcon(2)">
           </div>
         </div>
@@ -310,7 +310,7 @@
         <div class="col-xs-12 col-sm-12 col-md-2 archivo">
           <p>Kardex CU</p>
           <div class="file">
-            <img src="<?=base_url()?>static/img/kardexc.png" id="2">
+            <img src="<?=base_url()?>static/img/kardex.png" id="2">
               <input class="ocultar"  id="" type="file" name="kardexPro" accept="application/pdf" required onchange="cambiarIcon(2)">
           </div>
         </div>
