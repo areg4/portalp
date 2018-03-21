@@ -22,6 +22,18 @@ jQuery(document).ready(function($){
     window.location.href = base_url()+'portal-informatica-tramites-datos/'+data;
   });
 
+  $(".tr-notifi-investigacion").click(function(){
+    var data = $(this).attr('data');
+    // alert($(this).attr('data'));
+    window.location.href = base_url()+'portal-informatica-investigacion-tramite-datos/'+data;
+  });
+
+  $(".tr-notifi-consejo").click(function(){
+    var data = $(this).attr('data');
+    // alert($(this).attr('data'));
+    window.location.href = base_url()+'portal-informatica-consejo-tramite-datos/'+data;
+  });
+
   $(".ArchivoNuevo").change(function () {
     $(".btnUpdateFile").click();
   });
@@ -44,41 +56,9 @@ jQuery(document).ready(function($){
         processData: false,
         success:function(response) {
 
-          // alert(response);
-
           if (response=="OK") {
             window.location.reload();
           }
-          //
-          //   $.confirm({
-          //     title: 'Confirm!',
-          //     content: 'Simple confirm!',
-          //     buttons: {
-          //         confirm: function () {
-          //             window.location.href = base_url()+'portal-informatica-alumnos-tramites-datos/'+idTramite;
-          //         },
-          //         cancel: function () {
-          //             $.alert('Canceled!');
-          //         },
-          //         somethingElse: {
-          //             text: 'Something else',
-          //             btnClass: 'btn-blue',
-          //             keys: ['enter', 'shift'],
-          //             action: function(){
-          //                 $.alert('Something else?');
-          //             }
-          //         }
-          //     }
-          // });
-
-            // if (confirm("Archivo Actualizado!")) {
-            //   location.href = base_url()+'portal-informatica-alumnos-tramites-datos/'+idTramite;
-            // }
-            // window.location.reload();
-
-          // }
-          // alert(response);
-          // window.location.href = base_url()+'portal-informatica-alumnos-tramites-datos/'+response;
 
         }
       });
@@ -97,22 +77,10 @@ jQuery(document).ready(function($){
       type: 'post',
       data: parametros,
       success:function(data) {
-        // alert(response);
-        // window.location.href = base_url()+'portal-informatica-alumnos-tramites-datos/'+response;
         window.location.reload();
       }
     });
-    // alert(idRT);
   });
-
-
-  // $(".btn-horario-check").click(function(){
-  //   var aula = $(this).attr('id');
-  //   var width = document.getElementById('add-materia-carga').offsetWidth
-  //   //alert(width);
-  //   pasa = true;
-  //   $("div#add-materia-carga").load(base_url()+'portal-informatica-secretaria-academica-aulas-load/'+aula+'/'+width);
-  //  });
 
   $(".aprobFile").change(function () {
     var idRT = $(this).attr('data-id');
@@ -226,6 +194,95 @@ jQuery(document).ready(function($){
         }
       });
     }
+  });
+
+  $(".btnEnvInves").click(function () {
+    var idTramite   = $(this).attr("data-id");
+    parametros      = {
+      'idTramite' : idTramite,
+      'estatus'   : "INVESTIGACION"
+    };
+
+    $.ajax({
+      url     : base_url()+"portal-informatica-tramites-enviarA",
+      type    : 'post',
+      data    : parametros,
+      success : function (data) {
+        window.location.reload();
+      }
+    });
+  });
+
+  $(".btnEnvCons").click(function () {
+    var idTramite   = $(this).attr("data-id");
+    parametros      = {
+      'idTramite' : idTramite,
+      'estatus'   : "CONSEJO"
+    };
+
+    $.ajax({
+      url     : base_url()+"portal-informatica-tramites-enviarA",
+      type    : 'post',
+      data    : parametros,
+      success : function (data) {
+        window.location.reload();
+      }
+    });
+  });
+
+  $(".btnEnvPreacta").click(function () {
+    var idTramite   = $(this).attr("data-id");
+    parametros      = {
+      'idTramite' : idTramite,
+      'estatus'   : "PREACTA"
+    };
+
+    $.ajax({
+      url     : base_url()+"portal-informatica-tramites-enviarA",
+      type    : 'post',
+      data    : parametros,
+      success : function (data) {
+        window.location.reload();
+      }
+    });
+  });
+
+  $(".btnResAprobado").click(function () {
+    var idTramite   = $(this).attr("data-id");
+    parametros      = {
+      'idTramite' : idTramite,
+      'estatus'   : "APROBADO"
+    };
+
+    $.ajax({
+      url     : base_url()+"portal-informatica-tramites-enviarA",
+      type    : 'post',
+      data    : parametros,
+      success : function (data) {
+        window.location.reload();
+      }
+    });
+  });
+
+  $(".btnResRechazado").click(function () {
+    var idTramite   = $(this).attr("data-id");
+    parametros      = {
+      'idTramite' : idTramite,
+      'estatus'   : "RECHAZADO"
+    };
+
+    $.ajax({
+      url     : base_url()+"portal-informatica-tramites-enviarA",
+      type    : 'post',
+      data    : parametros,
+      success : function (data) {
+        window.location.reload();
+      }
+    });
+  });
+
+  $(".btnGenerarPreacta").click(function () {
+    alert("PREACTA");
   });
 
 

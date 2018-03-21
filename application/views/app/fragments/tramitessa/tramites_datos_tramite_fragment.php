@@ -80,38 +80,100 @@
             </div>
             <figcaption class="bajar" id="<?=$archivo->idRT?>">
               <a href="<?=base_url()?>docs/tramites/<?=$alumno->expediente?>/<?=$archivo->idTramite?>/<?=$archivo->ruta?>" target="_blank" class="">Descargar</a>
-              <div class="radios">
-                <label><input type="radio" class="aprobFile" data-id="<?=$archivo->idRT?>" id="<?=$archivo->idRT?>" name="aprobado-<?=$archivo->idRT?>" <?php if ($archivo->estatus == "APROBADO") { echo "checked";} ?> value="APROBADO" >&nbsp;Aprobado</label>
-              </div>
-              <div class="radios">
-                <label><input type="radio" class="aprobFile" data-id="<?=$archivo->idRT?>" id="<?=$archivo->idRT?>" name="aprobado-<?=$archivo->idRT?>" <?php if ($archivo->estatus == "RECHAZADO") { echo "checked";} ?> value="RECHAZADO" >&nbsp;Rechazado</label>
-              </div>
+
+              <?php if ($tramite->estatus=="PROCESO"): ?>
+                <div class="radios">
+                  <input type="radio" class="aprobFile" data-id="<?=$archivo->idRT?>" name="aprobado-<?=$archivo->idRT?>" <?php if ($archivo->estatus == "APROBADO") { echo "checked";} ?> value="APROBADO" ><span> Aprobado</span>
+                </div>
+                <div class="radios">
+                  <input type="radio" class="aprobFile" data-id="<?=$archivo->idRT?>" name="aprobado-<?=$archivo->idRT?>" <?php if ($archivo->estatus == "RECHAZADO") { echo "checked";} ?> value="RECHAZADO" ><span>Rechazado </span>
+                </div>
+              <?php endif; ?>
+
             </figcaption>
           </div>
       <?php endforeach; ?>
     <?php endif; ?>
     </div>
 
-    <?php if (!is_null($observacion)): ?>
-      <div class="form-group col-xs-12 col-sm-12 col-md-12">
-        <h3 class="tamañoh3">Comentario(s)</h3>
-        <p>Hay observaciones pendientes por atender</p>
+    <?php if ($tramite->estatus=="PROCESO"): ?>
+      <?php if (!is_null($observacion)): ?>
+        <div class="form-group col-xs-12 col-sm-12 col-md-12">
+          <h3 class="tamañoh3">Comentario(s)</h3>
+          <p>Hay observaciones pendientes por atender</p>
+        </div>
+      <?php else: ?>
+        <div class="col-xs-12 text-center center">
+          <h3 class="tamañoh3">Comentario(s)</h3>
+          <textarea id="comentarios" rows="10" cols="80" class="col-xs-6" re></textarea>
+          <br>
+        </div>
+      <?php endif; ?>
+    <?php endif; ?>
+
+    <?php if ($tramite->estatus=="INVESTIGACION" OR $tramite->estatus=="CONSEJO"): ?>
+      <div class="col-md-6 listaInv" id="listaInv">
+        <h1>Lista de Investigación</h1>
+        <table>
+          <tr>
+            <th>Miembro</th>
+            <th>Aprobación</th>
+            <th>Comentario</th>
+          </tr>
+          <tr>
+            <td>Miembro1</td>
+            <td>X</td>
+            <td>Comentario 1</td>
+          </tr>
+          <tr>
+            <td>Miembro2</td>
+            <td>/</td>
+            <td>Comentario 2</td>
+          </tr>
+        </table>
       </div>
-    <?php else: ?>
-      <div class="col-xs-12 text-center center">
-        <h3 class="tamañoh3">Comentario(s)</h3>
-        <textarea id="comentarios" rows="10" cols="80" class="col-xs-6" re></textarea>
-        <br>
+      <div class="col-md-6 listaConsejo" id="listaConsejo">
+        <h1>Lista de Consejo</h1>
+        <table>
+          <tr>
+            <th>Miembro</th>
+            <th>Aprobación</th>
+            <th>Comentario</th>
+          </tr>
+          <tr>
+            <td>Miembro1</td>
+            <td>X</td>
+            <td>Comentario 1</td>
+          </tr>
+          <tr>
+            <td>Miembro2</td>
+            <td>/</td>
+            <td>Comentario 2</td>
+          </tr>
+        </table>
       </div>
     <?php endif; ?>
 
     <div class="col-xs-12 opciones-t-sa">
-      <button type="submit" class="btn btn-success" data-id="<?=$tramite->idTramite?>">Enviar a CA</button>
-      <button type="submit" class="btn btn-success" data-id="<?=$tramite->idTramite?>">Enviar a CI</button>
+      <?php if ($tramite->estatus=="PROCESO" AND $tramite->estatus!="INVESTIGACION"): ?>
+        <button type="submit" class="btn btn-success btnEnvInves" data-id="<?=$tramite->idTramite?>">Enviar a Mesa de Investigación</button>
+        <button type="submit" class="btn btn-success btnEnvCons" data-id="<?=$tramite->idTramite?>">Enviar a Consejo Académico</button>
+      <?php endif; ?>
 
-      <?php if (is_null($observacion)): ?>
+      <?php if ($tramite->estatus=='INVESTIGACION'): ?>
+        <button type="submit" class="btn btn-success btnEnvCons" data-id="<?=$tramite->idTramite?>">Enviar a Consejo Académico</button>
+      <?php endif; ?>
+
+      <?php if (is_null($observacion) AND $tramite->estatus=="PROCESO"): ?>
         <button type="submit" class="btn btn-success" id="btn-enviar-observacion" data-id="<?=$tramite->idTramite?>" data-id-u="<?=$alumno->idAlumno?>" >Enviar observación</button>
       <?php endif; ?>
-      <button type="submit" class="btn btn-success" data-id="<?=$tramite->idTramite?>">Enviar respuesta</button>
+      <?php if ($tramite->estatus=="PREACTA"): ?>
+        <button type="submit" class="btn btn-success btnResAprobado" data-id="<?=$tramite->idTramite?>">Enviar respuesta APROBADO</button>
+        <button type="submit" class="btn btn-success btnResRechazado" data-id="<?=$tramite->idTramite?>">Enviar respuesta RECHAZADO</button>
+      <?php endif; ?>
+
+      <?php if ($tramite->estatus=="CONSEJO"): ?>
+        <button type="submit" class="btn btn-success btnEnvPreacta" data-id="<?=$tramite->idTramite?>">Enviar a Preacta</button>
+      <?php endif; ?>
     </div>
 </div>
