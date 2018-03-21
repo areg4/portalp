@@ -80,3 +80,21 @@ $route['portal-informatica-tramites-updateFileAR']                    = 'tramite
 $route['portal-informatica-tramites-addComentario']                   = 'tramitessa/tramitesAddComentario';
 
 $route['portal-informatica-tramites-buscar-archivo']                  = 'tramitessa/tramitesBuscarArchivo';
+
+
+$route['portal-informatica-tramites-enviarA']                         = 'tramitessa/tramitesEnviarA';
+
+$route['portal-informatica-tramites-respuesta-aprobado']              = 'tramitessa/tramitesRespuestaAprobado';
+$route['portal-informatica-tramites-respuesta-rechazado']             = 'tramitessa/tramitesRespuestaRechazado';
+
+$route['portal-informatica-tramites-preacta']                         = 'tramitessa/tramitesPreacta';
+
+
+/***************************TRÁMITES INVESTIGACIÓN*****************************/
+$route['portal-informatica-investigacion-tramites']                    = 'investigacion/tramites';
+$route['portal-informatica-investigacion-tramite-datos/(:num)']		     = 'investigacion/tramiteDatos/$1';
+
+
+/***************************TRÁMITES CONSEJO*****************************/
+$route['portal-informatica-consejo-tramites']                          = 'consejo/tramites';
+$route['portal-informatica-consejo-tramite-datos/(:num)']		           = 'consejo/tramiteDatos/$1';

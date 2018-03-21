@@ -66,7 +66,7 @@
           <p>Kárdex</p>
           <div class="file">
             <img src="<?=base_url()?>static/img/k.png" id="4">
-              <input class="ocultar"  id="" type="file" name="kardexEV" required onchange="cambiarI(4)">
+              <input class="ocultar"  id="" type="file" name="kardexEV" accept="application/pdf"  onchange="cambiarI(4)">
               <input type="hidden" name="idTramite" value="<?=$tramite->idCatTramite; ?>">
               <input type="hidden" name="tramite" value="<?=$tramite->tramite; ?>" >
           </div>

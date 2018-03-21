@@ -234,8 +234,12 @@ class Tramitessa extends CI_Controller {
             <td data-title="Tipo de Trámite">'.$catTramites[$tramite->idCatTramite].'</td>
             <td data-title="Estatus">'.$tramite->estatus.'</td>';
 
-            if (array_key_exists ( $tramite->idTramite , $observaciones )){
-							$strTable.='<td data-title="Observaciones">'.$observaciones[$tramite->idTramite].'</td>';
+						if (!is_null($observaciones)) {
+							if (array_key_exists ( $tramite->idTramite , $observaciones )){
+								$strTable.='<td data-title="Observaciones">'.$observaciones[$tramite->idTramite].'</td>';
+							}else{
+								$strTable.='<td data-title="Observaciones">Sin Observaciones</td>';
+							}
 						}else{
 							$strTable.='<td data-title="Observaciones">Sin Observaciones</td>';
 						}
@@ -390,51 +394,6 @@ class Tramitessa extends CI_Controller {
 					$this->tramitessa_model->insertRutaTramite($arrInsert);
 				}
 			}
-
-			// if ($tramite == "Readquisición de Pasantía") {
-			// 	// $solicitudRP					= $this->input->post('solicitudRP');
-			// 	// $cartaCalifDiploRP		= $this->input->post('cartaCalifDiploRP');
-			// 	$nuevoArchivoSRP 				= explode(".", $_FILES['solicitudRP']["name"]);
-			// 	$nuevoArchivoCRP 				= explode(".", $_FILES['cartaCalifDiploRP']["name"]);
-			// 	$nuevoArchivoRRP 				= explode(".", $_FILES['reciboDiploRP']["name"]);
-			// 	$nuevoArchivoKRP 				= explode(".", $_FILES['kardexRP']["name"]);
-      //
-			// 	if($nuevoArchivoSRP[1] != "pdf" || $nuevoArchivoCRP[1] != "pdf" || $nuevoArchivoRRP[1] != "pdf" || $nuevoArchivoKRP[1] != "pdf")
-			// 	{
-			// 		$this->borrarTramite($tramiteProceso->idTramite);
-			// 		$this->session->set_flashdata('error', 'altaPDFFail');
-			// 		redirect('portal-informatica-alumnos-tramites-alta/'.$idTramite);
-			// 	}
-      //
-			// 	$namesFiles = array();
-      //
-			// 	// archivo de solicitud
-			// 	$file = $this->file_model->uploadNonImage("tramites/".$alumno->expediente."/".$tramiteProceso->idTramite, $data = false, 'solicitudRP', "solicitudRP-".$alumno->expediente."-".$this->fecha);
-			// 	$namesFiles[] = $file;
-      //
-			// 	// archivo de cartaCalifDiploRP
-			// 	$file = $this->file_model->uploadNonImage("tramites/".$alumno->expediente."/".$tramiteProceso->idTramite, $data = false, 'cartaCalifDiploRP', "cartaCalifDiploRP-".$alumno->expediente."-".$this->fecha);
-			// 	$namesFiles[] = $file;
-      //
-			// 	// archivo de reciboDiploRP
-			// 	$file = $this->file_model->uploadNonImage("tramites/".$alumno->expediente."/".$tramiteProceso->idTramite, $data = false, 'reciboDiploRP', "reciboDiploRP-".$alumno->expediente."-".$this->fecha);
-			// 	$namesFiles[] = $file;
-      //
-			// 	// archivo de kardexRP
-			// 	$file = $this->file_model->uploadNonImage("tramites/".$alumno->expediente."/".$tramiteProceso->idTramite, $data = false, 'kardexRP', "kardexRP-".$alumno->expediente."-".$this->fecha);
-			// 	$namesFiles[] = $file;
-      //
-			// 	foreach ($namesFiles as $nf) {
-			// 		// die(var_dump($nf));
-			// 		$arrInsert = array(
-			// 			'idTramite'		=>	$tramiteProceso->idTramite,
-			// 			'ruta'				=> 	$nf,
-			// 			'estatus'			=>	'RECIBIDO',
-			// 			'habilitado'	=>	1
-			// 		);
-			// 		$this->tramitessa_model->insertRutaTramite($arrInsert);
-			// 	}
-			// }
 
 			if ($tramite == "Readquisición de Pasantía") {
 				// $solicitudRP					= $this->input->post('solicitudRP');
@@ -812,22 +771,32 @@ class Tramitessa extends CI_Controller {
 	{
 		$arrayObservaciones = array();
 		$observaciones = $this->tramitessa_model->getObserByIdA($idAlumno);
-		foreach ($observaciones as $observacion) {
-			$arrayObservaciones[$observacion->idTramite] = $observacion->observacion;
+		if (!is_null($observaciones)) {
+			foreach ($observaciones as $observacion) {
+				$arrayObservaciones[$observacion->idTramite] = $observacion->observacion;
+			}
+			// die(var_dump($arrayTramites));
+			return $arrayObservaciones;
+		}else{
+			return null;
 		}
-		// die(var_dump($arrayTramites));
-		return $arrayObservaciones;
+
 	}
 
 	private function observacionesG()
 	{
 		$arrayObservaciones = array();
 		$observaciones = $this->tramitessa_model->getObservaciones();
-		foreach ($observaciones as $observacion) {
-			$arrayObservaciones[$observacion->idTramite] = $observacion->observacion;
+		if (!is_null($observaciones)) {
+			foreach ($observaciones as $observacion) {
+				$arrayObservaciones[$observacion->idTramite] = $observacion->observacion;
+			}
+			// die(var_dump($arrayTramites));
+			return $arrayObservaciones;
+		}else{
+			return null;
 		}
-		// die(var_dump($arrayTramites));
-		return $arrayObservaciones;
+
 	}
 
   public function tramitesAlumnoDatos($idTramite)
@@ -984,6 +953,36 @@ class Tramitessa extends CI_Controller {
 		}
 		// die(var_dump($arrayTramites));
 		return $arrayExpAlumnos;
+	}
+
+	public function tramitesEnviarA()
+	{
+		$idTramite 	= $this->input->post('idTramite');
+		$estatus		= $this->input->post('estatus');
+
+		if ($this->updateTramiteTo($idTramite, $estatus)) {
+			$this->session->set_flashdata('error', 'updateOk');
+		}else{
+			$this->session->set_flashdata('error', 'updateFail');
+		}
+	}
+
+	public function tramitesPreacta()
+	{
+		$data['sys_app_title'] 	= 'TRÁMITES PREACTA';
+		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRÁMITES';
+		$data['app_sub_menu'] 	= 'iTramite';
+		$data['app_sub_menu_item'] = 'tramitesPreacta';
+		// $data['user']      	= $this->usuario;
+		$data['js']       = array('tramites');
+		$data['menu_app']   = $this->load->view('app/components/menu/tramitessa_component', $data, TRUE);
+		$data['menu'] 		= $this->load->view('app/components/head_component',$data,TRUE);
+		$data['catTramites'] = $this->catTramites();
+		$data['tramites'] = $this->tramitessa_model->getTramitesPreacta();
+		$data['expAlumno'] = $this->catAlumnosExp();
+		$data['observaciones'] = $this->observacionesG();
+		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/tramites_preacta', $data, TRUE);
+		$this->load->view('app/main_view', $data, FALSE);
 	}
 }
 

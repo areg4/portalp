@@ -26,7 +26,13 @@
 
     <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
       <label for="text">Estatus:</label>
-      <p name="estatus" id="estatus"><?=$tramite->estatus; ?></p>
+      <p name="estatus" id="estatus">
+        <?php if ($tramite->estatus=="ALTA" OR $tramite->estatus=="APROBADO" OR $tramite->estatus=="RECHAZADO"): ?>
+          <?=$tramite->estatus; ?>
+        <?php else: ?>
+          PROCESO
+        <?php endif; ?>
+      </p>
     </div>
 
     <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
@@ -79,7 +85,7 @@
                   <input type="hidden" name="idRT" value="<?=$archivo->idRT?>">
                   <input type="hidden" name="idTramite" value="<?=$archivo->idTramite?>">
                   <input type="hidden" name="nombreF" value="<?=$archivo->ruta?>">
-                  <?php if ($archivo->estatus == 'RECHAZADO'): ?>
+                  <?php if ($archivo->estatus == 'RECHAZADO' AND $tramite->estatus=="PROCESO"): ?>
                     <span>Subir archivo</span><input class="ArchivoNuevo"  id="file-<?=$archivo->idRT?>" type="file" name="file" accept="application/pdf" required onchange="cambiarIcon(1)">
                     <input style="display:none;" class="btn btnUpdateFile" data-tramite-id="<?=$archivo->idTramite?>" data-id="<?=$archivo->idRT?>" type="submit" name="" value="Actualizar">
                   <?php endif; ?>
@@ -90,6 +96,13 @@
       <?php endforeach; ?>
     <?php endif; ?>
     </div>
+
+    <?php if ($tramite->estatus=="APROBADO" OR $tramite->estatus=="RECHAZADO"): ?>
+      <div class="col-md-12 respuestaFinal">
+        <h1>Tu trámite ha sido finalizado con una respuesta de: <?=$tramite->estatus?></h1> <br>
+        <h2>Favor de pasar a Secretaría Académica para recoger la hoja correspondiente.</h2>
+      </div>
+    <?php endif; ?>
 
     <?php if ($tramite->estatus == "OBSERVACIONES"): ?>
       <div class="form-group text-center col-xs-12">

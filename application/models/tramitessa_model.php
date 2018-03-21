@@ -83,7 +83,8 @@ class Tramitessa_model extends CI_Model {
 	{
 		$a = $this->tablas['tramites'];
 		$this->db_b->where('idAlumno',$idAlumno);
-		$this->db_b->where('estatus <>', "FINALIZADO");
+		$this->db_b->where('estatus <>', "APROBADO");
+		$this->db_b->where('estatus <>', "RECHAZADO");
     $this->db_b->where('habilitado', 1);
 		$query = $this->db_b->get($a);
 		return ($query->num_rows() >= 1) ? $query->result() : NULL;
@@ -173,7 +174,8 @@ class Tramitessa_model extends CI_Model {
 	{
 		$a = $this->tablas['tramites'];
 		$this->db_b->where('idAlumno',$idAlumno);
-		$this->db_b->where('estatus', "FINALIZADO");
+		$this->db_b->where('estatus', "APROBADO");
+		$this->db_b->or_where('estatus', "RECHAZADO");
     $this->db_b->where('habilitado', 1);
 		$this->db_b->order_by('fechaFin', 'asc');
 		$query = $this->db_b->get($a);
@@ -193,7 +195,8 @@ class Tramitessa_model extends CI_Model {
 	public function getTramites()
 	{
 		$a = $this->tablas['tramites'];
-		$this->db_b->where('estatus <>', "FINALIZADO");
+		$this->db_b->where('estatus <>', "APROBADO");
+		$this->db_b->where('estatus <>', "RECHAZADO");
     $this->db_b->where('habilitado', 1);
 		$this->db_b->order_by('estatus', 'asc');
 		$query = $this->db_b->get($a);
@@ -222,6 +225,16 @@ class Tramitessa_model extends CI_Model {
 		// $this->db_b->or_where('idAlumno', $criterio);
 		// $this->db_b->or_where('estatus', $criterio);
 		// $this->db_b->or_where('idAlumno', $criterio);
+		$query = $this->db_b->get($a);
+		return ($query->num_rows() >= 1) ? $query->result() : NULL;
+	}
+
+	public function getTramitesPreacta()
+	{
+		$a = $this->tablas['tramites'];
+		$this->db_b->where('estatus', "PREACTA");
+    $this->db_b->where('habilitado', 1);
+		$this->db_b->order_by('estatus', 'asc');
 		$query = $this->db_b->get($a);
 		return ($query->num_rows() >= 1) ? $query->result() : NULL;
 	}

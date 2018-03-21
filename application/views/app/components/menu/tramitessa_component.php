@@ -26,6 +26,12 @@
 				<i class="fa fa-angle-right"></i> Archivo
 			</a>
 		</li>
+		<?php $subnav = ($app_sub_menu_item == 'tramitesPreacta')? 'active':''; ?>
+		<li class="<?=$subnav?>">
+			<a href="<?=base_url()?>portal-informatica-tramites-preacta" >
+				<i class="fa fa-angle-right"></i> Preacta
+			</a>
+		</li>
 	</ul>
 </li>
 
