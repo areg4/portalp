@@ -318,7 +318,7 @@ function mostrarImg(){
   // var nombre_archivo = id_ruta;
   inicio = 0;
   fin  = 4;
-  console.log(ruta);
+  // console.log(ruta);
   $('#contenedor>div').each(function(e){
     subCadena =  $(this).children("p").html().substring(inicio,fin);
     if(subCadena == 'soli'){

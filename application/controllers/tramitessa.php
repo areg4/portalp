@@ -310,11 +310,11 @@ class Tramitessa extends CI_Controller {
 		$this->form_validation->set_error_delimiters('<span class="error">', '</span>');
 		// Ejecuto la validacion de campos de lado del servidor
 
-		if (!$this -> form_validation -> run()) {
-			$this -> session -> set_flashdata('error', 'noSuficienteDatos');
-			redirect('portal-informatica-alumnos-tramites-notificaciones');
-			return false;
-		}
+		// if (!$this -> form_validation -> run()) {
+		// 	$this -> session -> set_flashdata('error', 'noSuficienteDatos');
+		// 	redirect('portal-informatica-alumnos-tramites-alta/'.$idTramite);
+		// 	return false;
+		// }
 
 		$this->load->model('file_model');
 
@@ -732,10 +732,10 @@ class Tramitessa extends CI_Controller {
 
 			// die(var_dump($arrInsert));
 			$this->session->set_flashdata('error', 'altaTramiteOk');
-			redirect('portal-informatica-alumnos-tramites');
+			redirect('portal-informatica-alumnos-tramites-alta/'.$idTramite);
 		}else{
 			$this->session->set_flashdata('error', 'insertFail');
-			redirect('portal-informatica-alumnos-tramites');
+			redirect('portal-informatica-alumnos-tramites-alta/'.$idTramite);
 		}
 	}
 
