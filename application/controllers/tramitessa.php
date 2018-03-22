@@ -81,10 +81,11 @@ class Tramitessa extends CI_Controller {
 
 		$tramites = $this->tramitessa_model->getTramites();
 
-		foreach ($tramites as $tramite) {
-			$tramite->idPeriodo = $this->common_model->getPeriodo($tramite->idPeriodo)->periodo;
+		if (!is_null($tramites)) {
+			foreach ($tramites as $tramite) {
+				$tramite->idPeriodo = $this->common_model->getPeriodo($tramite->idPeriodo)->periodo;
+			}
 		}
-
 		$data['tramites'] = $tramites;
 		$data['expAlumno'] = $this->catAlumnosExp();
 		$data['observaciones'] = $this->observacionesG();
@@ -763,8 +764,10 @@ class Tramitessa extends CI_Controller {
 		$data['menu'] 		= $this->load->view('app/components/head_component',$data,TRUE);
     $data['js']       = array('tramites');
 		$tramitesP = $this->tramitessa_model->getTramitesProcesoByIdAlumno($this->idAlumno);
-		foreach ($tramitesP as $tramite) {
-			$tramite->idPeriodo = $this->common_model->getPeriodo($tramite->idPeriodo)->periodo;
+		if (!is_null($tramitesP)) {
+			foreach ($tramitesP as $tramite) {
+				$tramite->idPeriodo = $this->common_model->getPeriodo($tramite->idPeriodo)->periodo;
+			}
 		}
 		$data['tramitesP']		=	$tramitesP;
 		$data['catTramites'] 	= $this->catTramites();
@@ -948,8 +951,10 @@ class Tramitessa extends CI_Controller {
 
 		$tramitesF				=	$this->tramitessa_model->getTramitesFinalizadosByIdAlumno($this->idAlumno);
 
-		foreach ($tramitesF as $tramite) {
-			$tramite->idPeriodo = $this->common_model->getPeriodo($tramite->idPeriodo)->periodo;
+		if (!is_null($tramitesF)) {
+			foreach ($tramitesF as $tramite) {
+				$tramite->idPeriodo = $this->common_model->getPeriodo($tramite->idPeriodo)->periodo;
+			}
 		}
 
 		$data['tramitesF']		=	$tramitesF;
@@ -1006,8 +1011,10 @@ class Tramitessa extends CI_Controller {
 
 		$tramites						=	$this->tramitessa_model->getTramitesPreacta();
 
-		foreach ($tramites as $tramite) {
-			$tramite->idPeriodo	=	$this->common_model->getPeriodo($tramite->idPeriodo)->periodo;
+		if (!is_null($tramites)) {
+			foreach ($tramites as $tramite) {
+				$tramite->idPeriodo	=	$this->common_model->getPeriodo($tramite->idPeriodo)->periodo;
+			}
 		}
 
 		$data['tramites'] =	$tramites;
