@@ -13,6 +13,7 @@
         <tr class="">
           <th>Tipo de trámite</th>
           <th>Estatus</th>
+          <th>Periodo</th>
           <th>Fecha de Inicio</th>
           <th>Observaciones</th>
         </tr>
@@ -39,6 +40,7 @@
                 PROCESO
               <?php endif; ?>
             </td>
+            <td data-title="Periodo"><?=$tramite->idPeriodo?></td>
             <td data-title="Fecha de Inicio"><?=fancy_date($tramite->fechaInicio);?></td>
             <?php if (!is_null($observaciones)): ?>
               <?php if (array_key_exists ( $tramite->idTramite , $observaciones )): ?>

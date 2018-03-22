@@ -11,6 +11,7 @@
         <th class="">Expediente</th>
         <th class="">Tipo de Trámite</th>
         <th class="">Estatus</th>
+        <th class="">Periodo</th>
         <th class="">Observaciones</th>
         <th class="">Fecha de Inicio</th>
         <th class="">Fecha de Última Modificación</th>
@@ -34,6 +35,7 @@
             <td data-title="Expediente"><?=$expAlumno[$tramite->idAlumno]?></td>
             <td data-title="Tipo de Trámite"><?=$catTramites[$tramite->idCatTramite]?></td>
             <td data-title="Estatus"><?=$tramite->estatus?></td>
+            <td data-title="Periodo"><?=$tramite->idPeriodo?></td>
 
             <?php if (!is_null($observaciones)): ?>
               <?php if (array_key_exists ( $tramite->idTramite , $observaciones )): ?>

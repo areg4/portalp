@@ -78,7 +78,14 @@ class Tramitessa extends CI_Controller {
 		$data['menu_app']   = $this->load->view('app/components/menu/tramitessa_component', $data, TRUE);
 		$data['menu'] 		= $this->load->view('app/components/head_component',$data,TRUE);
 		$data['catTramites'] = $this->catTramites();
-		$data['tramites'] = $this->tramitessa_model->getTramites();
+
+		$tramites = $this->tramitessa_model->getTramites();
+
+		foreach ($tramites as $tramite) {
+			$tramite->idPeriodo = $this->common_model->getPeriodo($tramite->idPeriodo)->periodo;
+		}
+
+		$data['tramites'] = $tramites;
 		$data['expAlumno'] = $this->catAlumnosExp();
 		$data['observaciones'] = $this->observacionesG();
 		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/tramites_proceso', $data, TRUE);
@@ -125,6 +132,7 @@ class Tramitessa extends CI_Controller {
 
 		$data['archivos']		 = $archivos;
 		$data['tramite']		=	$tramite;
+		$data['periodoTramite'] = $this->common_model->getPeriodo($tramite->idPeriodo)->periodo;
 		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/tramites_datos_tramite_fragment', $data, TRUE);
 		$this->load->view('app/main_view', $data, FALSE);
 	}
@@ -194,7 +202,7 @@ class Tramitessa extends CI_Controller {
 		$data['menu_app']   = $this->load->view('app/components/menu/tramitessa_component', $data, TRUE);
 		$data['menu'] 		= $this->load->view('app/components/head_component',$data,TRUE);
 
-		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/tramites_archivo', $data, TRUE);
+		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/tramites_archivo_fragment', $data, TRUE);
 		$this->load->view('app/main_view', $data, FALSE);
 	}
 
@@ -219,6 +227,7 @@ class Tramitessa extends CI_Controller {
 						<th class="">Expediente</th>
 						<th class="">Tipo de Trámite</th>
 						<th class="">Estatus</th>
+						<th class="">Periodo</th>
 						<th class="">Observaciones</th>
 						<th class="">Fecha de Inicio</th>
 						<th class="">Fecha de Última Modificación</th>
@@ -232,7 +241,8 @@ class Tramitessa extends CI_Controller {
             <td data-title="ID Trámite">'.$tramite->idTramite.'</td>
             <td data-title="Expediente">'.$expAlumno[$tramite->idAlumno].'</td>
             <td data-title="Tipo de Trámite">'.$catTramites[$tramite->idCatTramite].'</td>
-            <td data-title="Estatus">'.$tramite->estatus.'</td>';
+            <td data-title="Estatus">'.$tramite->estatus.'</td>
+						<td data-title="Periodo">'.$this->common_model->getPeriodo($tramite->idPeriodo)->periodo.'</td>';
 
 						if (!is_null($observaciones)) {
 							if (array_key_exists ( $tramite->idTramite , $observaciones )){
@@ -297,6 +307,7 @@ class Tramitessa extends CI_Controller {
 		$data['menu'] 		= $this->load->view('app/components/head_component',$data,TRUE);
     $data['js']       = array('tramites');
 		$data['tramite']		=	$this->tramitessa_model->getTramiteById($idTramite);
+		$data['periodo']		= $this->periodo->periodo;
 		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/tramites_alta_alumno_fragment', $data, TRUE);
 		$this->load->view('app/main_view', $data, FALSE);
   }
@@ -330,6 +341,7 @@ class Tramitessa extends CI_Controller {
 
 		$idAlumno 		= $this->idAlumno;
 		$estatus			= "ALTA";
+		$idPeriodo		= $this->periodo->idPeriodo;
 		$fechaInicio	= date("Y-m-d H:i:s");
 		$feculmod			= $this->fecha;
 		$usumod				= $this->idAlumno;
@@ -339,6 +351,7 @@ class Tramitessa extends CI_Controller {
 			'idCatTramite' 		=> 	$idTramite,
 			'idAlumno' 			=> 	$idAlumno,
 			'estatus' 			=> 	$estatus,
+			'idPeriodo'			=>	$idPeriodo,
 			'fechaInicio'		=>  $fechaInicio,
 			'feculmod'			=>  $feculmod,
 			'usumod'				=> $usumod,
@@ -749,8 +762,12 @@ class Tramitessa extends CI_Controller {
 		$data['menu_app']   = $this->load->view('app/components/menu/alumno_component', $data, TRUE);
 		$data['menu'] 		= $this->load->view('app/components/head_component',$data,TRUE);
     $data['js']       = array('tramites');
-		$data['tramitesP']= $this->tramitessa_model->getTramitesProcesoByIdAlumno($this->idAlumno);
-		$data['catTramites'] = $this->catTramites();
+		$tramitesP = $this->tramitessa_model->getTramitesProcesoByIdAlumno($this->idAlumno);
+		foreach ($tramitesP as $tramite) {
+			$tramite->idPeriodo = $this->common_model->getPeriodo($tramite->idPeriodo)->periodo;
+		}
+		$data['tramitesP']		=	$tramitesP;
+		$data['catTramites'] 	= $this->catTramites();
 		$data['observaciones'] = $this->observacionesByAlumno($this->idAlumno);
 		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/tramites_proceso_alumno_fragment', $data, TRUE);
 		$this->load->view('app/main_view', $data, FALSE);
@@ -822,6 +839,7 @@ class Tramitessa extends CI_Controller {
     $data['js']       = array('tramites');
     // $data['idTramite']       = $idTramite;
 		$data['tramite']		=	$tramite;
+		$data['periodoTramite'] =	$this->common_model->getPeriodo($tramite->idPeriodo)->periodo;
 		$data['alumno']      	= $this->alumno;
 		$data['catTramites'] = $this->catTramites();
 		$data['observacion'] = $this->tramitessa_model->getObservacionByTramite($idTramite);
@@ -927,7 +945,14 @@ class Tramitessa extends CI_Controller {
 		$data['menu_app']   = $this->load->view('app/components/menu/alumno_component', $data, TRUE);
 		$data['menu'] 		= $this->load->view('app/components/head_component',$data,TRUE);
     $data['js']       = array('tramites');
-		$data['tramitesF']= $this->tramitessa_model->getTramitesFinalizadosByIdAlumno($this->idAlumno);
+
+		$tramitesF				=	$this->tramitessa_model->getTramitesFinalizadosByIdAlumno($this->idAlumno);
+
+		foreach ($tramitesF as $tramite) {
+			$tramite->idPeriodo = $this->common_model->getPeriodo($tramite->idPeriodo)->periodo;
+		}
+
+		$data['tramitesF']		=	$tramitesF;
 		$data['catTramites'] = $this->catTramites();
 		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/tramites_finalizados_alumno_fragment', $data, TRUE);
 		$this->load->view('app/main_view', $data, FALSE);
@@ -978,10 +1003,17 @@ class Tramitessa extends CI_Controller {
 		$data['menu_app']   = $this->load->view('app/components/menu/tramitessa_component', $data, TRUE);
 		$data['menu'] 		= $this->load->view('app/components/head_component',$data,TRUE);
 		$data['catTramites'] = $this->catTramites();
-		$data['tramites'] = $this->tramitessa_model->getTramitesPreacta();
+
+		$tramites						=	$this->tramitessa_model->getTramitesPreacta();
+
+		foreach ($tramites as $tramite) {
+			$tramite->idPeriodo	=	$this->common_model->getPeriodo($tramite->idPeriodo)->periodo;
+		}
+
+		$data['tramites'] =	$tramites;
 		$data['expAlumno'] = $this->catAlumnosExp();
 		$data['observaciones'] = $this->observacionesG();
-		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/tramites_preacta', $data, TRUE);
+		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/tramites_preacta_fragment', $data, TRUE);
 		$this->load->view('app/main_view', $data, FALSE);
 	}
 }

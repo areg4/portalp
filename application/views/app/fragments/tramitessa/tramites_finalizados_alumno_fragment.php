@@ -13,6 +13,7 @@
         <tr class="">
           <th>Tipo de Trámite</th>
           <th>Estatus</th>
+          <th>Periodo</th>
           <th>Fecha Inicio</th>
           <th>Fecha Finalización</th>
         </tr>
@@ -23,6 +24,7 @@
           <tr class="tr-notifi-alumno" data="<?=$tramite->idTramite?>" title="Ir a más información">
             <td data-title="Tipo de trámite"><?=$catTramites[$tramite->idCatTramite];?></td>
             <td data-title="Estatus"><?=$tramite->estatus;?></td>
+            <td data-title="Estatus"><?=$tramite->idPeriodo;?></td>
             <td data-title="Fecha Inicio"><?=fancy_date($tramite->fechaInicio)?></td>
             <td data-title="Fecha Finalización"><?=fancy_date($tramite->fechaFin)?></td>
           </tr>

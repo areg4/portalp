@@ -37,6 +37,11 @@
     </div>
 
     <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
+      <label for="text">Periodo:</label>
+      <p name="periodo" id="periodo"><?=$periodoTramite;?></p>
+    </div>
+
+    <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
       <label for="text">Fecha de Última Modificación:</label>
       <p name="fecUltMod" id="fecUltMod"><?=fancy_date($tramite->feculmod); ?></p>
     </div>

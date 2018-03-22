@@ -22,6 +22,11 @@
       <p name="expediente" id="expediente"><?php echo $alumno->expediente; ?></p>
     </div>
 
+    <div class="form-group col-xs-12 col-sm-12 col-md-6 text-center mtop">
+      <label for="text">Periodo</label>
+      <p name="expediente" id="expediente"><?php echo $periodo; ?></p>
+    </div>
+
     <!-- <?php if ($examenV): ?>
         <?php if (!is_null($materiasV)): ?>
           <label for="text">Materia:</label>
