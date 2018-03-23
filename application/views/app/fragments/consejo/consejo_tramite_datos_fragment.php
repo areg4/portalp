@@ -1,7 +1,7 @@
 <body onload="mostrarImg()">
-<div class="text-center">
-  <h3 class="h3">Datos del Trámite</h3>
-  <h4 class="h4 tamañoh4" id="id-tramite"><?=$catTramites[$tramite->idCatTramite]?></h4>
+<div>
+  <h3 class="h3 text-center">Datos del Trámite</h3>
+  <h4 class="h4 tamañoh4 text-center" id="id-tramite"><?=$catTramites[$tramite->idCatTramite]?></h4>
 </div>
 
 <div class="col-xs-12">

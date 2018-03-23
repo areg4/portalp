@@ -13,8 +13,8 @@
         <th class="">Estatus</th>
         <th class="">Periodo</th>
         <th class="">Observaciones</th>
-        <th class="">Fecha de Inicio</th>
-        <th class="">Fecha de Última Modificación</th>
+        <th class="">Fecha Inicio</th>
+        <th class="">Fecha Última Modificación</th>
       </tr>
     </thead>
     <tbody>
@@ -46,8 +46,8 @@
             <?php else: ?>
               <td data-title="Observaciones">Sin Observaciones</td>
             <?php endif; ?>
-            <td data-title="Fecha de Inicio"><?=fancy_date($tramite->fechaInicio)?></td>
-            <td data-title="Fecha de Última Modificación"><?=fancy_date($tramite->feculmod)?></td>
+            <td data-title="Fecha Inicio"><?=fancy_date($tramite->fechaInicio)?></td>
+            <td data-title="Fecha Última Modificación"><?=fancy_date($tramite->feculmod)?></td>
           </tr>
         <?php endforeach; ?>
       <?php else: ?>

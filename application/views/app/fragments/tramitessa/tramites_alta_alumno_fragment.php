@@ -8,7 +8,7 @@
 <div class="col-xs-12">
 <br>
   <form enctype="multipart/form-data" action="<?php echo base_url().'portal-informatica-alumnos-tramites-add' ?>" method="post" >
-    <div class="form-group col-xs-12 col-sm-12 col-md-6 text-center mtop">
+    <div class="form-group col-xs-12 col-sm-12 col-md-5 text-center mtop">
       <label for="nombre">Nombre</label>
       <?php if (!is_null($alumno->nombre_alumno)): ?>
         <p name="nombre" id="nombre"><?php echo $alumno->nombre_alumno; ?></p>
@@ -17,12 +17,12 @@
       <?php endif; ?>
     </div>
 
-    <div class="form-group col-xs-12 col-sm-12 col-md-6 text-center mtop">
+    <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center mtop">
       <label for="text">Expediente</label>
       <p name="expediente" id="expediente"><?php echo $alumno->expediente; ?></p>
     </div>
 
-    <div class="form-group col-xs-12 col-sm-12 col-md-6 text-center mtop">
+    <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center mtop">
       <label for="text">Periodo</label>
       <p name="expediente" id="expediente"><?php echo $periodo; ?></p>
     </div>

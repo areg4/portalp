@@ -16,7 +16,7 @@
         <th class="">Estatus</th>
         <th class="">Periodo</th>
         <th class="">Aprobado</th>
-        <th class="">Fecha de Inicio</th>
+        <th class="">Fecha Inicio</th>
       </tr>
     </thead>
     <tbody>
@@ -29,12 +29,14 @@
             <td data-title="Estatus"><?=$tramite->estatus?></td>
             <td data-title="Periodo"><?=$tramite->idPeriodo?></td>
             <td data-title="Estatus">X</td>
-            <td data-title="Fecha de Inicio"><?=fancy_date($tramite->fechaInicio)?></td>
+            <td data-title="Fecha Inicio"><?=fancy_date($tramite->fechaInicio)?></td>
           </tr>
         <?php endforeach; ?>
     </tbody>
   </table>
   <?php else: ?>
-    <h1>No hay trámites</h1>
+    <div class="col-xs-12 text-center">
+      <h3>No hay trámites</h3>
+    </div>
   <?php endif; ?>
 </div>

@@ -22,7 +22,9 @@
           </tr>
         <?php endforeach; ?>
       <?php else: ?>
-        <h1>No hay trámites</h1>
+        <div class="col-xs-12 text-center">
+        <h3>No hay trámites</h3>
+      </div>
       <?php endif; ?>
     </tbody>
   </table>

@@ -61,7 +61,7 @@
         <p name="expediente" id="expediente"><?=$observacion->observacion?></p>
       </div>
     <?php else: ?>
-      <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
+      <div class="form-group col-xs-12 col-sm-12 text-center">
         <label for="text">Observaciones</label>
         <p name="expediente" id="expediente">Sin observaciones por el momento</p>
       </div>

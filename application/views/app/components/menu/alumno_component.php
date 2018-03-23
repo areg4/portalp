@@ -56,7 +56,7 @@
 		<?php $subnav = ($app_sub_menu_item == 'altaTramiteA')? 'active':''; ?>
 		<li class="<?=$subnav?>">
 			<a href="<?=base_url()?>portal-informatica-alumnos-tramites">
-					<i class="fa fa-angle-right"></i> Alta<i class="fa fa-circle size"></i>
+					<i class="fa fa-angle-right"></i> Alta
 			</a>
 		</li>
 		<?php $subnav = ($app_sub_menu_item == 'tramitesProcesoA')? 'active':''; ?>

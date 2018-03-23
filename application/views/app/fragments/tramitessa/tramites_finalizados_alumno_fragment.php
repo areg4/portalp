@@ -34,5 +34,7 @@
   </div>
 
 <?php else: ?>
-  <p>No hay Trámites Finalizados</p>
+  <div class="col-xs-12 text-center">
+    <h3>No hay trámites finalizados por el momento</h3>
+  </div>
 <?php endif; ?>
