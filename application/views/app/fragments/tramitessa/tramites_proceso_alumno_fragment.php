@@ -34,7 +34,7 @@
           } ?>" data="<?=$tramite->idTramite?>" title="Ir a más información">
             <td data-title="Tipo de trámite"><?=$catTramites[$tramite->idCatTramite];?></td>
             <td data-title="Estatus">
-              <?php if ($tramite->estatus=="ALTA" OR $tramite->estatus=="APROBADO" OR $tramite->estatus=="RECHAZADO"): ?>
+              <?php if ($tramite->estatus=="ALTA" OR $tramite->estatus=="APROBADO" OR $tramite->estatus=="RECHAZADO" OR $tramite->estatus=="OBSERVACIONES"): ?>
                 <?=$tramite->estatus; ?>
               <?php else: ?>
                 PROCESO

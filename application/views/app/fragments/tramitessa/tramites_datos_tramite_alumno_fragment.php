@@ -91,7 +91,7 @@
                   <input type="hidden" name="idRT" value="<?=$archivo->idRT?>">
                   <input type="hidden" name="idTramite" value="<?=$archivo->idTramite?>">
                   <input type="hidden" name="nombreF" value="<?=$archivo->ruta?>">
-                  <?php if ($archivo->estatus == 'RECHAZADO' AND $tramite->estatus=="PROCESO"): ?>
+                  <?php if ($archivo->estatus == 'RECHAZADO' AND $tramite->estatus=="OBSERVACIONES"): ?>
                     <span>Subir archivo</span><input class="ArchivoNuevo"  id="file-<?=$archivo->idRT?>" type="file" name="file" accept="application/pdf" required onchange="cambiarIcon(1)">
                     <input style="display:none;" class="btn btnUpdateFile" data-tramite-id="<?=$archivo->idTramite?>" data-id="<?=$archivo->idRT?>" type="submit" name="" value="Actualizar">
                   <?php endif; ?>
