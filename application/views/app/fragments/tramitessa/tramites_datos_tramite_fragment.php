@@ -116,45 +116,90 @@
     <?php endif; ?>
 
     <?php if ($tramite->estatus=="INVESTIGACION" OR $tramite->estatus=="CONSEJO"): ?>
-      <div class="col-md-6 listaInv" id="listaInv">
-        <h1>Lista de Investigación</h1>
-        <table>
-          <tr>
-            <th>Miembro</th>
-            <th>Aprobación</th>
-            <th>Comentario</th>
-          </tr>
-          <tr>
-            <td>Miembro1</td>
-            <td>X</td>
-            <td>Comentario 1</td>
-          </tr>
-          <tr>
-            <td>Miembro2</td>
-            <td>/</td>
-            <td>Comentario 2</td>
-          </tr>
-        </table>
-      </div>
-      <div class="col-md-6 listaConsejo" id="listaConsejo">
-        <h1>Lista de Consejo</h1>
-        <table>
-          <tr>
-            <th>Miembro</th>
-            <th>Aprobación</th>
-            <th>Comentario</th>
-          </tr>
-          <tr>
-            <td>Miembro1</td>
-            <td>X</td>
-            <td>Comentario 1</td>
-          </tr>
-          <tr>
-            <td>Miembro2</td>
-            <td>/</td>
-            <td>Comentario 2</td>
-          </tr>
-        </table>
+      <?php if (!is_null($investigadores)AND (!is_null($aprobacionesInves))): ?>
+        <div class="col-md-6 listaInv" id="listaInv">
+          <h1>Lista de Investigación</h1>
+          <table>
+            <tr>
+              <th>Miembro</th>
+              <th>Aprobación</th>
+              <th>Comentario</th>
+              <th>Fecha Atendido</th>
+            </tr>
+            <?php foreach ($investigadores as $investigador): ?>
+              <?php
+                if ($aprobacionesInves[$investigador->idUsuario]->aprobacion == 0) {
+                  $aprobacion = "NO ATENDIDA";
+                }if ($aprobacionesInves[$investigador->idUsuario]->aprobacion == 1) {
+                  $aprobacion = "APROBADO";
+                }if ($aprobacionesInves[$investigador->idUsuario]->aprobacion == 2) {
+                  $aprobacion = "RECHAZADO";
+                }
+
+                if ($aprobacionesInves[$investigador->idUsuario]->comentario == "" or is_null($aprobacionesInves[$investigador->idUsuario]->comentario)) {
+                  $comenInv = "SIN COMENTARIOS";
+                }else {
+                  $comenInv = $aprobacionesInves[$investigador->idUsuario]->comentario;
+                }
+              ?>
+              <tr>
+                <td><?php echo $investigador->nombre." ".$investigador->apellidoPaterno." ".$investigador->apellidoMaterno; ?></td>
+                <td><?php echo $aprobacion; ?></td>
+                <td><?php echo $comenInv; ?></td>
+                <td><?=(($aprobacionesInves[$investigador->idUsuario]->fechaHora)!=0) ? fancy_date($aprobacionesInves[$investigador->idUsuario]->fechaHora) : "" ; ?></td>
+              </tr>
+            <?php endforeach; ?>
+          </table>
+        </div>
+      <?php endif; ?>
+
+      <?php if (!is_null($consejeros) AND !is_null($aprobacionesConse)): ?>
+        <div class="col-md-6 listaConsejo" id="listaConsejo">
+          <h1>Lista de Consejo</h1>
+          <table>
+            <tr>
+              <th>Miembro</th>
+              <th>Aprobación</th>
+              <th>Comentario</th>
+              <th>Fecha Atendido</th>
+            </tr>
+
+            <?php foreach ($consejeros as $consejero): ?>
+              <?php
+                if ($aprobacionesConse[$consejero->idUsuario]->aprobacion == 0) {
+                  $aprobacion = "NO ATENDIDA";
+                }if ($aprobacionesConse[$consejero->idUsuario]->aprobacion == 1) {
+                  $aprobacion = "APROBADO";
+                }if ($aprobacionesConse[$consejero->idUsuario]->aprobacion == 2) {
+                  $aprobacion = "RECHAZADO";
+                }
+
+                if ($aprobacionesConse[$consejero->idUsuario]->comentario == "" or is_null($aprobacionesConse[$consejero->idUsuario]->comentario)) {
+                  $comenInv = "SIN COMENTARIOS";
+                }else {
+                  $comenInv = $aprobacionesConse[$consejero->idUsuario]->comentario;
+                }
+              ?>
+              <tr>
+                <td><?php echo $consejero->nombre." ".$consejero->apellidoPaterno." ".$consejero->apellidoMaterno; ?></td>
+                <td><?php echo $aprobacion; ?></td>
+                <td><?php echo $comenInv; ?></td>
+                <td><?=(($aprobacionesConse[$consejero->idUsuario]->fechaHora)!=0) ? fancy_date($aprobacionesConse[$consejero->idUsuario]->fechaHora) : "" ; ?></td>
+              </tr>
+            <?php endforeach; ?>
+          </table>
+        </div>
+      <?php endif; ?>
+    <?php endif; ?>
+
+    <?php if (($tramite->estatus=="CONSEJO") AND !is_null($recomendacion)): ?>
+
+      <div class="form-group col-xs-12 col-sm-12 col-md-12">
+        <br>
+        <br>
+        <h2 class="tamañoh2">Recomendación</h2>
+        <p>De acuerdo a los miembros del Consejo Académico, se recomienda el trámite sea:</p>
+        <h3 class="tamañoh3 recomendacion"><?=$recomendacion?></h3>
       </div>
     <?php endif; ?>
 

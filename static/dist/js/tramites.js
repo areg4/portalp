@@ -231,10 +231,13 @@ jQuery(document).ready(function($){
   });
 
   $(".btnEnvPreacta").click(function () {
-    var idTramite   = $(this).attr("data-id");
+    var idTramite     = $(this).attr("data-id");
+    var recomendacion = $(".recomendacion").html();
+    // alert(recomendacion);
     parametros      = {
       'idTramite' : idTramite,
-      'estatus'   : "PREACTA"
+      'estatus'   : "PREACTA",
+      'recomendacion' : recomendacion
     };
 
     $.ajax({
@@ -285,8 +288,101 @@ jQuery(document).ready(function($){
     alert("PREACTA");
   });
 
+  $(".btnAproInves").click(function () {
+    var idTramite   = $(this).attr("data-id");
+    var idUsuario   = $(this).attr("data-user");
+    var comentarios = $("#comentarios").val();
+    parametros      = {
+      'idTramite'   : idTramite,
+      'idUsuario'   : idUsuario,
+      'comentarios' : comentarios
+    };
 
+    $.ajax({
+      url     : base_url()+"portal-informatica-investigacion-tramite-aprobar",
+      type    : 'post',
+      data    : parametros,
+      success : function (data) {
+        if (data == "OK") {
+          window.location.reload();
+        }else{
+          window.location.reload();
+        }
+      }
+    });
+  });
 
+  $(".btnRechaInves").click(function () {
+    var idTramite   = $(this).attr("data-id");
+    var idUsuario   = $(this).attr("data-user");
+    var comentarios = $("#comentarios").val();
+    parametros      = {
+      'idTramite'   : idTramite,
+      'idUsuario'   : idUsuario,
+      'comentarios' : comentarios
+    };
+
+    $.ajax({
+      url     : base_url()+"portal-informatica-investigacion-tramite-rechazar",
+      type    : 'post',
+      data    : parametros,
+      success : function (data) {
+        if (data == "OK") {
+          window.location.reload();
+        }else{
+          window.location.reload();
+        }
+      }
+    });
+  });
+
+  $(".btnAproConsejo").click(function () {
+    var idTramite   = $(this).attr("data-id");
+    var idUsuario   = $(this).attr("data-user");
+    var comentarios = $("#comentarios").val();
+    parametros      = {
+      'idTramite'   : idTramite,
+      'idUsuario'   : idUsuario,
+      'comentarios' : comentarios
+    };
+
+    $.ajax({
+      url     : base_url()+"portal-informatica-consejo-tramite-aprobar",
+      type    : 'post',
+      data    : parametros,
+      success : function (data) {
+        if (data == "OK") {
+          window.location.reload();
+        }else{
+          window.location.reload();
+        }
+      }
+    });
+  });
+
+  $(".btnRechaConsejo").click(function () {
+    var idTramite   = $(this).attr("data-id");
+    var idUsuario   = $(this).attr("data-user");
+    var comentarios = $("#comentarios").val();
+    parametros      = {
+      'idTramite'   : idTramite,
+      'idUsuario'   : idUsuario,
+      'comentarios' : comentarios
+    };
+
+    $.ajax({
+      url     : base_url()+"portal-informatica-consejo-tramite-rechazar",
+      type    : 'post',
+      data    : parametros,
+      success : function (data) {
+        if (data == "OK") {
+          window.location.reload();
+        }else{
+          window.location.reload();
+        }
+      }
+    });
+  });
 });
 
 function goToTramiteDatos(idTramite) {

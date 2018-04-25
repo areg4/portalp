@@ -238,6 +238,64 @@ class Tramitessa_model extends CI_Model {
 		$query = $this->db_b->get($a);
 		return ($query->num_rows() >= 1) ? $query->result() : NULL;
 	}
+
+	public function getInvestigadores()
+	{
+		$a = $this->tablas['usuario'];
+		$this->db_b->where('idRol', 7);
+    $this->db_b->where('estatus', 1);
+		$query = $this->db_b->get($a);
+		return ($query->num_rows() >= 1) ? $query->result() : NULL;
+	}
+
+	public function getConsejeros()
+	{
+		$a = $this->tablas['usuario'];
+		$this->db_b->where('idRol', 8);
+    $this->db_b->where('estatus', 1);
+		$query = $this->db_b->get($a);
+		return ($query->num_rows() >= 1) ? $query->result() : NULL;
+	}
+
+	public function insertAprobacionTramite($arrInsert)
+	{
+		$a = $this->tablas['aprobacionTramites'];
+		$this->db_b->insert($a, $arrInsert);
+		return true;
+	}
+
+	public function getAprobacionesByidTramite($idTramite, $estatus)
+	{
+		$a = $this->tablas['aprobacionTramites'];
+		$this->db_b->where('idTramite', $idTramite);
+		$this->db_b->where('estatus', $estatus);
+		$query = $this->db_b->get($a);
+		return ($query->num_rows() >= 1) ? $query->result() : NULL;
+	}
+	public function updateAprobacion($idTramite, $idUsuario, $estatus, $arrUpdate)
+	{
+		$a = $this->tablas['aprobacionTramites'];
+		$this->db_b->where('idTramite', $idTramite);
+		$this->db_b->where('idMiembro', $idUsuario);
+		$this->db_b->where('estatus', $estatus);
+		$this->db_b->update($a, $arrUpdate);
+		return true;
+	}
+	public function getAllTramitesH()
+	{
+		$a = $this->tablas['tramites'];
+    $this->db_b->where('habilitado', 1);
+		$this->db_b->order_by('idTramite');
+		$query = $this->db_b->get($a);
+		return ($query->num_rows() >= 1) ? $query->result() : NULL;
+	}
+	public function updateRecomendacion($idTramite, $arrUpdate)
+	{
+		$a = $this->tablas['tramites'];
+		$this->db_b->where('idTramite', $idTramite);
+		$this->db_b->update($a, $arrUpdate);
+		return true;
+	}
 }
 
 /* End of file root_model.php */

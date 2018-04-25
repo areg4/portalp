@@ -15,7 +15,7 @@
         <th class="">Tipo de Trámite</th>
         <th class="">Estatus</th>
         <th class="">Periodo</th>
-        <th class="">Aprobado</th>
+        <th class="">Recomendación</th>
         <th class="">Fecha Inicio</th>
       </tr>
     </thead>
@@ -28,7 +28,7 @@
             <td data-title="Tipo de Trámite"><?=$catTramites[$tramite->idCatTramite]?></td>
             <td data-title="Estatus"><?=$tramite->estatus?></td>
             <td data-title="Periodo"><?=$tramite->idPeriodo?></td>
-            <td data-title="Estatus">X</td>
+            <td data-title="Recomendacion"><?=$tramite->recomendacion?></td>
             <td data-title="Fecha Inicio"><?=fancy_date($tramite->fechaInicio)?></td>
           </tr>
         <?php endforeach; ?>

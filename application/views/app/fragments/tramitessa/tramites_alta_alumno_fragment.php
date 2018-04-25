@@ -72,8 +72,8 @@
           <div class="file">
             <img src="<?=base_url()?>static/img/kardex.png" id="2">
               <input class="ocultar"  id="" type="file" name="kardexEV" accept="application/pdf" required onchange="cambiarIcon(2)">
-              <input type="hidden" name="idTramite" value="<?=$tramite->idCatTramite; ?>">
-              <input type="hidden" name="tramite" value="<?=$tramite->tramite; ?>" >
+              <!-- <input type="hidden" name="idTramite" value="<?=$tramite->idCatTramite; ?>">
+              <input type="hidden" name="tramite" value="<?=$tramite->tramite; ?>" > -->
           </div>
         </div>
       <?php endif; ?>
@@ -93,8 +93,8 @@
           <div class="file">
             <img src="<?=base_url()?>static/img/prorroga.png" id="4">
             <input class="ocultar"  id="" type="file" name="archivoPorS[]" required onchange="cambiarIcon(4)">
-            <input type="hidden" name="idTramite" value="<?=$tramite->idCatTramite; ?>" >
-            <input type="hidden" name="tramite" value="<?=$tramite->tramite; ?>" >
+            <!-- <input type="hidden" name="idTramite" value="<?=$tramite->idCatTramite; ?>" >
+            <input type="hidden" name="tramite" value="<?=$tramite->tramite; ?>" > -->
           </div>
         </div>
       <?php endif; ?>

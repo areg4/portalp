@@ -21,6 +21,7 @@ class Investigacion extends CI_Controller {
 		$this->periodo 						= $this->common_model->getPeriodoActivo();
 		$this->fecha    					= date('Y-m-d');
 		$this->hora    						= date('H:i:s');
+		$this->idUsuario 					= 9;					//que jale el de sesión
 		// $this->limiteMateriasPreregistro 	= 10;
 		// //die(var_dump($this->common_model->getPeriodoActivo()));
 		// if($this->idRol != 999){
@@ -48,16 +49,24 @@ class Investigacion extends CI_Controller {
 		$data['menu'] 		= $this->load->view('app/components/head_component',$data,TRUE);
 		$data['catTramites'] = $this->catTramites();
     $data['expAlumno'] = $this->catAlumnosExp();
-		$data['tramites'] = $this->investigacion_model->getTramitesInvestigacion();
+		// $data['tramites'] = $this->investigacion_model->getTramitesInvestigacion();
+		$data['tramitesA'] 	= $this->listaTramitesAtendidosByInvestigador($this->idUsuario);
+		$data['tramitesNA'] = $this->listaTramitesNoAtendidosByInvestigador($this->idUsuario);
 		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/tramites_investigacion_fragment', $data, TRUE);
 		$this->load->view('app/main_view', $data, FALSE);
   }
 
 	public function tramiteDatos($idTramite)
 	{
+		if (is_null($this->investigacion_model->accesoTramiteInvest($idTramite, $this->idUsuario, "INVESTIGACION"))) {
+			$this->session->set_flashdata('error', 'accessTramiteFail');
+			redirect('portal-informatica-investigacion-tramites');
+		}
 		$tramite = $this->tramitessa_model->getTramitePById($idTramite);
 		$alumno = $this->alumno_model->getAlumno($tramite->idAlumno);
 		$archivos = $this->tramitessa_model->getArchivosByTramite($idTramite);
+		$investigadores = $this->tramitessa_model->getInvestigadores();
+		$aprobacionesInves = $this->ordenarAprobacionTramiteByIdMiembro($idTramite, "INVESTIGACION");
 
 		$data['sys_app_title'] 	= 'TRÁMITES INVESTIGACIÓN';
 		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRÁMITES INVESTIGACIÓN';
@@ -70,6 +79,9 @@ class Investigacion extends CI_Controller {
 		$data['catTramites'] = $this->catTramites();
 		$data['archivos']		 = $archivos;
 		$data['tramite']		=	$tramite;
+		$data['investigadores']		=		$investigadores;
+		$data['aprobacionesInves']		=		$aprobacionesInves;
+		$data['idUsuario'] 	=	$this->idUsuario;
 		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/investigacion_tramite_datos_fragment', $data, TRUE);
 		$this->load->view('app/main_view', $data, FALSE);
 	}
@@ -120,6 +132,130 @@ class Investigacion extends CI_Controller {
 		}
 		// die(var_dump($arrayTramites));
 		return $arrayExpAlumnos;
+	}
+
+	private function ordenarAprobacionTramiteByIdMiembro($idTramite, $estatus)
+	{
+		$arrayAprobaciones = array();
+		$catAprobaciones = $this->tramitessa_model->getAprobacionesByidTramite($idTramite, $estatus);
+		if (!is_null($catAprobaciones)) {
+			foreach ($catAprobaciones as $aprobacion) {
+				$arrayAprobaciones[$aprobacion->idMiembro] = $aprobacion;
+			}
+			// die(var_dump($arrayAprobaciones));
+			return $arrayAprobaciones;
+		}else{
+			return null;
+		}
+	}
+
+	public function aprobarTramite()
+	{
+		$idTramite 	= $this->input->post('idTramite');
+		$idUsuario 	= $this->input->post('idUsuario');
+		$comentario = $this->input->post('comentarios');
+
+		$fecha = date('Y-m-d H:i:s');
+
+		$arrUpdate = array(
+			'aprobacion'	=> 1,
+			'comentario'	=> $comentario,
+			'fechaHora'		=> $fecha
+		);
+
+		if ($this->tramitessa_model->updateAprobacion($idTramite, $idUsuario, "INVESTIGACION", $arrUpdate)) {
+			$this->session->set_flashdata('error', 'updateOk');
+			// redirect('portal-informatica-investigacion-tramite-datos/'.$idTramite);
+			echo "OK";
+		}else{
+			$this->session->set_flashdata('error', 'updateFail');
+			echo "ERROR";
+			// redirect('portal-informatica-investigacion-tramite-datos/'.$idTramite);
+		}
+	}
+
+	public function rechazarTramite()
+	{
+		$idTramite 	= $this->input->post('idTramite');
+		$idUsuario 	= $this->input->post('idUsuario');
+		$comentario = $this->input->post('comentarios');
+
+		$fecha = date('Y-m-d H:i:s');
+
+		$arrUpdate = array(
+			'aprobacion'	=> 2,
+			'comentario'	=> $comentario,
+			'fechaHora'		=> $fecha
+		);
+
+		if ($this->tramitessa_model->updateAprobacion($idTramite, $idUsuario, "INVESTIGACION", $arrUpdate)) {
+			$this->session->set_flashdata('error', 'updateOk');
+			// redirect('portal-informatica-investigacion-tramite-datos/'.$idTramite);
+			echo "OK";
+		}else{
+			$this->session->set_flashdata('error', 'updateFail');
+			// redirect('portal-informatica-investigacion-tramite-datos/'.$idTramite);
+			echo "ERROR";
+		}
+	}
+
+	public function listaTramitesAtendidosByInvestigador($idUsuario)
+	{
+		$idTramitesAprobInvs = $this->investigacion_model->getIdsTramitesAprobAtendidos($idUsuario);
+		$allTramites = $this->tramitessa_model->getAllTramitesH();
+
+		if (is_null($idTramitesAprobInvs)) {
+			return null;
+		}
+
+		$arrayAllTramites = array();
+		$arrayLista = array();
+
+		foreach ($allTramites as $tramite) {
+			$arrayAllTramites[$tramite->idTramite] = $tramite;
+		}
+
+		foreach ($idTramitesAprobInvs as $idApro) {
+			$arrayConver = (array)$arrayAllTramites[$idApro->idTramite];
+			$arrayConver['aprobacion'] = $idApro->aprobacion;
+			$arrayConver['fechaAtendida']	= fancy_date($idApro->fechaHora);
+			// array_push($arrayConver, $idApro->aprobacion);
+			// array_push($arrayLista, $arrayAllTramites[$idApro->idTramite]);
+			$arrayConver = (object)$arrayConver;
+			array_push($arrayLista, $arrayConver);
+		}
+		// die(var_dump($arrayLista));
+		// $arrayLista = (object)$arrayLista;
+		return $arrayLista;
+	}
+
+	public function listaTramitesNoAtendidosByInvestigador($idUsuario)
+	{
+		$idTramitesAprobInvs = $this->investigacion_model->getIdsTramitesAprobNoAtendidos($idUsuario);
+		$allTramites = $this->tramitessa_model->getAllTramitesH();
+
+		if (is_null($idTramitesAprobInvs)) {
+			return null;
+		}
+
+		$arrayAllTramites = array();
+		$arrayLista = array();
+
+		foreach ($allTramites as $tramite) {
+			$arrayAllTramites[$tramite->idTramite] = $tramite;
+		}
+
+		foreach ($idTramitesAprobInvs as $idApro) {
+			$arrayConver = (array)$arrayAllTramites[$idApro->idTramite];
+			$arrayConver['aprobacion'] = $idApro->aprobacion;
+			// array_push($arrayConver, $idApro->aprobacion);
+			// array_push($arrayLista, $arrayAllTramites[$idApro->idTramite]);
+			$arrayConver = (object)$arrayConver;
+			array_push($arrayLista, $arrayConver);
+		}
+		// die(var_dump($arrayLista));
+		// $arrayLista = (object)$arrayLista;
+		return $arrayLista;
 	}
 }
 

@@ -38,6 +38,34 @@ class Consejo_model extends CI_Model {
 		$query = $this->db_b->get($a);
 		return ($query->num_rows() >= 1) ? $query->result() : NULL;
   }
+
+	public function getIdsTramitesAprobAtendidos($idUsuario)
+	{
+		$a = $this->tablas['aprobacionTramites'];
+		$this->db_b->where('idMiembro', $idUsuario);
+		$this->db_b->where('aprobacion <>', 0);
+		$this->db_b->where('estatus', "CONSEJO");
+		$query = $this->db_b->get($a);
+		return ($query->num_rows() >= 1) ? $query->result() : NULL;
+	}
+	public function getIdsTramitesAprobNoAtendidos($idUsuario)
+	{
+		$a = $this->tablas['aprobacionTramites'];
+		$this->db_b->where('idMiembro', $idUsuario);
+		$this->db_b->where('aprobacion', 0);
+		$this->db_b->where('estatus', "CONSEJO");
+		$query = $this->db_b->get($a);
+		return ($query->num_rows() >= 1) ? $query->result() : NULL;
+	}
+	public function accesoTramiteConse($idTramite, $idMiembro, $estatus)
+	{
+		$a = $this->tablas['aprobacionTramites'];
+		$this->db_b->where('idTramite', $idTramite);
+		$this->db_b->where('idMiembro', $idMiembro);
+		$this->db_b->where('estatus', $estatus);
+		$query = $this->db_b->get($a);
+		return ($query->num_rows() == 1) ? $query->row() : NULL;
+	}
 }
 
 /* End of file root_model.php */

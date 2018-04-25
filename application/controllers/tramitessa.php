@@ -99,6 +99,13 @@ class Tramitessa extends CI_Controller {
 		$alumno = $this->alumno_model->getAlumno($tramite->idAlumno);
 		$archivos = $this->tramitessa_model->getArchivosByTramite($idTramite);
 
+		$investigadores = null;
+		$consejeros = null;
+		$aprobacionesInves = null;
+		$aprobacionesConse = null;
+
+		$recomendacion = null;
+
 		$data['sys_app_title'] 	= 'TRÁMITES';
 		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRÁMITES';
 		$data['app_sub_menu'] 	= 'notifiTramites';
@@ -130,6 +137,25 @@ class Tramitessa extends CI_Controller {
 				}
 			}
 		}
+
+		if ($tramite->estatus == "INVESTIGACION") {
+			$investigadores = $this->tramitessa_model->getInvestigadores();
+			$aprobacionesInves = $this->ordenarAprobacionTramiteByIdMiembro($idTramite, "INVESTIGACION");
+		}
+		if ($tramite->estatus == "CONSEJO") {
+			$investigadores = $this->tramitessa_model->getInvestigadores();
+			$consejeros = $this->tramitessa_model->getConsejeros();
+
+			$aprobacionesInves = $this->ordenarAprobacionTramiteByIdMiembro($idTramite, "INVESTIGACION");
+			$aprobacionesConse = $this->ordenarAprobacionTramiteByIdMiembro($idTramite, "CONSEJO");
+			$recomendacion = $this->recomendacion($consejeros, $aprobacionesConse);
+		}
+
+		$data['investigadores']		=		$investigadores;
+		$data['consejeros']				=		$consejeros;
+		$data['aprobacionesInves']		=		$aprobacionesInves;
+		$data['aprobacionesConse']		=		$aprobacionesConse;
+		$data['recomendacion']				=		$recomendacion;
 
 		$data['archivos']		 = $archivos;
 		$data['tramite']		=	$tramite;
@@ -340,6 +366,11 @@ class Tramitessa extends CI_Controller {
 
 		$idTramite 		= $this->input->post('idTramite');
 
+		if ($idTramite <= 0 OR is_null($idTramite)) {
+			$this->session->set_flashdata('error', 'insertFail');
+			redirect('portal-informatica-alumnos-tramites');
+		}
+
 		$idAlumno 		= $this->idAlumno;
 		$estatus			= "ALTA";
 		$idPeriodo		= $this->periodo->idPeriodo;
@@ -349,7 +380,7 @@ class Tramitessa extends CI_Controller {
 		$habilitado		= 1;
 
 		$arrInsert = array(
-			'idCatTramite' 		=> 	$idTramite,
+			'idCatTramite' 	=> 	$idTramite,
 			'idAlumno' 			=> 	$idAlumno,
 			'estatus' 			=> 	$estatus,
 			'idPeriodo'			=>	$idPeriodo,
@@ -990,6 +1021,50 @@ class Tramitessa extends CI_Controller {
 		$idTramite 	= $this->input->post('idTramite');
 		$estatus		= $this->input->post('estatus');
 
+		if ($estatus == "INVESTIGACION") {
+			$investigadores = $this->tramitessa_model->getInvestigadores();
+
+			if (!is_null($investigadores)) {
+				foreach ($investigadores as $investigador) {
+					$arrInsert = array(
+						'idTramite'		=>		$idTramite,
+						'idMiembro'		=>		$investigador->idUsuario,
+						'estatus'			=>		$estatus,
+						'aprobacion'	=>		0					// 0 => NoAtendido,		1 => Aprobado,		2 => Rechazado
+					);
+
+					$this->tramitessa_model->insertAprobacionTramite($arrInsert);
+
+				}
+			}
+		}
+
+		if ($estatus == "CONSEJO") {
+			$consejeros = $this->tramitessa_model->getConsejeros();
+
+			if (!is_null($consejeros)) {
+				foreach ($consejeros as $consejero) {
+					$arrInsert = array(
+						'idTramite'		=>		$idTramite,
+						'idMiembro'		=>		$consejero->idUsuario,
+						'estatus'			=>		$estatus,
+						'aprobacion'	=>		0					// 0 => NoAtendido,		1 => Aprobado,		2 => Rechazado
+					);
+
+					$this->tramitessa_model->insertAprobacionTramite($arrInsert);
+
+				}
+			}
+		}
+
+		if ($estatus == "PREACTA") {
+			$recomendacion = $this->input->post('recomendacion');
+			$arrUpdate = array(
+				'recomendacion' => $recomendacion
+			);
+			$this->tramitessa_model->updateRecomendacion($idTramite, $arrUpdate);
+		}
+
 		if ($this->updateTramiteTo($idTramite, $estatus)) {
 			$this->session->set_flashdata('error', 'updateOk');
 		}else{
@@ -1022,6 +1097,55 @@ class Tramitessa extends CI_Controller {
 		$data['observaciones'] = $this->observacionesG();
 		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/tramites_preacta_fragment', $data, TRUE);
 		$this->load->view('app/main_view', $data, FALSE);
+	}
+
+	private function ordenarAprobacionTramiteByIdMiembro($idTramite, $estatus)
+	{
+		$arrayAprobaciones = array();
+		$catAprobaciones = $this->tramitessa_model->getAprobacionesByidTramite($idTramite, $estatus);
+		if (!is_null($catAprobaciones)) {
+			foreach ($catAprobaciones as $aprobacion) {
+				$arrayAprobaciones[$aprobacion->idMiembro] = $aprobacion;
+			}
+			// die(var_dump($arrayAprobaciones));
+			return $arrayAprobaciones;
+		}else{
+			return null;
+		}
+	}
+
+	private function recomendacion($consejeros, $aprobacionesConse)
+	{
+		if (is_null($consejeros) or is_null($aprobacionesConse)) {
+			return null;
+		}
+		$aFavor = 0;
+		$contra = 0;
+		$abstinencias = 0;
+		foreach ($consejeros as $consejero) {
+			if ($aprobacionesConse[$consejero->idUsuario]->aprobacion == 0) {
+				$abstinencias++;
+			}if ($aprobacionesConse[$consejero->idUsuario]->aprobacion == 1) {
+				$aFavor++;
+			}if ($aprobacionesConse[$consejero->idUsuario]->aprobacion == 2) {
+				$contra++;
+			}
+		}
+		$totalC = count($consejeros);
+
+		$aFavor 			= ($aFavor/$totalC)*100;
+		$contra 			= ($contra/$totalC)*100;
+		$abstinencias = ($abstinencias/$totalC)*100;
+
+		if ($aFavor >= 50) {
+			return "APROBADO";
+		}
+		if($contra > 50) {
+			return "RECHAZADO";
+		}
+		if ($abstinencias >= 50) {
+			return "ATENDIDO";
+		}
 	}
 }
 

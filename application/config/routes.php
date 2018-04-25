@@ -93,8 +93,12 @@ $route['portal-informatica-tramites-preacta']                         = 'tramite
 /***************************TRÁMITES INVESTIGACIÓN*****************************/
 $route['portal-informatica-investigacion-tramites']                    = 'investigacion/tramites';
 $route['portal-informatica-investigacion-tramite-datos/(:num)']		     = 'investigacion/tramiteDatos/$1';
+$route['portal-informatica-investigacion-tramite-aprobar']		         = 'investigacion/aprobarTramite';
+$route['portal-informatica-investigacion-tramite-rechazar']		         = 'investigacion/rechazarTramite';
 
 
 /***************************TRÁMITES CONSEJO*****************************/
 $route['portal-informatica-consejo-tramites']                          = 'consejo/tramites';
 $route['portal-informatica-consejo-tramite-datos/(:num)']		           = 'consejo/tramiteDatos/$1';
+$route['portal-informatica-consejo-tramite-aprobar']		               = 'consejo/aprobarTramite';
+$route['portal-informatica-consejo-tramite-rechazar']		               = 'consejo/rechazarTramite';

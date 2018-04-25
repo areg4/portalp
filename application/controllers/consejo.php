@@ -21,6 +21,7 @@ class Consejo extends CI_Controller {
 		$this->periodo 						= $this->common_model->getPeriodoActivo();
 		$this->fecha    					= date('Y-m-d');
 		$this->hora    						= date('H:i:s');
+		$this->idUsuario 					= 13;					//que jale el de sesión
 		// $this->limiteMateriasPreregistro 	= 10;
 		// //die(var_dump($this->common_model->getPeriodoActivo()));
 		// if($this->idRol != 999){
@@ -48,16 +49,26 @@ class Consejo extends CI_Controller {
 		$data['menu'] 		= $this->load->view('app/components/head_component',$data,TRUE);
 		$data['catTramites'] = $this->catTramites();
     $data['expAlumno'] = $this->catAlumnosExp();
-		$data['tramites'] = $this->consejo_model->getTramitesConsejo();
+		// $data['tramites'] = $this->consejo_model->getTramitesConsejo();
+		$data['tramitesA'] 	= $this->listaTramitesAtendidosByConsejero($this->idUsuario);
+		$data['tramitesNA'] = $this->listaTramitesNoAtendidosByConsejero($this->idUsuario);
 		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/consejo_tramites_fragment', $data, TRUE);
 		$this->load->view('app/main_view', $data, FALSE);
   }
 
 	public function tramiteDatos($idTramite)
 	{
+		if (is_null($this->consejo_model->accesoTramiteConse($idTramite, $this->idUsuario, "CONSEJO"))) {
+			$this->session->set_flashdata('error', 'accessTramiteFail');
+			redirect('portal-informatica-consejo-tramites');
+		}
 		$tramite = $this->tramitessa_model->getTramitePById($idTramite);
 		$alumno = $this->alumno_model->getAlumno($tramite->idAlumno);
 		$archivos = $this->tramitessa_model->getArchivosByTramite($idTramite);
+		$investigadores = $this->tramitessa_model->getInvestigadores();
+		$consejeros = $this->tramitessa_model->getConsejeros();
+		$aprobacionesInves = $this->ordenarAprobacionTramiteByIdMiembro($idTramite, "INVESTIGACION");
+		$aprobacionesConse = $this->ordenarAprobacionTramiteByIdMiembro($idTramite, "CONSEJO");
 
 		$data['sys_app_title'] 	= 'TRÁMITES CONSEJO';
 		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRÁMITES CONSEJO';
@@ -70,6 +81,11 @@ class Consejo extends CI_Controller {
 		$data['catTramites'] = $this->catTramites();
 		$data['archivos']		 = $archivos;
 		$data['tramite']		=	$tramite;
+		$data['investigadores']		=		$investigadores;
+		$data['consejeros']				=		$consejeros;
+		$data['aprobacionesInves']		=		$aprobacionesInves;
+		$data['aprobacionesConse']		=		$aprobacionesConse;
+		$data['idUsuario'] 	=	$this->idUsuario;
 		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/consejo_tramite_datos_fragment', $data, TRUE);
 		$this->load->view('app/main_view', $data, FALSE);
 	}
@@ -120,6 +136,130 @@ class Consejo extends CI_Controller {
 		}
 		// die(var_dump($arrayTramites));
 		return $arrayExpAlumnos;
+	}
+
+	private function ordenarAprobacionTramiteByIdMiembro($idTramite, $estatus)
+	{
+		$arrayAprobaciones = array();
+		$catAprobaciones = $this->tramitessa_model->getAprobacionesByidTramite($idTramite, $estatus);
+		if (!is_null($catAprobaciones)) {
+			foreach ($catAprobaciones as $aprobacion) {
+				$arrayAprobaciones[$aprobacion->idMiembro] = $aprobacion;
+			}
+			// die(var_dump($arrayAprobaciones));
+			return $arrayAprobaciones;
+		}else{
+			return null;
+		}
+	}
+
+	public function listaTramitesAtendidosByConsejero($idUsuario)
+	{
+		$idTramitesAprobConse = $this->consejo_model->getIdsTramitesAprobAtendidos($idUsuario);
+		$allTramites = $this->tramitessa_model->getAllTramitesH();
+
+		if (is_null($idTramitesAprobConse)) {
+			return null;
+		}
+
+		$arrayAllTramites = array();
+		$arrayLista = array();
+
+		foreach ($allTramites as $tramite) {
+			$arrayAllTramites[$tramite->idTramite] = $tramite;
+		}
+
+		foreach ($idTramitesAprobConse as $idApro) {
+			$arrayConver = (array)$arrayAllTramites[$idApro->idTramite];
+			$arrayConver['aprobacion'] = $idApro->aprobacion;
+			$arrayConver['fechaAtendida']	= fancy_date($idApro->fechaHora);
+			// array_push($arrayConver, $idApro->aprobacion);
+			// array_push($arrayLista, $arrayAllTramites[$idApro->idTramite]);
+			$arrayConver = (object)$arrayConver;
+			array_push($arrayLista, $arrayConver);
+		}
+		// die(var_dump($arrayLista));
+		// $arrayLista = (object)$arrayLista;
+		return $arrayLista;
+	}
+
+	public function listaTramitesNoAtendidosByConsejero($idUsuario)
+	{
+		$idTramitesAprobConse = $this->consejo_model->getIdsTramitesAprobNoAtendidos($idUsuario);
+		$allTramites = $this->tramitessa_model->getAllTramitesH();
+
+		if (is_null($idTramitesAprobConse)) {
+			return null;
+		}
+
+		$arrayAllTramites = array();
+		$arrayLista = array();
+
+		foreach ($allTramites as $tramite) {
+			$arrayAllTramites[$tramite->idTramite] = $tramite;
+		}
+
+		foreach ($idTramitesAprobConse as $idApro) {
+			$arrayConver = (array)$arrayAllTramites[$idApro->idTramite];
+			$arrayConver['aprobacion'] = $idApro->aprobacion;
+			// array_push($arrayConver, $idApro->aprobacion);
+			// array_push($arrayLista, $arrayAllTramites[$idApro->idTramite]);
+			$arrayConver = (object)$arrayConver;
+			array_push($arrayLista, $arrayConver);
+		}
+		// die(var_dump($arrayLista));
+		// $arrayLista = (object)$arrayLista;
+		return $arrayLista;
+	}
+
+	public function aprobarTramite()
+	{
+		$idTramite 	= $this->input->post('idTramite');
+		$idUsuario 	= $this->input->post('idUsuario');
+		$comentario = $this->input->post('comentarios');
+
+		$fecha = date('Y-m-d H:i:s');
+
+		$arrUpdate = array(
+			'aprobacion'	=> 1,
+			'comentario'	=> $comentario,
+			'fechaHora'		=> $fecha
+		);
+
+		if ($this->tramitessa_model->updateAprobacion($idTramite, $idUsuario, "CONSEJO", $arrUpdate)) {
+			$this->session->set_flashdata('error', 'updateOk');
+			// redirect('portal-informatica-investigacion-tramite-datos/'.$idTramite);
+			echo "OK";
+		}else{
+			$this->session->set_flashdata('error', 'updateFail');
+			echo "ERROR";
+			// redirect('portal-informatica-investigacion-tramite-datos/'.$idTramite);
+		}
+	}
+
+	public function rechazarTramite()
+	{
+		$idTramite 	= $this->input->post('idTramite');
+		$idUsuario 	= $this->input->post('idUsuario');
+		$comentario = $this->input->post('comentarios');
+
+		$fecha = date('Y-m-d H:i:s');
+
+		$arrUpdate = array(
+			'aprobacion'	=> 2,
+			'comentario'	=> $comentario,
+			'fechaHora'		=> $fecha
+		);
+
+		if ($this->tramitessa_model->updateAprobacion($idTramite, $idUsuario, "CONSEJO", $arrUpdate)) {
+			$this->session->set_flashdata('error', 'updateOk');
+			// redirect('portal-informatica-investigacion-tramite-datos/'.$idTramite);
+			echo "OK";
+		}else{
+			$this->session->set_flashdata('error', 'updateFail');
+			// redirect('portal-informatica-investigacion-tramite-datos/'.$idTramite);
+			echo "ERROR";
+		}
 	}
 }
 

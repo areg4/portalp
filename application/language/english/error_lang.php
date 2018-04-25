@@ -31,3 +31,6 @@ $lang['cveDocenteFail']			   = "La clave del docente es incorrecta";
 $lang['altaTramiteOk']			   = "El trámite ha sido dado de alta correctamente";
 $lang['updateFileOk']			 = "El archivo ha sido actualizado correctamente";
 $lang['altaPDFFail']        = "El archivo debe subirse en formato PDF";
+
+//investigacion trámites
+$lang['accessTramiteFail']        = "No tiene permiso para acceder a este trámite";
