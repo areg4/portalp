@@ -1062,7 +1062,14 @@ class Tramitessa extends CI_Controller {
 			$arrUpdate = array(
 				'recomendacion' => $recomendacion
 			);
-			$this->tramitessa_model->updateRecomendacion($idTramite, $arrUpdate);
+			$this->tramitessa_model->updateTramite($idTramite, $arrUpdate);
+		}
+
+		if ($estatus == "APROBADO" OR $estatus== "RECHAZADO") {
+			$arrUpdate = array(
+				'fechaFin'	=> $this->fecha
+			);
+			$this->tramitessa_model->updateTramite($idTramite, $arrUpdate);
 		}
 
 		if ($this->updateTramiteTo($idTramite, $estatus)) {

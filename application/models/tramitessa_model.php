@@ -289,13 +289,13 @@ class Tramitessa_model extends CI_Model {
 		$query = $this->db_b->get($a);
 		return ($query->num_rows() >= 1) ? $query->result() : NULL;
 	}
-	public function updateRecomendacion($idTramite, $arrUpdate)
-	{
-		$a = $this->tablas['tramites'];
-		$this->db_b->where('idTramite', $idTramite);
-		$this->db_b->update($a, $arrUpdate);
-		return true;
-	}
+	// public function updateRecomendacion($idTramite, $arrUpdate)
+	// {
+	// 	$a = $this->tablas['tramites'];
+	// 	$this->db_b->where('idTramite', $idTramite);
+	// 	$this->db_b->update($a, $arrUpdate);
+	// 	return true;
+	// }
 }
 
 /* End of file root_model.php */
