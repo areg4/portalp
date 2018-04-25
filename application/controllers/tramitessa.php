@@ -19,8 +19,8 @@ class Tramitessa extends CI_Controller {
 		$this->load->model('tramitessa_model');
 		// $this->idAlumno 					= $this->session->userdata('idUsuario');
 		// $this->idRol 						= $this->session->userdata('idRol');
-		// $this->idAlumno 					= 2249;
-		$this->idAlumno 					= 2670;
+		$this->idAlumno 					= 2249;
+		// $this->idAlumno 					= 2670;
 		$this->folder 						= 'tramitessa';
 		$this->periodo 						= $this->common_model->getPeriodoActivo();
 		$this->alumno 						= $this->alumno_model->getAlumno($this->idAlumno);
@@ -333,7 +333,7 @@ class Tramitessa extends CI_Controller {
 		$data['menu_app']   = $this->load->view('app/components/menu/alumno_component', $data, TRUE);
 		$data['menu'] 		= $this->load->view('app/components/head_component',$data,TRUE);
     $data['js']       = array('tramites');
-		$data['tramite']		=	$this->tramitessa_model->getTramiteById($idTramite);
+		$data['tramite']		= (!is_null($this->tramitessa_model->getTramiteById($idTramite))) ? $this->tramitessa_model->getTramiteById($idTramite) : redirect("portal-informatica-alumnos-tramites") ;	;
 		$data['periodo']		= $this->periodo->periodo;
 		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/tramites_alta_alumno_fragment', $data, TRUE);
 		$this->load->view('app/main_view', $data, FALSE);

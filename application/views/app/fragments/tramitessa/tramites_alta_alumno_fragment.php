@@ -7,7 +7,7 @@
 ?>
 <div class="col-xs-12">
 <br>
-  <form enctype="multipart/form-data" action="<?php echo base_url().'portal-informatica-alumnos-tramites-add' ?>" method="post" >
+  <form id="formAlta" enctype="multipart/form-data" action="<?php echo base_url().'portal-informatica-alumnos-tramites-add' ?>" method="post" >
     <div class="form-group col-xs-12 col-sm-12 col-md-5 text-center mtop">
       <label for="nombre">Nombre</label>
       <?php if (!is_null($alumno->nombre_alumno)): ?>
@@ -63,7 +63,7 @@
           <p>Solicitud</p>
           <div class=" file">
             <img src="<?=base_url()?>static/img/solicitud.png" id="1">
-            <input class="ocultar"  id="" type="file" name="solicitudEV" accept="application/pdf" required onchange="cambiarIcon(1)">
+            <input class="ocultar fileUp"  id="" type="file" name="solicitudEV" accept="application/pdf" required onchange="cambiarIcon(1)">
           </div>
         </div>
 
@@ -71,7 +71,7 @@
           <p>Kárdex</p>
           <div class="file">
             <img src="<?=base_url()?>static/img/kardex.png" id="2">
-              <input class="ocultar"  id="" type="file" name="kardexEV" accept="application/pdf" required onchange="cambiarIcon(2)">
+              <input class="ocultar fileUp"  id="" type="file" name="kardexEV" accept="application/pdf" required onchange="cambiarIcon(2)">
               <!-- <input type="hidden" name="idTramite" value="<?=$tramite->idCatTramite; ?>">
               <input type="hidden" name="tramite" value="<?=$tramite->tramite; ?>" > -->
           </div>
@@ -85,14 +85,14 @@
         <p>Prórroga Papel 1</p>
           <div class="file">
             <img src="<?=base_url()?>static/img/prorroga.png" id="3">
-            <input class="ocultar"  id="" type="file" name="archivoPorS[]" required onchange="cambiarIcon(3)">
+            <input class="ocultar fileUp"  id="" type="file" name="archivoPorS[]" required onchange="cambiarIcon(3)">
           </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-2 archivo">
           <p>Prórroga Papel 2</p>
           <div class="file">
             <img src="<?=base_url()?>static/img/prorroga.png" id="4">
-            <input class="ocultar"  id="" type="file" name="archivoPorS[]" required onchange="cambiarIcon(4)">
+            <input class="ocultar fileUp"  id="" type="file" name="archivoPorS[]" required onchange="cambiarIcon(4)">
             <!-- <input type="hidden" name="idTramite" value="<?=$tramite->idCatTramite; ?>" >
             <input type="hidden" name="tramite" value="<?=$tramite->tramite; ?>" > -->
           </div>
@@ -106,7 +106,7 @@
           <p>Solicitud</p>
           <div class=" file">
             <img src="<?=base_url()?>static/img/solicitud.png" id="1">
-            <input class="ocultar"  id="" type="file" name="solicitudRP" accept="application/pdf" required onchange="cambiarIcon(1)">
+            <input class="ocultar fileUp"  id="" type="file" name="solicitudRP" accept="application/pdf" required onchange="cambiarIcon(1)">
           </div>
         </div>
 
@@ -114,7 +114,7 @@
           <p>Carta Calificación Diplomado</p>
           <div class="file">
             <img src="<?=base_url()?>static/img/carta.png" id="2">
-              <input class="ocultar"  id="" type="file" name="cartaCalifDiploRP" accept="application/pdf" required onchange="cambiarIcon(2)">
+              <input class="ocultar fileUp"  id="" type="file" name="cartaCalifDiploRP" accept="application/pdf" required onchange="cambiarIcon(2)">
           </div>
         </div>
 
@@ -122,7 +122,7 @@
           <p>Recibo del Diplomado</p>
           <div class="file">
             <img src="<?=base_url()?>static/img/recibo.png" id="3">
-              <input class="ocultar"  id="" type="file" name="reciboDiploRP" accept="application/pdf" required onchange="cambiarIcon(3)">
+              <input class="ocultar fileUp"  id="" type="file" name="reciboDiploRP" accept="application/pdf" required onchange="cambiarIcon(3)">
           </div>
         </div>
 
@@ -130,7 +130,7 @@
           <p>Kardex</p>
           <div class="file">
             <img src="<?=base_url()?>static/img/kardex.png" id="4">
-              <input class="ocultar"  id="" type="file" name="kardexRP" accept="application/pdf" required onchange="cambiarIcon(4)">
+              <input class="ocultar fileUp"  id="" type="file" name="kardexRP" accept="application/pdf" required onchange="cambiarIcon(4)">
           </div>
         </div>
       <?php endif; ?>
@@ -142,7 +142,7 @@
           <p>Solicitud</p>
           <div class=" file">
             <img src="<?=base_url()?>static/img/solicitud.png" id="1">
-            <input class="ocultar"  id="" type="file" name="solicitudCD" accept="application/pdf" required onchange="cambiarIcon(1)">
+            <input class="ocultar fileUp"  id="" type="file" name="solicitudCD" accept="application/pdf" required onchange="cambiarIcon(1)">
           </div>
         </div>
 
@@ -150,7 +150,7 @@
           <p>Carta Calificación Diplomado</p>
           <div class="file">
             <img src="<?=base_url()?>static/img/carta.png" id="2">
-              <input class="ocultar"  id="" type="file" name="cartaCalifDiploCD" accept="application/pdf" required onchange="cambiarIcon(2)">
+              <input class="ocultar fileUp"  id="" type="file" name="cartaCalifDiploCD" accept="application/pdf" required onchange="cambiarIcon(2)">
           </div>
         </div>
 
@@ -158,7 +158,7 @@
           <p>Recibo del Diplomado</p>
           <div class="file">
             <img src="<?=base_url()?>static/img/recibo.png" id="3">
-              <input class="ocultar"  id="" type="file" name="reciboDiploCD" accept="application/pdf" required onchange="cambiarIcon(3)">
+              <input class="ocultar fileUp"  id="" type="file" name="reciboDiploCD" accept="application/pdf" required onchange="cambiarIcon(3)">
           </div>
         </div>
 
@@ -166,7 +166,7 @@
           <p>Kardex</p>
           <div class="file">
             <img src="<?=base_url()?>static/img/kardex.png" id="4">
-              <input class="ocultar"  id="" type="file" name="kardexCD" accept="application/pdf" required onchange="cambiarIcon(4)">
+              <input class="ocultar fileUp"  id="" type="file" name="kardexCD" accept="application/pdf" required onchange="cambiarIcon(4)">
           </div>
         </div>
       <?php endif; ?>
@@ -179,7 +179,7 @@
           <p>Solicitud</p>
           <div class=" file">
             <img src="<?=base_url()?>static/img/solicitud.png" id="1">
-            <input class="ocultar"  id="" type="file" name="solicitudGM" accept="application/pdf" required onchange="cambiarIcon(1)">
+            <input class="ocultar fileUp"  id="" type="file" name="solicitudGM" accept="application/pdf" required onchange="cambiarIcon(1)">
           </div>
         </div>
 
@@ -187,7 +187,7 @@
           <p>Protocolo</p>
           <div class="file">
             <img src="<?=base_url()?>static/img/protocolo.png" id="2">
-              <input class="ocultar"  id="" type="file" name="protocoloGM" accept="application/pdf" required onchange="cambiarIcon(2)">
+              <input class="ocultar fileUp"  id="" type="file" name="protocoloGM" accept="application/pdf" required onchange="cambiarIcon(2)">
           </div>
         </div>
 
@@ -195,7 +195,7 @@
           <p>Carta Aceptación del maestro responsable de la materia</p>
           <div class="file">
             <img src="<?=base_url()?>static/img/carta.png" id="3">
-              <input class="ocultar"  id="" type="file" name="cartaAeptacionMRespoGM" accept="application/pdf" required onchange="cambiarIcon(3)">
+              <input class="ocultar fileUp"  id="" type="file" name="cartaAeptacionMRespoGM" accept="application/pdf" required onchange="cambiarIcon(3)">
           </div>
         </div>
 
@@ -203,7 +203,7 @@
           <p>Kardex</p>
           <div class="file">
             <img src="<?=base_url()?>static/img/kardex.png" id="4">
-              <input class="ocultar"  id="" type="file" name="kardexGM" accept="application/pdf" required onchange="cambiarIcon(4)">
+              <input class="ocultar fileUp"  id="" type="file" name="kardexGM" accept="application/pdf" required onchange="cambiarIcon(4)">
           </div>
         </div>
       <?php endif; ?>
@@ -215,7 +215,7 @@
           <p>Solicitud</p>
           <div class=" file">
             <img src="<?=base_url()?>static/img/solicitud.png" id="1">
-            <input class="ocultar"  id="" type="file" name="solicitudMT" accept="application/pdf" required onchange="cambiarIcon(1)">
+            <input class="ocultar fileUp"  id="" type="file" name="solicitudMT" accept="application/pdf" required onchange="cambiarIcon(1)">
           </div>
         </div>
 
@@ -223,7 +223,7 @@
           <p>Protocolo</p>
           <div class="file">
             <img src="<?=base_url()?>static/img/protocolo.png" id="2">
-              <input class="ocultar"  id="" type="file" name="protocoloMT" accept="application/pdf" required onchange="cambiarIcon(2)">
+              <input class="ocultar fileUp"  id="" type="file" name="protocoloMT" accept="application/pdf" required onchange="cambiarIcon(2)">
           </div>
         </div>
 
@@ -231,7 +231,7 @@
           <p>Carta del lugar de trabajo</p>
           <div class="file">
             <img src="<?=base_url()?>static/img/carta.png" id="3">
-              <input class="ocultar"  id="" type="file" name="cartaLugarTrabajoMT" accept="application/pdf" required onchange="cambiarIcon(3)">
+              <input class="ocultar fileUp"  id="" type="file" name="cartaLugarTrabajoMT" accept="application/pdf" required onchange="cambiarIcon(3)">
           </div>
         </div>
 
@@ -239,7 +239,7 @@
           <p>Carta del Asesor Académico</p>
           <div class="file">
             <img src="<?=base_url()?>static/img/carta.png" id="4">
-              <input class="ocultar"  id="" type="file" name="cartaAsesorAcadeMT" accept="application/pdf" required onchange="cambiarIcon(4)">
+              <input class="ocultar fileUp"  id="" type="file" name="cartaAsesorAcadeMT" accept="application/pdf" required onchange="cambiarIcon(4)">
           </div>
         </div>
       <?php endif; ?>
@@ -251,7 +251,7 @@
           <p>Solicitud</p>
           <div class=" file">
             <img src="<?=base_url()?>static/img/solicitud.png" id="1">
-            <input class="ocultar"  id="" type="file" name="solicitudTT" accept="application/pdf" required onchange="cambiarIcon(1)">
+            <input class="ocultar fileUp"  id="" type="file" name="solicitudTT" accept="application/pdf" required onchange="cambiarIcon(1)">
           </div>
         </div>
 
@@ -259,7 +259,7 @@
           <p>Trabajo Terminado</p>
           <div class="file">
             <img src="<?=base_url()?>static/img/trabajo.png" id="2">
-              <input class="ocultar"  id="" type="file" name="trabajoTT" accept="application/pdf" required onchange="cambiarIcon(2)">
+              <input class="ocultar fileUp"  id="" type="file" name="trabajoTT" accept="application/pdf" required onchange="cambiarIcon(2)">
           </div>
         </div>
 
@@ -267,7 +267,7 @@
           <p>Carta Asesor Académico</p>
           <div class="file">
             <img src="<?=base_url()?>static/img/carta.png" id="3">
-              <input class="ocultar"  id="" type="file" name="cartaAsesorTT" accept="application/pdf" required onchange="cambiarIcon(3)">
+              <input class="ocultar fileUp"  id="" type="file" name="cartaAsesorTT" accept="application/pdf" required onchange="cambiarIcon(3)">
           </div>
         </div>
 
@@ -275,7 +275,7 @@
           <p>Carta del lugar de trabajo</p>
           <div class="file">
             <img src="<?=base_url()?>static/img/carta.png" id="4">
-              <input class="ocultar"  id="" type="file" name="cartaTrabajoTT" accept="application/pdf" required onchange="cambiarIcon(4)">
+              <input class="ocultar fileUp"  id="" type="file" name="cartaTrabajoTT" accept="application/pdf" required onchange="cambiarIcon(4)">
           </div>
         </div>
       <?php endif; ?>
@@ -288,7 +288,7 @@
           <p>Solicitud</p>
           <div class=" file">
             <img src="<?=base_url()?>static/img/solicitud.png" id="1">
-            <input class="ocultar"  id="" type="file" name="solicitudTI" accept="application/pdf" required onchange="cambiarIcon(1)">
+            <input class="ocultar fileUp"  id="" type="file" name="solicitudTI" accept="application/pdf" required onchange="cambiarIcon(1)">
           </div>
         </div>
 
@@ -296,7 +296,7 @@
           <p>Kardex CU</p>
           <div class="file">
             <img src="<?=base_url()?>static/img/kardex.png" id="2">
-              <input class="ocultar"  id="" type="file" name="kardexTI" accept="application/pdf" required onchange="cambiarIcon(2)">
+              <input class="ocultar fileUp"  id="" type="file" name="kardexTI" accept="application/pdf" required onchange="cambiarIcon(2)">
           </div>
         </div>
       <?php endif; ?>
@@ -308,7 +308,7 @@
           <p>Solicitud</p>
           <div class=" file">
             <img src="<?=base_url()?>static/img/solicitud.png" id="1">
-            <input class="ocultar"  id="" type="file" name="solicitudPro" accept="application/pdf" required onchange="cambiarIcon(1)">
+            <input class="ocultar fileUp"  id="" type="file" name="solicitudPro" accept="application/pdf" required onchange="cambiarIcon(1)">
           </div>
         </div>
 
@@ -316,7 +316,7 @@
           <p>Kardex CU</p>
           <div class="file">
             <img src="<?=base_url()?>static/img/kardex.png" id="2">
-              <input class="ocultar"  id="" type="file" name="kardexPro" accept="application/pdf" required onchange="cambiarIcon(2)">
+              <input class="ocultar fileUp"  id="" type="file" name="kardexPro" accept="application/pdf" required onchange="cambiarIcon(2)">
           </div>
         </div>
       <?php endif; ?>
@@ -328,7 +328,7 @@
           <p>Solicitud</p>
           <div class=" file">
             <img src="<?=base_url()?>static/img/solicitud.png" id="1">
-            <input class="ocultar"  id="" type="file" name="solicitudAP" accept="application/pdf" required onchange="cambiarIcon(1)">
+            <input class="ocultar fileUp"  id="" type="file" name="solicitudAP" accept="application/pdf" required onchange="cambiarIcon(1)">
           </div>
         </div>
 
@@ -336,7 +336,7 @@
           <p>Carta de la escuela donde se está cursando la maestría</p>
           <div class="file">
             <img src="<?=base_url()?>static/img/carta.png" id="2">
-              <input class="ocultar"  id="" type="file" name="cartaECMAP" accept="application/pdf" required onchange="cambiarIcon(2)">
+              <input class="ocultar fileUp"  id="" type="file" name="cartaECMAP" accept="application/pdf" required onchange="cambiarIcon(2)">
           </div>
         </div>
 
@@ -344,7 +344,7 @@
           <p>Mapa Curricular</p>
           <div class="file">
             <img src="<?=base_url()?>static/img/mapa.png" id="3">
-              <input class="ocultar"  id="" type="file" name="mapaCurriAP" accept="application/pdf" required onchange="cambiarIcon(3)">
+              <input class="ocultar fileUp"  id="" type="file" name="mapaCurriAP" accept="application/pdf" required onchange="cambiarIcon(3)">
           </div>
         </div>
       <?php endif; ?>

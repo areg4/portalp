@@ -170,7 +170,7 @@
       </div>
     <?php endif; ?>
 
-    <?php if ($aprobacionesConse[$idUsuario]->aprobacion == 0): ?>
+    <?php if (($aprobacionesConse[$idUsuario]->aprobacion == 0) AND ($tramite->estatus == "CONSEJO")): ?>
       <div class="col-xs-12 text-center center">
         <h3 class="tamañoh3">Comentario(s)</h3>
         <textarea id="comentarios" rows="10" cols="80" class="col-xs-6"></textarea>
@@ -192,7 +192,7 @@
       </div>
     <?php endif; ?>
 
-    <?php if ($aprobacionesConse[$idUsuario]->aprobacion == 0): ?>
+    <?php if (($aprobacionesConse[$idUsuario]->aprobacion == 0) AND ($tramite->estatus == "CONSEJO")): ?>
       <div class="col-xs-12 opciones-t-sa">
         <button type="submit" class="btn btn-success btnAproConsejo" data-id="<?=$tramite->idTramite?>" data-user="<?=$idUsuario?>">Aprobar</button>
         <button type="submit" class="btn btn-success btnRechaConsejo" data-id="<?=$tramite->idTramite?>" data-user="<?=$idUsuario?>">Rechazar</button>

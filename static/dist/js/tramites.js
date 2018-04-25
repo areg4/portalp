@@ -35,7 +35,13 @@ jQuery(document).ready(function($){
   });
 
   $(".ArchivoNuevo").change(function () {
-    $(".btnUpdateFile").click();
+    var file = event.target.files[0];
+    if(!file.type.match('application/pdf')) {
+       alert("only PDFs");
+       $(this).val("");
+   }else {
+     $(".btnUpdateFile").click();
+   }
   });
 
   $(".btnUpdateFile").click(function() {
@@ -383,6 +389,21 @@ jQuery(document).ready(function($){
       }
     });
   });
+
+  // Validaciones de PDF desde JS
+  var rutaIcono;
+
+  $(".file").click(function() {
+    rutaIcono = $(this).find("img").attr("src");
+  });
+  $(".file").on('change', function (event) {
+    var file = event.target.files[0];
+    if(!file.type.match('application/pdf')) {
+       alert("only PDFs");
+       $(this).find(".fileUp").val("");
+       $(this).find("img").attr("src", rutaIcono);
+   }
+  })
 });
 
 function goToTramiteDatos(idTramite) {

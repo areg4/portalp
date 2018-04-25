@@ -92,7 +92,7 @@
                   <input type="hidden" name="idTramite" value="<?=$archivo->idTramite?>">
                   <input type="hidden" name="nombreF" value="<?=$archivo->ruta?>">
                   <?php if ($archivo->estatus == 'RECHAZADO' AND $tramite->estatus=="OBSERVACIONES"): ?>
-                    <span>Subir archivo</span><input class="ArchivoNuevo"  id="file-<?=$archivo->idRT?>" type="file" name="file" accept="application/pdf" required onchange="cambiarIcon(1)">
+                    <span>Subir archivo</span><input class="ArchivoNuevo fileUp"  id="file-<?=$archivo->idRT?>" type="file" name="file" accept="application/pdf" required>
                     <input style="display:none;" class="btn btnUpdateFile" data-tramite-id="<?=$archivo->idTramite?>" data-id="<?=$archivo->idRT?>" type="submit" name="" value="Actualizar">
                   <?php endif; ?>
                   <a href="<?=base_url()?>docs/tramites/<?=$alumno->expediente?>/<?=$archivo->idTramite?>/<?=$archivo->ruta?>" target="_blank" class="">Descargar</a>
