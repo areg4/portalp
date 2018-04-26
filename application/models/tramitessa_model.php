@@ -174,9 +174,10 @@ class Tramitessa_model extends CI_Model {
 	{
 		$a = $this->tablas['tramites'];
 		$this->db_b->where('idAlumno',$idAlumno);
-		$this->db_b->where('estatus', "APROBADO");
-		$this->db_b->or_where('estatus', "RECHAZADO");
-    $this->db_b->where('habilitado', 1);
+		$this->db_b->where("(estatus = 'APROBADO' OR estatus = 'RECHAZADO') AND habilitado = 1");
+		// $this->db_b->where('estatus', "APROBADO");
+		// $this->db_b->or_where('estatus', "RECHAZADO");
+    // $this->db_b->where('habilitado', 1);
 		$this->db_b->order_by('fechaFin', 'asc');
 		$query = $this->db_b->get($a);
 		return ($query->num_rows() >= 1) ? $query->result() : NULL;

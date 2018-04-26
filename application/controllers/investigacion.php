@@ -204,11 +204,7 @@ class Investigacion extends CI_Controller {
 		$idTramitesAprobInvs = $this->investigacion_model->getIdsTramitesAprobAtendidos($idUsuario);
 		$allTramites = $this->tramitessa_model->getAllTramitesH();
 
-		if (is_null($idTramitesAprobInvs)) {
-			return null;
-		}
-
-		if (is_null($allTramites)) {
+		if (is_null($idTramitesAprobInvs) or is_null($allTramites)) {
 			return null;
 		}
 
@@ -220,13 +216,15 @@ class Investigacion extends CI_Controller {
 		}
 
 		foreach ($idTramitesAprobInvs as $idApro) {
-			$arrayConver = (array)$arrayAllTramites[$idApro->idTramite];
-			$arrayConver['aprobacion'] = $idApro->aprobacion;
-			$arrayConver['fechaAtendida']	= fancy_date($idApro->fechaHora);
-			// array_push($arrayConver, $idApro->aprobacion);
-			// array_push($arrayLista, $arrayAllTramites[$idApro->idTramite]);
-			$arrayConver = (object)$arrayConver;
-			array_push($arrayLista, $arrayConver);
+			if (isset($arrayAllTramites[$idApro->idTramite])) {
+				$arrayConver = (array)$arrayAllTramites[$idApro->idTramite];
+				$arrayConver['aprobacion'] = $idApro->aprobacion;
+				$arrayConver['fechaAtendida']	= fancy_date($idApro->fechaHora);
+				// array_push($arrayConver, $idApro->aprobacion);
+				// array_push($arrayLista, $arrayAllTramites[$idApro->idTramite]);
+				$arrayConver = (object)$arrayConver;
+				array_push($arrayLista, $arrayConver);
+			}
 		}
 		// die(var_dump($arrayLista));
 		// $arrayLista = (object)$arrayLista;
@@ -238,11 +236,7 @@ class Investigacion extends CI_Controller {
 		$idTramitesAprobInvs = $this->investigacion_model->getIdsTramitesAprobNoAtendidos($idUsuario);
 		$allTramites = $this->tramitessa_model->getAllTramitesH();
 
-		if (is_null($idTramitesAprobInvs)) {
-			return null;
-		}
-
-		if (is_null($allTramites)) {
+		if (is_null($idTramitesAprobInvs) or is_null($allTramites)) {
 			return null;
 		}
 
@@ -254,12 +248,14 @@ class Investigacion extends CI_Controller {
 		}
 
 		foreach ($idTramitesAprobInvs as $idApro) {
-			$arrayConver = (array)$arrayAllTramites[$idApro->idTramite];
-			$arrayConver['aprobacion'] = $idApro->aprobacion;
-			// array_push($arrayConver, $idApro->aprobacion);
-			// array_push($arrayLista, $arrayAllTramites[$idApro->idTramite]);
-			$arrayConver = (object)$arrayConver;
-			array_push($arrayLista, $arrayConver);
+			if (isset($arrayAllTramites[$idApro->idTramite])) {
+				$arrayConver = (array)$arrayAllTramites[$idApro->idTramite];
+				$arrayConver['aprobacion'] = $idApro->aprobacion;
+				// array_push($arrayConver, $idApro->aprobacion);
+				// array_push($arrayLista, $arrayAllTramites[$idApro->idTramite]);
+				$arrayConver = (object)$arrayConver;
+				array_push($arrayLista, $arrayConver);
+			}
 		}
 		// die(var_dump($arrayLista));
 		// $arrayLista = (object)$arrayLista;
