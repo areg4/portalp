@@ -19,8 +19,9 @@ class Tramitessa extends CI_Controller {
 		$this->load->model('tramitessa_model');
 		// $this->idAlumno 					= $this->session->userdata('idUsuario');
 		// $this->idRol 						= $this->session->userdata('idRol');
-		$this->idAlumno 					= 2249;
-		// $this->idAlumno 					= 2670;
+		$this->idAlumno 					= 2519; //id Jaz
+		// $this->idAlumno 					= 2670; //id Fer
+		// $this->idAlumno 					= 2249; //id Gera
 		$this->folder 						= 'tramitessa';
 		$this->periodo 						= $this->common_model->getPeriodoActivo();
 		$this->alumno 						= $this->alumno_model->getAlumno($this->idAlumno);

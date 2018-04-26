@@ -22,7 +22,8 @@
 | a PHP script and you can easily do that on your own.
 |
 */
- $config['base_url'] = 'http://localhost/portalp/';
+ // $config['base_url'] = 'http://localhost/portalp/';
+ $config['base_url'] = 'http://192.168.1.125/portalp/';
  //$config['base_url'] = 'http://148.220.52.88/portal.v2/';
  //$config['base_url'] = 'http://192.168.2.22/portal.v2/';
  //$config['base_url'] = 'http://192.168.0.24/portal.v2/';
