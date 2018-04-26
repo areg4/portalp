@@ -17,7 +17,7 @@ h1, h2, h3{
 	.tamañoh1{
 		font-size: 1.9em !important;
 		font-weight: bold;
-		padding-bottom: 15px;
+		padding-bottom: 10px;
 		border-bottom: 1px solid rgba(0,0,0,.1);
 	}
 	.tamañoh4{
@@ -29,7 +29,10 @@ h1, h2, h3{
 		font-size: 1em;
 		font-weight: bold;
 		padding-bottom: 10px;
-
+	}
+	.tamañoh4-border{
+		padding-bottom: 15px;
+		border-bottom: 1px solid rgba(0,0,0,.03);
 	}
 
 #page-wrapper{
@@ -42,8 +45,9 @@ h1, h2, h3{
     margin-top: 70px !important;
     padding: 15px !important;
     width: 80% !important;
-    /*max-height: 630px !important;*/
-    min-height: 800px !important;
+    height: auto;
+    min-height: none !important;
+    max-width: none !important;
     overflow-y: auto;
     overflow-x:hidden !important;
 }
@@ -661,6 +665,9 @@ td{
 	text-align: center;
 	border-bottom: none !important;
 	/*border-bottom: 1px solid rgba(0,0,0,.09);*/
+}
+.sincursor{
+	cursor: default !important;
 }
 
 @media
@@ -1294,6 +1301,10 @@ input[type=file]::-webkit-file-upload-button{
 	margin-bottom: 10px;
 }
 
+.sintra{
+	color: rgba(0,0,0,.5) !important;
+}
+
 .row{
 	margin-top: 30px !important;
 	font-size: 1em;
@@ -1325,6 +1336,13 @@ input[type=file]::-webkit-file-upload-button{
 	.opciones-t-sa>button{
 		margin-bottom: 3px !important;
 	}
+.botonera{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	align-content: center;
+}
+}
 
 /*Scroll (preguntar si se puede cambiar) */
 ::-webkit-scrollbar {
@@ -1332,12 +1350,12 @@ input[type=file]::-webkit-file-upload-button{
   height: 6px;
 }
 ::-webkit-scrollbar-thumb {
-  background: #c7c7c7;
+  background: rgba(0,0,0,.2);
   border: 0px ridge #ffffff;
   border-radius: 50px;
 }
 ::-webkit-scrollbar-track {
-  background: #f5f5f5;
+  background: rgba(0,0,0,.06);
   border: 0px none #ffffff;
   border-radius: 50px;
 }

@@ -18,7 +18,6 @@
       </tr>
     </thead>
     <tbody>
-
         <?php foreach ($tramites as $tramite): ?>
           <tr class="tr-notifi <?php if ($tramite->estatus == "ALTA") {
             echo "alta";
@@ -51,7 +50,9 @@
           </tr>
         <?php endforeach; ?>
       <?php else: ?>
-        <h1>No hay trámites</h1>
+        <div class="col-xs-12 text-center">
+          <h3 class="sintra">No hay trámites en proceso por el momento</h3>
+        </div>
       <?php endif; ?>
     </tbody>
   </table>

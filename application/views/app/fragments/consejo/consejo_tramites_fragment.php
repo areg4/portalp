@@ -2,9 +2,12 @@
   <h1 class="h1 text-center tamañoh1">Trámites de Consejo</h1>
 </div>
 
-<div class="" id="tabla1">
-  <div class="noAtendidos">
-    <h1 class="h1">Tramites No Atendidos</h1>
+<div class="col-xs-12 leyenda">
+  <p><b>Importante: </b>Deberá estar al pendiente sobre el estatus del trámite.</p>
+</div>
+
+<div class="col-xs-12 col-md-6" id="tabla">
+    <h3 class="h3 tamañoh4-border center">Trámites no atendidos</h3>
     <?php if (!is_null($tramitesNA)): ?>
       <table class="table responsive">
         <thead>
@@ -35,20 +38,18 @@
                 ?></td>
               </tr>
             <?php endforeach; ?>
-    <?php endif; ?>
-    <?php if (is_null($tramitesNA)): ?>
-            <div class="col-xs-12 text-center">
-            <h3 class="h3">No hay trámites por atender</h3>
+          </tbody>
+        </table>
+      <?php endif; ?>
+      <?php if (is_null($tramitesNA)): ?>
+          <div class="col-xs-12 text-center">
+            <p class="sintra">No hay trámites por atender</p>
           </div>
-        </tbody>
-      </table>
     <?php endif; ?>
-  </div>
-
 </div>
-<div class="tabla2">
-  <div class="atendidos">
-    <h1>Tramites Atendidos</h1>
+
+<div class="tabla2 col-xs-12 col-md-6" id="tabla">
+    <h3 class="h3 tamañoh4-border center">Trámites atendidos</h3>
     <?php if (!is_null($tramitesA)): ?>
       <table class="table responsive">
         <thead>
@@ -78,17 +79,15 @@
                   echo "RECHAZADO";
                 }
                 ?></td>
-
                 <td data-title="Fecha Atendida"><?=$tramite->fechaAtendida?></td>
               </tr>
             <?php endforeach; ?>
-    <?php endif; ?>
-    <?php if (is_null($tramitesA)): ?>
-            <div class="col-xs-12 text-center">
-            <h3>No hay trámites atendidos</h3>
-          </div>
         </tbody>
       </table>
     <?php endif; ?>
-  </div>
+    <?php if (is_null($tramitesA)): ?>
+          <div class="col-xs-12 text-center">
+            <p class="sintra">No hay trámites atendidos</p>
+          </div>
+    <?php endif; ?>
 </div>

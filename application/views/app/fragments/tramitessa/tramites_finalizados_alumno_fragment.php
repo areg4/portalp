@@ -35,6 +35,6 @@
 
 <?php else: ?>
   <div class="col-xs-12 text-center">
-    <h3>No hay trámites finalizados por el momento</h3>
+    <h3 class="sintra">No hay trámites finalizados por el momento</h3>
   </div>
 <?php endif; ?>

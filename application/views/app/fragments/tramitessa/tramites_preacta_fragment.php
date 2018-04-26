@@ -2,7 +2,7 @@
   <h1 class="h1 text-center tamañoh1">Trámites de la Preacta</h1>
 </div>
 
-<div class="" id="tabla">
+<div class="col-xs-12" id="tabla">
   <?php if (!is_null($tramites)): ?>
     <div class="">
       <button class="btn btnGenerarPreacta">Generar Preacta</button>
@@ -36,7 +36,7 @@
   </table>
   <?php else: ?>
     <div class="col-xs-12 text-center">
-      <h3>No hay trámites</h3>
+      <h3 class="sintra">No hay trámites finalizados</h3>
     </div>
   <?php endif; ?>
 </div>

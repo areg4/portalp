@@ -93,41 +93,47 @@
     </div>
 
     <?php if (!is_null($investigadores)AND (!is_null($aprobacionesInves))): ?>
-      <div class="col-md-6 listaInv" id="listaInv">
-        <h1>Lista de Investigación</h1>
-        <table>
-          <tr>
-            <th>Miembro</th>
-            <th>Aprobación</th>
-            <th>Comentario</th>
-            <th>Fecha Atendido</th>
-          </tr>
-          <?php foreach ($investigadores as $investigador): ?>
-            <?php if ($investigador->idUsuario != $idUsuario): ?>
-              <?php
-                if ($aprobacionesInves[$investigador->idUsuario]->aprobacion == 0) {
-                  $aprobacion = "NO ATENDIDA";
-                }if ($aprobacionesInves[$investigador->idUsuario]->aprobacion == 1) {
-                  $aprobacion = "APROBADO";
-                }if ($aprobacionesInves[$investigador->idUsuario]->aprobacion == 2) {
-                  $aprobacion = "RECHAZADO";
-                }
-
-                if ($aprobacionesInves[$investigador->idUsuario]->comentario == "" or is_null($aprobacionesInves[$investigador->idUsuario]->comentario) or $aprobacionesInves[$investigador->idUsuario]->comentario == 0) {
-                  $comenInv = "SIN COMENTARIOS";
-                }else {
-                  $comenInv = $aprobacionesInves[$investigador->idUsuario]->comentario;
-                }
-              ?>
+      <div id="listaInv">
+        <div class="col-xs-12" id="tabla">
+          <h3 class="h3">Lista de Investigación</h3>
+          <table class="table responsive">
+            <thead>
               <tr>
-                <td><?php echo $investigador->nombre." ".$investigador->apellidoPaterno." ".$investigador->apellidoMaterno; ?></td>
-                <td><?php echo $aprobacion; ?></td>
-                <td><?php echo $comenInv; ?></td>
-                <td><?=(($aprobacionesInves[$investigador->idUsuario]->fechaHora)!=0) ? fancy_date($aprobacionesInves[$investigador->idUsuario]->fechaHora) : "" ; ?></td>
+                <th>Miembro</th>
+                <th>Aprobación</th>
+                <th>Comentario</th>
+                <th>Fecha respuesta</th>
               </tr>
-            <?php endif; ?>
-          <?php endforeach; ?>
-        </table>
+            </thead>
+            <tbody>
+            <?php foreach ($investigadores as $investigador): ?>
+                <?php if ($investigador->idUsuario != $idUsuario): ?>
+                <?php
+                    if ($aprobacionesInves[$investigador->idUsuario]->aprobacion == 0) {
+                      $aprobacion = "NO ATENDIDA";
+                    }if ($aprobacionesInves[$investigador->idUsuario]->aprobacion == 1) {
+                      $aprobacion = "APROBADO";
+                    }if ($aprobacionesInves[$investigador->idUsuario]->aprobacion == 2) {
+                      $aprobacion = "RECHAZADO";
+                    }
+
+                    if ($aprobacionesInves[$investigador->idUsuario]->comentario == "" or is_null($aprobacionesInves[$investigador->idUsuario]->comentario) or $aprobacionesInves[$investigador->idUsuario]->comentario == 0) {
+                      $comenInv = "SIN COMENTARIOS";
+                    }else {
+                      $comenInv = $aprobacionesInves[$investigador->idUsuario]->comentario;
+                    }
+                  ?>
+                <tr>
+                  <td data-title="Miembro" class="sincursor"><?php echo $investigador->nombre." ".$investigador->apellidoPaterno." ".$investigador->apellidoMaterno; ?></td>
+                  <td data-title="aprobación" class="sincursor"><?php echo $aprobacion; ?></td>
+                  <td data-title="Comentario" class="sincursor"><?php echo $comenInv; ?></td>
+                  <td data-title="Fecha respuesta" class="sincursor"><?=(($aprobacionesInves[$investigador->idUsuario]->fechaHora)!=0) ? fancy_date($aprobacionesInves[$investigador->idUsuario]->fechaHora) : " - " ; ?></td>
+                </tr>
+              <?php endif; ?>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+        </div>
       </div>
     <?php endif; ?>
 
@@ -135,7 +141,6 @@
       <div class="col-xs-12 text-center center">
         <h3 class="tamañoh3">Comentario(s)</h3>
         <textarea id="comentarios" rows="10" cols="80" class="col-xs-6"></textarea>
-        <br>
       </div>
     <?php else: ?>
       <div class="col-xs-12 text-center center">
@@ -149,7 +154,6 @@
           // echo $aprobacionesInves[$idUsuario]->comentario;
         ?>
         </p>
-        <br>
       </div>
     <?php endif; ?>
 

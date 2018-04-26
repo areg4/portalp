@@ -2,9 +2,8 @@
   <h1 class="h1 text-center tamañoh1">Trámites de Investigación</h1>
 </div>
 
-<div class="" id="tabla1">
-  <div class="noAtendidos">
-    <h1 class="h1">Tramites No Atendidos</h1>
+<div class="col-xs-12 col-md-6" id="tabla">
+  <h3 class="h3 tamañoh4-border center">Trámites no atendidos</h3>
     <?php if (!is_null($tramitesNA)): ?>
       <table class="table responsive">
         <thead>
@@ -16,10 +15,7 @@
           </tr>
         </thead>
         <tbody>
-
-            <?php foreach ($tramitesNA as $tramite):
-              // die(var_dump($tramites));
-              ?>
+            <?php foreach ($tramitesNA as $tramite): ?>
               <tr class="tr-notifi-investigacion" data="<?=$tramite->idTramite?>">
                 <td data-title="Expediente"><?=$expAlumno[$tramite->idAlumno]?></td>
                 <td data-title="Tipo de Trámite"><?=$catTramites[$tramite->idCatTramite]?></td>
@@ -35,20 +31,18 @@
                 ?></td>
               </tr>
             <?php endforeach; ?>
-    <?php endif; ?>
-    <?php if (is_null($tramitesNA)): ?>
-            <div class="col-xs-12 text-center">
-            <h3 class="h3">No hay trámites por atender</h3>
-          </div>
         </tbody>
       </table>
     <?php endif; ?>
-  </div>
-
+    <?php if (is_null($tramitesNA)): ?>
+          <div class="col-xs-12 text-center">
+            <p class="p sintra">No hay trámites por atender</p>
+          </div>
+    <?php endif; ?>
 </div>
-<div class="tabla2">
-  <div class="atendidos">
-    <h1>Tramites Atendidos</h1>
+
+<div class="tabla2 col-xs-12 col-md-6" id="tabla">
+  <h3 class="h3 tamañoh4-border center">Trámites atendidos</h3>
     <?php if (!is_null($tramitesA)): ?>
       <table class="table responsive">
         <thead>
@@ -61,7 +55,6 @@
           </tr>
         </thead>
         <tbody>
-
             <?php foreach ($tramitesA as $tramite):
               // die(var_dump($tramites));
               ?>
@@ -82,13 +75,12 @@
                 <td data-title="Fecha Atendida"><?=$tramite->fechaAtendida?></td>
               </tr>
             <?php endforeach; ?>
+          </tbody>
+        </table>
     <?php endif; ?>
     <?php if (is_null($tramitesA)): ?>
-            <div class="col-xs-12 text-center">
-            <h3>No hay trámites atendidos</h3>
+          <div class="col-xs-12 text-center">
+            <p class="sintra">No hay trámites atendidos</p>
           </div>
-        </tbody>
-      </table>
     <?php endif; ?>
-  </div>
 </div>
