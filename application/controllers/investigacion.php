@@ -208,6 +208,10 @@ class Investigacion extends CI_Controller {
 			return null;
 		}
 
+		if (is_null($allTramites)) {
+			return null;
+		}
+
 		$arrayAllTramites = array();
 		$arrayLista = array();
 
@@ -235,6 +239,10 @@ class Investigacion extends CI_Controller {
 		$allTramites = $this->tramitessa_model->getAllTramitesH();
 
 		if (is_null($idTramitesAprobInvs)) {
+			return null;
+		}
+
+		if (is_null($allTramites)) {
 			return null;
 		}
 

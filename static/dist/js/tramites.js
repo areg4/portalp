@@ -37,8 +37,9 @@ jQuery(document).ready(function($){
   $(".ArchivoNuevo").change(function () {
     var file = event.target.files[0];
     if(!file.type.match('application/pdf')) {
-       alert("only PDFs");
-       $(this).val("");
+      $("#error-modal .modal-dialog > .modal-content > .modal-body").html('Sólo archivos con exensión .pdf');
+      $('#error-modal').modal('show');
+      $(this).val("");
    }else {
      $(".btnUpdateFile").click();
    }
@@ -399,7 +400,8 @@ jQuery(document).ready(function($){
   $(".file").on('change', function (event) {
     var file = event.target.files[0];
     if(!file.type.match('application/pdf')) {
-       alert("only PDFs");
+       $("#error-modal .modal-dialog > .modal-content > .modal-body").html('Sólo archivos con exensión .pdf');
+       $('#error-modal').modal('show');
        $(this).find(".fileUp").val("");
        $(this).find("img").attr("src", rutaIcono);
    }

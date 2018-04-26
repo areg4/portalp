@@ -3,7 +3,7 @@
 </div>
 
 <div class="col-xs-12 leyenda">
-  <p>Debes de estar al pendiente de las observaciones de cada uno de los procesos.</p>
+  <b>Debes de estar al pendiente de las observaciones de cada uno de los procesos.</b>
 </div>
 
 <?php if (!is_null($tramitesP)): ?>
@@ -59,5 +59,7 @@
   </div>
 
 <?php else: ?>
-  <p>No hay trámites en proceso</p>
+  <div class="col-xs-12 text-center">
+    <h3 class="sintra">No hay trámites en proceso por el momento</h3>
+  </div>
 <?php endif; ?>

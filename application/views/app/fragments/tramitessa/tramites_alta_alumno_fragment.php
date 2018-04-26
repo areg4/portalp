@@ -1,5 +1,5 @@
 <div class="col-xs-12 col-sm-12 text-center">
-  <h1 class="h1 tamañoh1 text-center">Formulario de alta<br><?=$tramite->tramite; ?></h1>
+  <h1 class="h1 tamañoh1 text-center">Formulario de alta <br><?=$tramite->tramite; ?></h1>
 </div>
 <?php
   if(!is_null($alumno)){

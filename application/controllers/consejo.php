@@ -162,6 +162,10 @@ class Consejo extends CI_Controller {
 			return null;
 		}
 
+		if (is_null($allTramites)) {
+			return null;
+		}
+
 		$arrayAllTramites = array();
 		$arrayLista = array();
 
@@ -189,6 +193,10 @@ class Consejo extends CI_Controller {
 		$allTramites = $this->tramitessa_model->getAllTramitesH();
 
 		if (is_null($idTramitesAprobConse)) {
+			return null;
+		}
+
+		if (is_null($allTramites)) {
 			return null;
 		}
 
