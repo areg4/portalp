@@ -36,7 +36,7 @@
   </table>
   <?php else: ?>
     <div class="col-xs-12 text-center">
-      <h3 class="sintra">No hay trámites finalizados</h3>
+      <h3 class="sintra">No hay trámites para preacta</h3>
     </div>
   <?php endif; ?>
 </div>

@@ -214,7 +214,7 @@
 
     <div class="col-xs-12 opciones-t-sa">
       <?php if ($tramite->estatus=="PROCESO" AND $tramite->estatus!="INVESTIGACION"): ?>
-        <button type="submit" class="btn btn-light btnEnvInves" data-id="<?=$tramite->idTramite?>">Enviar a Mesa de Investigación</button>
+        <button type="submit" class="btn btn-info btnEnvInves" data-id="<?=$tramite->idTramite?>">Enviar a Mesa de Investigación</button>
         <button type="submit" class="btn btn-info btnEnvCons" data-id="<?=$tramite->idTramite?>">Enviar a Consejo Académico</button>
       <?php endif; ?>
 
@@ -223,7 +223,7 @@
       <?php endif; ?>
 
       <?php if (is_null($observacion) AND $tramite->estatus=="PROCESO"): ?>
-        <button type="submit" class="btn btn-success" id="btn-enviar-observacion" data-id="<?=$tramite->idTramite?>" data-id-u="<?=$alumno->idAlumno?>" >Enviar observación</button>
+        <button type="submit" class="btn btn-warning" id="btn-enviar-observacion" data-id="<?=$tramite->idTramite?>" data-id-u="<?=$alumno->idAlumno?>" >Enviar observación</button>
       <?php endif; ?>
       <?php if ($tramite->estatus=="PREACTA"): ?>
         <div class="form-group col-xs-12 col-sm-12 col-md-12">

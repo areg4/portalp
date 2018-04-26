@@ -160,7 +160,7 @@
     <?php if (($aprobacionesInves[$idUsuario]->aprobacion == 0) AND ($tramite->estatus=="INVESTIGACION")): ?>
       <div class="col-xs-12 opciones-t-sa">
         <button type="submit" class="btn btn-success btnAproInves" data-id="<?=$tramite->idTramite?>" data-user="<?=$idUsuario?>">Aprobar</button>
-        <button type="submit" class="btn btn-success btnRechaInves" data-id="<?=$tramite->idTramite?>" data-user="<?=$idUsuario?>">Rechazar</button>
+        <button type="submit" class="btn btn-danger btnRechaInves" data-id="<?=$tramite->idTramite?>" data-user="<?=$idUsuario?>">Rechazar</button>
       </div>
     <?php endif; ?>
 </div>
