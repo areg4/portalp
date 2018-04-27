@@ -395,7 +395,8 @@ jQuery(document).ready(function($){
   var rutaIcono;
 
   $(".file").click(function() {
-    rutaIcono = $(this).find("img").attr("src");
+    rutaIcono = $(this).find("img").attr("data-default-icon");
+    // alert(rutaIcono);
   });
   $(".file").on('change', function (event) {
     var file = event.target.files[0];
@@ -403,7 +404,16 @@ jQuery(document).ready(function($){
        $("#error-modal .modal-dialog > .modal-content > .modal-body").html('Sólo archivos con exensión .pdf');
        $('#error-modal').modal('show');
        $(this).find(".fileUp").val("");
+       $(this).css("background","#FA474B");
+       $(this).css("transition","width 1s, background 2s");
        $(this).find("img").attr("src", rutaIcono);
+   }
+   else{
+    $(this).css("background", "#359AFF");
+    // cambio = document.getElementById(id);
+    $(this).find("img").attr("src", base_url()+'static/img/upload.png');
+    // console.log(cambio);
+    // cambio.src = base_url()+'static/img/upload.png';
    }
   })
 });
@@ -416,10 +426,10 @@ function goToTramiteDatos(idTramite) {
   window.location.href = base_url()+'portal-informatica-tramites-datos/'+data;
 }
 
-function cambiarIcon(id){
-  cambio = document.getElementById(id);
-  cambio.src = base_url()+'static/img/upload.png';
-}
+// function cambiarIcon(id){
+//   cambio = document.getElementById(id);
+//   cambio.src = base_url()+'static/img/upload.png';
+// }
 
 function bajar(id){
   menu = document.getElementById(id);

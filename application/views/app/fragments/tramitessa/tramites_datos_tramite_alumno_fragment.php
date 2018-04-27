@@ -65,9 +65,8 @@
       </div>
     <?php endif; ?>
 
-    <div class="col-xs-12 leyenda">
-      <br>
-      <p><b>Documentos subidos</b><br>Los documentos son revisados de forma individual.</p>
+    <div class="form-group col-xs-12 leyenda">
+      <p class="p"><b>Documentos subidos</b><br>Los documentos son revisados de forma individual.</p>
     </div>
 
     <div class="col-xs-12 archivos" id="contenedor">
@@ -105,8 +104,8 @@
 
     <?php if ($tramite->estatus=="APROBADO" OR $tramite->estatus=="RECHAZADO"): ?>
       <div class="col-md-12 respuestaFinal">
-        <h1>Tu trámite ha sido finalizado con una respuesta de: <?=$tramite->estatus?></h1> <br>
-        <h2>Favor de pasar a Secretaría Académica para recoger la hoja correspondiente.</h2>
+        <h3 class="h3 text-center">Tu trámite ha sido finalizado con una respuesta de: <?=$tramite->estatus?></h3>
+        <h3 class="h3 text-center sintra">Favor de pasar a Secretaría Académica para recoger la hoja correspondiente.</h3>
       </div>
     <?php endif; ?>
 
