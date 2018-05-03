@@ -21,7 +21,9 @@ class Investigacion extends CI_Controller {
 		$this->periodo 						= $this->common_model->getPeriodoActivo();
 		$this->fecha    					= date('Y-m-d');
 		$this->hora    						= date('H:i:s');
-		$this->idUsuario 					= 7;					//que jale el de sesión
+		$this->idUsuario 					= 14;					//que jale el de sesión
+		$this->idRol 							= 9;					//id del rol del usuario
+		// $this->idRol 							= $this->session->userdata('idRol');
 		// $this->limiteMateriasPreregistro 	= 10;
 		// //die(var_dump($this->common_model->getPeriodoActivo()));
 		// if($this->idRol != 999){
@@ -82,6 +84,7 @@ class Investigacion extends CI_Controller {
 		$data['investigadores']		=		$investigadores;
 		$data['aprobacionesInves']		=		$aprobacionesInves;
 		$data['idUsuario'] 	=	$this->idUsuario;
+		$data['idRol']			= $this->idRol;
 		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/investigacion_tramite_datos_fragment', $data, TRUE);
 		$this->load->view('app/main_view', $data, FALSE);
 	}
@@ -260,6 +263,36 @@ class Investigacion extends CI_Controller {
 		// die(var_dump($arrayLista));
 		// $arrayLista = (object)$arrayLista;
 		return $arrayLista;
+	}
+
+	public function asignacionPresidente()
+	{
+		$idTramite = $this->input->post('idTramite');
+		$asignaciones = $this->input->post('asignaciones');
+		$idPresi 			= $this->input->post('idPresi');
+		$comentarioP 	= $this->input->post('comentarioP');
+		$asignaciones = json_decode($asignaciones);
+		$fecha = date('Y-m-d H:i:s');
+		foreach($asignaciones as $asignacion) {
+			// print_r(die(var_dump($asignacion->idUser)));
+			$idUsuario = $asignacion->idUser;
+			$arrUpdate = array(
+				'aprobacion'	=>	$asignacion->asignacion,
+				'fechaHora'		=>	$fecha
+			);
+			$this->tramitessa_model->updateAprobacion($idTramite, $idUsuario, "INVESTIGACION", $arrUpdate);
+		}
+
+		$arrUpdate	=	array(
+			'comentario'	=>	$comentarioP
+		);
+
+		$this->tramitessa_model->updateAprobacion($idTramite, $idPresi, "INVESTIGACION", $arrUpdate);
+		$this->session->set_flashdata('error', 'updateOk');
+		// redirect('portal-informatica-investigacion-tramite-datos/'.$idTramite);
+		echo "OK";
+		// print_r(die(var_dump($asignaciones)));
+		// die(var_dump($asignaciones));
 	}
 }
 

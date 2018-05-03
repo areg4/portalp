@@ -403,10 +403,10 @@ jQuery(document).ready(function($){
     if(!file.type.match('application/pdf')) {
        $("#error-modal .modal-dialog > .modal-content > .modal-body").html('Sólo archivos con exensión .pdf');
        $('#error-modal').modal('show');
-       $(this).find(".fileUp").val("");
        $(this).css("background","#FA474B");
        $(this).css("transition","width 1s, background 2s");
        $(this).find("img").attr("src", rutaIcono);
+       $(this).find(".fileUp").val("");
    }
    else{
     $(this).css("background", "#359AFF");
@@ -415,7 +415,89 @@ jQuery(document).ready(function($){
     // console.log(cambio);
     // cambio.src = base_url()+'static/img/upload.png';
    }
-  })
+ });
+
+ $(".btnEnvDesig").click(function () {
+   var idsAsig      = [];
+   var idTramite    = $(this).attr('data-id');
+   var idPresi      = $(this).attr('data-user');
+   var comentarioP  = $("#comentarios").val();
+   var elementos = $(".designaciones").find("input:checked").each(function() {
+     idUser = $(this).attr('data-user-id');
+     asignacion = $("input[name=desig-"+idUser+"]:checked").val();
+     // idsAsig[idUser] = asignacion;
+     // alert(idUser);
+     // obj = {};
+     // obj[idUser] = asignacion;
+     // idsAsig.push(obj);
+     idsAsig.push({idUser : idUser, asignacion : asignacion});
+     // console.log(asignacion);
+   });
+
+   $.ajax({
+     url     : base_url()+"portal-informatica-investigacion-tramite-asignacion-presidente",
+     type    : 'post',
+     data    : {
+       asignaciones : JSON.stringify(idsAsig),
+       idTramite    : idTramite,
+       idPresi      : idPresi,
+       comentarioP  : comentarioP
+     },
+     success : function (data) {
+       // alert(data);
+       if (data == "OK") {
+         window.location.reload();
+       }else{
+         window.location.reload();
+       }
+     }
+   });
+
+   // console.log(idsAsig);
+
+ });
+
+ $(".btnEnvDesigTitu").click(function () {
+   var idsAsig      = [];
+   var idTramite    = $(this).attr('data-id');
+   var idPresi      = $(this).attr('data-user');
+   var comentarioP  = $("#comentarios").val();
+   var elementos = $(".designaciones").find("input:checked").each(function() {
+     idUser = $(this).attr('data-user-id');
+     asignacion = $("input[name=desig-"+idUser+"]:checked").val();
+     // idsAsig[idUser] = asignacion;
+     // alert(idUser);
+     // obj = {};
+     // obj[idUser] = asignacion;
+     // idsAsig.push(obj);
+     idsAsig.push({idUser : idUser, asignacion : asignacion});
+     // console.log(asignacion);
+   });
+
+   $.ajax({
+     url     : base_url()+"portal-informatica-consejo-tramite-asignacion-presidente",
+     type    : 'post',
+     data    : {
+       asignaciones : JSON.stringify(idsAsig),
+       idTramite    : idTramite,
+       idPresi      : idPresi,
+       comentarioP  : comentarioP
+     },
+     success : function (data) {
+       // alert(data);
+       if (data == "OK") {
+         window.location.reload();
+       }else{
+         window.location.reload();
+       }
+     }
+   });
+
+   // console.log(idsAsig);
+   // alert("titu");
+
+ });
+
 });
 
 function goToTramiteDatos(idTramite) {

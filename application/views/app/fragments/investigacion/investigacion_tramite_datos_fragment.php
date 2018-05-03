@@ -92,49 +92,99 @@
     <?php endif; ?>
     </div>
 
-    <?php if (!is_null($investigadores)AND (!is_null($aprobacionesInves))): ?>
-      <div id="listaInv">
-        <div class="col-xs-12" id="tabla">
-          <h3 class="h3">Lista de Investigación</h3>
-          <table class="table responsive">
-            <thead>
-              <tr>
-                <th>Miembro</th>
-                <th>Aprobación</th>
-                <th>Comentario</th>
-                <th>Fecha respuesta</th>
-              </tr>
-            </thead>
-            <tbody>
-            <?php foreach ($investigadores as $investigador): ?>
-                <?php if ($investigador->idUsuario != $idUsuario): ?>
-                <?php
-                    if ($aprobacionesInves[$investigador->idUsuario]->aprobacion == 0) {
-                      $aprobacion = "NO ATENDIDA";
-                    }if ($aprobacionesInves[$investigador->idUsuario]->aprobacion == 1) {
-                      $aprobacion = "APROBADO";
-                    }if ($aprobacionesInves[$investigador->idUsuario]->aprobacion == 2) {
-                      $aprobacion = "RECHAZADO";
-                    }
-
-                    if ($aprobacionesInves[$investigador->idUsuario]->comentario == "" or is_null($aprobacionesInves[$investigador->idUsuario]->comentario) or $aprobacionesInves[$investigador->idUsuario]->comentario == 0) {
-                      $comenInv = "SIN COMENTARIOS";
-                    }else {
-                      $comenInv = $aprobacionesInves[$investigador->idUsuario]->comentario;
-                    }
-                  ?>
+    <?php if ($idRol != 9): ?>
+      <?php if (!is_null($investigadores)AND (!is_null($aprobacionesInves))): ?>
+        <div id="listaInv">
+          <div class="col-xs-12" id="tabla">
+            <h3 class="h3">Lista de Investigación</h3>
+            <table class="table responsive">
+              <thead>
                 <tr>
-                  <td data-title="Miembro" class="sincursor"><?php echo $investigador->nombre." ".$investigador->apellidoPaterno." ".$investigador->apellidoMaterno; ?></td>
-                  <td data-title="aprobación" class="sincursor"><?php echo $aprobacion; ?></td>
-                  <td data-title="Comentario" class="sincursor"><?php echo $comenInv; ?></td>
-                  <td data-title="Fecha respuesta" class="sincursor"><?=(($aprobacionesInves[$investigador->idUsuario]->fechaHora)!=0) ? fancy_date($aprobacionesInves[$investigador->idUsuario]->fechaHora) : " - " ; ?></td>
+                  <th>Miembro</th>
+                  <th>Aprobación</th>
+                  <th>Comentario</th>
+                  <th>Fecha respuesta</th>
                 </tr>
-              <?php endif; ?>
-              <?php endforeach; ?>
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+              <?php foreach ($investigadores as $investigador): ?>
+                  <?php if ($investigador->idUsuario != $idUsuario): ?>
+                  <?php
+                      if ($aprobacionesInves[$investigador->idUsuario]->aprobacion == 0) {
+                        $aprobacion = "NO ATENDIDA";
+                      }if ($aprobacionesInves[$investigador->idUsuario]->aprobacion == 1) {
+                        $aprobacion = "APROBADO";
+                      }if ($aprobacionesInves[$investigador->idUsuario]->aprobacion == 2) {
+                        $aprobacion = "RECHAZADO";
+                      }
+
+                      if ($aprobacionesInves[$investigador->idUsuario]->comentario == "" or is_null($aprobacionesInves[$investigador->idUsuario]->comentario) or $aprobacionesInves[$investigador->idUsuario]->comentario == 0) {
+                        $comenInv = "SIN COMENTARIOS";
+                      }else {
+                        $comenInv = $aprobacionesInves[$investigador->idUsuario]->comentario;
+                      }
+                    ?>
+                  <tr>
+                    <td data-title="Miembro" class="sincursor"><?php echo $investigador->nombre." ".$investigador->apellidoPaterno." ".$investigador->apellidoMaterno; ?></td>
+                    <td data-title="aprobación" class="sincursor"><?php echo $aprobacion; ?></td>
+                    <td data-title="Comentario" class="sincursor"><?php echo $comenInv; ?></td>
+                    <td data-title="Fecha respuesta" class="sincursor"><?=(($aprobacionesInves[$investigador->idUsuario]->fechaHora)!=0) ? fancy_date($aprobacionesInves[$investigador->idUsuario]->fechaHora) : " - " ; ?></td>
+                  </tr>
+                <?php endif; ?>
+                <?php endforeach; ?>
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
+      <?php endif; ?>
+    <?php else: ?>
+      <?php if (!is_null($investigadores)AND (!is_null($aprobacionesInves))): ?>
+        <div id="listaInv">
+          <div class="col-xs-12" id="tabla">
+            <h3 class="h3">Lista Comité de Investigación</h3>
+            <table class="table responsive">
+              <thead>
+                <tr>
+                  <th>Miembro</th>
+                  <th>Aprobación</th>
+                  <th>Comentario</th>
+                  <th>Fecha respuesta</th>
+                  <th>Designación</th>
+                </tr>
+              </thead>
+              <tbody>
+              <?php foreach ($investigadores as $investigador): ?>
+                  <?php
+                      if ($aprobacionesInves[$investigador->idUsuario]->aprobacion == 0) {
+                        $aprobacion = "NO ATENDIDA";
+                      }if ($aprobacionesInves[$investigador->idUsuario]->aprobacion == 1) {
+                        $aprobacion = "APROBADO";
+                      }if ($aprobacionesInves[$investigador->idUsuario]->aprobacion == 2) {
+                        $aprobacion = "RECHAZADO";
+                      }
+
+                      if ($aprobacionesInves[$investigador->idUsuario]->comentario == "" or is_null($aprobacionesInves[$investigador->idUsuario]->comentario) or $aprobacionesInves[$investigador->idUsuario]->comentario == 0) {
+                        $comenInv = "SIN COMENTARIOS";
+                      }else {
+                        $comenInv = $aprobacionesInves[$investigador->idUsuario]->comentario;
+                      }
+                    ?>
+                  <tr>
+                    <td data-title="Miembro" class="sincursor"><?php echo $investigador->nombre." ".$investigador->apellidoPaterno." ".$investigador->apellidoMaterno; ?></td>
+                    <td data-title="aprobación" class="sincursor"><?php echo $aprobacion; ?></td>
+                    <td data-title="Comentario" class="sincursor"><?php echo $comenInv; ?></td>
+                    <td data-title="Fecha respuesta" class="sincursor"><?=(($aprobacionesInves[$investigador->idUsuario]->fechaHora)!=0) ? fancy_date($aprobacionesInves[$investigador->idUsuario]->fechaHora) : " - " ; ?></td>
+                    <td data-title="Designacion" class="sincursor designaciones">
+                      <input type="radio" data-user-id="<?=$investigador->idUsuario?>" name="desig-<?=$investigador->idUsuario?>" value="1" <?=($aprobacionesInves[$investigador->idUsuario]->aprobacion)==1 ? "checked" : "";?> >APROBADO
+                      <input type="radio" data-user-id="<?=$investigador->idUsuario?>" name="desig-<?=$investigador->idUsuario?>" value="2" <?=($aprobacionesInves[$investigador->idUsuario]->aprobacion)==2 ? "checked" : "";?> >RECHAZADO
+                    </td>
+                  </tr>
+                <?php endforeach; ?>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      <?php endif; ?>
     <?php endif; ?>
 
     <?php if (($aprobacionesInves[$idUsuario]->aprobacion == 0) AND ($tramite->estatus=="INVESTIGACION")): ?>
@@ -157,11 +207,21 @@
       </div>
     <?php endif; ?>
 
-    <?php if (($aprobacionesInves[$idUsuario]->aprobacion == 0) AND ($tramite->estatus=="INVESTIGACION")): ?>
-      <div class="col-xs-12 opciones-t-sa">
-        <button type="submit" class="btn btn-success btnAproInves" data-id="<?=$tramite->idTramite?>" data-user="<?=$idUsuario?>">Aprobar</button>
-        <button type="submit" class="btn btn-danger btnRechaInves" data-id="<?=$tramite->idTramite?>" data-user="<?=$idUsuario?>">Rechazar</button>
-      </div>
+    <?php if ($idRol != 9): ?>
+      <?php if (($aprobacionesInves[$idUsuario]->aprobacion == 0) AND ($tramite->estatus=="INVESTIGACION")): ?>
+        <div class="col-xs-12 opciones-t-sa">
+          <button type="submit" class="btn btn-success btnAproInves" data-id="<?=$tramite->idTramite?>" data-user="<?=$idUsuario?>">Aprobar</button>
+          <button type="submit" class="btn btn-danger btnRechaInves" data-id="<?=$tramite->idTramite?>" data-user="<?=$idUsuario?>">Rechazar</button>
+        </div>
+      <?php endif; ?>
+    <?php else: ?>
+      <?php if (($aprobacionesInves[$idUsuario]->aprobacion == 0) AND ($tramite->estatus=="INVESTIGACION")): ?>
+        <div class="col-xs-12 opciones-t-sa">
+          <button type="submit" class="btn btn-success  btnEnvDesig" data-id="<?=$tramite->idTramite?>" data-user="<?=$idUsuario?>">Enviar Designaciones</button>
+        </div>
+      <?php endif; ?>
     <?php endif; ?>
+
+
 </div>
 </body>

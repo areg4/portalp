@@ -63,7 +63,7 @@
           <p>Solicitud</p>
           <div class="file">
             <img src="<?=base_url()?>static/img/solicitud.png" id="1" data-default-icon="<?=base_url()?>static/img/solicitud.png">
-            <input class="ocultar"  id="" type="file" name="solicitudEV" accept="application/pdf" required onchange="cambiarIcon(1)">
+            <input class="ocultar fileUp"  id="" type="file" name="solicitudEV" accept="application/pdf" required onchange="cambiarIcon(1)">
           </div>
         </div>
 
@@ -85,7 +85,7 @@
         <p>Prórroga Papel 1</p>
           <div class="file">
             <img src="<?=base_url()?>static/img/prorroga.png" id="3" data-default-icon="<?=base_url()?>static/img/prorroga.png">
-            <input class="ocultar fileUp"  id="" type="file" name="archivoPorS[]" required">
+            <input class="ocultar fileUp"  id="" type="file" name="archivoPorS[]" required>
           </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-2 archivo">

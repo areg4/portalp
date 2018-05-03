@@ -21,7 +21,9 @@ class Consejo extends CI_Controller {
 		$this->periodo 						= $this->common_model->getPeriodoActivo();
 		$this->fecha    					= date('Y-m-d');
 		$this->hora    						= date('H:i:s');
-		$this->idUsuario 					= 13;					//que jale el de sesión
+		$this->idUsuario 					= 15;					//que jale el de sesión
+		$this->idRol 							= 10;					//id del rol del usuario
+		// $this->idRol 							= $this->session->userdata('idRol');
 		// $this->limiteMateriasPreregistro 	= 10;
 		// //die(var_dump($this->common_model->getPeriodoActivo()));
 		// if($this->idRol != 999){
@@ -86,6 +88,7 @@ class Consejo extends CI_Controller {
 		$data['aprobacionesInves']		=		$aprobacionesInves;
 		$data['aprobacionesConse']		=		$aprobacionesConse;
 		$data['idUsuario'] 	=	$this->idUsuario;
+		$data['idRol']			= $this->idRol;
 		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/consejo_tramite_datos_fragment', $data, TRUE);
 		$this->load->view('app/main_view', $data, FALSE);
 	}
@@ -264,6 +267,34 @@ class Consejo extends CI_Controller {
 			// redirect('portal-informatica-investigacion-tramite-datos/'.$idTramite);
 			echo "ERROR";
 		}
+	}
+	public function asignacionPresidente()
+	{
+		$idTramite 		= $this->input->post('idTramite');
+		$asignaciones = $this->input->post('asignaciones');
+		$idPresi 			= $this->input->post('idPresi');
+		$comentarioP 	= $this->input->post('comentarioP');
+		$asignaciones = json_decode($asignaciones);
+		$fecha = date('Y-m-d H:i:s');
+		// print_r(die(var_dump($asignaciones)));
+		foreach($asignaciones as $asignacion) {
+			// print_r(die(var_dump($asignacion->idUser)));
+			$idUsuario = $asignacion->idUser;
+			$arrUpdate = array(
+				'aprobacion'	=>	$asignacion->asignacion,
+				'fechaHora'		=>	$fecha
+			);
+			$this->tramitessa_model->updateAprobacion($idTramite, $idUsuario, "CONSEJO", $arrUpdate);
+		}
+
+		$arrUpdate	=	array(
+			'comentario'	=>	$comentarioP
+		);
+
+		$this->tramitessa_model->updateAprobacion($idTramite, $idPresi, "CONSEJO", $arrUpdate);
+		$this->session->set_flashdata('error', 'updateOk');
+		// redirect('portal-informatica-investigacion-tramite-datos/'.$idTramite);
+		echo "OK";
 	}
 }
 

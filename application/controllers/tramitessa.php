@@ -97,6 +97,9 @@ class Tramitessa extends CI_Controller {
 	public function tramitesDatos($idTramite)
 	{
 		$tramite = $this->tramitessa_model->getTramitePById($idTramite);
+		if (is_null($tramite)) {
+			redirect('portal-informatica-tramites-proceso');
+		}
 		$alumno = $this->alumno_model->getAlumno($tramite->idAlumno);
 		$archivos = $this->tramitessa_model->getArchivosByTramite($idTramite);
 

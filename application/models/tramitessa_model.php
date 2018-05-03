@@ -243,7 +243,8 @@ class Tramitessa_model extends CI_Model {
 	public function getInvestigadores()
 	{
 		$a = $this->tablas['usuario'];
-		$this->db_b->where('idRol', 7);
+		$this->db_b->where('idRol', 7); //rol miembro
+		$this->db_b->or_where('idRol', 9); //rol presidente
     $this->db_b->where('estatus', 1);
 		$query = $this->db_b->get($a);
 		return ($query->num_rows() >= 1) ? $query->result() : NULL;
@@ -252,7 +253,8 @@ class Tramitessa_model extends CI_Model {
 	public function getConsejeros()
 	{
 		$a = $this->tablas['usuario'];
-		$this->db_b->where('idRol', 8);
+		$this->db_b->where('idRol', 8);		//rol miembro
+		$this->db_b->or_where('idRol', 10);	//rol presidente
     $this->db_b->where('estatus', 1);
 		$query = $this->db_b->get($a);
 		return ($query->num_rows() >= 1) ? $query->result() : NULL;
