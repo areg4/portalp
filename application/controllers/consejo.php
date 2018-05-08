@@ -21,7 +21,7 @@ class Consejo extends CI_Controller {
 		$this->periodo 						= $this->common_model->getPeriodoActivo();
 		$this->fecha    					= date('Y-m-d');
 		$this->hora    						= date('H:i:s');
-		$this->idUsuario 					= 15;					//que jale el de sesión
+		$this->idUsuario 					= 8;					//que jale el de sesión
 		$this->idRol 							= 10;					//id del rol del usuario
 		// $this->idRol 							= $this->session->userdata('idRol');
 		// $this->limiteMateriasPreregistro 	= 10;
@@ -89,6 +89,7 @@ class Consejo extends CI_Controller {
 		$data['aprobacionesConse']		=		$aprobacionesConse;
 		$data['idUsuario'] 	=	$this->idUsuario;
 		$data['idRol']			= $this->idRol;
+		$data['materia']			= $this->tramitessa_model->getMateriaById($tramite->idMateria);
 		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/consejo_tramite_datos_fragment', $data, TRUE);
 		$this->load->view('app/main_view', $data, FALSE);
 	}

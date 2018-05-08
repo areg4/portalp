@@ -59,6 +59,19 @@
 
 
       <?php if ($tramite->tramite == "Examen Voluntario"): ?>
+
+        <div class="form-group col-xs-12 col-sm-12 col-md-12 text-center mtop">
+          <label for="text">Materia</label>
+          <select class="materias" name="materia" required>
+            <option value="0">Seleccionar la Materia</option>
+            <?php foreach ($materias as $materia): ?>
+              <option value="<?=$materia->idMateria?>"><?=$materia->cveMateria?> | <?=$materia->nombreMateria?> </option>
+            <?php endforeach; ?>
+          </select>
+        </div>
+
+        <br>
+
         <div class="col-xs-12 col-sm-12 col-md-2 archivo">
           <p>Solicitud</p>
           <div class="file">
@@ -102,6 +115,12 @@
 
       <div class="col-xs-12 archivos">
       <?php if ($tramite->tramite == "Readquisición de Pasantía"): ?>
+
+        <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center mtop">
+          <label for="text">Nombre del Curso de Actualización</label>
+          <input type="nTrabajo" name="nTrabajo" required>
+        </div>
+
         <div class="col-xs-12 col-sm-12 col-md-2 archivo">
           <p>Solicitud</p>
           <div class="file">
@@ -175,6 +194,17 @@
 
       <div class="archivos col-xs-12">
       <?php if ($tramite->tramite == "Guía del Maestro"): ?>
+
+        <div class="form-group col-xs-12 col-sm-12 col-md-12 text-center mtop">
+          <label for="text">Materia</label>
+          <select class="materias" name="materia" required>
+            <option value="0">Seleccionar la Materia</option>
+            <?php foreach ($materias as $materia): ?>
+              <option value="<?=$materia->idMateria?>"><?=$materia->cveMateria?> | <?=$materia->nombreMateria?> </option>
+            <?php endforeach; ?>
+          </select>
+        </div>
+
         <div class="col-xs-12 col-sm-12 col-md-2 archivo">
           <p>Solicitud</p>
           <div class="file">
@@ -284,6 +314,11 @@
 
       <div class="archivos col-xs-12">
       <?php if ($tramite->tramite == "Tesis Individual"): ?>
+        <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center mtop">
+          <label for="text">Título de la Tesis</label>
+          <input type="text" name="nTrabajo" required>
+        </div>
+
         <div class="col-xs-12 col-sm-12 col-md-2 archivo">
           <p>Solicitud</p>
           <div class="file">

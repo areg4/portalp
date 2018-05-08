@@ -498,6 +498,17 @@ jQuery(document).ready(function($){
 
  });
 
+ $("#formAlta").submit(function (e) {
+   if ($("#formAlta").find(".materias").val() != 0) {
+     // alert($("#formAlta").find(".materias").val());
+     // e.preventDefault();
+     return;
+   }else {
+     alert("Por favor elija la materia a la cual aplicar.");
+     e.preventDefault();
+   }
+ })
+
 });
 
 function goToTramiteDatos(idTramite) {

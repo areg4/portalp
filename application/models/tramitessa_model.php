@@ -299,6 +299,22 @@ class Tramitessa_model extends CI_Model {
 	// 	$this->db_b->update($a, $arrUpdate);
 	// 	return true;
 	// }
+	public function getMateriaById($idMateria)
+	{
+		$a = $this->tablas['materia'];
+		$this->db_b->where('idMateria',$idMateria);
+    $this->db_b->where('estatus', 1);
+		$query = $this->db_b->get($a);
+		return ($query->num_rows() == 1) ? $query->row() : NULL;
+	}
+	public function getMaestros()
+	{
+		$a = $this->tablas['profesor'];
+    $this->db_b->where('estatusUsuario', 1);
+		$this->db_b->order_by('cveMaestro', 'asc');
+		$query = $this->db_b->get($a);
+		return ($query->num_rows() >= 1) ? $query->result() : NULL;
+	}
 }
 
 /* End of file root_model.php */

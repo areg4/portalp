@@ -110,6 +110,8 @@ class Tramitessa extends CI_Controller {
 
 		$recomendacion = null;
 
+		$maestros = null;
+
 		$data['sys_app_title'] 	= 'TRÁMITES';
 		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRÁMITES';
 		$data['app_sub_menu'] 	= 'notifiTramites';
@@ -155,6 +157,10 @@ class Tramitessa extends CI_Controller {
 			$recomendacion = $this->recomendacion($consejeros, $aprobacionesConse);
 		}
 
+		if ($tramite->estatus == "PREACTA" AND $tramite->idCatTramite == 1) {
+			$maestros = $this->tramitessa_model->getMaestros();
+		}
+
 		$data['investigadores']		=		$investigadores;
 		$data['consejeros']				=		$consejeros;
 		$data['aprobacionesInves']		=		$aprobacionesInves;
@@ -163,6 +169,8 @@ class Tramitessa extends CI_Controller {
 
 		$data['archivos']		 = $archivos;
 		$data['tramite']		=	$tramite;
+		$data['materia']			= $this->tramitessa_model->getMateriaById($tramite->idMateria);
+		$data['maestros']			= $maestros;
 		$data['periodoTramite'] = $this->common_model->getPeriodo($tramite->idPeriodo)->periodo;
 		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/tramites_datos_tramite_fragment', $data, TRUE);
 		$this->load->view('app/main_view', $data, FALSE);
@@ -339,6 +347,7 @@ class Tramitessa extends CI_Controller {
     $data['js']       = array('tramites');
 		$data['tramite']		= (!is_null($this->tramitessa_model->getTramiteById($idTramite))) ? $this->tramitessa_model->getTramiteById($idTramite) : redirect("portal-informatica-alumnos-tramites") ;	;
 		$data['periodo']		= $this->periodo->periodo;
+		$data['materias']		= $this->tramitessa_model->getMateriasByPlan($this->alumno->idPlan);
 		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/tramites_alta_alumno_fragment', $data, TRUE);
 		$this->load->view('app/main_view', $data, FALSE);
   }
@@ -370,6 +379,13 @@ class Tramitessa extends CI_Controller {
 
 		$idTramite 		= $this->input->post('idTramite');
 
+		$idMateria		= $this->input->post('materia') ? $this->input->post('materia') : null;
+
+		$idMaestro		= $this->input->post('maestro') ? $this->input->post('maestro') : null;
+
+		$nombreTrabajo= $this->input->post('nTrabajo') ? $this->input->post('nTrabajo') : null;
+		// print_r(die(var_dump($nombreTrabajo)));
+
 		if ($idTramite <= 0 OR is_null($idTramite)) {
 			$this->session->set_flashdata('error', 'insertFail');
 			redirect('portal-informatica-alumnos-tramites');
@@ -388,6 +404,9 @@ class Tramitessa extends CI_Controller {
 			'idAlumno' 			=> 	$idAlumno,
 			'estatus' 			=> 	$estatus,
 			'idPeriodo'			=>	$idPeriodo,
+			'idMateria'			=>	$idMateria,
+			'idMaestro'			=>	$idMaestro,
+			'nombreTrabajo'	=>	$nombreTrabajo,
 			'fechaInicio'		=>  $fechaInicio,
 			'feculmod'			=>  $feculmod,
 			'usumod'				=> $usumod,
@@ -882,6 +901,7 @@ class Tramitessa extends CI_Controller {
 		$data['catTramites'] = $this->catTramites();
 		$data['observacion'] = $this->tramitessa_model->getObservacionByTramite($idTramite);
 		$data['archivos']		 = $this->tramitessa_model->getArchivosByTramite($idTramite);
+		$data['materia']			= $this->tramitessa_model->getMateriaById($tramite->idMateria);
 		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/tramites_datos_tramite_alumno_fragment', $data, TRUE);
 		$this->load->view('app/main_view', $data, FALSE);
   }

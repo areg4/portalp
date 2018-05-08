@@ -31,6 +31,13 @@
 
     </div>
 
+    <?php if (!is_null($materia)): ?>
+      <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
+        <label for="text">Materia:</label>
+        <p name="materia" id="materia"><?=$materia->cveMateria." | ".$materia->nombreMateria?></p>
+      </div>
+    <?php endif; ?>
+
     <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
       <label for="text">Fecha Inicio Trámite</label>
       <p name="fecIniTram" id="fecIniTram"><?= fancy_date($tramite->fechaInicio); ?></p>

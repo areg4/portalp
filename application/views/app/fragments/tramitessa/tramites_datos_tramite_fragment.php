@@ -31,6 +31,20 @@
 
     </div>
 
+    <?php if (!is_null($materia)): ?>
+      <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
+        <label for="text">Materia:</label>
+        <p name="materia" id="materia"><?=$materia->cveMateria." | ".$materia->nombreMateria?></p>
+      </div>
+    <?php endif; ?>
+
+    <?php if (!is_null($tramite->nombreTrabajo)): ?>
+      <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
+        <label for="text">Título del Trabajo:</label>
+        <p name="nTrabajo" id="nTrabajo"><?=$tramite->nombreTrabajo?></p>
+      </div>
+    <?php endif; ?>
+
     <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
       <label for="text">Fecha Inicio Trámite</label>
       <p name="fecIniTram" id="fecIniTram"><?= fancy_date($tramite->fechaInicio); ?></p>
@@ -226,11 +240,91 @@
         <button type="submit" class="btn btn-warning" id="btn-enviar-observacion" data-id="<?=$tramite->idTramite?>" data-id-u="<?=$alumno->idAlumno?>" >Enviar observación</button>
       <?php endif; ?>
       <?php if ($tramite->estatus=="PREACTA"): ?>
-        <div class="form-group col-xs-12 col-sm-12 col-md-12">
-          <p class="right">En base a las respuestas de Consejo Académico y Mesa de Investigación, seleccione el estatus del trámite para finalizar.</p>
-        </div>
-        <button type="submit" class="btn btn-success btnResAprobado" data-id="<?=$tramite->idTramite?>">APROBADO</button>
-        <button type="submit" class="btn btn-danger btnResRechazado" data-id="<?=$tramite->idTramite?>">RECHAZADO</button>
+        <form id="formRespuesta">
+          <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
+            <label for="text">Fecha que se celebró el Consejo</label>
+            <input type="date" name="fechaConsejo" min="2018-01-01" required>
+          </div>
+
+          <?php if ($tramite->idCatTramite==1): ?>
+
+            <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
+              <label for="text">Fecha aplicación examen</label>
+              <input type="date" name="fechaApliExam" min="2018-01-01" required>
+            </div>
+
+            <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
+              <label for="text">Hora de Inicio</label>
+              <input type="time" name="horaInicio" required>
+            </div>
+
+            <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
+              <label for="text">Hora de Finalización</label>
+              <input type="time" name="horaFin" required>
+            </div>
+
+            <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
+              <label for="text">Presidente</label>
+              <select class="presidente" name="presidente" required>
+                <option value="0">Seleccione al presidente</option>
+                <?php if (!is_null($maestros)): ?>
+                  <?php foreach ($maestros as $maestro): ?>
+                    <option value="<?=$maestro->idMaestro?>"><?=$maestro->cveMaestro." | ".$maestro->nombreMaestro?></option>
+                  <?php endforeach; ?>
+                <?php endif; ?>
+              </select>
+            </div>
+
+            <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
+              <label for="text">Sinodal</label>
+              <select class="sinodal1" name="sinodal1" required>
+                <option value="0">Seleccione al sinodal</option>
+                <?php if (!is_null($maestros)): ?>
+                  <?php foreach ($maestros as $maestro): ?>
+                    <option value="<?=$maestro->idMaestro?>"><?=$maestro->cveMaestro." | ".$maestro->nombreMaestro?></option>
+                  <?php endforeach; ?>
+                <?php endif; ?>
+              </select>
+            </div>
+
+            <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
+              <label for="text">Sinodal</label>
+              <select class="sinodal2" name="sinodal2" required>
+                <option value="0">Seleccione al sinodal</option>
+                <?php if (!is_null($maestros)): ?>
+                  <?php foreach ($maestros as $maestro): ?>
+                    <option value="<?=$maestro->idMaestro?>"><?=$maestro->cveMaestro." | ".$maestro->nombreMaestro?></option>
+                  <?php endforeach; ?>
+                <?php endif; ?>
+              </select>
+            </div>
+          <?php endif; ?>
+
+          <?php if ($tramite->idCatTramite==3): ?>
+
+            <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
+              <label for="text">Tiempo solicitado</label>
+              <input type="text" name="tiempoSoli" required placeholder="uno, dos, tres años">
+            </div>
+
+            <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
+              <label for="text">Periodo del Curso</label>
+              <input type="text" name="periodoCurso" required placeholder="de enero a junio del 2018">
+            </div>
+
+            <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
+              <label for="text">Fecha Vencimiento Pasantía</label>
+              <input type="date" name="fechaVenciPas" min="2018-01-01" required>
+            </div>
+
+          <?php endif; ?>
+
+          <div class="form-group col-xs-12 col-sm-12 col-md-12">
+            <p class="right">En base a las respuestas de Consejo Académico y Mesa de Investigación, seleccione el estatus del trámite para finalizar.</p>
+          </div>
+          <button type="submit" class="btn btn-success btnResAprobado" data-id="<?=$tramite->idTramite?>">APROBADO</button>
+          <button type="submit" class="btn btn-danger btnResRechazado" data-id="<?=$tramite->idTramite?>">RECHAZADO</button>
+        </form>
       <?php endif; ?>
 
       <?php if ($tramite->estatus=="CONSEJO"): ?>

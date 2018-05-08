@@ -85,6 +85,7 @@ class Investigacion extends CI_Controller {
 		$data['aprobacionesInves']		=		$aprobacionesInves;
 		$data['idUsuario'] 	=	$this->idUsuario;
 		$data['idRol']			= $this->idRol;
+		$data['materia']			= $this->tramitessa_model->getMateriaById($tramite->idMateria);
 		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/investigacion_tramite_datos_fragment', $data, TRUE);
 		$this->load->view('app/main_view', $data, FALSE);
 	}

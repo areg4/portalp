@@ -20,6 +20,20 @@
       <p name="expediente" id="expediente"><?php echo $alumno->expediente; ?></p>
     </div>
 
+    <?php if (!is_null($materia)): ?>
+      <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
+        <label for="text">Materia:</label>
+        <p name="materia" id="materia"><?=$materia->cveMateria." | ".$materia->nombreMateria?></p>
+      </div>
+    <?php endif; ?>
+
+    <?php if (!is_null($tramite->nombreTrabajo)): ?>
+      <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
+        <label for="text">Título del Trabajo:</label>
+        <p name="nTrabajo" id="nTrabajo"><?=$tramite->nombreTrabajo?></p>
+      </div>
+    <?php endif; ?>
+
     <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
       <label for="text">Fecha Inicio Trámite:</label>
       <p name="fecIniTram" id="fecIniTram"><?= fancy_date($tramite->fechaInicio); ?></p>
