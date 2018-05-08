@@ -141,7 +141,7 @@
       <?php if (!is_null($investigadores)AND (!is_null($aprobacionesInves))): ?>
         <div id="listaInv">
           <div class="col-xs-12" id="tabla">
-            <h3 class="h3">Lista Comité de Investigación</h3>
+            <h3 class="h3 tamañoh3">Comité de Investigación</h3>
             <table class="table responsive">
               <thead>
                 <tr>
@@ -175,8 +175,8 @@
                     <td data-title="Comentario" class="sincursor"><?php echo $comenInv; ?></td>
                     <td data-title="Fecha respuesta" class="sincursor"><?=(($aprobacionesInves[$investigador->idUsuario]->fechaHora)!=0) ? fancy_date($aprobacionesInves[$investigador->idUsuario]->fechaHora) : " - " ; ?></td>
                     <td data-title="Designacion" class="sincursor designaciones">
-                      <input type="radio" data-user-id="<?=$investigador->idUsuario?>" name="desig-<?=$investigador->idUsuario?>" value="1" <?=($aprobacionesInves[$investigador->idUsuario]->aprobacion)==1 ? "checked" : "";?> >APROBADO
-                      <input type="radio" data-user-id="<?=$investigador->idUsuario?>" name="desig-<?=$investigador->idUsuario?>" value="2" <?=($aprobacionesInves[$investigador->idUsuario]->aprobacion)==2 ? "checked" : "";?> >RECHAZADO
+                      <label><input type="radio" data-user-id="<?=$investigador->idUsuario?>" name="desig-<?=$investigador->idUsuario?>" value="1" <?=($aprobacionesInves[$investigador->idUsuario]->aprobacion)==1 ? "checked" : "";?> >&nbsp;Aprobado</label>
+                      <label><input type="radio" data-user-id="<?=$investigador->idUsuario?>" name="desig-<?=$investigador->idUsuario?>" value="2" <?=($aprobacionesInves[$investigador->idUsuario]->aprobacion)==2 ? "checked" : "";?> >&nbsp;Rechazado</label>
                     </td>
                   </tr>
                 <?php endforeach; ?>
