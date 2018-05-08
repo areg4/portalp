@@ -100,8 +100,8 @@
     </div>
 
     <?php if (!is_null($investigadores)AND (!is_null($aprobacionesInves))): ?>
-      <div class="col-md-6" id="tabla">
-        <h3 class="h3">Lista de Investigación</h3>
+      <div class="col-md-12" id="tabla">
+        <h3 class="h3 tamañoh3">Investigación</h3>
         <table class="table responsive">
           <thead>
             <tr>
@@ -145,7 +145,7 @@
     <?php if ($idRol != 10): //rol de presidente?>
       <?php if (!is_null($consejeros) AND (!is_null($aprobacionesConse))): ?>
         <div class="col-md-6" id="tabla">
-          <h3 class="h3">Lista de Consejo</h3>
+          <h3 class="h3 tamañoh3">Lista de Consejo</h3>
           <table class="table responsive">
             <thead>
               <tr>
@@ -187,8 +187,8 @@
       <?php endif; ?>
     <?php else: ?>
       <?php if (!is_null($consejeros) AND (!is_null($aprobacionesConse))): ?>
-        <div class="col-md-6" id="tabla">
-          <h3 class="h3">Lista de Consejo</h3>
+        <div class="col-md-12" id="tabla">
+          <h3 class="h3">Consejo</h3>
           <table class="table responsive">
             <thead>
               <tr>
@@ -212,6 +212,7 @@
 
                     if ($aprobacionesConse[$consejero->idUsuario]->comentario == "" or is_null($aprobacionesConse[$consejero->idUsuario]->comentario)) {
                       $comenInv = "Sin comentarios";
+
                     }else {
                       $comenInv = $aprobacionesConse[$consejero->idUsuario]->comentario;
                     }
@@ -222,8 +223,8 @@
                     <td data-title="Comentario"><?php echo $comenInv; ?></td>
                     <td data-title="Fecha respuesta"><?=(($aprobacionesConse[$consejero->idUsuario]->fechaHora)!=0) ? fancy_date($aprobacionesConse[$consejero->idUsuario]->fechaHora) : " - " ; ?></td>
                     <td data-title="Designacion" class="sincursor designaciones">
-                      <input type="radio" data-user-id="<?=$consejero->idUsuario?>" name="desig-<?=$consejero->idUsuario?>" value="1" <?=($aprobacionesConse[$consejero->idUsuario]->aprobacion)==1 ? "checked" : "";?> >APROBADO
-                      <input type="radio" data-user-id="<?=$consejero->idUsuario?>" name="desig-<?=$consejero->idUsuario?>" value="2" <?=($aprobacionesConse[$consejero->idUsuario]->aprobacion)==2 ? "checked" : "";?> >RECHAZADO
+                      <label><input type="radio" class="" data-user-id="<?=$consejero->idUsuario?>" name="desig-<?=$consejero->idUsuario?>" value="1" <?=($aprobacionesConse[$consejero->idUsuario]->aprobacion)==1 ? "checked" : "";?>>&nbsp;Aprobado</label><br>
+                      <label><input type="radio" class="" data-user-id="<?=$consejero->idUsuario?>" name="desig-<?=$consejero->idUsuario?>" value="2" <?=($aprobacionesConse[$consejero->idUsuario]->aprobacion)==2 ? "checked" : "";?> >&nbsp;Rechazado</label>
                     </td>
                   </tr>
               <?php endforeach; ?>

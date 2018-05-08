@@ -8,8 +8,8 @@
       <table class="table responsive">
         <thead>
           <tr class="">
-            <th class="">Expediente</th>
-            <th class="">Tipo de Trámite</th>
+            <th class="">Exp</th>
+            <th class="">Trámite</th>
             <th class="">Fecha de Inicio</th>
             <th class="">Aprobación</th>
           </tr>
@@ -47,11 +47,11 @@
       <table class="table responsive">
         <thead>
           <tr class="">
-            <th class="">Expediente</th>
-            <th class="">Tipo de Trámite</th>
+            <th class="">Exp</th>
+            <th class="">Trámite</th>
             <th class="">Fecha de Inicio</th>
             <th class="">Aprobación</th>
-            <th class="">Fecha Atendida</th>
+            <th class="">Fecha<br>resultado</th>
           </tr>
         </thead>
         <tbody>

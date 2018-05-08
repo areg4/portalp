@@ -63,7 +63,7 @@
 
     <div id="wrapper">
 
-        <div id="page-wrapper" style="margin-top: 10px !important; margin-left: 10px !important; float: left !important; width:99%!important; height: 700px !important;">
+        <div id="page-wrapper" style="margin-top: 10px !important; margin-left: 10px !important; float: left !important; width:99%!important;">
          <?=$fragment?> 
         </div>
         <!-- /#page-wrapper -->

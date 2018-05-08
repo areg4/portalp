@@ -45,9 +45,6 @@ h1, h2, h3{
     margin-top: 70px !important;
     padding: 15px !important;
     width: 80% !important;
-    height: auto;
-    min-height: none !important;
-    max-width: none !important;
     overflow-y: auto;
     overflow-x:hidden !important;
 }
@@ -642,7 +639,6 @@ th{
 
 tr{
 	color: rgba(0,0,0,.7);
-	border-bottom: 1px solid rgba(0,0,0,.09);
 	margin-bottom: 3px;
 }
 
@@ -664,12 +660,27 @@ td{
 	cursor: pointer !important;
 	text-align: center;
 	border-bottom: none !important;
-	/*border-bottom: 1px solid rgba(0,0,0,.09);*/
 }
 .sincursor{
 	cursor: default !important;
 }
-
+td label{
+	width: 100% !important;
+	height: 50% !important;
+	float: left;
+	position: relative;
+	/*background: red;*/
+	cursor: pointer;
+	padding: 3px;
+	box-sizing: border-box;
+	/*background: rgba(0,0,0,.08);*/
+}
+td label:hover{
+	background: rgba(0,0,0,.08);
+}
+td input[type=radio]{
+	cursor: pointer;
+}
 @media
 	only screen and (max-width: 760px),
 	(min-device-width: 768px) and (max-device-width: 1024px)  {
