@@ -509,6 +509,27 @@ jQuery(document).ready(function($){
    }
  })
 
+ $(".btnApro").click(function () {
+   $("#decision").val("APROBADO");
+ });
+
+ $(".btnRech").click(function () {
+   $("#decision").val("RECHAZADO");
+ })
+
+ //  $("#formRespuesta").submit(function (e) {
+ //   // if ($("#formRespuesta").find(".decision").val() != 0) {
+ //     // alert($("#formAlta").find(".materias").val());
+ //     // e.preventDefault(); 
+ //     alert($("#decision").val()); 
+     
+ //     e.preventDefault();
+ //   // }else {
+ //   //   alert("");
+ //   //   e.preventDefault();
+ //   // }
+ // })
+
 });
 
 function goToTramiteDatos(idTramite) {

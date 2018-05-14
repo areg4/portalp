@@ -4,6 +4,8 @@
   <h4 class="h4 tamañoh4" id="id-tramite"><?=$catTramites[$tramite->idCatTramite]?></h4>
 </div>
 
+<input type="hidden" name="idTramite" value="<?=$tramite->idTramite?>">
+
 <div class="col-xs-12">
 <br>
 
@@ -32,14 +34,14 @@
     </div>
 
     <?php if (!is_null($materia)): ?>
-      <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
+      <div class="form-group col-xs-12 col-sm-12 col-md-5 text-center">
         <label for="text">Materia:</label>
         <p name="materia" id="materia"><?=$materia->cveMateria." | ".$materia->nombreMateria?></p>
       </div>
     <?php endif; ?>
 
     <?php if (!is_null($tramite->nombreTrabajo)): ?>
-      <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
+      <div class="form-group col-xs-12 col-sm-12 col-md-5 text-center">
         <label for="text">Título del Trabajo:</label>
         <p name="nTrabajo" id="nTrabajo"><?=$tramite->nombreTrabajo?></p>
       </div>
@@ -49,7 +51,7 @@
       <label for="text">Fecha Inicio Trámite</label>
       <p name="fecIniTram" id="fecIniTram"><?= fancy_date($tramite->fechaInicio); ?></p>
     </div>
-    <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
+    <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
       <label for="text">Estatus</label>
       <p name="estatus" id="estatus"><?=$tramite->estatus; ?></p>
     </div>
@@ -133,7 +135,7 @@
       <?php if (!is_null($investigadores)AND (!is_null($aprobacionesInves))): ?>
         <div id="listaInv">
           <div id="tabla" class="col-xs-12">
-            <h3 class="h3">Lista de Investigación</h3>
+            <h3 class="h3">Investigación</h3>
             <table class="table responsive">
               <thead>
                 <tr>
@@ -176,7 +178,7 @@
       <?php if (!is_null($consejeros) AND !is_null($aprobacionesConse)): ?>
         <div class="" id="listaConsejo">
           <div class="col-xs-12" id="tabla">
-            <h3 class="h3">Lista de Consejo</h3>
+            <h3 class="h3">Consejo</h3>
             <table class="table responsive">
               <thead>
                 <tr>
@@ -239,97 +241,131 @@
       <?php if (is_null($observacion) AND $tramite->estatus=="PROCESO"): ?>
         <button type="submit" class="btn btn-warning" id="btn-enviar-observacion" data-id="<?=$tramite->idTramite?>" data-id-u="<?=$alumno->idAlumno?>" >Enviar observación</button>
       <?php endif; ?>
-      <?php if ($tramite->estatus=="PREACTA"): ?>
-        <form id="formRespuesta">
-          <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
+
+      <?php if ($tramite->estatus=="CONSEJO"): ?>
+        <button type="submit" class="btn btn-success btnEnvPreacta" data-id="<?=$tramite->idTramite?>">Enviar a Preacta</button>
+      <?php endif; ?>
+
+      <?php if ($tramite->estatus=="APROBADO" OR $tramite->estatus=="RECHAZADO"): ?>
+        <?php if (!is_null($rutaRespuesta)): 
+          $link = "docs/tramites/".$alumno->expediente."/".$tramite->idTramite."/respuesta/".$rutaRespuesta->ruta.".pdf";
+        ?>
+          <a class="btn btn-info center" href="<?=base_url().$link?>" target="_blank">Imprimir PDF</a>
+        <?php endif; ?>
+      <?php endif; ?>
+    </div>
+
+    <?php if ($tramite->estatus=="PREACTA"): ?>
+        <form id="formRespuesta" class="formularioCampos col-xs-12" method="POST" action="<?=base_url()?>portal-informatica-tramites-generadorPDF">
+
+          <input type="hidden" name="idTramite" value="<?=$tramite->idTramite?>">
+          <!-- <input type="hidden" name="idMateria" value="<?=$materia->idMateria?>"> -->
+
+          <div class="col-xs-12 col-md-6 campos">
             <label for="text">Fecha que se celebró el Consejo</label>
             <input type="date" name="fechaConsejo" min="2018-01-01" required>
           </div>
 
           <?php if ($tramite->idCatTramite==1): ?>
 
-            <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
-              <label for="text">Fecha aplicación examen</label>
-              <input type="date" name="fechaApliExam" min="2018-01-01" required>
-            </div>
+          <div class="col-xs-12 col-md-6 campos">
+            <label for="text">Fecha aplicación examen</label>
+            <input type="date" name="fechaApliExam" min="2018-01-01" required>
+          </div>
 
-            <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
-              <label for="text">Hora de Inicio</label>
-              <input type="time" name="horaInicio" required>
-            </div>
 
-            <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
-              <label for="text">Hora de Finalización</label>
-              <input type="time" name="horaFin" required>
-            </div>
+          <div class="col-xs-12 col-md-6 campos">
+            <label for="text">Hora de Inicio</label>
+            <input type="time" name="horaInicio" required>
+          </div>
 
-            <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
-              <label for="text">Presidente</label>
-              <select class="presidente" name="presidente" required>
-                <option value="0">Seleccione al presidente</option>
-                <?php if (!is_null($maestros)): ?>
-                  <?php foreach ($maestros as $maestro): ?>
-                    <option value="<?=$maestro->idMaestro?>"><?=$maestro->cveMaestro." | ".$maestro->nombreMaestro?></option>
-                  <?php endforeach; ?>
-                <?php endif; ?>
-              </select>
-            </div>
 
-            <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
-              <label for="text">Sinodal</label>
-              <select class="sinodal1" name="sinodal1" required>
-                <option value="0">Seleccione al sinodal</option>
-                <?php if (!is_null($maestros)): ?>
-                  <?php foreach ($maestros as $maestro): ?>
-                    <option value="<?=$maestro->idMaestro?>"><?=$maestro->cveMaestro." | ".$maestro->nombreMaestro?></option>
-                  <?php endforeach; ?>
-                <?php endif; ?>
-              </select>
-            </div>
+          <div class="col-xs-12 col-md-6 campos">
+            <label for="text">Hora de Finalización</label>
+            <input type="time" name="horaFin" required>
+          </div>
 
-            <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
-              <label for="text">Sinodal</label>
-              <select class="sinodal2" name="sinodal2" required>
-                <option value="0">Seleccione al sinodal</option>
-                <?php if (!is_null($maestros)): ?>
-                  <?php foreach ($maestros as $maestro): ?>
-                    <option value="<?=$maestro->idMaestro?>"><?=$maestro->cveMaestro." | ".$maestro->nombreMaestro?></option>
-                  <?php endforeach; ?>
-                <?php endif; ?>
-              </select>
-            </div>
+          <div class="col-xs-12 col-md-6 campos">
+            <label for="text">Aula</label>
+            <select class="col-xs-12 aula" name="aula" required>
+              <option value="">Seleccione el aula</option>
+              <?php if (!is_null($aula)): ?>
+                <?php foreach ($aula as $aula): ?>
+                  <option value="<?=$aula->descripcion?>"><?=$aula->descripcion?></option>
+                <?php endforeach; ?>
+              <?php endif; ?>
+            </select>
+          </div>
+
+          <div class="col-xs-12 col-md-6 campos">
+            <label for="text">Presidente</label>
+            <select class="col-xs-12 presidente" name="presidente" required>
+              <option value="0">Seleccione al presidente</option>
+              <?php if (!is_null($maestros)): ?>
+                <?php foreach ($maestros as $maestro): ?>
+                  <option value="<?=$maestro->idMaestro?>"><?=$maestro->cveMaestro." | ".$maestro->nombreMaestro?></option>
+                <?php endforeach; ?>
+              <?php endif; ?>
+            </select>
+          </div>
+
+          <div class="col-xs-12 col-md-6 campos">
+            <label for="text">Sinodal</label>
+            <select class="col-xs-12 sinodal1" name="sinodal1" required>
+              <option value="0">Seleccione al sinodal</option>
+              <?php if (!is_null($maestros)): ?>
+                <?php foreach ($maestros as $maestro): ?>
+                  <option value="<?=$maestro->idMaestro?>"><?=$maestro->cveMaestro." | ".$maestro->nombreMaestro?></option>
+                 <?php endforeach; ?>
+              <?php endif; ?>
+            </select>
+          </div>
+
+          <div class="col-xs-12 col-md-6 campos">
+            <label for="text">Sinodal</label>
+            <select class="col-xs-12 sinodal2" name="sinodal2" required>
+              <option value="0">Seleccione al sinodal</option>
+              <?php if (!is_null($maestros)): ?>
+                <?php foreach ($maestros as $maestro): ?>
+                  <option value="<?=$maestro->idMaestro?>"><?=$maestro->cveMaestro." | ".$maestro->nombreMaestro?></option>
+                <?php endforeach; ?>
+              <?php endif; ?>
+            </select>
+          </div>
           <?php endif; ?>
 
           <?php if ($tramite->idCatTramite==3): ?>
 
-            <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
+            <div class="col-xs-12 col-md-6 campos">
               <label for="text">Tiempo solicitado</label>
               <input type="text" name="tiempoSoli" required placeholder="uno, dos, tres años">
             </div>
 
-            <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
+            <div class="col-xs-12 col-md-6 campos">
               <label for="text">Periodo del Curso</label>
               <input type="text" name="periodoCurso" required placeholder="de enero a junio del 2018">
             </div>
 
-            <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
+            <div class="col-xs-12 col-md-6 campos">
               <label for="text">Fecha Vencimiento Pasantía</label>
               <input type="date" name="fechaVenciPas" min="2018-01-01" required>
             </div>
+            <br>
 
           <?php endif; ?>
 
-          <div class="form-group col-xs-12 col-sm-12 col-md-12">
-            <p class="right">En base a las respuestas de Consejo Académico y Mesa de Investigación, seleccione el estatus del trámite para finalizar.</p>
-          </div>
-          <button type="submit" class="btn btn-success btnResAprobado" data-id="<?=$tramite->idTramite?>">APROBADO</button>
-          <button type="submit" class="btn btn-danger btnResRechazado" data-id="<?=$tramite->idTramite?>">RECHAZADO</button>
+          <?php if ($tramite->estatus=="PREACTA"): ?>
+            <div class="col-xs-12 right">
+              <br>
+              <p class="tamañop">En base a las respuestas de Consejo Académico y Mesa de Investigación, seleccione el estatus del trámite para finalizar.</p>
+            </div>
+          <?php endif; ?>
+            <div class="col-xs-12 right">
+              <input type="submit" class="btn btn-success btnApro" data-id="<?=$tramite->idTramite?>" value="APROBADO" target="_blank">
+              <input type="submit" class="btn btn-danger  btnRech" data-id="<?=$tramite->idTramite?>" value="REPROBADO" target="_blank">
+              <input type="hidden" id="decision" name="decision" value="<?=$tramite->estatus?>">
+            </div>
         </form>
-      <?php endif; ?>
-
-      <?php if ($tramite->estatus=="CONSEJO"): ?>
-        <button type="submit" class="btn btn-success btnEnvPreacta" data-id="<?=$tramite->idTramite?>">Enviar a Preacta</button>
-      <?php endif; ?>
-    </div>
+    <?php endif; ?>
 </div>
 </form>

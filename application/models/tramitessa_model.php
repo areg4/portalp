@@ -315,6 +315,38 @@ class Tramitessa_model extends CI_Model {
 		$query = $this->db_b->get($a);
 		return ($query->num_rows() >= 1) ? $query->result() : NULL;
 	}
+	public function getMaestrosById($idMaestro)
+	{
+		$a = $this->tablas['profesor'];
+		$this->db_b->where('idMaestro',$idMaestro);
+    $this->db_b->where('estatusUsuario', 1);
+		$query = $this->db_b->get($a);
+		return ($query->num_rows() == 1) ? $query->row() : NULL;
+	}
+	public function getAulasByTipo()
+	{
+		$a = $this->tablas['aula'];
+	    $this->db_b->where('tipo', 0);
+	    $this->db_b->or_where('tipo', 1);
+		$this->db_b->order_by('descripcion');
+		$query = $this->db_b->get($a);
+		return ($query->num_rows() >= 1) ? $query->result() : NULL;
+	}
+	public function insertTramiteRespuesta($arrInsert)
+	{
+		$a = $this->tablas['respuestaTramites'];
+		$this->db_b->insert($a, $arrInsert);
+		return true;
+	}
+	public function getRutaRespuesta($idTramite)
+	{
+		$a = $this->tablas['respuestaTramites'];
+		$this->db_b->where('idTramite',$idTramite);
+    	$this->db_b->where('habilitado', 1);
+		$query = $this->db_b->get($a);
+		return ($query->num_rows() == 1) ? $query->row() : NULL;
+	}
+
 }
 
 /* End of file root_model.php */

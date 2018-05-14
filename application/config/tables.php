@@ -81,3 +81,4 @@ $config['tablas']['tramites']				               = 'app_tramite';
 $config['tablas']['rutaTramites']				           = 'app_tramite_ruta';
 $config['tablas']['observacionesTramites']				 = 'app_tramite_observacion';
 $config['tablas']['aprobacionTramites']				     = 'app_tramite_aprobacion';
+$config['tablas']['respuestaTramites']						= 'app_tramite_respuesta';

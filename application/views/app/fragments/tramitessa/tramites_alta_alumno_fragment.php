@@ -38,39 +38,60 @@
         <?php endif; ?>
       </div>
     <?php endif; ?> -->
-    <div class="form-group col-xs-12 col-sm-12">
 
-    </div>
-
-
-    <div class="col-xs-12 leyenda">
-      <p><b>Importante:</b> Los documentos deberán ser escaneados y subidos como archivo extensión .pdf</p>
-    </div>
-
-    <div class="col-xs-12 archivos">
-    <!-- archivos -->
-      <!-- <div class="col-xs-12 col-sm-12 col-md-2 archivo">
-        <p>Solicitud</p>
-        <div class=" file">
-          <img src="<?=base_url()?>static/img/s.png" id="3">
-          <input class="ocultar"  id="" type="file" name="solicitudEV" required onchange="cambiarIcon(3)">
-        </div>
-      </div> -->
-
-
+    <div class="col-xs-12 formularioCampos">
       <?php if ($tramite->tramite == "Examen Voluntario"): ?>
-
-        <div class="form-group col-xs-12 col-sm-12 col-md-12 text-center mtop">
-          <label for="text">Materia</label>
+      <div class="col-xs-12 text-center campos">
+          <b class="tamañop">Materia</b> <br>
           <select class="materias" name="materia" required>
-            <option value="0">Seleccionar la Materia</option>
+            <option value="0" style="display: none">Selecciona la materia</option>
+            <?php foreach ($materias as $materia): ?>
+              <option value="<?=$materia->idMateria?>"><?=$materia->cveMateria?> | <?=$materia->nombreMateria?> </option>
+            <?php endforeach; ?>
+          </select>
+      </div>
+      <?php endif; ?>
+
+      <?php if ($tramite->tramite == "Readquisición de Pasantía"): ?>
+      <div class="col-xs-12 text-center campos">
+          <b class="tamañop">Nombre del Curso de Actualización</b><br>
+          <input type="nTrabajo" name="nTrabajo" required placeholder="Escriba aquí el nombre" class="">
+      </div>
+      <?php endif; ?>
+
+      <?php if ($tramite->tramite == "Guía del Maestro"): ?>
+        <div class="col-xs-12 text-center campos">
+          <b class="tamañop">Materia</b><br>
+          <select class="materias" name="materia" required>
+            <option value="">Seleccionar la Materia</option>
             <?php foreach ($materias as $materia): ?>
               <option value="<?=$materia->idMateria?>"><?=$materia->cveMateria?> | <?=$materia->nombreMateria?> </option>
             <?php endforeach; ?>
           </select>
         </div>
 
-        <br>
+        <div class="col-xs-12 text-center campos">
+          <b class="tamañop">Asesor</b><br>
+          <select class="materias" name="maestro" required>
+              <option value="">Seleccione al asesor</option>
+                <?php foreach ($maestros as $maestro): ?>
+                  <option value="<?=$maestro->idMaestro?>"><?=$maestro->cveMaestro." | ".$maestro->nombreMaestro?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+      <?php endif; ?>
+
+      <?php if ($tramite->tramite == "Tesis Individual"): ?>
+      <div class="col-xs-12 text-center campos">
+          <b class="tamañop">Título de la Tesis</b><br>
+          <input type="text" name="nTrabajo" required placeholder="Escriba el título de la tesis">
+      </div>
+      <?php endif; ?>
+
+    </div>
+
+    <div class="col-xs-12 archivos">
+      <?php if ($tramite->tramite == "Examen Voluntario"): ?>
 
         <div class="col-xs-12 col-sm-12 col-md-2 archivo">
           <p>Solicitud</p>
@@ -115,12 +136,6 @@
 
       <div class="col-xs-12 archivos">
       <?php if ($tramite->tramite == "Readquisición de Pasantía"): ?>
-
-        <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center mtop">
-          <label for="text">Nombre del Curso de Actualización</label>
-          <input type="nTrabajo" name="nTrabajo" required>
-        </div>
-
         <div class="col-xs-12 col-sm-12 col-md-2 archivo">
           <p>Solicitud</p>
           <div class="file">
@@ -194,16 +209,6 @@
 
       <div class="archivos col-xs-12">
       <?php if ($tramite->tramite == "Guía del Maestro"): ?>
-
-        <div class="form-group col-xs-12 col-sm-12 col-md-12 text-center mtop">
-          <label for="text">Materia</label>
-          <select class="materias" name="materia" required>
-            <option value="0">Seleccionar la Materia</option>
-            <?php foreach ($materias as $materia): ?>
-              <option value="<?=$materia->idMateria?>"><?=$materia->cveMateria?> | <?=$materia->nombreMateria?> </option>
-            <?php endforeach; ?>
-          </select>
-        </div>
 
         <div class="col-xs-12 col-sm-12 col-md-2 archivo">
           <p>Solicitud</p>
@@ -314,10 +319,6 @@
 
       <div class="archivos col-xs-12">
       <?php if ($tramite->tramite == "Tesis Individual"): ?>
-        <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center mtop">
-          <label for="text">Título de la Tesis</label>
-          <input type="text" name="nTrabajo" required>
-        </div>
 
         <div class="col-xs-12 col-sm-12 col-md-2 archivo">
           <p>Solicitud</p>
@@ -391,7 +392,12 @@
     <!-- fin archivos -->
 
     <div class="col-xs-12 leyenda">
-      <p> <b>Recuerda: </b>Deberás tener los documentos en estado físico y pasar a Servicios Académicos a dejarlos. <br> Recibirás la respuesta de tu trámite pronto.</p>
+      <br>
+      <p><b>Importante:</b> Los documentos deberán ser escaneados y subidos como archivo extensión .pdf</p>
+    </div>
+
+    <div class="col-xs-12 leyenda">
+      <p>Deberás tener los documentos en estado físico y pasar a Servicios Académicos a dejarlos. <br> Recibirás la respuesta de tu trámite pronto.</p>
       <br>
     </div>
     <div class="form-group text-center col-xs-12">

@@ -88,6 +88,7 @@ $route['portal-informatica-tramites-respuesta-aprobado']              = 'tramite
 $route['portal-informatica-tramites-respuesta-rechazado']             = 'tramitessa/tramitesRespuestaRechazado';
 
 $route['portal-informatica-tramites-preacta']                         = 'tramitessa/tramitesPreacta';
+$route['portal-informatica-tramites-generadorPDF']			              = 'tramitessa/tramitesPdf';
 
 
 /***************************TRÁMITES INVESTIGACIÓN*****************************/

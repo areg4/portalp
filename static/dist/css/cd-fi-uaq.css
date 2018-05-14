@@ -34,6 +34,12 @@ h1, h2, h3{
 		padding-bottom: 15px;
 		border-bottom: 1px solid rgba(0,0,0,.03);
 	}
+	.tamañop{
+		font-size: .95em;
+	}
+.right{
+	text-align: center;
+}
 
 #page-wrapper{
 	background: #fff none repeat scroll 0 0!important;
@@ -43,7 +49,7 @@ h1, h2, h3{
     float: right !important;
     margin-right: 3% !important;
     margin-top: 70px !important;
-    padding: 15px !important;
+    padding: 10px !important;
     width: 80% !important;
     overflow-y: auto;
     overflow-x:hidden !important;
@@ -151,7 +157,6 @@ div.margin-top-login{
 		margin: 0 !important;
 		/*margin-top: 80px !important;*/
 		padding-top: 100px !important;
-		max-height: 800px !important;
 	}
 	.ficha2{
 		margin-left: 0% !important;
@@ -1159,18 +1164,29 @@ div.columna div.item span{
 }
 
 .archivo{
-	height: 250px;
+	height: 180px;
 	margin-top: 10px;
 	margin-bottom: 10px;
 	padding: 0px;
 	float: left;
 	position: relative;
 	display: block;
-	overflow: hidden;
+	/*overflow: hidden;*/
 	padding-bottom: 30px;
+	z-index: 999 !important;
 }
+	.materias{
+		width: 40% !important;
+		height: 25px;
+		font-size: .9em;
+		padding: 1px;
+		box-sizing: border-box;
+		border-radius: 5px;
+		cursor: pointer;
+		margin-bottom: 10px !important;
+	}
 	.file{
-		height: 50%;
+		height: 70%;
 		display: flex;
 	    justify-content: space-around;
 	    flex-direction: column;
@@ -1197,6 +1213,7 @@ div.columna div.item span{
 		}
 
 		.bajar{
+			z-index: 999999 !important;
 			height: auto;
 			width: 100%;
 			float: left;
@@ -1206,6 +1223,7 @@ div.columna div.item span{
 			transition-delay: .8s;
 			text-align: center;
 			display: none;
+			background: #EFEFF0;
 			color: rgba(0,0,0,.6) !important;
 		}
 			.bajar input[type=submit], .bajar a{
@@ -1353,6 +1371,32 @@ input[type=file]::-webkit-file-upload-button{
 	align-items: center;
 	align-content: center;
 }
+
+.formularioCampos{
+	height: auto;
+	float: left;
+	/*background: red;*/
+	position: relative;
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+	.formularioCampos>.campos{
+		height: auto !important;
+		float: left !important;
+		position: relative !important;
+		margin-top: 10px !important;
+	}
+	.campos input, .campos select{
+		border-radius: 5px;
+		border: 1px solid rgba(0,0,0,.3) !important;
+		height: 30px;
+		padding: 5px;
+		box-sizing: border-box;
+		
+	}
+	.campos select{
+		cursor: pointer;
+	}
 
 /*Scroll (preguntar si se puede cambiar) */
 ::-webkit-scrollbar{
