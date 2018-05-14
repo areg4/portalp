@@ -8,8 +8,12 @@
 
 <div class="col-xs-12">
 <br>
+    <div class="form-group col-xs-12 col-sm-12 col-md-6 text-center">
+      <label for="text">Expediente</label>
+      <p><?=$alumno->expediente?></p>
+    </div>
 
-    <div class="form-group col-xs-12 col-sm-12 col-md-5 text-center">
+    <div class="form-group col-xs-12 col-sm-12 col-md-6 text-center">
       <label for="nombre">Nombre</label>
       <?php if (!is_null($alumno->nombre_alumno)): ?>
         <p name="nombre" id="nombre"><?php echo $alumno->nombre_alumno; ?></p>
@@ -18,12 +22,7 @@
       <?php endif; ?>
     </div>
 
-    <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
-      <label for="text">Expediente</label>
-      <p><?=$alumno->expediente?></p>
-    </div>
-
-    <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
+    <div class="form-group col-xs-12 col-sm-12 col-md-6 text-center">
       <label for="text">Email</label>
       <?php if (!is_null($alumno->emailUsuario) AND $alumno->emailUsuario != ""): ?>
         <p><?=$alumno->emailUsuario?></p>
@@ -34,45 +33,45 @@
     </div>
 
     <?php if (!is_null($materia)): ?>
-      <div class="form-group col-xs-12 col-sm-12 col-md-5 text-center">
+      <div class="form-group col-xs-12 col-sm-12 col-md-6 text-center">
         <label for="text">Materia:</label>
         <p name="materia" id="materia"><?=$materia->cveMateria." | ".$materia->nombreMateria?></p>
       </div>
     <?php endif; ?>
 
     <?php if (!is_null($tramite->nombreTrabajo)): ?>
-      <div class="form-group col-xs-12 col-sm-12 col-md-5 text-center">
+      <div class="form-group col-xs-12 col-sm-12 col-md-6 text-center">
         <label for="text">Título del Trabajo:</label>
         <p name="nTrabajo" id="nTrabajo"><?=$tramite->nombreTrabajo?></p>
       </div>
     <?php endif; ?>
 
-    <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
+    <div class="form-group col-xs-12 col-sm-12 col-md-6 text-center">
       <label for="text">Fecha Inicio Trámite</label>
       <p name="fecIniTram" id="fecIniTram"><?= fancy_date($tramite->fechaInicio); ?></p>
     </div>
-    <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
+    <div class="form-group col-xs-12 col-sm-12 col-md-6 text-center">
       <label for="text">Estatus</label>
       <p name="estatus" id="estatus"><?=$tramite->estatus; ?></p>
     </div>
-    <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
+    <div class="form-group col-xs-12 col-sm-12 col-md-6 text-center">
       <label for="text">Periodo</label>
       <p name="periodo" id="periodo"><?=$periodoTramite; ?></p>
     </div>
-    <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
+    <div class="form-group col-xs-12 col-sm-12 col-md-6 text-center">
       <label for="text">Fecha de Última Modificación</label>
       <p name="fecUltMod" id="fecUltMod"><?=fancy_date($tramite->feculmod); ?></p>
     </div>
 
     <?php if ($tramite->estatus == "FINALIZADO"): ?>
-      <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
+      <div class="form-group col-xs-12 col-sm-12 col-md-6 text-center">
         <label for="text">Fecha de Finalización</label>
         <p name="fecFin" id="fecFin"><?=fancy_date($tramite->fechaFin); ?></p>
       </div>
     <?php endif; ?>
 
     <?php if (!is_null($observacion)): ?>
-      <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
+      <div class="form-group col-xs-12 col-sm-12 col-md-6 text-center">
         <label for="text">Observaciones</label>
         <p name="expediente" id="expediente"><?=$observacion->observacion?></p>
       </div>
@@ -228,33 +227,6 @@
       </div>
     <?php endif; ?>
 
-    <div class="col-xs-12 opciones-t-sa">
-      <?php if ($tramite->estatus=="PROCESO" AND $tramite->estatus!="INVESTIGACION"): ?>
-        <button type="submit" class="btn btn-info btnEnvInves" data-id="<?=$tramite->idTramite?>">Enviar a Mesa de Investigación</button>
-        <button type="submit" class="btn btn-info btnEnvCons" data-id="<?=$tramite->idTramite?>">Enviar a Consejo Académico</button>
-      <?php endif; ?>
-
-      <?php if ($tramite->estatus=='INVESTIGACION'): ?>
-        <button type="submit" class="btn btn-info btnEnvCons" data-id="<?=$tramite->idTramite?>">Enviar a Consejo Académico</button>
-      <?php endif; ?>
-
-      <?php if (is_null($observacion) AND $tramite->estatus=="PROCESO"): ?>
-        <button type="submit" class="btn btn-warning" id="btn-enviar-observacion" data-id="<?=$tramite->idTramite?>" data-id-u="<?=$alumno->idAlumno?>" >Enviar observación</button>
-      <?php endif; ?>
-
-      <?php if ($tramite->estatus=="CONSEJO"): ?>
-        <button type="submit" class="btn btn-success btnEnvPreacta" data-id="<?=$tramite->idTramite?>">Enviar a Preacta</button>
-      <?php endif; ?>
-
-      <?php if ($tramite->estatus=="APROBADO" OR $tramite->estatus=="RECHAZADO"): ?>
-        <?php if (!is_null($rutaRespuesta)): 
-          $link = "docs/tramites/".$alumno->expediente."/".$tramite->idTramite."/respuesta/".$rutaRespuesta->ruta.".pdf";
-        ?>
-          <a class="btn btn-info center" href="<?=base_url().$link?>" target="_blank">Imprimir PDF</a>
-        <?php endif; ?>
-      <?php endif; ?>
-    </div>
-
     <?php if ($tramite->estatus=="PREACTA"): ?>
         <form id="formRespuesta" class="formularioCampos col-xs-12" method="POST" action="<?=base_url()?>portal-informatica-tramites-generadorPDF">
 
@@ -367,5 +339,32 @@
             </div>
         </form>
     <?php endif; ?>
+
+    <div class="col-xs-12 opciones-t-sa">
+      <?php if ($tramite->estatus=="PROCESO" AND $tramite->estatus!="INVESTIGACION"): ?>
+        <button type="submit" class="btn btn-info btnEnvInves" data-id="<?=$tramite->idTramite?>">Enviar a Mesa de Investigación</button>
+        <button type="submit" class="btn btn-info btnEnvCons" data-id="<?=$tramite->idTramite?>">Enviar a Consejo Académico</button>
+      <?php endif; ?>
+
+      <?php if ($tramite->estatus=='INVESTIGACION'): ?>
+        <button type="submit" class="btn btn-info btnEnvCons" data-id="<?=$tramite->idTramite?>">Enviar a Consejo Académico</button>
+      <?php endif; ?>
+
+      <?php if (is_null($observacion) AND $tramite->estatus=="PROCESO"): ?>
+        <button type="submit" class="btn btn-warning" id="btn-enviar-observacion" data-id="<?=$tramite->idTramite?>" data-id-u="<?=$alumno->idAlumno?>" >Enviar observación</button>
+      <?php endif; ?>
+
+      <?php if ($tramite->estatus=="CONSEJO"): ?>
+        <button type="submit" class="btn btn-success btnEnvPreacta" data-id="<?=$tramite->idTramite?>">Enviar a Preacta</button>
+      <?php endif; ?>
+
+      <?php if ($tramite->estatus=="APROBADO" OR $tramite->estatus=="RECHAZADO"): ?>
+        <?php if (!is_null($rutaRespuesta)): 
+          $link = "docs/tramites/".$alumno->expediente."/".$tramite->idTramite."/respuesta/".$rutaRespuesta->ruta.".pdf";
+        ?>
+          <a class="btn btn-info center" href="<?=base_url().$link?>" target="_blank">Imprimir PDF</a>
+        <?php endif; ?>
+      <?php endif; ?>
+    </div>
 </div>
 </form>

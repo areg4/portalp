@@ -174,6 +174,9 @@ div.margin-top-login{
 	textarea{
 		width: 100% !important;
 	}
+	.campos select, .campos input{
+		width: 100% !important;
+	}
 }
 
 #side-menu {
@@ -698,6 +701,7 @@ td input[type=radio]{
 			position: absolute;
 			top: -9999px;
 			left: -9999px;
+			height: auto !important;
 		}
 
 		td {
@@ -705,6 +709,7 @@ td input[type=radio]{
 			position: relative;
 			padding-left: 50% !important;
 			font-size: .9em;
+			height: auto !important;
 		}
 		td:before {
 			position: absolute;
@@ -719,6 +724,7 @@ td input[type=radio]{
 			font-weight: bold !important;
 			padding: 5px;
 			box-sizing: border-box;
+			height: auto !important;
 		}
 .opciones-t-sa{
 	display: flex !important;

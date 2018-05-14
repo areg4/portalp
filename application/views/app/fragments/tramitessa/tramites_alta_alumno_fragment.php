@@ -8,6 +8,11 @@
 <div class="col-xs-12">
 <br>
   <form id="formAlta" enctype="multipart/form-data" action="<?php echo base_url().'portal-informatica-alumnos-tramites-add' ?>" method="post" >
+    <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center mtop">
+      <label for="text">Expediente</label>
+      <p name="expediente" id="expediente"><?php echo $alumno->expediente; ?></p>
+    </div>
+
     <div class="form-group col-xs-12 col-sm-12 col-md-5 text-center mtop">
       <label for="nombre">Nombre</label>
       <?php if (!is_null($alumno->nombre_alumno)): ?>
@@ -15,11 +20,6 @@
       <?php else: ?>
         <p name="nombre" id="nombre"><?php echo $alumno->apellidoPaterno." ".$alumno->apellidoMaterno." ".$alumno->nombre;?></p>
       <?php endif; ?>
-    </div>
-
-    <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center mtop">
-      <label for="text">Expediente</label>
-      <p name="expediente" id="expediente"><?php echo $alumno->expediente; ?></p>
     </div>
 
     <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center mtop">
@@ -55,7 +55,7 @@
       <?php if ($tramite->tramite == "Readquisición de Pasantía"): ?>
       <div class="col-xs-12 text-center campos">
           <b class="tamañop">Nombre del Curso de Actualización</b><br>
-          <input type="nTrabajo" name="nTrabajo" required placeholder="Escriba aquí el nombre" class="">
+          <input type="nTrabajo" name="nTrabajo" required placeholder="Escriba aquí el curso" class="materias">
       </div>
       <?php endif; ?>
 
@@ -84,7 +84,7 @@
       <?php if ($tramite->tramite == "Tesis Individual"): ?>
       <div class="col-xs-12 text-center campos">
           <b class="tamañop">Título de la Tesis</b><br>
-          <input type="text" name="nTrabajo" required placeholder="Escriba el título de la tesis">
+          <input type="text" name="nTrabajo" required placeholder="Escriba el título de la tesis" class="materias">
       </div>
       <?php endif; ?>
 
@@ -227,7 +227,7 @@
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-2 archivo">
-          <p>Carta Aceptación del maestro responsable de la materia</p>
+          <p>Carta Aceptación del maestro responsable</p>
           <div class="file">
             <img src="<?=base_url()?>static/img/carta.png" id="3" data-default-icon="<?=base_url()?>static/img/carta.png">
               <input class="ocultar fileUp"  id="" type="file" name="cartaAeptacionMRespoGM" accept="application/pdf" required>
