@@ -8,12 +8,12 @@
 
 <div class="col-xs-12">
 <br>
-    <div class="form-group col-xs-12 col-sm-12 col-md-6 text-center">
+    <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
       <label for="text">Expediente</label>
       <p><?=$alumno->expediente?></p>
     </div>
 
-    <div class="form-group col-xs-12 col-sm-12 col-md-6 text-center">
+    <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
       <label for="nombre">Nombre</label>
       <?php if (!is_null($alumno->nombre_alumno)): ?>
         <p name="nombre" id="nombre"><?php echo $alumno->nombre_alumno; ?></p>
@@ -22,20 +22,46 @@
       <?php endif; ?>
     </div>
 
-    <div class="form-group col-xs-12 col-sm-12 col-md-6 text-center">
+    <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
       <label for="text">Email</label>
       <?php if (!is_null($alumno->emailUsuario) AND $alumno->emailUsuario != ""): ?>
         <p><?=$alumno->emailUsuario?></p>
       <?php else: ?>
         <p>No hay dato</p>
       <?php endif; ?>
+    </div>
 
+    <div class="form-group col-xs-12 col-sm-12 col-md-2 text-center">
+      <label for="text">Periodo</label>
+      <p name="periodo" id="periodo"><?=$periodoTramite; ?></p>
     </div>
 
     <?php if (!is_null($materia)): ?>
-      <div class="form-group col-xs-12 col-sm-12 col-md-6 text-center">
+      <div class="form-group col-xs-12 col-sm-12 col-md-8 text-center">
         <label for="text">Materia:</label>
         <p name="materia" id="materia"><?=$materia->cveMateria." | ".$materia->nombreMateria?></p>
+      </div>
+    <?php endif; ?>
+
+    <div class="form-group col-xs-12 col-sm-12 col-md-2 text-center">
+      <label for="text">Estatus</label>
+      <p name="estatus" id="estatus"><?=$tramite->estatus; ?></p>
+    </div>
+
+    <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
+      <label for="text">Fecha Inicio Trámite</label>
+      <p name="fecIniTram" id="fecIniTram"><?= fancy_date($tramite->fechaInicio); ?></p>
+    </div>
+
+    <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
+      <label for="text">Fecha de Última Modificación</label>
+      <p name="fecUltMod" id="fecUltMod"><?=fancy_date($tramite->feculmod); ?></p>
+    </div>
+
+    <?php if ($tramite->estatus == "FINALIZADO"): ?>
+      <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
+        <label for="text">Fecha de Finalización</label>
+        <p name="fecFin" id="fecFin"><?=fancy_date($tramite->fechaFin); ?></p>
       </div>
     <?php endif; ?>
 
@@ -46,32 +72,8 @@
       </div>
     <?php endif; ?>
 
-    <div class="form-group col-xs-12 col-sm-12 col-md-6 text-center">
-      <label for="text">Fecha Inicio Trámite</label>
-      <p name="fecIniTram" id="fecIniTram"><?= fancy_date($tramite->fechaInicio); ?></p>
-    </div>
-    <div class="form-group col-xs-12 col-sm-12 col-md-6 text-center">
-      <label for="text">Estatus</label>
-      <p name="estatus" id="estatus"><?=$tramite->estatus; ?></p>
-    </div>
-    <div class="form-group col-xs-12 col-sm-12 col-md-6 text-center">
-      <label for="text">Periodo</label>
-      <p name="periodo" id="periodo"><?=$periodoTramite; ?></p>
-    </div>
-    <div class="form-group col-xs-12 col-sm-12 col-md-6 text-center">
-      <label for="text">Fecha de Última Modificación</label>
-      <p name="fecUltMod" id="fecUltMod"><?=fancy_date($tramite->feculmod); ?></p>
-    </div>
-
-    <?php if ($tramite->estatus == "FINALIZADO"): ?>
-      <div class="form-group col-xs-12 col-sm-12 col-md-6 text-center">
-        <label for="text">Fecha de Finalización</label>
-        <p name="fecFin" id="fecFin"><?=fancy_date($tramite->fechaFin); ?></p>
-      </div>
-    <?php endif; ?>
-
     <?php if (!is_null($observacion)): ?>
-      <div class="form-group col-xs-12 col-sm-12 col-md-6 text-center">
+      <div class="form-group col-xs-12 col-sm-12 text-center">
         <label for="text">Observaciones</label>
         <p name="expediente" id="expediente"><?=$observacion->observacion?></p>
       </div>
