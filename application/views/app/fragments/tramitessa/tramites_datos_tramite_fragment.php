@@ -238,6 +238,11 @@
             <input type="date" name="fechaConsejo" min="2018-01-01" required>
           </div>
 
+          <div class="col-xs-12 col-md-6 campos">
+            <label for="text">No. Oficio</label>
+            <input type="text" class="txtNoOficio" name="noOficio" style="text-transform:uppercase" required>
+          </div>
+
           <?php if ($tramite->idCatTramite==1): ?>
 
           <div class="col-xs-12 col-md-6 campos">
@@ -272,7 +277,7 @@
           <div class="col-xs-12 col-md-6 campos">
             <label for="text">Presidente</label>
             <select class="col-xs-12 presidente" name="presidente" required>
-              <option value="0">Seleccione al presidente</option>
+              <option value="">Seleccione al presidente</option>
               <?php if (!is_null($maestros)): ?>
                 <?php foreach ($maestros as $maestro): ?>
                   <option value="<?=$maestro->idMaestro?>"><?=$maestro->cveMaestro." | ".$maestro->nombreMaestro?></option>
@@ -284,7 +289,7 @@
           <div class="col-xs-12 col-md-6 campos">
             <label for="text">Sinodal</label>
             <select class="col-xs-12 sinodal1" name="sinodal1" required>
-              <option value="0">Seleccione al sinodal</option>
+              <option value="">Seleccione al sinodal</option>
               <?php if (!is_null($maestros)): ?>
                 <?php foreach ($maestros as $maestro): ?>
                   <option value="<?=$maestro->idMaestro?>"><?=$maestro->cveMaestro." | ".$maestro->nombreMaestro?></option>
@@ -296,7 +301,7 @@
           <div class="col-xs-12 col-md-6 campos">
             <label for="text">Sinodal</label>
             <select class="col-xs-12 sinodal2" name="sinodal2" required>
-              <option value="0">Seleccione al sinodal</option>
+              <option value="">Seleccione al sinodal</option>
               <?php if (!is_null($maestros)): ?>
                 <?php foreach ($maestros as $maestro): ?>
                   <option value="<?=$maestro->idMaestro?>"><?=$maestro->cveMaestro." | ".$maestro->nombreMaestro?></option>
@@ -334,7 +339,7 @@
           <?php endif; ?>
             <div class="col-xs-12 right">
               <input type="submit" class="btn btn-success btnApro" data-id="<?=$tramite->idTramite?>" value="APROBADO" target="_blank">
-              <input type="submit" class="btn btn-danger  btnRech" data-id="<?=$tramite->idTramite?>" value="REPROBADO" target="_blank">
+              <input type="submit" class="btn btn-danger  btnRech" data-id="<?=$tramite->idTramite?>" value="RECHAZADO" target="_blank">
               <input type="hidden" id="decision" name="decision" value="<?=$tramite->estatus?>">
             </div>
         </form>
@@ -359,7 +364,7 @@
       <?php endif; ?>
 
       <?php if ($tramite->estatus=="APROBADO" OR $tramite->estatus=="RECHAZADO"): ?>
-        <?php if (!is_null($rutaRespuesta)): 
+        <?php if (!is_null($rutaRespuesta)):
           $link = "docs/tramites/".$alumno->expediente."/".$tramite->idTramite."/respuesta/".$rutaRespuesta->ruta.".pdf";
         ?>
           <a class="btn btn-info center" href="<?=base_url().$link?>" target="_blank">Imprimir PDF</a>

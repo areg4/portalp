@@ -21,7 +21,7 @@
 		</tr>
 
 		<tr>
-			<td style="padding-top: 30px; box-sizing: border-box;">A su solicitud de aprobación de opción de Titulación por Tesis Individual denominada: <?=$nombreTrabajo?>, perteneciente al programa de <?=$plan->nombrePlan?>.</td>
+			<td style="padding-top: 30px; box-sizing: border-box;">A su solicitud de aprobación de opción de Titulación por Tesis Individual denominada: "<?=$nombreTrabajo?>", perteneciente al programa de <?=$plan->nombrePlan?>.</td>
 		</tr>
 		<tr>
 			<td style="padding-top: 30px; box-sizing: border-box;">Sin otro particular, me es grato saludarle.</td>
@@ -36,7 +36,7 @@
 				<tr>
 					<td align="center">
 						<b>MISD. CARLOS ALBERTO OLMOS TREJO<br>SECRETARIO DEL H. CONSEJO ACADÉMICO</b>
-					</td>	
+					</td>
 				</tr>
 			</tbody>
 		</table>

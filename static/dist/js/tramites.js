@@ -240,21 +240,26 @@ jQuery(document).ready(function($){
   $(".btnEnvPreacta").click(function () {
     var idTramite     = $(this).attr("data-id");
     var recomendacion = $(".recomendacion").html();
-    // alert(recomendacion);
-    parametros      = {
-      'idTramite' : idTramite,
-      'estatus'   : "PREACTA",
-      'recomendacion' : recomendacion
-    };
+    if (recomendacion == "ATENDIDO") {
+      $("#error-modal .modal-dialog > .modal-content > .modal-body").html('El trámite no ha sido atendido por los miembros del comité correspondiente.');
+      $('#error-modal').modal('show');
+    }else{
+      // alert(recomendacion);
+      parametros      = {
+        'idTramite' : idTramite,
+        'estatus'   : "PREACTA",
+        'recomendacion' : recomendacion
+      };
 
-    $.ajax({
-      url     : base_url()+"portal-informatica-tramites-enviarA",
-      type    : 'post',
-      data    : parametros,
-      success : function (data) {
-        window.location.reload();
-      }
-    });
+      $.ajax({
+        url     : base_url()+"portal-informatica-tramites-enviarA",
+        type    : 'post',
+        data    : parametros,
+        success : function (data) {
+          window.location.reload();
+        }
+      });
+    }
   });
 
   $(".btnResAprobado").click(function () {
@@ -517,12 +522,16 @@ jQuery(document).ready(function($){
    $("#decision").val("RECHAZADO");
  })
 
+ $(".txtNoOficio").keyup(function () {
+   return this.value.toUpperCase();
+ });
+
  //  $("#formRespuesta").submit(function (e) {
  //   // if ($("#formRespuesta").find(".decision").val() != 0) {
  //     // alert($("#formAlta").find(".materias").val());
- //     // e.preventDefault(); 
- //     alert($("#decision").val()); 
-     
+ //     // e.preventDefault();
+ //     alert($("#decision").val());
+
  //     e.preventDefault();
  //   // }else {
  //   //   alert("");

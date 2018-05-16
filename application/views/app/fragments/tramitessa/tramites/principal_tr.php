@@ -4,16 +4,16 @@
 	<title>Documento</title>
 	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 </head>
-	
+
 	<h2 style="text-align:right;  width:400px; font-size: 16px; position: absolute; top:80px; right:100px; z-index:0 !important;">
 		Campus Juriquilla, Qro., <?=fancy_date($this->fecha)?> <br>
-		Oficio: <br>
+		Oficio: <?=$noOficio?><br>
 		Asunto: Dictamen del H. Consejo Académico <br>
 	</h2>
 
 	<div class="body" id="body">
 		<?=$body?>
 	</div>
-	
+
 </body>
 </html>

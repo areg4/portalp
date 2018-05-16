@@ -1191,8 +1191,8 @@ class Tramitessa extends CI_Controller {
 	}
 
 	public function tramitesPdf(){
-		// $tramite = $this->tramitessa_model->getTramites(); 
-
+		// $tramite = $this->tramitessa_model->getTramites();
+		$noOficio = strtoupper($this->input->post("noOficio"));
 		$idTramite = $this->input->post('idTramite');
 		$fechaCon = $this->input->post('fechaConsejo');
 		$tramite = $this->tramitessa_model->getTramitePById($idTramite);
@@ -1225,6 +1225,7 @@ class Tramitessa extends CI_Controller {
 			$info['aula'] = $aula;
 			$info['decision'] = ($decision == 'APROBADO') ? 'autorizar' : 'rechazar' ;
 			$info['fechaCon'] = $fechaCon;
+			$info['noOficio']	= $noOficio;
 
 			//crea el pdf
 			$info['body'] = $this->load->view('app/fragments/'.$this->folder.'/tramites/examen_vol', $info, true);
@@ -1244,6 +1245,7 @@ class Tramitessa extends CI_Controller {
 			$info['tiempoSoli'] = $tiempoSoli;
 			$info['decision'] = ($decision == 'APROBADO') ? 'autorizar' : 'rechazar' ;
 			$info['fechaCon'] = $fechaCon;
+			$info['noOficio']	= $noOficio;
 
 			//crea el pdf
 			$info['body'] = $this->load->view('app/fragments/'.$this->folder.'/tramites/readqui_pasantia', $info, true);
@@ -1256,6 +1258,7 @@ class Tramitessa extends CI_Controller {
 			$info['alumno']	= $this->alumno;
 			$info['decision'] = ($decision == 'APROBADO') ? 'Autorizar' : 'Rechazar' ;
 			$info['fechaCon'] = $fechaCon;
+			$info['noOficio']	= $noOficio;
 
 			//crea el pdf
 			$info['body'] = $this->load->view('app/fragments/'.$this->folder.'/tramites/curso_diplomado', $info, true);
@@ -1277,6 +1280,7 @@ class Tramitessa extends CI_Controller {
 			$info['plan'] = $plan;
 			$info['maestro'] = $maestro;
 			$info['fechaCon'] = $fechaCon;
+			$info['noOficio']	= $noOficio;
 
 			//crea el pdf
 			$info['body'] = $this->load->view('app/fragments/'.$this->folder.'/tramites/guia_del_maestro', $info, true);
@@ -1293,6 +1297,7 @@ class Tramitessa extends CI_Controller {
 			$info['nombreTrabajo'] = $tramite->nombreTrabajo;
 			$info['fechaCon'] = $fechaCon;
 			$info['plan'] = $plan;
+			$info['noOficio']	= $noOficio;
 
 			//crea el pdf
 			$info['body'] = $this->load->view('app/fragments/'.$this->folder.'/tramites/tesis_individual', $info, true);
@@ -1305,6 +1310,7 @@ class Tramitessa extends CI_Controller {
 			$info['alumno']	= $this->alumno;
 			$info['decision'] = ($decision == 'APROBADO') ? 'Autorizar' : 'Rechazar' ;
 			$info['fechaCon'] = $fechaCon;
+			$info['noOficio']	= $noOficio;
 
 			//crea el pdf
 			$info['body'] = $this->load->view('app/fragments/'.$this->folder.'/tramites/promedio', $info, true);
@@ -1326,26 +1332,33 @@ class Tramitessa extends CI_Controller {
 		$acentos = array('Á','á','Ó','ó','É','é','Í','í','Ú', 'ú','Ñ', 'ñ','#');
 		$replac = array('&Aacute;','&aacute;','&Oacute;','&oacute;','&Eacute;','&eacute;','&Iacute;','&iacute;','&Uacute;','&uacute;','&Ntilde;','&ntilde;');
 		$html = str_replace($acentos, $replac, $html);
-		
+
+		// print_r (die(var_dump($html)));
+
 		$this->load->library('dompdf_lib');
 		$dompdf = new Dompdf_lib();
 
-		$dompdf->pdf_create($html, $filename, false, 'portrait', $target);	
+		$dompdf->pdf_create($html, $filename, false, 'portrait', $target);
 		// $ruta = 'docs/tramites/'.$this->alumno->expediente.'/'.$idTramite.'/respuesta';
 		// print_r (die(var_dump($idTramite)));
+		$arrUpdate = array(
+			'fechaFin'	=> $this->fecha
+		);
+		$this->tramitessa_model->updateTramite($idTramite, $arrUpdate);
 		$this->updateTramiteTo($idTramite, $decision);
 
 
 		$arrInsert = array(
 			'idTramite' => $idTramite,
 			'ruta' => $filename,
+			'noOficio' => $noOficio,
 			'habilitado' => 1 );
 
 		$this->tramitessa_model->insertTramiteRespuesta($arrInsert);
 
 		// $link = 'docs/'.$target.'/'.$filename.'.pdf';
 		$this->session->set_flashdata('error', 'respuestaOk');
-		redirect(base_url().'portal-informatica-tramites-datos/'.$idTramite); 
+		redirect(base_url().'portal-informatica-tramites-datos/'.$idTramite);
 	}
 }
 
