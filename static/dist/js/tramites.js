@@ -401,7 +401,7 @@ jQuery(document).ready(function($){
   $(".file").on('change', function (event) {
     var file = event.target.files[0];
     if(!file.type.match('application/pdf')) {
-       $("#error-modal .modal-dialog > .modal-content > .modal-body").html('Sólo archivos con exensión .pdf');
+       $("#error-modal .modal-dialog > .modal-content > .modal-body").html('Sólo archivos con extensión .pdf');
        $('#error-modal').modal('show');
        $(this).css("background","#FA474B");
        $(this).css("transition","width 1s, background 2s");
