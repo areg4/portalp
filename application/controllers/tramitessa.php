@@ -112,6 +112,9 @@ class Tramitessa extends CI_Controller {
 
 		$maestros = null;
 
+		$aula = null;
+		$rutaRespuesta = null;
+
 		$data['sys_app_title'] 	= 'TRÁMITES';
 		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRÁMITES';
 		$data['app_sub_menu'] 	= 'notifiTramites';
@@ -159,6 +162,11 @@ class Tramitessa extends CI_Controller {
 
 		if ($tramite->estatus == "PREACTA" AND $tramite->idCatTramite == 1) {
 			$maestros = $this->tramitessa_model->getMaestros();
+			$aula = $this->tramitessa_model->getAulasByTipo();
+		}
+
+		if ($tramite->estatus == "APROBADO" OR $tramite->estatus == "RECHAZADO") {
+			$rutaRespuesta = $this->tramitessa_model->getRutaRespuesta($idTramite);
 		}
 
 		$data['investigadores']		=		$investigadores;
@@ -166,6 +174,8 @@ class Tramitessa extends CI_Controller {
 		$data['aprobacionesInves']		=		$aprobacionesInves;
 		$data['aprobacionesConse']		=		$aprobacionesConse;
 		$data['recomendacion']				=		$recomendacion;
+		$data['aula'] 					= $aula;
+		$data['rutaRespuesta'] 		= $rutaRespuesta;
 
 		$data['archivos']		 = $archivos;
 		$data['tramite']		=	$tramite;
@@ -348,6 +358,7 @@ class Tramitessa extends CI_Controller {
 		$data['tramite']		= (!is_null($this->tramitessa_model->getTramiteById($idTramite))) ? $this->tramitessa_model->getTramiteById($idTramite) : redirect("portal-informatica-alumnos-tramites") ;	;
 		$data['periodo']		= $this->periodo->periodo;
 		$data['materias']		= $this->tramitessa_model->getMateriasByPlan($this->alumno->idPlan);
+		$data['maestros']		= $this->tramitessa_model->getMaestros();
 		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/tramites_alta_alumno_fragment', $data, TRUE);
 		$this->load->view('app/main_view', $data, FALSE);
   }
@@ -1177,6 +1188,164 @@ class Tramitessa extends CI_Controller {
 		if ($abstinencias >= 50) {
 			return "ATENDIDO";
 		}
+	}
+
+	public function tramitesPdf(){
+		// $tramite = $this->tramitessa_model->getTramites(); 
+
+		$idTramite = $this->input->post('idTramite');
+		$fechaCon = $this->input->post('fechaConsejo');
+		$tramite = $this->tramitessa_model->getTramitePById($idTramite);
+
+		if ($tramite->idCatTramite == 1){
+			$idPresidente = $this->input->post('presidente');
+			$sinodalUno = $this->input->post('sinodal1');
+			$sinodalDos = $this->input->post('sinodal2');
+			$fechaApliExam = $this->input->post('fechaApliExam');
+			$horaI = $this->input->post('horaInicio');
+			$horaF = $this->input->post('horaFin');
+			$aula = $this->input->post('aula');
+			$decision = $this->input->post('decision');
+
+			$materia = $this->tramitessa_model->getMateriaById($tramite->idMateria);
+			$plan = $this->alumno_model->getPlan($this->alumno->idPlan);
+			$presidente = $this->tramitessa_model->getMaestrosById($idPresidente);
+			$sinodalUno = $this->tramitessa_model->getMaestrosById($sinodalUno);
+			$sinodalDos = $this->tramitessa_model->getMaestrosById($sinodalDos);
+
+			$info['alumno']	= $this->alumno;
+			$info['plan'] = $plan;
+			$info['materia'] = $materia;
+			$info['presidente'] = $presidente;
+			$info['sinodalUno'] = $sinodalUno;
+			$info['sinodalDos'] = $sinodalDos;
+			$info['fechaApliExam'] = $fechaApliExam;
+			$info['horaI'] = $horaI;
+			$info['horaF'] = $horaF;
+			$info['aula'] = $aula;
+			$info['decision'] = ($decision == 'APROBADO') ? 'autorizar' : 'rechazar' ;
+			$info['fechaCon'] = $fechaCon;
+
+			//crea el pdf
+			$info['body'] = $this->load->view('app/fragments/'.$this->folder.'/tramites/examen_vol', $info, true);
+			$html = $this->load->view('app/fragments/'.$this->folder.'/tramites/principal_tr', $info, true);
+		}
+
+		if ($tramite->idCatTramite == 3){
+			$tiempoSoli = $this->input->post('tiempoSoli');
+			$periodoCurso = $this->input->post('periodoCurso');
+			$fechaVenciPas = $this->input->post('fechaVenciPas');
+			$decision = $this->input->post('decision');
+
+			$info['alumno']	= $this->alumno;
+			$info['nombreTrabajo'] = $tramite->nombreTrabajo;
+			$info['periodoCurso'] = $periodoCurso;
+			$info['fechaVenciPas'] = $fechaVenciPas;
+			$info['tiempoSoli'] = $tiempoSoli;
+			$info['decision'] = ($decision == 'APROBADO') ? 'autorizar' : 'rechazar' ;
+			$info['fechaCon'] = $fechaCon;
+
+			//crea el pdf
+			$info['body'] = $this->load->view('app/fragments/'.$this->folder.'/tramites/readqui_pasantia', $info, true);
+			$html = $this->load->view('app/fragments/'.$this->folder.'/tramites/principal_tr', $info, true);
+		}
+
+		if ($tramite->idCatTramite == 4){
+			$decision = $this->input->post('decision');
+
+			$info['alumno']	= $this->alumno;
+			$info['decision'] = ($decision == 'APROBADO') ? 'Autorizar' : 'Rechazar' ;
+			$info['fechaCon'] = $fechaCon;
+
+			//crea el pdf
+			$info['body'] = $this->load->view('app/fragments/'.$this->folder.'/tramites/curso_diplomado', $info, true);
+			$html = $this->load->view('app/fragments/'.$this->folder.'/tramites/principal_tr', $info, true);
+		}
+
+		if ($tramite->idCatTramite == 5){
+			$decision = $this->input->post('decision');
+
+			$materia = $this->tramitessa_model->getMateriaById($tramite->idMateria);
+			$plan = $this->alumno_model->getPlan($this->alumno->idPlan);
+			$maestro = $this->tramitessa_model->getMaestrosById($tramite->idMaestro);
+
+			// print_r(die(var_dump($maestro)));
+
+			$info['alumno']	= $this->alumno;
+			$info['decision'] = ($decision == 'APROBADO') ? 'Autorizar' : 'Rechazar' ;
+			$info['materia'] = $materia;
+			$info['plan'] = $plan;
+			$info['maestro'] = $maestro;
+			$info['fechaCon'] = $fechaCon;
+
+			//crea el pdf
+			$info['body'] = $this->load->view('app/fragments/'.$this->folder.'/tramites/guia_del_maestro', $info, true);
+			$html = $this->load->view('app/fragments/'.$this->folder.'/tramites/principal_tr', $info, true);
+		}
+
+		if ($tramite->idCatTramite == 8){
+			$decision = $this->input->post('decision');
+
+			$plan = $this->alumno_model->getPlan($this->alumno->idPlan);
+
+			$info['alumno']	= $this->alumno;
+			$info['decision'] = ($decision == 'APROBADO') ? 'Aprobado' : 'Rechazado' ;
+			$info['nombreTrabajo'] = $tramite->nombreTrabajo;
+			$info['fechaCon'] = $fechaCon;
+			$info['plan'] = $plan;
+
+			//crea el pdf
+			$info['body'] = $this->load->view('app/fragments/'.$this->folder.'/tramites/tesis_individual', $info, true);
+			$html = $this->load->view('app/fragments/'.$this->folder.'/tramites/principal_tr', $info, true);
+		}
+
+		if ($tramite->idCatTramite == 9){
+			$decision = $this->input->post('decision');
+
+			$info['alumno']	= $this->alumno;
+			$info['decision'] = ($decision == 'APROBADO') ? 'Autorizar' : 'Rechazar' ;
+			$info['fechaCon'] = $fechaCon;
+
+			//crea el pdf
+			$info['body'] = $this->load->view('app/fragments/'.$this->folder.'/tramites/promedio', $info, true);
+			$html = $this->load->view('app/fragments/'.$this->folder.'/tramites/principal_tr', $info, true);
+		}
+		// print_r (die(var_dump($decision)));
+
+		$rutaPrincipal = 'docs/tramites/'.$this->alumno->expediente.'/'.$idTramite.'/respuesta';
+
+		if (!(file_exists($rutaPrincipal))) {
+			mkdir($rutaPrincipal, 0777);
+		}
+		// print_r (die(var_dump($this->alumno)));
+
+		$filename = 'respuesta_'.$this->alumno->expediente.'_'.$this->fecha;
+		$target = 'tramites/'.$this->alumno->expediente.'/'.$idTramite.'/respuesta';
+
+		//configuraciones
+		$acentos = array('Á','á','Ó','ó','É','é','Í','í','Ú', 'ú','Ñ', 'ñ','#');
+		$replac = array('&Aacute;','&aacute;','&Oacute;','&oacute;','&Eacute;','&eacute;','&Iacute;','&iacute;','&Uacute;','&uacute;','&Ntilde;','&ntilde;');
+		$html = str_replace($acentos, $replac, $html);
+		
+		$this->load->library('dompdf_lib');
+		$dompdf = new Dompdf_lib();
+
+		$dompdf->pdf_create($html, $filename, false, 'portrait', $target);	
+		// $ruta = 'docs/tramites/'.$this->alumno->expediente.'/'.$idTramite.'/respuesta';
+		// print_r (die(var_dump($idTramite)));
+		$this->updateTramiteTo($idTramite, $decision);
+
+
+		$arrInsert = array(
+			'idTramite' => $idTramite,
+			'ruta' => $filename,
+			'habilitado' => 1 );
+
+		$this->tramitessa_model->insertTramiteRespuesta($arrInsert);
+
+		// $link = 'docs/'.$target.'/'.$filename.'.pdf';
+		$this->session->set_flashdata('error', 'respuestaOk');
+		redirect(base_url().'portal-informatica-tramites-datos/'.$idTramite); 
 	}
 }
 

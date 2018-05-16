@@ -97,6 +97,7 @@ class Common_model extends CI_Model {
 		$query = $this->db_b->get($a);
 		return ( $query->num_rows() >= 1 ) ? $query->result() : NULL; 
 	}
+	
 	public function getAreasConoci(){
 		$a = $this->tablas['areaconocimiento'];
 		$query = $this->db_b->get($a);

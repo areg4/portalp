@@ -34,3 +34,4 @@ $lang['altaPDFFail']        = "El archivo debe subirse en formato PDF";
 
 //investigacion trámites
 $lang['accessTramiteFail']        = "No tiene permiso para acceder a este trámite";
+$lang['respuestaOk']        	= "El PDF de respuesta se ha generado con éxito";

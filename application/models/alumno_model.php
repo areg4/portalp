@@ -53,6 +53,19 @@ class Alumno_model extends CI_Model {
 		$this->db_b->insert($a, $arrInsert);
 		return true;
 	} 
+	public function getMateria($idMateria){
+		$a = $this->tablas['materia'];
+		$this->db_b->where($a.'.idMateria', $idMateria);
+		$this->db_b->where($a.'.estatus', 1);
+		$query = $this->db_b->get($a);
+		return ($query->num_rows() == 1)? $query->row() : NULL; 
+	}
+	public function getPlan($idPlan){
+		$a = $this->tablas['plan'];
+		$this->db_b->where('idPlan',$idPlan);
+		$query = $this->db_b->get($a);
+		return ($query->num_rows() == 1)? $query->row() : NULL; 
+	}
 }
 
 /* End of file root_model.php */

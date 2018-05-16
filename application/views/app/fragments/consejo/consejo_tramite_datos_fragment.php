@@ -32,13 +32,13 @@
     </div>
 
     <?php if (!is_null($materia)): ?>
-      <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
+      <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
         <label for="text">Materia:</label>
         <p name="materia" id="materia"><?=$materia->cveMateria." | ".$materia->nombreMateria?></p>
       </div>
     <?php endif; ?>
 
-    <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
+    <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
       <label for="text">Fecha Inicio Trámite</label>
       <p name="fecIniTram" id="fecIniTram"><?= fancy_date($tramite->fechaInicio); ?></p>
     </div>
@@ -46,7 +46,7 @@
     <!-- Sección que aparece si el trámite ya fue atendido -->
 
     <?php if ($aprobacionesConse[$idUsuario]->aprobacion != 0): ?>
-      <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
+      <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
         <label for="text">Determinación</label>
         <p name="determinacion" id="determinacion"><?php
           if ($aprobacionesConse[$idUsuario]->aprobacion == 1) {
@@ -57,7 +57,7 @@
         </p>
       </div>
 
-      <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center">
+      <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
         <label for="text">Fecha Determinación</label>
         <p name="fecDetermi" id="fecDetermi"><?=(($aprobacionesConse[$idUsuario]->fechaHora)!=0) ? fancy_date($aprobacionesConse[$idUsuario]->fechaHora) : "" ; ?></p>
       </div>
@@ -222,7 +222,7 @@
                     <td data-title="Aprobación"><?php echo $aprobacion; ?></td>
                     <td data-title="Comentario"><?php echo $comenInv; ?></td>
                     <td data-title="Fecha respuesta"><?=(($aprobacionesConse[$consejero->idUsuario]->fechaHora)!=0) ? fancy_date($aprobacionesConse[$consejero->idUsuario]->fechaHora) : " - " ; ?></td>
-                    <td data-title="Designacion" class="sincursor designaciones">
+                    <td data-title="Designacion" class="sincursor designaciones" style="height: 80px !important;">
                       <label><input type="radio" class="" data-user-id="<?=$consejero->idUsuario?>" name="desig-<?=$consejero->idUsuario?>" value="1" <?=($aprobacionesConse[$consejero->idUsuario]->aprobacion)==1 ? "checked" : "";?>>&nbsp;Aprobado</label><br>
                       <label><input type="radio" class="" data-user-id="<?=$consejero->idUsuario?>" name="desig-<?=$consejero->idUsuario?>" value="2" <?=($aprobacionesConse[$consejero->idUsuario]->aprobacion)==2 ? "checked" : "";?> >&nbsp;Rechazado</label>
                     </td>
@@ -266,7 +266,8 @@
 
     <?php else: ?>
       <?php if (($aprobacionesConse[$idUsuario]->aprobacion == 0) AND ($tramite->estatus=="CONSEJO")): ?>
-        <div class="col-xs-12 opciones-t-sa">
+        <div class="col-xs-12 right">
+          <br>
           <button type="submit" class="btn btn-success  btnEnvDesigTitu" data-id="<?=$tramite->idTramite?>" data-user="<?=$idUsuario?>">Enviar Designaciones</button>
         </div>
       <?php endif; ?>
