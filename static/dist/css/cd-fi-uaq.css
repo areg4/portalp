@@ -40,7 +40,10 @@ h1, h2, h3{
 .right{
 	text-align: center;
 }
+.bottom{
+	margin-bottom: 30px !important;
 
+}
 #page-wrapper{
 	background: #fff none repeat scroll 0 0!important;
     border-radius: 2px !important;
@@ -1166,7 +1169,6 @@ div.columna div.item span{
 	justify-content: center;
 	align-content: center;
 	align-items: center;
-	/*background: red;*/
 }
 
 .archivo{

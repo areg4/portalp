@@ -5,7 +5,7 @@
   if(!is_null($alumno)){
 
 ?>
-<div class="col-xs-12">
+<div class="col-xs-12 bottom">
 <br>
   <form id="formAlta" enctype="multipart/form-data" action="<?php echo base_url().'portal-informatica-alumnos-tramites-add' ?>" method="post" >
     <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center mtop">
@@ -13,7 +13,7 @@
       <p name="expediente" id="expediente"><?php echo $alumno->expediente; ?></p>
     </div>
 
-    <div class="form-group col-xs-12 col-sm-12 col-md-5 text-center mtop">
+    <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center mtop">
       <label for="nombre">Nombre</label>
       <?php if (!is_null($alumno->nombre_alumno)): ?>
         <p name="nombre" id="nombre"><?php echo $alumno->nombre_alumno; ?></p>
@@ -22,10 +22,11 @@
       <?php endif; ?>
     </div>
 
-    <div class="form-group col-xs-12 col-sm-12 col-md-3 text-center mtop">
+    <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center mtop">
       <label for="text">Periodo</label>
       <p name="expediente" id="expediente"><?php echo $periodo; ?></p>
     </div>
+</div>
 
     <!-- <?php if ($examenV): ?>
         <?php if (!is_null($materiasV)): ?>
@@ -394,7 +395,7 @@
     <div class="col-xs-12 leyenda">
       <br>
       <p><b>Importante:</b> Los documentos deberán ser escaneados y subidos como archivo extensión .pdf</p>
-    </div>
+    </div4
 
     <div class="col-xs-12 leyenda">
       <p>Deberás tener los documentos en estado físico y pasar a Servicios Académicos a dejarlos. <br> Recibirás la respuesta de tu trámite pronto.</p>
