@@ -245,6 +245,19 @@
             <input type="text" class="txtNoOficio" name="noOficio" style="text-transform:uppercase" required>
           </div>
 
+          <div class="col-xs-12 col-md-6 campos">
+            <label for="text">Tipo de Sesión</label>
+            <select class="" name="tipoSesion" required>
+              <option value="ordinaria">Ordinaria</option>
+              <option value="extraordinaria">Extraordinaria</option>
+            </select>
+          </div>
+
+          <div class="col-xs-12 col-md-6 campos">
+            <label for="text">No. Acta</label>
+            <input type="number" name="noActa" placeholder="000" min="0" required>
+          </div>
+
           <?php if ($tramite->idCatTramite==1): ?>
 
           <div class="col-xs-12 col-md-6 campos">
