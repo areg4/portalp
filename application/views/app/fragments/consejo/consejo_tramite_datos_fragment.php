@@ -31,13 +31,6 @@
 
     </div>
 
-    <?php if (!is_null($materia)): ?>
-      <div class="form-group col-xs-12 col-sm-12 col-md-8 text-center">
-        <label for="text">Materia:</label>
-        <p name="materia" id="materia"><?=$materia->cveMateria." | ".$materia->nombreMateria?></p>
-      </div>
-    <?php endif; ?>
-
     <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
       <label for="text">Fecha Inicio Trámite</label>
       <p name="fecIniTram" id="fecIniTram"><?= fancy_date($tramite->fechaInicio); ?></p>
@@ -46,7 +39,7 @@
     <!-- Sección que aparece si el trámite ya fue atendido -->
 
     <?php if ($aprobacionesConse[$idUsuario]->aprobacion != 0): ?>
-      <div class="form-group col-xs-12 col-sm-12 col-md-6 text-center">
+      <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
         <label for="text">Determinación</label>
         <p name="determinacion" id="determinacion"><?php
           if ($aprobacionesConse[$idUsuario]->aprobacion == 1) {
@@ -57,9 +50,16 @@
         </p>
       </div>
 
-      <div class="form-group col-xs-12 col-sm-12 col-md-6 text-center">
+      <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
         <label for="text">Fecha Determinación</label>
         <p name="fecDetermi" id="fecDetermi"><?=(($aprobacionesConse[$idUsuario]->fechaHora)!=0) ? fancy_date($aprobacionesConse[$idUsuario]->fechaHora) : "" ; ?></p>
+      </div>
+    <?php endif; ?>
+
+    <?php if (!is_null($materia)): ?>
+      <div class="form-group col-xs-12 col-sm-12 col-md-12 text-center">
+        <label for="text">Materia:</label>
+        <p name="materia" id="materia"><?=$materia->cveMateria." | ".$materia->nombreMateria?></p>
       </div>
     <?php endif; ?>
 

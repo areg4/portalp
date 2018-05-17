@@ -61,7 +61,7 @@
 
 <body>
 
-    <div id="wrapper">
+    <div id="wrapper" >
 
         <!-- Navigation -->
         <?=$menu?>

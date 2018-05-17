@@ -1,5 +1,5 @@
 <div style="position: absolute; padding-top: 180px; left:25px; width:700px; z-index:200 !important; font-family: sans-serif !important;">
-	<table style="font-size: 14px; width:600px; position:relative; border-collapse: collapse; margin-left: 30px; height: auto;" cellpadding="1" cellspacing="0">
+	<table style="font-size: 14px; width:600px; position:relative; border-collapse: collapse; margin-left: 30px; height: auto; margin-top: 30px;" cellpadding="1" cellspacing="0">
 		<tr>
 			<td style="width:50%; height: 15px;"><b>M. EN C. DARÍO HURTADO MALDONADO</b></td>
 			
@@ -14,7 +14,10 @@
 
 	<table style="font-size: 14px; width:600px; position:relative; border-collapse: collapse; margin-left: 30px; height: auto; margin-top: 50px; text-align: justify;" cellpadding="1" cellspacing="0">
 		<tr>
-			<td>Notifico a usted que en sesión ordinria del H. Consejo Académico de esta Facultad, celebrada el día <?=fancy_date($fechaCon)?>, se acordó <?=$decision?> la <b>Readquisión de la Calidad de Pasante</b> al C. <?=$alumno->apellidoPaterno.' '.$alumno->apellidoMaterno.' '.$alumno->nombre?>, con número de expediente <?=$alumno->expediente?>, por un periodo de <?=$tiempoSoli?> en virtud de haber acreditado el Curso de Actualización <b>"<?=$nombreTrabajo?>"</b> en el periodo <?=$periodoCurso?>, según lo establecido en el Artículo 38 de los Lineamientos de Titulación vigentes de esta Facultad, en razón de esto, <b>su Calidad de Pasante vencerá el día <?=fancy_date($fechaVenciPas)?></b></td>
+			<?php if ($decision=="autorizar"): ?><td>Notifico a usted que en sesión ordinaria del H. Consejo Académico de esta Facultad, celebrada el día <?=fancy_date($fechaCon)?>, se acordó <?=$decision?> la <b>Readquisión de la Calidad de Pasante</b> al C. <?=$alumno->apellidoPaterno.' '.$alumno->apellidoMaterno.' '.$alumno->nombre?>, con número de expediente <?=$alumno->expediente?>, por un periodo de <?=$tiempoSoli?> en virtud de haber acreditado el Curso de Actualización <b>"<?=$nombreTrabajo?>"</b> en el periodo <?=$periodoCurso?>, según lo establecido en el Artículo 38 de los Lineamientos de Titulación vigentes de esta Facultad, en razón de esto, <b>su Calidad de Pasante vencerá el día <?=fancy_date($fechaVenciPas)?></b></td>
+			<?php endif; ?>
+			<?php if ($decision=="rechazar"): ?><td>Notifico a usted que en sesión ordinaria del H. Consejo Académico de esta Facultad, celebrada el día <?=fancy_date($fechaCon)?>, se acordó <?=$decision?> la <b>Readquisión de la Calidad de Pasante</b> al C. <?=$alumno->apellidoPaterno.' '.$alumno->apellidoMaterno.' '.$alumno->nombre?>, con número de expediente <?=$alumno->expediente?>, según lo establecido en el Artículo 38 de los Lineamientos de Titulación vigentes de esta Facultad.</td>
+			<?php endif; ?>
 		</tr>
 
 		<tr>

@@ -32,7 +32,7 @@
       </div>
     <?php endif; ?>
 
-    <div class="form-group col-xs-12 col-sm-12 col-md-6 text-center">
+    <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
       <label for="text">Estatus:</label>
       <p name="estatus" id="estatus">
         <?php if ($tramite->estatus=="ALTA" OR $tramite->estatus=="APROBADO" OR $tramite->estatus=="RECHAZADO"): ?>
@@ -53,29 +53,29 @@
       <p name="fecUltMod" id="fecUltMod"><?=fancy_date($tramite->feculmod); ?></p>
     </div>
 
-    <?php if ($tramite->estatus == "FINALIZADO"): ?>
+    <?php if ($tramite->estatus == "APROBADO" OR $tramite->estatus == "RECHAZADO"): ?>
       <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
         <label for="text">Fecha de Finalización:</label>
         <p name="fecFin" id="fecFin"><?=fancy_date($tramite->fechaFin); ?></p>
       </div>
     <?php endif; ?>
 
-    <?php if (!is_null($tramite->nombreTrabajo)): ?>
-      <div class="form-group col-xs-12 col-sm-6 text-center">
-        <label for="text">Título del Trabajo:</label>
-        <p name="nTrabajo" id="nTrabajo"><?=$tramite->nombreTrabajo?></p>
-      </div>
-    <?php endif; ?>
-
     <?php if (!is_null($observacion)): ?>
-    <div class="form-group col-xs-12 col-sm-6 text-center">
+    <div class="form-group col-xs-12 col-sm-12 text-center">
       <label for="text">Observaciones:</label>
       <p name="expediente" id="expediente"><?=$observacion->observacion?></p>
     </div>
     <?php else: ?>
-      <div class="form-group col-xs-12 col-sm-12 col-md-12 text-center">
+      <div class="form-group col-xs-12 col-sm-4 text-center">
         <label for="text">Observaciones:</label>
         <p name="expediente" id="expediente">Sin observaciones por el momento</p>
+      </div>
+    <?php endif; ?>
+
+    <?php if (!is_null($tramite->nombreTrabajo)): ?>
+      <div class="form-group col-xs-12 col-sm-12 text-center">
+        <label for="text">Título del Trabajo:</label>
+        <p name="nTrabajo" id="nTrabajo"><?=$tramite->nombreTrabajo?></p>
       </div>
     <?php endif; ?>
 

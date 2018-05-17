@@ -37,6 +37,9 @@ h1, h2, h3{
 	.tamañop{
 		font-size: .95em;
 	}
+	.tamaño-s{
+		font-size: 1.5em;
+	}
 .right{
 	text-align: center;
 }
@@ -45,8 +48,9 @@ h1, h2, h3{
 
 }
 #page-wrapper{
-	background: #fff none repeat scroll 0 0!important;
+	/*background: #fff none repeat scroll 0 0!important;*/
     border-radius: 2px !important;
+    /*background: red !important;*/
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1) !important;
     box-sizing: border-box !important;
     float: right !important;
@@ -54,6 +58,7 @@ h1, h2, h3{
     margin-top: 70px !important;
     padding: 10px !important;
     width: 80% !important;
+   	/*height: 300px !important;*/
     overflow-y: auto;
     overflow-x:hidden !important;
 }
@@ -160,6 +165,8 @@ div.margin-top-login{
 		margin: 0 !important;
 		/*margin-top: 80px !important;*/
 		padding-top: 100px !important;
+		background: red !important;
+		max-height: 300px !important;
 	}
 	.ficha2{
 		margin-left: 0% !important;
@@ -1405,7 +1412,13 @@ input[type=file]::-webkit-file-upload-button{
 	.campos select{
 		cursor: pointer;
 	}
-
+details{
+  cursor: pointer;
+  outline: none !important; 
+}
+summary{
+	outline: none !important;
+}
 /*Scroll (preguntar si se puede cambiar) */
 ::-webkit-scrollbar{
   width: 6px;

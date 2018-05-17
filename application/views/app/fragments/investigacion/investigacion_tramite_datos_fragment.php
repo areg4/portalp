@@ -6,6 +6,10 @@
 
 <div class="col-xs-12">
 <br>
+    <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
+      <label for="text">Expediente</label>
+      <p><?=$alumno->expediente?></p>
+    </div>
 
     <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
       <label for="nombre">Nombre</label>
@@ -14,11 +18,6 @@
       <?php else: ?>
         <p name="nombre" id="nombre"><?php echo $alumno->apellidoPaterno." ".$alumno->apellidoMaterno." ".$alumno->nombre;?></p>
       <?php endif; ?>
-    </div>
-
-    <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
-      <label for="text">Expediente</label>
-      <p><?=$alumno->expediente?></p>
     </div>
 
     <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
@@ -31,13 +30,6 @@
 
     </div>
 
-    <?php if (!is_null($materia)): ?>
-      <div class="form-group col-xs-12 col-sm-12 col-md-8 text-center">
-        <label for="text">Materia:</label>
-        <p name="materia" id="materia"><?=$materia->cveMateria." | ".$materia->nombreMateria?></p>
-      </div>
-    <?php endif; ?>
-
     <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
       <label for="text">Fecha Inicio Trámite</label>
       <p name="fecIniTram" id="fecIniTram"><?= fancy_date($tramite->fechaInicio); ?></p>
@@ -46,7 +38,7 @@
     <!-- Sección que aparece si el trámite ya fue atendido -->
 
     <?php if ($aprobacionesInves[$idUsuario]->aprobacion != 0): ?>
-      <div class="form-group col-xs-12 col-sm-12 col-md-6 text-center">
+      <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
         <label for="text">Determinación</label>
         <p name="determinacion" id="determinacion"><?php
           if ($aprobacionesInves[$idUsuario]->aprobacion == 1) {
@@ -57,9 +49,16 @@
         </p>
       </div>
 
-      <div class="form-group col-xs-12 col-sm-12 col-md-6 text-center">
+      <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
         <label for="text">Fecha Determinación</label>
         <p name="fecDetermi" id="fecDetermi"><?=(($aprobacionesInves[$idUsuario]->fechaHora)!=0) ? fancy_date($aprobacionesInves[$idUsuario]->fechaHora) : "" ; ?></p>
+      </div>
+    <?php endif; ?>
+
+    <?php if (!is_null($materia)): ?>
+      <div class="form-group col-xs-12 col-sm-12 col-md-8 text-center">
+        <label for="text">Materia:</label>
+        <p name="materia" id="materia"><?=$materia->cveMateria." | ".$materia->nombreMateria?></p>
       </div>
     <?php endif; ?>
 

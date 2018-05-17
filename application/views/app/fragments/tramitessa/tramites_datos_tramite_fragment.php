@@ -58,7 +58,7 @@
       <p name="fecUltMod" id="fecUltMod"><?=fancy_date($tramite->feculmod); ?></p>
     </div>
 
-    <?php if ($tramite->estatus == "FINALIZADO"): ?>
+    <?php if ($tramite->estatus == "APROBADO" OR $tramite->estatus == "RECHAZADO"): ?>
       <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
         <label for="text">Fecha de Finalización</label>
         <p name="fecFin" id="fecFin"><?=fancy_date($tramite->fechaFin); ?></p>
@@ -66,7 +66,7 @@
     <?php endif; ?>
 
     <?php if (!is_null($tramite->nombreTrabajo)): ?>
-      <div class="form-group col-xs-12 col-sm-12 col-md-6 text-center">
+      <div class="form-group col-xs-12 col-sm-12 text-center">
         <label for="text">Título del Trabajo:</label>
         <p name="nTrabajo" id="nTrabajo"><?=$tramite->nombreTrabajo?></p>
       </div>
@@ -365,13 +365,15 @@
         <button type="submit" class="btn btn-success btnEnvPreacta" data-id="<?=$tramite->idTramite?>">Enviar a Preacta</button>
       <?php endif; ?>
 
-      <?php if ($tramite->estatus=="APROBADO" OR $tramite->estatus=="RECHAZADO"): ?>
-        <?php if (!is_null($rutaRespuesta)):
-          $link = "docs/tramites/".$alumno->expediente."/".$tramite->idTramite."/respuesta/".$rutaRespuesta->ruta.".pdf";
-        ?>
-          <a class="btn btn-info center" href="<?=base_url().$link?>" target="_blank">Imprimir PDF</a>
+      <div class="form-group col-xs-12 col-sm-12 text-center">
+        <?php if ($tramite->estatus=="APROBADO" OR $tramite->estatus=="RECHAZADO"): ?>
+          <?php if (!is_null($rutaRespuesta)):
+            $link = "docs/tramites/".$alumno->expediente."/".$tramite->idTramite."/respuesta/".$rutaRespuesta->ruta.".pdf";
+          ?>
+            <a class="btn btn-success" href="<?=base_url().$link?>" target="_blank">Imprimir PDF</a>
+          <?php endif; ?>
         <?php endif; ?>
-      <?php endif; ?>
+      </div>
     </div>
 </div>
 </form>
