@@ -6,6 +6,10 @@
 
 <div class="col-xs-12">
 <br>
+    <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
+      <label for="text">Expediente</label>
+      <p><?=$alumno->expediente?></p>
+    </div>
 
     <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
       <label for="nombre">Nombre</label>
@@ -14,11 +18,6 @@
       <?php else: ?>
         <p name="nombre" id="nombre"><?php echo $alumno->apellidoPaterno." ".$alumno->apellidoMaterno." ".$alumno->nombre;?></p>
       <?php endif; ?>
-    </div>
-
-    <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
-      <label for="text">Expediente</label>
-      <p><?=$alumno->expediente?></p>
     </div>
 
     <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
@@ -64,6 +63,12 @@
     <?php endif; ?>
 
     <!-- Fin de sección -->
+    <?php if (!is_null($tramite->nombreTrabajo)): ?>
+      <div class="form-group col-xs-12 col-sm-12 text-center">
+        <label for="text">Título del Trabajo:</label>
+        <p name="nTrabajo" id="nTrabajo"><?=$tramite->nombreTrabajo?></p>
+      </div>
+    <?php endif; ?>
 
     <div class="archivos col-xs-12" id="contenedor">
     <?php if (!is_null($archivos)): ?>

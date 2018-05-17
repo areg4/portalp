@@ -249,24 +249,24 @@
 
           <div class="col-xs-12 col-md-6 campos">
             <label for="text">Fecha aplicación examen</label>
-            <input type="date" name="fechaApliExam" min="2018-01-01" required>
+            <input type="date" class="requerido" id="fechaApliExam" name="fechaApliExam" min="2018-01-01">
           </div>
 
 
           <div class="col-xs-12 col-md-6 campos">
             <label for="text">Hora de Inicio</label>
-            <input type="time" name="horaInicio" required>
+            <input type="time" class="requerido" id="horaInicio" name="horaInicio">
           </div>
 
 
           <div class="col-xs-12 col-md-6 campos">
             <label for="text">Hora de Finalización</label>
-            <input type="time" name="horaFin" required>
+            <input type="time" class="requerido" id="horaFin" name="horaFin">
           </div>
 
           <div class="col-xs-12 col-md-6 campos">
             <label for="text">Aula</label>
-            <select class="col-xs-12 aula" name="aula" required>
+            <select class="col-xs-12 aula requerido" id="aula" name="aula">
               <option value="">Seleccione el aula</option>
               <?php if (!is_null($aula)): ?>
                 <?php foreach ($aula as $aula): ?>
@@ -278,7 +278,7 @@
 
           <div class="col-xs-12 col-md-6 campos">
             <label for="text">Presidente</label>
-            <select class="col-xs-12 presidente" name="presidente" required>
+            <select class="col-xs-12 presidente requerido" id="presidente" name="presidente">
               <option value="">Seleccione al presidente</option>
               <?php if (!is_null($maestros)): ?>
                 <?php foreach ($maestros as $maestro): ?>
@@ -290,7 +290,7 @@
 
           <div class="col-xs-12 col-md-6 campos">
             <label for="text">Sinodal</label>
-            <select class="col-xs-12 sinodal1" name="sinodal1" required>
+            <select class="col-xs-12 sinodal1 requerido" id="sinodal1" name="sinodal1">
               <option value="">Seleccione al sinodal</option>
               <?php if (!is_null($maestros)): ?>
                 <?php foreach ($maestros as $maestro): ?>
@@ -302,7 +302,7 @@
 
           <div class="col-xs-12 col-md-6 campos">
             <label for="text">Sinodal</label>
-            <select class="col-xs-12 sinodal2" name="sinodal2" required>
+            <select class="col-xs-12 sinodal2 requerido" id="sinodal2" name="sinodal2">
               <option value="">Seleccione al sinodal</option>
               <?php if (!is_null($maestros)): ?>
                 <?php foreach ($maestros as $maestro): ?>
@@ -317,17 +317,17 @@
 
             <div class="col-xs-12 col-md-6 campos">
               <label for="text">Tiempo solicitado</label>
-              <input type="text" name="tiempoSoli" required placeholder="uno, dos, tres años">
+              <input type="text" class="requerido" id="tiempoSoli" name="tiempoSoli" placeholder="uno, dos, tres años">
             </div>
 
             <div class="col-xs-12 col-md-6 campos">
               <label for="text">Periodo del Curso</label>
-              <input type="text" name="periodoCurso" required placeholder="de enero a junio del 2018">
+              <input type="text" class="requerido" name="periodoCurso" placeholder="de enero a junio del 2018">
             </div>
 
             <div class="col-xs-12 col-md-6 campos">
               <label for="text">Fecha Vencimiento Pasantía</label>
-              <input type="date" name="fechaVenciPas" min="2018-01-01" required>
+              <input type="date" class="requerido" name="fechaVenciPas" min="2018-01-01">
             </div>
             <br>
 

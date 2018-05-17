@@ -63,6 +63,12 @@
     <?php endif; ?>
 
     <!-- Fin de sección -->
+    <?php if (!is_null($tramite->nombreTrabajo)): ?>
+      <div class="form-group col-xs-12 col-sm-12 text-center">
+        <label for="text">Título del Trabajo:</label>
+        <p name="nTrabajo" id="nTrabajo"><?=$tramite->nombreTrabajo?></p>
+      </div>
+    <?php endif; ?> 
 
     <div class="archivos col-xs-12" id="contenedor">
     <?php if (!is_null($archivos)): ?>

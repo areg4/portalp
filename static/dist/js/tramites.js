@@ -516,6 +516,19 @@ jQuery(document).ready(function($){
 
  $(".btnApro").click(function () {
    $("#decision").val("APROBADO");
+   $("#formRespuesta").submit(function (e) {
+     if ($("#decision").val()=="APROBADO") {
+       $(".requerido").each(function () {
+         $(this).val($.trim((this.value)));
+         if (($(this).val().length < 1)) {
+           // $(this).addClass('');
+           $("#error-modal .modal-dialog > .modal-content > .modal-body").html('Todos los campos son requeridos.');
+           $('#error-modal').modal('show');
+           e.preventDefault();
+         }
+       });
+     }
+   });
  });
 
  $(".btnRech").click(function () {
