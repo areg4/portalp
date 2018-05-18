@@ -235,17 +235,17 @@
           <input type="hidden" name="idTramite" value="<?=$tramite->idTramite?>">
           <!-- <input type="hidden" name="idMateria" value="<?=$materia->idMateria?>"> -->
 
-          <div class="col-xs-12 col-md-3 campos">
+          <div class="col-xs-12 col-sm-12 col-md-3 campos">
             <label for="text">Fecha que se celebró el Consejo</label><br>
             <input type="date" name="fechaConsejo" min="2018-01-01" required>
           </div>
 
-          <div class="col-xs-12 col-md-3 campos">
+          <div class="col-xs-12 col-sm-12 col-md-3 campos">
             <label for="text">No. Oficio</label><br>
-            <input type="text" class="txtNoOficio" name="noOficio" style="text-transform:uppercase" required>
+            <input type="text" class="txtNoOficio col-xs-12" name="noOficio" style="text-transform:uppercase" required>
           </div>
 
-          <div class="col-xs-12 col-md-3 campos">
+          <div class="col-xs-12 col-sm-12 col-md-3 campos">
             <label for="text">Tipo de Sesión</label><br>
             <select class="" name="tipoSesion" required>
               <option value="ordinaria">Ordinaria</option>
@@ -253,9 +253,9 @@
             </select>
           </div>
 
-          <div class="col-xs-12 col-md-3 campos">
+          <div class="col-xs-12 col-sm-12 col-md-3 campos">
             <label for="text">No. Acta</label><br>
-            <input type="number" name="noActa" placeholder="000" min="0" required>
+            <input type="number" name="noActa" class="col-xs-12" placeholder="000" min="0" required>
           </div>
 
           <div class="col-xs-12 border"><br></div>

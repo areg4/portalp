@@ -1369,7 +1369,7 @@ class Tramitessa extends CI_Controller {
 			$info['body'] = $this->load->view('app/fragments/'.$this->folder.'/tramites/acre_posgrado', $info, true);
 			$html = $this->load->view('app/fragments/'.$this->folder.'/tramites/principal_tr', $info, true);
 		}
-		// print_r (die(var_dump($decision)));
+		// print_r (die(var_dump($noActa)));
 
 		$rutaPrincipal = 'docs/tramites/'.$this->alumno->expediente.'/'.$idTramite.'/respuesta';
 

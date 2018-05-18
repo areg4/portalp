@@ -1,6 +1,5 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 <div style="position: absolute; padding-top:200px; left:25px; width:700px; z-index:200 !important; font-family: sans-serif !important;">
-	<table style="font-size: 14px; width:600px; position:relative; border-collapse: collapse; margin-left: 30px; height: auto;" cellpadding="1" cellspacing="0">
+	<table style="font-size: 14px; width:600px; position:relative; border-collapse: collapse; margin-left: 50px; height: auto;" cellpadding="1" cellspacing="0">
 		<tr>
 			<td style="width:20%; height: 20px;"><b>C. <?=$alumno->apellidoPaterno.' '.$alumno->apellidoMaterno.' '.$alumno->nombre?></b></td>
 		</tr>
@@ -12,7 +11,7 @@
 		</tr>
 	</table>
 
-	<table style="font-size: 14px; width:600px; position:relative; border-collapse: collapse; margin-left: 30px; height: auto; margin-top: 30px; text-align: justify;" cellpadding="1" cellspacing="0">
+	<table style="font-size: 14px; width:600px; position:relative; border-collapse: collapse; margin-left: 50px; height: auto; margin-top: 30px; text-align: justify;" cellpadding="1" cellspacing="0">
 		<tr>
 			<td>En relación a su solicitud de Autorización del Trabajo Terminado, comunico a usted, que en sesión <?=$tipoSesion?> del día <?=fancy_date($fechaCon)?>, el H. Consejo Académico de esta Facultad determinó:</td>
 		</tr>
@@ -28,10 +27,10 @@
 		</tr>
 	</table>
 
-	<p style="width:700px;  margin-top: 50px;  text-align:center; font-size:14px; display:block;">
+	<p style="width:700px;  margin-top: 60px;  text-align:center; font-size:14px; display:block;">
 		<b>A T E N T A M E N T E <br> "RAZONAMIENTO Y TECNOLOGÍA PARA INNOVAR Y TRASCENDER"</b>
 	</p>
-	<table style="font-size: 14px; width: 700px; position:relative; margin:50px auto 0 auto; text-align:center;">
+	<table style="font-size: 14px; width: 700px; position:relative; margin:70px auto 0 auto; text-align:center;">
 			<tbody>
 				<tr>
 					<td align="center">
