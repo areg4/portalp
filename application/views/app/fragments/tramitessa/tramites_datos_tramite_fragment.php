@@ -382,9 +382,11 @@
         <button type="submit" class="btn btn-warning" id="btn-enviar-observacion" data-id="<?=$tramite->idTramite?>" data-id-u="<?=$alumno->idAlumno?>" >Enviar observación</button>
       <?php endif; ?>
 
+      <div class="form-group col-xs-12 col-sm-12 text-center">
       <?php if ($tramite->estatus=="CONSEJO"): ?>
         <button type="submit" class="btn btn-success btnEnvPreacta" data-id="<?=$tramite->idTramite?>">Enviar a Preacta</button>
       <?php endif; ?>
+      </div>
 
       <div class="form-group col-xs-12 col-sm-12 text-center">
         <?php if ($tramite->estatus=="APROBADO" OR $tramite->estatus=="RECHAZADO"): ?>

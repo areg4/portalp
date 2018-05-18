@@ -1386,7 +1386,7 @@ class Tramitessa extends CI_Controller {
 		$replac = array('&Aacute;','&aacute;','&Oacute;','&oacute;','&Eacute;','&eacute;','&Iacute;','&iacute;','&Uacute;','&uacute;','&Ntilde;','&ntilde;');
 		$html = str_replace($acentos, $replac, $html);
 
-		print_r (die(var_dump($html)));
+		// print_r (die(var_dump($html)));
 
 		$this->load->library('dompdf_lib');
 		$dompdf = new Dompdf_lib();

@@ -5,7 +5,7 @@
 	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 </head>
 
-	<h2 style="text-align:right;  width:400px; font-size: 16px; position: absolute; top:80px; right:100px; z-index:0 !important;">
+	<h2 style="text-align:right;  width:400px; font-size: 16px; position: absolute; top:50px; right:100px; z-index:0 !important;">
 		Campus Juriquilla, Qro., <?=fancy_date($this->fecha)?> <br>
 		Oficio: <?=$noOficio?><br>
 		Asunto: Dictamen del H. Consejo Académico <br>

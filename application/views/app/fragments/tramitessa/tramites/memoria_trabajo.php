@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 <div style="position: absolute; padding-top:200px; left:25px; width:700px; z-index:200 !important; font-family: sans-serif !important;">
 	<table style="font-size: 14px; width:600px; position:relative; border-collapse: collapse; margin-left: 50px; height: auto;" cellpadding="1" cellspacing="0">
 		<tr>
@@ -28,10 +27,10 @@
 		</tr>
 	</table>
 
-	<p style="width:700px;  margin-top: 60px;  text-align:center; font-size:14px; display:block;">
+	<p style="width:700px;  margin-top: 65px;  text-align:center; font-size:14px; display:block;">
 		<b>A T E N T A M E N T E <br> "RAZONAMIENTO Y TECNOLOGÍA PARA INNOVAR Y TRASCENDER"</b>
 	</p>
-	<table style="font-size: 14px; width: 700px; position:relative; margin:65px auto 0 auto; text-align:center;">
+	<table style="font-size: 14px; width: 700px; position:relative; margin:75px auto 0 auto; text-align:center;">
 			<tbody>
 				<tr>
 					<td align="center">
