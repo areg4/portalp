@@ -7,7 +7,8 @@
 	}
 
 html, body{
-	height: 100%;
+	height: 100% !important;
+	width: 100% !important;
 	/*background-color: #fff;*/
 	background: url(../../img/bg.gif)repeat !important;
 }
@@ -43,14 +44,14 @@ h1, h2, h3{
 .right{
 	text-align: center;
 }
+.border{
+	border-bottom: 1px solid rgba(0,0,0,.15);
+}
 .bottom{
 	margin-bottom: 30px !important;
-
 }
 #page-wrapper{
 	/*background: #fff none repeat scroll 0 0!important;*/
-    border-radius: 2px !important;
-    /*background: red !important;*/
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1) !important;
     box-sizing: border-box !important;
     float: right !important;
@@ -60,8 +61,9 @@ h1, h2, h3{
     width: 80% !important;
    	/*height: 300px !important;*/
     overflow-y: auto;
-    overflow-x:hidden !important;
+    overflow-x:hidden !important;*/
 }
+
 #page-wrapper h2{
 	margin-top: 5px !important;
 }
@@ -165,8 +167,6 @@ div.margin-top-login{
 		margin: 0 !important;
 		/*margin-top: 80px !important;*/
 		padding-top: 100px !important;
-		background: red !important;
-		max-height: 300px !important;
 	}
 	.ficha2{
 		margin-left: 0% !important;
@@ -186,6 +186,9 @@ div.margin-top-login{
 	}
 	.campos select, .campos input{
 		width: 100% !important;
+	}
+	.right>input{
+		margin-top: 10px;
 	}
 }
 
@@ -1325,6 +1328,7 @@ input[type=file]{
 	position: absolute;
 	cursor: pointer;
 	outline: none !important;
+	margin-top: -10px !important;
 }
 input[type=file]::-webkit-file-upload-button{
 	outline: none !important;
@@ -1392,8 +1396,10 @@ input[type=file]::-webkit-file-upload-button{
 	float: left;
 	/*background: red;*/
 	position: relative;
-	padding-left: 0px !important;
-	padding-right: 0px !important;
+	padding-left: 10px !important;
+	padding-right: 10px !important;
+	box-sizing: border-box;
+	text-align: center;
 }
 	.formularioCampos>.campos{
 		height: auto !important;
@@ -1407,10 +1413,13 @@ input[type=file]::-webkit-file-upload-button{
 		height: 30px;
 		padding: 5px;
 		box-sizing: border-box;
-		
+		cursor: auto;
 	}
 	.campos select{
 		cursor: pointer;
+	}
+	.requerido_alert{
+		border: 2px solid red;
 	}
 details{
   cursor: pointer;

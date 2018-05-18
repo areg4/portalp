@@ -235,50 +235,52 @@
           <input type="hidden" name="idTramite" value="<?=$tramite->idTramite?>">
           <!-- <input type="hidden" name="idMateria" value="<?=$materia->idMateria?>"> -->
 
-          <div class="col-xs-12 col-md-6 campos">
-            <label for="text">Fecha que se celebró el Consejo</label>
+          <div class="col-xs-12 col-md-3 campos">
+            <label for="text">Fecha que se celebró el Consejo</label><br>
             <input type="date" name="fechaConsejo" min="2018-01-01" required>
           </div>
 
-          <div class="col-xs-12 col-md-6 campos">
-            <label for="text">No. Oficio</label>
+          <div class="col-xs-12 col-md-3 campos">
+            <label for="text">No. Oficio</label><br>
             <input type="text" class="txtNoOficio" name="noOficio" style="text-transform:uppercase" required>
           </div>
 
-          <div class="col-xs-12 col-md-6 campos">
-            <label for="text">Tipo de Sesión</label>
+          <div class="col-xs-12 col-md-3 campos">
+            <label for="text">Tipo de Sesión</label><br>
             <select class="" name="tipoSesion" required>
               <option value="ordinaria">Ordinaria</option>
               <option value="extraordinaria">Extraordinaria</option>
             </select>
           </div>
 
-          <div class="col-xs-12 col-md-6 campos">
-            <label for="text">No. Acta</label>
+          <div class="col-xs-12 col-md-3 campos">
+            <label for="text">No. Acta</label><br>
             <input type="number" name="noActa" placeholder="000" min="0" required>
           </div>
 
+          <div class="col-xs-12 border"><br></div>
+
           <?php if ($tramite->idCatTramite==1): ?>
 
-          <div class="col-xs-12 col-md-6 campos">
-            <label for="text">Fecha aplicación examen</label>
+          <div class="col-xs-12 col-md-3 campos">
+            <label for="text">Fecha aplicación examen</label><br>
             <input type="date" class="requerido" id="fechaApliExam" name="fechaApliExam" min="2018-01-01">
           </div>
 
 
-          <div class="col-xs-12 col-md-6 campos">
-            <label for="text">Hora de Inicio</label>
+          <div class="col-xs-12 col-md-3 campos">
+            <label for="text">Hora de Inicio</label><br>
             <input type="time" class="requerido" id="horaInicio" name="horaInicio">
           </div>
 
 
-          <div class="col-xs-12 col-md-6 campos">
-            <label for="text">Hora de Finalización</label>
+          <div class="col-xs-12 col-md-3 campos">
+            <label for="text">Hora de Finalización</label><br>
             <input type="time" class="requerido" id="horaFin" name="horaFin">
           </div>
 
-          <div class="col-xs-12 col-md-6 campos">
-            <label for="text">Aula</label>
+          <div class="col-xs-12 col-md-3 campos">
+            <label for="text">Aula</label><br>
             <select class="col-xs-12 aula requerido" id="aula" name="aula">
               <option value="">Seleccione el aula</option>
               <?php if (!is_null($aula)): ?>
@@ -289,7 +291,9 @@
             </select>
           </div>
 
-          <div class="col-xs-12 col-md-6 campos">
+          <div class="col-xs-12"><br></div>
+
+          <div class="col-xs-12 col-md-4 campos">
             <label for="text">Presidente</label>
             <select class="col-xs-12 presidente requerido" id="presidente" name="presidente">
               <option value="">Seleccione al presidente</option>
@@ -301,7 +305,7 @@
             </select>
           </div>
 
-          <div class="col-xs-12 col-md-6 campos">
+          <div class="col-xs-12 col-md-4 campos">
             <label for="text">Sinodal</label>
             <select class="col-xs-12 sinodal1 requerido" id="sinodal1" name="sinodal1">
               <option value="">Seleccione al sinodal</option>
@@ -313,7 +317,7 @@
             </select>
           </div>
 
-          <div class="col-xs-12 col-md-6 campos">
+          <div class="col-xs-12 col-md-4 campos">
             <label for="text">Sinodal</label>
             <select class="col-xs-12 sinodal2 requerido" id="sinodal2" name="sinodal2">
               <option value="">Seleccione al sinodal</option>
@@ -328,34 +332,38 @@
 
           <?php if ($tramite->idCatTramite==3): ?>
 
-            <div class="col-xs-12 col-md-6 campos">
+            <div class="col-xs-12 col-md-4 campos">
               <label for="text">Tiempo solicitado</label>
               <input type="text" class="requerido" id="tiempoSoli" name="tiempoSoli" placeholder="uno, dos, tres años">
             </div>
 
-            <div class="col-xs-12 col-md-6 campos">
+            <div class="col-xs-12 col-md-4 campos">
               <label for="text">Periodo del Curso</label>
               <input type="text" class="requerido" name="periodoCurso" placeholder="de enero a junio del 2018">
             </div>
 
-            <div class="col-xs-12 col-md-6 campos">
+            <div class="col-xs-12 col-md-4 campos">
               <label for="text">Fecha Vencimiento Pasantía</label>
               <input type="date" class="requerido" name="fechaVenciPas" min="2018-01-01">
             </div>
-            <br>
+
+            <div class="col-xs-12"><br></div>
 
           <?php endif; ?>
 
           <?php if ($tramite->estatus=="PREACTA"): ?>
             <div class="col-xs-12 right">
               <br>
+              <br>
               <p class="tamañop">En base a las respuestas de Consejo Académico y Mesa de Investigación, seleccione el estatus del trámite para finalizar.</p>
             </div>
           <?php endif; ?>
+
             <div class="col-xs-12 right">
-              <input type="submit" class="btn btn-success btnApro" data-id="<?=$tramite->idTramite?>" value="APROBADO" target="_blank">
+              <input type="submit" class="btn btn-success btnApro" data-id="<?=$tramite->idTramite?>" value="APROBADO" target="_blank"> 
               <input type="submit" class="btn btn-danger  btnRech" data-id="<?=$tramite->idTramite?>" value="RECHAZADO" target="_blank">
               <input type="hidden" id="decision" name="decision" value="<?=$tramite->estatus?>">
+              <br>
             </div>
         </form>
     <?php endif; ?>

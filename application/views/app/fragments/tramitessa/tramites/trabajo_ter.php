@@ -14,15 +14,17 @@
 
 	<table style="font-size: 14px; width:600px; position:relative; border-collapse: collapse; margin-left: 30px; height: auto; margin-top: 30px; text-align: justify;" cellpadding="1" cellspacing="0">
 		<tr>
-			<td>En relación a su solicitud, comunico a Usted, que en sesión <?=$tipoSesion?> del día <?=fancy_date($fechaCon)?>, el H. Consejo Académico de esta Facultad dictaminó:</td>
+			<td>En relación a su solicitud de Autorización del Trabajo Terminado, comunico a usted, que en sesión <?=$tipoSesion?> del día <?=fancy_date($fechaCon)?>, el H. Consejo Académico de esta Facultad determinó:</td>
 		</tr>
 
 		<tr>
-			<td style="padding-left: 70px; padding-right: 70px; padding-top: 30px; box-sizing: border-box;"><?=$decision?> la opción de titulación por <b>GUÍA DEL MAESTRO</b>, de acuerdo al Capítulo VII Titulación y Obtención de Grado, Artículo 95 numeral VI del Reglamento de Estudiantes de la Universidad Autónoma de Querétaro, para la materia <b>"<?=$materia->nombreMateria?>"</b> del plan <b><?=$plan->cvePlan?></b> de la carrera <?=$plan->nombrePlan?> con el Asesor: <b><?=$maestro->nombreMaestro?></b>.</td>
+			<?php if ($decision=="autorizar"): ?><td style="padding-left: 70px; padding-right: 70px; padding-top: 30px; box-sizing: border-box;"><?=$decision?> según lo establecido al capítulo VII Titulación y Obtención de Grado, Artículo 95 Numeral III del Reglamento de Estudiantes de la Universidad Autónoma de Querétaro, por <b>MEMORIA DE TRABAJO PROFESIONAL</b>, denominada: "<?=$nombreTrabajo?>" en virtud de presentar la aceptación de su asesor <b><?=$maestro->nombreMaestro?></b> docente de la Facultad de Informática.</td>
+			<?php else: ?><td style="padding-left: 70px; padding-right: 70px; padding-top: 30px; box-sizing: border-box;"><?=$decision?> según lo establecido al capítulo VII Titulación y Obtención de Grado, Artículo 95 Numeral III del Reglamento de Estudiantes de la Universidad Autónoma de Querétaro, por <b>MEMORIA DE TRABAJO PROFESIONAL</b>, denominada: "<?=$nombreTrabajo?>".</td>
+			<?php endif; ?>
 		</tr>
 
 		<tr>
-			<td style="padding-top: 30px; box-sizing: border-box;">Sin otro particular de momento, hago propicia la ocasión para enviarle un cordial saludo, y quedo a sus órdenes para cualquier comentario al respecto.</td>
+			<td style="padding-top: 30px; box-sizing: border-box;">Sin otro particular por el momento, hago propicia la ocasión para enviarle un cordial saludo, y quedo a sus órdenes para cualquier comentario al respecto.</td>
 		</tr>
 	</table>
 

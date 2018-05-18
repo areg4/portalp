@@ -521,7 +521,7 @@ jQuery(document).ready(function($){
        $(".requerido").each(function () {
          $(this).val($.trim((this.value)));
          if (($(this).val().length < 1)) {
-           // $(this).addClass('');
+           $(this).addClass('.requerido_alert');
            $("#error-modal .modal-dialog > .modal-content > .modal-body").html('Todos los campos son requeridos.');
            $('#error-modal').modal('show');
            e.preventDefault();
@@ -533,6 +533,16 @@ jQuery(document).ready(function($){
 
  $(".btnRech").click(function () {
    $("#decision").val("RECHAZADO");
+   $("#formRespuesta").submit(function (e) {
+     if ($("#decision").val()=="APROBADO") {
+       $(".requerido").each(function () {
+         $(this).val($.trim((this.value)));
+         if (($(this).val().length < 1)) {
+           $(this).remove('.requerido_alert');
+         }
+       });
+     }
+   });
  })
 
  $(".txtNoOficio").keyup(function () {

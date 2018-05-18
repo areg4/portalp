@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-<div style="position: absolute; padding-top:180px; left:25px; width:700px; z-index:200 !important; font-family: sans-serif !important;">
-	<table style="font-size: 14px; width:600px; position:relative; border-collapse: collapse; margin-left: 30px; margin-top: 30px; height: auto;" cellpadding="1" cellspacing="0">
+<div style="position: absolute; padding-top:200px; left:25px; width:700px; z-index:200 !important; font-family: sans-serif !important;">
+	<table style="font-size: 14px; width:600px; position:relative; border-collapse: collapse; margin-left: 30px; height: auto;" cellpadding="1" cellspacing="0">
 		<tr>
 			<td style="width:20%; height: 20px;"><b>C. <?=$alumno->apellidoPaterno.' '.$alumno->apellidoMaterno.' '.$alumno->nombre?></b></td>
 		</tr>
@@ -12,18 +12,17 @@
 		</tr>
 	</table>
 
-	<table style="font-size: 14px; width:600px; position:relative; border-collapse: collapse; margin-left: 30px; height: auto; margin-top: 50px; text-align: justify;" cellpadding="1" cellspacing="0">
+	<table style="font-size: 14px; width:600px; position:relative; border-collapse: collapse; margin-left: 30px; height: auto; margin-top: 30px; text-align: justify;" cellpadding="1" cellspacing="0">
 		<tr>
-			<td>Comunico a usted que en sesión <?=$tipoSesion?> del H. Consejo Académico de la Facultad de Informática, celebrada el <?=fancy_date($fechaCon)?>, se emitió: </td>
+			<td>En relación a su solicitud, comunico a Usted, que en sesión <?=$tipoSesion?> del día <?=fancy_date($fechaCon)?>, el H. Consejo Académico de esta Facultad dictaminó:</td>
 		</tr>
 
 		<tr>
-			<td style="padding-left: 70px; padding-right: 70px; padding-top: 30px; box-sizing: border-box; text-align: center;"><b>Dictamen: <?=$decision?></b></td>
+			<?php if ($decision=="autorizar"): ?><td style="padding-left: 70px; padding-right: 70px; padding-top: 30px; box-sizing: border-box;"><?=$decision?> la opción de titulación por <b>MEMORIA DE TRABAJO</b>, según lo establecido en el Capítulo VII Titulación y Obtención de Grado, Artículo 95 Numeral III del Reglamento de Estudiantes de la Universidad Autónoma de Querétaro.</td>
+			<?php else: ?><td style="padding-top: 30px;"><?=$decision?> la opción de titulación por <b>MEMORIA DE TRABAJO</b>, en base a que no cumple con el artículo 95 Fracción III del reglamento de Estudiantes.</td>
+			<?php endif; ?>
 		</tr>
 
-		<tr>
-			<td style="padding-top: 30px; box-sizing: border-box;">A su solicitud de aprobación de opción de Titulación por Tesis Individual denominada: "<?=$nombreTrabajo?>", perteneciente al programa de <?=$plan->nombrePlan?>.</td>
-		</tr>
 		<tr>
 			<td style="padding-top: 30px; box-sizing: border-box;">Sin otro particular por el momento, hago propicia la ocasión para enviarle un cordial saludo, y quedo a sus órdenes para cualquier comentario al respecto.</td>
 		</tr>
@@ -37,7 +36,7 @@
 				<tr>
 					<td align="center">
 						<b>MISD. CARLOS ALBERTO OLMOS TREJO<br>SECRETARIO DEL H. CONSEJO ACADÉMICO</b>
-					</td>
+					</td>	
 				</tr>
 			</tbody>
 		</table>

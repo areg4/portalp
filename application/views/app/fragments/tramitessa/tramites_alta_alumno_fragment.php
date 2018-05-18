@@ -89,6 +89,23 @@
       </div>
       <?php endif; ?>
 
+      <?php if ($tramite->tramite == "Trabajo Terminado"): ?>
+      <div class="col-xs-12 text-center campos">
+          <b class="tamañop">Título de Memoria de Trabajo</b><br>
+          <input type="text" name="nTrabajo" required placeholder="Escriba el título de la memoria de trabajo" class="materias">
+      </div>
+
+      <div class="col-xs-12 text-center campos">
+          <b class="tamañop">Asesor</b><br>
+          <select class="materias" name="maestro" required>
+              <option value="">Seleccione al asesor</option>
+                <?php foreach ($maestros as $maestro): ?>
+                  <option value="<?=$maestro->idMaestro?>"><?=$maestro->cveMaestro." | ".$maestro->nombreMaestro?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+      <?php endif; ?>
+
     </div>
 
     <div class="col-xs-12 archivos">
