@@ -250,7 +250,7 @@ class Tramitessa_model extends CI_Model {
 		return ($query->num_rows() >= 1) ? $query->result() : NULL;
 	}
 
-	public function getConsejeros()
+	public function getMiemsTitulacion()
 	{
 		$a = $this->tablas['usuario'];
 		$this->db_b->where('idRol', 8);		//rol miembro

@@ -131,9 +131,9 @@ class Tramitessa extends CI_Controller {
 		 * Se inicializan las variables correspondientes
 		 */
 		$investigadores = null;
-		$consejeros = null;
+		$miemsTitulacion = null;
 		$aprobacionesInves = null;
-		$aprobacionesConse = null;
+		$aprobacionesTitu = null;
 
 		$recomendacion = null;
 
@@ -200,11 +200,11 @@ class Tramitessa extends CI_Controller {
  		 */
 		if ($tramite->estatus == "TITULACION") {
 			$investigadores = $this->tramitessa_model->getInvestigadores();
-			$consejeros = $this->tramitessa_model->getConsejeros();
+			$miemsTitulacion = $this->tramitessa_model->getMiemsTitulacion();
 
 			$aprobacionesInves = $this->ordenarAprobacionTramiteByIdMiembro($idTramite, "INVESTIGACION");
-			$aprobacionesConse = $this->ordenarAprobacionTramiteByIdMiembro($idTramite, "TITULACION");
-			$recomendacion = $this->recomendacion($consejeros, $aprobacionesConse);
+			$aprobacionesTitu = $this->ordenarAprobacionTramiteByIdMiembro($idTramite, "TITULACION");
+			$recomendacion = $this->recomendacion($miemsTitulacion, $aprobacionesTitu);
 		}
 
 		/**
@@ -226,9 +226,9 @@ class Tramitessa extends CI_Controller {
 		 * Se cargan los datos para que se muetren en la vista
 		 */
 		$data['investigadores']		=		$investigadores;
-		$data['consejeros']				=		$consejeros;
+		$data['miemsTitulacion']				=		$miemsTitulacion;
 		$data['aprobacionesInves']		=		$aprobacionesInves;
-		$data['aprobacionesConse']		=		$aprobacionesConse;
+		$data['aprobacionesTitu']		=		$aprobacionesTitu;
 		$data['recomendacion']				=		$recomendacion;
 		$data['aula'] 					= $aula;
 		$data['rutaRespuesta'] 		= $rutaRespuesta;
@@ -443,14 +443,14 @@ class Tramitessa extends CI_Controller {
  			}
  		}
 
- 		if ($estatus == "CONSEJO") {
- 			$consejeros = $this->tramitessa_model->getConsejeros();
+ 		if ($estatus == "TITULACION") {
+ 			$miemsTitulacion = $this->tramitessa_model->getMiemsTitulacion();
 
- 			if (!is_null($consejeros)) {
- 				foreach ($consejeros as $consejero) {
+ 			if (!is_null($miemsTitulacion)) {
+ 				foreach ($miemsTitulacion as $miemTitulacion) {
  					$arrInsert = array(
  						'idTramite'		=>		$idTramite,
- 						'idMiembro'		=>		$consejero->idUsuario,
+ 						'idMiembro'		=>		$miemTitulacion->idUsuario,
  						'estatus'			=>		$estatus,
  						'aprobacion'	=>		0					// 0 => NoAtendido,		1 => Aprobado,		2 => Rechazado
  					);
@@ -594,30 +594,30 @@ class Tramitessa extends CI_Controller {
 
 	 /**
  	 * Función para designar la recomendación dependiendo del dictamen del comité
- 	 * consejeros		= miembros del comité de titulación
- 	 * aprobacionesConse	= dictamen de los miembros del comité
+ 	 * miemsTitulacion		= miembros del comité de titulación
+ 	 * aprobacionesTitu	= dictamen de los miembros del comité
  	 * @return 	APROBADO  	: si la mayoría lo aprueba
  	 * 					RECHAZADO 	: si la mayoría lo rechaza
  	 *					ATENDIDO		: si la mayoría no lo ha atendido
  	 */
- 	private function recomendacion($consejeros, $aprobacionesConse)
+ 	private function recomendacion($miemsTitulacion, $aprobacionesTitu)
  	{
- 		if (is_null($consejeros) or is_null($aprobacionesConse)) {
+ 		if (is_null($miemsTitulacion) or is_null($aprobacionesTitu)) {
  			return null;
  		}
  		$aFavor = 0;
  		$contra = 0;
  		$abstinencias = 0;
- 		foreach ($consejeros as $consejero) {
- 			if ($aprobacionesConse[$consejero->idUsuario]->aprobacion == 0) {
+ 		foreach ($miemsTitulacion as $miemTitulacion) {
+ 			if ($aprobacionesTitu[$miemTitulacion->idUsuario]->aprobacion == 0) {
  				$abstinencias++;
- 			}if ($aprobacionesConse[$consejero->idUsuario]->aprobacion == 1) {
+ 			}if ($aprobacionesTitu[$miemTitulacion->idUsuario]->aprobacion == 1) {
  				$aFavor++;
- 			}if ($aprobacionesConse[$consejero->idUsuario]->aprobacion == 2) {
+ 			}if ($aprobacionesTitu[$miemTitulacion->idUsuario]->aprobacion == 2) {
  				$contra++;
  			}
  		}
- 		$totalC = count($consejeros);
+ 		$totalC = count($miemsTitulacion);
 
  		$aFavor 			= ($aFavor/$totalC)*100;
  		$contra 			= ($contra/$totalC)*100;
@@ -641,44 +641,45 @@ class Tramitessa extends CI_Controller {
  	 * Función para generar la respuesta correspondiente para cada tipo de trámite
  	 */
  	public function tramitesPdf(){
- 		$idTramite = $this->input->post('idTramite');
- 		$tramite = $this->tramitessa_model->getTramitePById($idTramite);
- 		$noOficio = strtoupper($this->input->post("noOficio"));
- 		$tipoSesion = $this->input->post('tipoSesion');
- 		$noActa = $this->input->post('noActa');
- 		$fechaCon = $this->input->post('fechaConsejo');
- 		$decision = $this->input->post('decision');
+ 		$idTramite 		= $this->input->post('idTramite');
+ 		$noOficio 		= strtoupper($this->input->post("noOficio"));
+ 		$tipoSesion	 	= $this->input->post('tipoSesion');
+ 		$noActa	 			= $this->input->post('noActa');
+ 		$fechaCon 		= $this->input->post('fechaConsejo');
+ 		$decision 		= $this->input->post('decision');
+
+		$tramite = $this->tramitessa_model->getTramitePById($idTramite);
 
  		if ($tramite->idCatTramite == 1){
- 			$idPresidente = $this->input->post('presidente');
- 			$sinodalUno = $this->input->post('sinodal1');
- 			$sinodalDos = $this->input->post('sinodal2');
- 			$fechaApliExam = $this->input->post('fechaApliExam');
- 			$horaI = $this->input->post('horaInicio');
- 			$horaF = $this->input->post('horaFin');
- 			$aula = $this->input->post('aula');
+ 			$idPresidente 		= $this->input->post('presidente');
+ 			$sinodalUno 			= $this->input->post('sinodal1');
+ 			$sinodalDos 			= $this->input->post('sinodal2');
+ 			$fechaApliExam 		= $this->input->post('fechaApliExam');
+ 			$horaI 						= $this->input->post('horaInicio');
+ 			$horaF 						= $this->input->post('horaFin');
+ 			$aula 						= $this->input->post('aula');
 
- 			$materia = $this->tramitessa_model->getMateriaById($tramite->idMateria);
- 			$plan = $this->alumno_model->getPlan($this->alumno->idPlan);
- 			$presidente = $this->tramitessa_model->getMaestrosById($idPresidente);
- 			$sinodalUno = $this->tramitessa_model->getMaestrosById($sinodalUno);
- 			$sinodalDos = $this->tramitessa_model->getMaestrosById($sinodalDos);
+ 			$materia 			= $this->tramitessa_model->getMateriaById($tramite->idMateria);
+ 			$plan 				= $this->alumno_model->getPlan($this->alumno->idPlan);
+ 			$presidente 	= $this->tramitessa_model->getMaestrosById($idPresidente);
+ 			$sinodalUno 	= $this->tramitessa_model->getMaestrosById($sinodalUno);
+ 			$sinodalDos 	= $this->tramitessa_model->getMaestrosById($sinodalDos);
 
- 			$info['alumno']	= $this->alumno;
- 			$info['plan'] = $plan;
- 			$info['materia'] = $materia;
- 			$info['presidente'] = $presidente;
- 			$info['sinodalUno'] = $sinodalUno;
- 			$info['sinodalDos'] = $sinodalDos;
- 			$info['fechaApliExam'] = $fechaApliExam;
- 			$info['horaI'] = $horaI;
- 			$info['horaF'] = $horaF;
- 			$info['aula'] = $aula;
- 			$info['decision'] = ($decision == 'APROBADO') ? 'autorizar' : 'rechazar' ;
- 			$info['fechaCon'] = $fechaCon;
- 			$info['noOficio']	= $noOficio;
- 			$info['noActa'] = $noActa;
- 			$info['tipoSesion']	= $tipoSesion;
+ 			$info['alumno']						= $this->alumno;
+ 			$info['plan'] 						= $plan;
+ 			$info['materia'] 					= $materia;
+ 			$info['presidente'] 			= $presidente;
+ 			$info['sinodalUno'] 			= $sinodalUno;
+ 			$info['sinodalDos'] 			= $sinodalDos;
+ 			$info['fechaApliExam'] 		= $fechaApliExam;
+ 			$info['horaI'] 						= $horaI;
+ 			$info['horaF'] 						= $horaF;
+ 			$info['aula'] 						= $aula;
+ 			$info['decision'] 				= ($decision == 'APROBADO') ? 'autorizar' : 'rechazar' ;
+ 			$info['fechaCon'] 				= $fechaCon;
+ 			$info['noOficio']					= $noOficio;
+ 			$info['noActa'] 					= $noActa;
+ 			$info['tipoSesion']				= $tipoSesion;
 
  			//crea el pdf
  			$info['body'] = $this->load->view('app/fragments/'.$this->folder.'/tramites/examen_vol', $info, true);
@@ -686,20 +687,20 @@ class Tramitessa extends CI_Controller {
  		}
 
  		if ($tramite->idCatTramite == 3){
- 			$tiempoSoli = $this->input->post('tiempoSoli');
- 			$periodoCurso = $this->input->post('periodoCurso');
- 			$fechaVenciPas = $this->input->post('fechaVenciPas');
+ 			$tiempoSoli 		= $this->input->post('tiempoSoli');
+ 			$periodoCurso 	= $this->input->post('periodoCurso');
+ 			$fechaVenciPas 	= $this->input->post('fechaVenciPas');
 
- 			$info['alumno']	= $this->alumno;
- 			$info['nombreTrabajo'] = $tramite->nombreTrabajo;
- 			$info['periodoCurso'] = $periodoCurso;
- 			$info['fechaVenciPas'] = $fechaVenciPas;
- 			$info['tiempoSoli'] = $tiempoSoli;
- 			$info['decision'] = ($decision == 'APROBADO') ? 'autorizar' : 'rechazar' ;
- 			$info['fechaCon'] = $fechaCon;
- 			$info['tipoSesion']	= $tipoSesion;
- 			$info['noOficio']	= $noOficio;
- 			$info['noActa'] = $noActa;
+ 			$info['alumno']					= $this->alumno;
+ 			$info['nombreTrabajo'] 	= $tramite->nombreTrabajo;
+ 			$info['periodoCurso'] 	= $periodoCurso;
+ 			$info['fechaVenciPas'] 	= $fechaVenciPas;
+ 			$info['tiempoSoli'] 		= $tiempoSoli;
+ 			$info['decision'] 			= ($decision == 'APROBADO') ? 'autorizar' : 'rechazar' ;
+ 			$info['fechaCon'] 			= $fechaCon;
+ 			$info['tipoSesion']			= $tipoSesion;
+ 			$info['noOficio']				= $noOficio;
+ 			$info['noActa'] 				= $noActa;
 
  			//crea el pdf
  			$info['body'] = $this->load->view('app/fragments/'.$this->folder.'/tramites/readqui_pasantia', $info, true);
@@ -707,12 +708,12 @@ class Tramitessa extends CI_Controller {
  		}
 
  		if ($tramite->idCatTramite == 4){
- 			$info['alumno']	= $this->alumno;
- 			$info['decision'] = ($decision == 'APROBADO') ? 'Autorizar' : 'Rechazar' ;
- 			$info['fechaCon'] = $fechaCon;
- 			$info['tipoSesion']	= $tipoSesion;
- 			$info['noOficio']	= $noOficio;
- 			$info['noActa'] = $noActa;
+ 			$info['alumno']				= $this->alumno;
+ 			$info['decision'] 		= ($decision == 'APROBADO') ? 'Autorizar' : 'Rechazar' ;
+ 			$info['fechaCon'] 		= $fechaCon;
+ 			$info['tipoSesion']		= $tipoSesion;
+ 			$info['noOficio']			= $noOficio;
+ 			$info['noActa'] 			= $noActa;
 
  			//crea el pdf
  			$info['body'] = $this->load->view('app/fragments/'.$this->folder.'/tramites/curso_diplomado', $info, true);
@@ -720,20 +721,20 @@ class Tramitessa extends CI_Controller {
  		}
 
  		if ($tramite->idCatTramite == 5){
- 			$materia = $this->tramitessa_model->getMateriaById($tramite->idMateria);
- 			$plan = $this->alumno_model->getPlan($this->alumno->idPlan);
- 			$maestro = $this->tramitessa_model->getMaestrosById($tramite->idMaestro);
+ 			$materia 	= $this->tramitessa_model->getMateriaById($tramite->idMateria);
+ 			$plan 		= $this->alumno_model->getPlan($this->alumno->idPlan);
+ 			$maestro 	= $this->tramitessa_model->getMaestrosById($tramite->idMaestro);
 
 
- 			$info['alumno']	= $this->alumno;
- 			$info['decision'] = ($decision == 'APROBADO') ? 'Autorizar' : 'Rechazar' ;
- 			$info['materia'] = $materia;
- 			$info['plan'] = $plan;
- 			$info['maestro'] = $maestro;
- 			$info['fechaCon'] = $fechaCon;
+ 			$info['alumno']			= $this->alumno;
+ 			$info['decision'] 	= ($decision == 'APROBADO') ? 'Autorizar' : 'Rechazar' ;
+ 			$info['materia'] 		= $materia;
+ 			$info['plan'] 			= $plan;
+ 			$info['maestro'] 		= $maestro;
+ 			$info['fechaCon'] 	= $fechaCon;
  			$info['tipoSesion']	= $tipoSesion;
- 			$info['noOficio']	= $noOficio;
- 			$info['noActa'] = $noActa;
+ 			$info['noOficio']		= $noOficio;
+ 			$info['noActa'] 		= $noActa;
 
  			//crea el pdf
  			$info['body'] = $this->load->view('app/fragments/'.$this->folder.'/tramites/guia_del_maestro', $info, true);
@@ -741,12 +742,12 @@ class Tramitessa extends CI_Controller {
  		}
 
  		if ($tramite->idCatTramite == 6){
- 			$info['alumno']	= $this->alumno;
- 			$info['decision'] = ($decision == 'APROBADO') ? 'Autorizar' : 'Rechazar' ;
- 			$info['fechaCon'] = $fechaCon;
- 			$info['noOficio']	= $noOficio;
+ 			$info['alumno']			= $this->alumno;
+ 			$info['decision'] 	= ($decision == 'APROBADO') ? 'Autorizar' : 'Rechazar' ;
+ 			$info['fechaCon'] 	= $fechaCon;
+ 			$info['noOficio']		= $noOficio;
  			$info['tipoSesion']	= $tipoSesion;
- 			$info['noActa'] = $noActa;
+ 			$info['noActa'] 		= $noActa;
 
  			//crea el pdf
  			$info['body'] = $this->load->view('app/fragments/'.$this->folder.'/tramites/memoria_trabajo', $info, true);
@@ -754,20 +755,20 @@ class Tramitessa extends CI_Controller {
  		}
 
  		if ($tramite->idCatTramite == 7){
- 			$materia = $this->tramitessa_model->getMateriaById($tramite->idMateria);
- 			$plan = $this->alumno_model->getPlan($this->alumno->idPlan);
- 			$maestro = $this->tramitessa_model->getMaestrosById($tramite->idMaestro);
+ 			$materia 		= $this->tramitessa_model->getMateriaById($tramite->idMateria);
+ 			$plan 			= $this->alumno_model->getPlan($this->alumno->idPlan);
+ 			$maestro 		= $this->tramitessa_model->getMaestrosById($tramite->idMaestro);
 
- 			$info['alumno']	= $this->alumno;
- 			$info['decision'] = ($decision == 'APROBADO') ? 'Autorizar' : 'Rechazar' ;
- 			$info['maestro'] = $maestro;
- 			$info['materia'] = $materia;
- 			$info['nombreTrabajo'] = $tramite->nombreTrabajo;
- 			$info['fechaCon'] = $fechaCon;
- 			$info['noOficio']	= $noOficio;
- 			$info['tipoSesion']	= $tipoSesion;
- 			$info['noOficio']	= $noOficio;
- 			$info['noActa'] = $noActa;
+ 			$info['alumno']					= $this->alumno;
+ 			$info['decision'] 			= ($decision == 'APROBADO') ? 'Autorizar' : 'Rechazar' ;
+ 			$info['maestro'] 				= $maestro;
+ 			$info['materia'] 				= $materia;
+ 			$info['nombreTrabajo'] 	= $tramite->nombreTrabajo;
+ 			$info['fechaCon'] 			= $fechaCon;
+ 			$info['noOficio']				= $noOficio;
+ 			$info['tipoSesion']			= $tipoSesion;
+ 			$info['noOficio']				= $noOficio;
+ 			$info['noActa'] 				= $noActa;
 
  			//crea el pdf
  			$info['body'] = $this->load->view('app/fragments/'.$this->folder.'/tramites/trabajo_ter', $info, true);
@@ -775,16 +776,16 @@ class Tramitessa extends CI_Controller {
  		}
 
  		if ($tramite->idCatTramite == 8){
- 			$plan = $this->alumno_model->getPlan($this->alumno->idPlan);
+ 			$plan 	= $this->alumno_model->getPlan($this->alumno->idPlan);
 
- 			$info['alumno']	= $this->alumno;
- 			$info['decision'] = ($decision == 'APROBADO') ? 'Aprobado' : 'Rechazado' ;
- 			$info['nombreTrabajo'] = $tramite->nombreTrabajo;
- 			$info['fechaCon'] = $fechaCon;
- 			$info['plan'] = $plan;
- 			$info['tipoSesion']	= $tipoSesion;
- 			$info['noOficio']	= $noOficio;
- 			$info['noActa'] = $noActa;
+ 			$info['alumno']						= $this->alumno;
+ 			$info['decision'] 				= ($decision == 'APROBADO') ? 'Aprobado' : 'Rechazado' ;
+ 			$info['nombreTrabajo'] 		= $tramite->nombreTrabajo;
+ 			$info['fechaCon'] 				= $fechaCon;
+ 			$info['plan'] 						= $plan;
+ 			$info['tipoSesion']				= $tipoSesion;
+ 			$info['noOficio']					= $noOficio;
+ 			$info['noActa'] 					= $noActa;
 
  			//crea el pdf
  			$info['body'] = $this->load->view('app/fragments/'.$this->folder.'/tramites/tesis_individual', $info, true);
@@ -792,12 +793,12 @@ class Tramitessa extends CI_Controller {
  		}
 
  		if ($tramite->idCatTramite == 9){
- 			$info['alumno']	= $this->alumno;
- 			$info['decision'] = ($decision == 'APROBADO') ? 'Autorizar' : 'Rechazar' ;
- 			$info['fechaCon'] = $fechaCon;
+ 			$info['alumno']			= $this->alumno;
+ 			$info['decision'] 	= ($decision == 'APROBADO') ? 'Autorizar' : 'Rechazar' ;
+ 			$info['fechaCon'] 	= $fechaCon;
  			$info['tipoSesion']	= $tipoSesion;
- 			$info['noOficio']	= $noOficio;
- 			$info['noActa'] = $noActa;
+ 			$info['noOficio']		= $noOficio;
+ 			$info['noActa'] 		= $noActa;
 
  			//crea el pdf
  			$info['body'] = $this->load->view('app/fragments/'.$this->folder.'/tramites/promedio', $info, true);
@@ -805,14 +806,14 @@ class Tramitessa extends CI_Controller {
  		}
 
  		if ($tramite->idCatTramite == 10){
- 			$decision = $this->input->post('decision');
+ 			$decision 	= $this->input->post('decision');
 
- 			$info['alumno']	= $this->alumno;
- 			$info['decision'] = ($decision == 'APROBADO') ? 'Autorizar' : 'Rechazar' ;
- 			$info['fechaCon'] = $fechaCon;
- 			$info['noOficio']	= $noOficio;
+ 			$info['alumno']			= $this->alumno;
+ 			$info['decision'] 	= ($decision == 'APROBADO') ? 'Autorizar' : 'Rechazar' ;
+ 			$info['fechaCon'] 	= $fechaCon;
+ 			$info['noOficio']		= $noOficio;
  			$info['tipoSesion']	= $tipoSesion;
- 			$info['noActa'] = $noActa;
+ 			$info['noActa'] 		= $noActa;
 
  			//crea el pdf
  			$info['body'] = $this->load->view('app/fragments/'.$this->folder.'/tramites/acre_posgrado', $info, true);
@@ -1385,7 +1386,7 @@ class Tramitessa extends CI_Controller {
  			redirect('portal-informatica-alumnos-tramites-proceso');
  		}
 
-     $data['sys_app_title'] 	= 'TRAMITES ALUMNO';
+    $data['sys_app_title'] 	= 'TRAMITES ALUMNO';
  		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRAMITES ALUMNO';
  		$data['app_sub_menu'] 	= 'notifiTramites';
 
@@ -1425,7 +1426,7 @@ class Tramitessa extends CI_Controller {
  		// $data['user']      	= $this->usuario;
  		$data['menu_app']   = $this->load->view('app/components/menu/alumno_component', $data, TRUE);
  		$data['menu'] 		= $this->load->view('app/components/head_component',$data,TRUE);
-     $data['js']       = array('tramites');
+    $data['js']       = array('tramites');
 
  		$tramitesF				=	$this->tramitessa_model->getTramitesFinalizadosByIdAlumno($this->idAlumno);
 

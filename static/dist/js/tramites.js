@@ -1,13 +1,8 @@
 jQuery(document).ready(function($){
 
   $(".btnTramite").click(function(){
-    // alert("hoa");
-    // var tipoTramiteA = $("#tipoTramiteA").val();
-    // var data = $(this).attr('data');
     var dataId = $(this).attr('data-id-T');
-    // alert(data);
     window.location.href = base_url()+'portal-informatica-alumnos-tramites-alta/'+dataId;
-    // alert(tipoTramiteA);
   });
 
   $(".tr-notifi-alumno").click(function(){
