@@ -132,7 +132,7 @@
       <?php endif; ?>
     <?php endif; ?>
 
-    <?php if ($tramite->estatus=="INVESTIGACION" OR $tramite->estatus=="CONSEJO"): ?>
+    <?php if ($tramite->estatus=="INVESTIGACION" OR $tramite->estatus=="TITULACION"): ?>
       <?php if (!is_null($investigadores)AND (!is_null($aprobacionesInves))): ?>
         <div id="listaInv">
           <div id="tabla" class="col-xs-12">
@@ -179,7 +179,7 @@
       <?php if (!is_null($consejeros) AND !is_null($aprobacionesConse)): ?>
         <div class="" id="listaConsejo">
           <div class="col-xs-12" id="tabla">
-            <h3 class="h3">Consejo</h3>
+            <h3 class="h3">Comité de Titulación</h3>
             <table class="table responsive">
               <thead>
                 <tr>
@@ -220,11 +220,11 @@
       <?php endif; ?>
     <?php endif; ?>
 
-    <?php if (($tramite->estatus=="CONSEJO") AND !is_null($recomendacion)): ?>
+    <?php if (($tramite->estatus=="TITULACION") AND !is_null($recomendacion)): ?>
 
       <div class="col-xs-12">
         <h3 class="h3 text-center">Recomendación</h3>
-        <p class="text-center">De acuerdo a los miembros del Consejo Académico, se recomienda que el trámite sea:</p>
+        <p class="text-center">De acuerdo a los miembros del Comité de Titulación, se recomienda que el trámite sea:</p>
         <h3 class="tamañoh3 recomendacion text-center"><?=$recomendacion?></h3>
       </div>
     <?php endif; ?>
@@ -355,12 +355,12 @@
             <div class="col-xs-12 right">
               <br>
               <br>
-              <p class="tamañop">En base a las respuestas de Consejo Académico y Mesa de Investigación, seleccione el estatus del trámite para finalizar.</p>
+              <p class="tamañop">En base a las respuestas de Comité de Titulación y Comité de Investigación, seleccione el estatus del trámite para finalizar.</p>
             </div>
           <?php endif; ?>
 
             <div class="col-xs-12 right">
-              <input type="submit" class="btn btn-success btnApro" data-id="<?=$tramite->idTramite?>" value="APROBADO" target="_blank"> 
+              <input type="submit" class="btn btn-success btnApro" data-id="<?=$tramite->idTramite?>" value="APROBADO" target="_blank">
               <input type="submit" class="btn btn-danger  btnRech" data-id="<?=$tramite->idTramite?>" value="RECHAZADO" target="_blank">
               <input type="hidden" id="decision" name="decision" value="<?=$tramite->estatus?>">
               <br>
@@ -370,12 +370,12 @@
 
     <div class="col-xs-12 opciones-t-sa">
       <?php if ($tramite->estatus=="PROCESO" AND $tramite->estatus!="INVESTIGACION"): ?>
-        <button type="submit" class="btn btn-info btnEnvInves" data-id="<?=$tramite->idTramite?>">Enviar a Mesa de Investigación</button>
-        <button type="submit" class="btn btn-info btnEnvCons" data-id="<?=$tramite->idTramite?>">Enviar a Consejo Académico</button>
+        <button type="submit" class="btn btn-info btnEnvInves" data-id="<?=$tramite->idTramite?>">Enviar a Comité de Investigación</button>
+        <button type="submit" class="btn btn-info btnEnvCons" data-id="<?=$tramite->idTramite?>">Enviar a Comité de Titulación</button>
       <?php endif; ?>
 
       <?php if ($tramite->estatus=='INVESTIGACION'): ?>
-        <button type="submit" class="btn btn-info btnEnvCons" data-id="<?=$tramite->idTramite?>">Enviar a Consejo Académico</button>
+        <button type="submit" class="btn btn-info btnEnvCons" data-id="<?=$tramite->idTramite?>">Enviar a Comité de Titulación</button>
       <?php endif; ?>
 
       <?php if (is_null($observacion) AND $tramite->estatus=="PROCESO"): ?>
@@ -383,7 +383,7 @@
       <?php endif; ?>
 
       <div class="form-group col-xs-12 col-sm-12 text-center">
-      <?php if ($tramite->estatus=="CONSEJO"): ?>
+      <?php if ($tramite->estatus=="TITULACION"): ?>
         <button type="submit" class="btn btn-success btnEnvPreacta" data-id="<?=$tramite->idTramite?>">Enviar a Preacta</button>
       <?php endif; ?>
       </div>

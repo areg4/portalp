@@ -37,11 +37,11 @@
 
     <!-- Sección que aparece si el trámite ya fue atendido -->
 
-    <?php if ($aprobacionesConse[$idUsuario]->aprobacion != 0): ?>
+    <?php if ($aprobacionesTitu[$idUsuario]->aprobacion != 0): ?>
       <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
         <label for="text">Determinación</label>
         <p name="determinacion" id="determinacion"><?php
-          if ($aprobacionesConse[$idUsuario]->aprobacion == 1) {
+          if ($aprobacionesTitu[$idUsuario]->aprobacion == 1) {
             echo "APROBADO";
           }else {
             echo "RECHAZADO";
@@ -51,7 +51,7 @@
 
       <div class="form-group col-xs-12 col-sm-12 col-md-4 text-center">
         <label for="text">Fecha Determinación</label>
-        <p name="fecDetermi" id="fecDetermi"><?=(($aprobacionesConse[$idUsuario]->fechaHora)!=0) ? fancy_date($aprobacionesConse[$idUsuario]->fechaHora) : "" ; ?></p>
+        <p name="fecDetermi" id="fecDetermi"><?=(($aprobacionesTitu[$idUsuario]->fechaHora)!=0) ? fancy_date($aprobacionesTitu[$idUsuario]->fechaHora) : "" ; ?></p>
       </div>
     <?php endif; ?>
 
@@ -148,9 +148,9 @@
     <?php endif; ?>
 
     <?php if ($idRol != 10): //rol de presidente?>
-      <?php if (!is_null($consejeros) AND (!is_null($aprobacionesConse))): ?>
+      <?php if (!is_null($miemsTitulacion) AND (!is_null($aprobacionesTitu))): ?>
         <div class="col-md-6" id="tabla">
-          <h3 class="h3 tamañoh3">Lista de Consejo</h3>
+          <h3 class="h3 tamañoh3">Lista de Comité Titulación</h3>
           <table class="table responsive">
             <thead>
               <tr>
@@ -161,28 +161,28 @@
               </tr>
             </thead>
             <tbody>
-              <?php foreach ($consejeros as $consejero): ?>
-                <?php if ($consejero->idUsuario != $idUsuario): ?>
+              <?php foreach ($miemsTitulacion as $miemTitulacion): ?>
+                <?php if ($miemTitulacion->idUsuario != $idUsuario): ?>
                   <?php
-                    if ($aprobacionesConse[$consejero->idUsuario]->aprobacion == 0) {
+                    if ($aprobacionesTitu[$miemTitulacion->idUsuario]->aprobacion == 0) {
                       $aprobacion = "NO ATENDIDA";
-                    }if ($aprobacionesConse[$consejero->idUsuario]->aprobacion == 1) {
+                    }if ($aprobacionesTitu[$miemTitulacion->idUsuario]->aprobacion == 1) {
                       $aprobacion = "APROBADO";
-                    }if ($aprobacionesConse[$consejero->idUsuario]->aprobacion == 2) {
+                    }if ($aprobacionesTitu[$miemTitulacion->idUsuario]->aprobacion == 2) {
                       $aprobacion = "RECHAZADO";
                     }
 
-                    if ($aprobacionesConse[$consejero->idUsuario]->comentario == "" or is_null($aprobacionesConse[$consejero->idUsuario]->comentario)) {
+                    if ($aprobacionesTitu[$miemTitulacion->idUsuario]->comentario == "" or is_null($aprobacionesTitu[$miemTitulacion->idUsuario]->comentario)) {
                       $comenInv = "Sin comentarios";
                     }else {
-                      $comenInv = $aprobacionesConse[$consejero->idUsuario]->comentario;
+                      $comenInv = $aprobacionesTitu[$miemTitulacion->idUsuario]->comentario;
                     }
                   ?>
                   <tr>
-                    <td data-title="Miembro"><?php echo $consejero->nombre." ".$consejero->apellidoPaterno." ".$consejero->apellidoMaterno; ?></td>
+                    <td data-title="Miembro"><?php echo $miemTitulacion->nombre." ".$miemTitulacion->apellidoPaterno." ".$miemTitulacion->apellidoMaterno; ?></td>
                     <td data-title="Aprobación"><?php echo $aprobacion; ?></td>
                     <td data-title="Comentario"><?php echo $comenInv; ?></td>
-                    <td data-title="Fecha respuesta"><?=(($aprobacionesConse[$consejero->idUsuario]->fechaHora)!=0) ? fancy_date($aprobacionesConse[$consejero->idUsuario]->fechaHora) : " - " ; ?></td>
+                    <td data-title="Fecha respuesta"><?=(($aprobacionesTitu[$miemTitulacion->idUsuario]->fechaHora)!=0) ? fancy_date($aprobacionesTitu[$miemTitulacion->idUsuario]->fechaHora) : " - " ; ?></td>
                   </tr>
                 <?php endif; ?>
               <?php endforeach; ?>
@@ -191,9 +191,9 @@
         </div>
       <?php endif; ?>
     <?php else: ?>
-      <?php if (!is_null($consejeros) AND (!is_null($aprobacionesConse))): ?>
+      <?php if (!is_null($miemsTitulacion) AND (!is_null($aprobacionesTitu))): ?>
         <div class="col-md-12" id="tabla">
-          <h3 class="h3">Consejo</h3>
+          <h3 class="h3">Comité Titulación</h3>
           <table class="table responsive">
             <thead>
               <tr>
@@ -205,31 +205,31 @@
               </tr>
             </thead>
             <tbody>
-              <?php foreach ($consejeros as $consejero): ?>
+              <?php foreach ($miemsTitulacion as $miemTitulacion): ?>
                   <?php
-                    if ($aprobacionesConse[$consejero->idUsuario]->aprobacion == 0) {
+                    if ($aprobacionesTitu[$miemTitulacion->idUsuario]->aprobacion == 0) {
                       $aprobacion = "NO ATENDIDA";
-                    }if ($aprobacionesConse[$consejero->idUsuario]->aprobacion == 1) {
+                    }if ($aprobacionesTitu[$miemTitulacion->idUsuario]->aprobacion == 1) {
                       $aprobacion = "APROBADO";
-                    }if ($aprobacionesConse[$consejero->idUsuario]->aprobacion == 2) {
+                    }if ($aprobacionesTitu[$miemTitulacion->idUsuario]->aprobacion == 2) {
                       $aprobacion = "RECHAZADO";
                     }
 
-                    if ($aprobacionesConse[$consejero->idUsuario]->comentario == "" or is_null($aprobacionesConse[$consejero->idUsuario]->comentario)) {
+                    if ($aprobacionesTitu[$miemTitulacion->idUsuario]->comentario == "" or is_null($aprobacionesTitu[$miemTitulacion->idUsuario]->comentario)) {
                       $comenInv = "Sin comentarios";
 
                     }else {
-                      $comenInv = $aprobacionesConse[$consejero->idUsuario]->comentario;
+                      $comenInv = $aprobacionesTitu[$miemTitulacion->idUsuario]->comentario;
                     }
                   ?>
                   <tr>
-                    <td data-title="Miembro"><?php echo $consejero->nombre." ".$consejero->apellidoPaterno." ".$consejero->apellidoMaterno; ?></td>
+                    <td data-title="Miembro"><?php echo $miemTitulacion->nombre." ".$miemTitulacion->apellidoPaterno." ".$miemTitulacion->apellidoMaterno; ?></td>
                     <td data-title="Aprobación"><?php echo $aprobacion; ?></td>
                     <td data-title="Comentario"><?php echo $comenInv; ?></td>
-                    <td data-title="Fecha respuesta"><?=(($aprobacionesConse[$consejero->idUsuario]->fechaHora)!=0) ? fancy_date($aprobacionesConse[$consejero->idUsuario]->fechaHora) : " - " ; ?></td>
+                    <td data-title="Fecha respuesta"><?=(($aprobacionesTitu[$miemTitulacion->idUsuario]->fechaHora)!=0) ? fancy_date($aprobacionesTitu[$miemTitulacion->idUsuario]->fechaHora) : " - " ; ?></td>
                     <td data-title="Designacion" class="sincursor designaciones" style="height: 80px !important;">
-                      <label><input type="radio" class="" data-user-id="<?=$consejero->idUsuario?>" name="desig-<?=$consejero->idUsuario?>" value="1" <?=($aprobacionesConse[$consejero->idUsuario]->aprobacion)==1 ? "checked" : "";?>>&nbsp;Aprobado</label><br>
-                      <label><input type="radio" class="" data-user-id="<?=$consejero->idUsuario?>" name="desig-<?=$consejero->idUsuario?>" value="2" <?=($aprobacionesConse[$consejero->idUsuario]->aprobacion)==2 ? "checked" : "";?> >&nbsp;Rechazado</label>
+                      <label><input type="radio" class="" data-user-id="<?=$miemTitulacion->idUsuario?>" name="desig-<?=$miemTitulacion->idUsuario?>" value="1" <?=($aprobacionesTitu[$miemTitulacion->idUsuario]->aprobacion)==1 ? "checked" : "";?>>&nbsp;Aprobado</label><br>
+                      <label><input type="radio" class="" data-user-id="<?=$miemTitulacion->idUsuario?>" name="desig-<?=$miemTitulacion->idUsuario?>" value="2" <?=($aprobacionesTitu[$miemTitulacion->idUsuario]->aprobacion)==2 ? "checked" : "";?> >&nbsp;Rechazado</label>
                     </td>
                   </tr>
               <?php endforeach; ?>
@@ -239,7 +239,7 @@
       <?php endif; ?>
     <?php endif; ?>
 
-    <?php if (($aprobacionesConse[$idUsuario]->aprobacion == 0) AND ($tramite->estatus == "CONSEJO")): ?>
+    <?php if (($aprobacionesTitu[$idUsuario]->aprobacion == 0) AND ($tramite->estatus == "TITULACION")): ?>
       <div class="col-xs-12 text-center center">
         <h3 class="tamañoh3">Comentario(s)</h3>
         <textarea id="comentarios" rows="10" cols="80" class="col-xs-6"></textarea>
@@ -249,12 +249,11 @@
       <div class="col-xs-12 text-center center">
         <h3 class="tamañoh3">Comentario(s)</h3>
         <p name="comen" id="comen"><?php
-        if ($aprobacionesConse[$idUsuario]->comentario == "" or is_null($aprobacionesConse[$idUsuario]->comentario)) {
+        if ($aprobacionesTitu[$idUsuario]->comentario == "" or is_null($aprobacionesTitu[$idUsuario]->comentario)) {
           echo "Sin comentarios";
         }else {
-          echo $aprobacionesConse[$idUsuario]->comentario;
+          echo $aprobacionesTitu[$idUsuario]->comentario;
         }
-          // echo $aprobacionesConse[$idUsuario]->comentario;
         ?>
         </p>
         <br>
@@ -262,15 +261,15 @@
     <?php endif; ?>
 
     <?php if ($idRol != 10): ?>
-      <?php if (($aprobacionesConse[$idUsuario]->aprobacion == 0) AND ($tramite->estatus == "CONSEJO")): ?>
+      <?php if (($aprobacionesTitu[$idUsuario]->aprobacion == 0) AND ($tramite->estatus == "TITULACION")): ?>
         <div class="col-xs-12 opciones-t-sa">
-          <button type="submit" class="btn btn-success btnAproConsejo" data-id="<?=$tramite->idTramite?>" data-user="<?=$idUsuario?>">Aprobar</button>
-          <button type="submit" class="btn btn-danger btnRechaConsejo" data-id="<?=$tramite->idTramite?>" data-user="<?=$idUsuario?>">Rechazar</button>
+          <button type="submit" class="btn btn-success btnAproTitulacion" data-id="<?=$tramite->idTramite?>" data-user="<?=$idUsuario?>">Aprobar</button>
+          <button type="submit" class="btn btn-danger btnRechaTitulacion" data-id="<?=$tramite->idTramite?>" data-user="<?=$idUsuario?>">Rechazar</button>
         </div>
       <?php endif; ?>
 
     <?php else: ?>
-      <?php if (($aprobacionesConse[$idUsuario]->aprobacion == 0) AND ($tramite->estatus=="CONSEJO")): ?>
+      <?php if (($aprobacionesTitu[$idUsuario]->aprobacion == 0) AND ($tramite->estatus=="TITULACION")): ?>
         <div class="col-xs-12 right">
           <br>
           <button type="submit" class="btn btn-success  btnEnvDesigTitu" data-id="<?=$tramite->idTramite?>" data-user="<?=$idUsuario?>">Enviar Designaciones</button>

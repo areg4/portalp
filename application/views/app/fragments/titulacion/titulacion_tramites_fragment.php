@@ -1,11 +1,10 @@
 <div class="">
-  <h1 class="h1 text-center tamañoh1">Trámites de Consejo</h1>
+  <h1 class="h1 text-center tamañoh1">Trámites de Comité de Titulación</h1>
 </div>
 
 <details class="col-xs-12" open="open">
   <summary class="tamaño-s">Trámites no atendidos</summary>
   <div class="" id="tabla">
-  <!--     <h3 class="h3 tamañoh4-border center">Trámites no atendidos</h3> -->
       <?php if (!is_null($tramitesNA)): ?>
         <table class="table responsive">
           <thead>
@@ -19,9 +18,8 @@
           <tbody>
 
               <?php foreach ($tramitesNA as $tramite):
-                // die(var_dump($tramites));
                 ?>
-                <tr class="tr-notifi-consejo" data="<?=$tramite->idTramite?>">
+                <tr class="tr-notifi-titulacion" data="<?=$tramite->idTramite?>">
                   <td data-title="Expediente"><?=$expAlumno[$tramite->idAlumno]?></td>
                   <td data-title="Tipo de Trámite"><?=$catTramites[$tramite->idCatTramite]?></td>
                   <td data-title="Fecha de Inicio"><?=fancy_date($tramite->fechaInicio)?></td>
@@ -50,7 +48,6 @@
 <details class="col-xs-12">
   <summary class="tamaño-s">Trámites atendidos</summary>
   <div class="tabla2" id="tabla">
-  <!--     <h3 class="h3 tamañoh4-border center">Trámites atendidos</h3> -->
       <?php if (!is_null($tramitesA)): ?>
         <table class="table responsive">
           <thead>
@@ -65,9 +62,8 @@
           <tbody>
 
               <?php foreach ($tramitesA as $tramite):
-                // die(var_dump($tramites));
                 ?>
-                <tr class="tr-notifi-consejo" data="<?=$tramite->idTramite?>">
+                <tr class="tr-notifi-titulacion" data="<?=$tramite->idTramite?>">
                   <td data-title="Expediente"><?=$expAlumno[$tramite->idAlumno]?></td>
                   <td data-title="Tipo de Trámite"><?=$catTramites[$tramite->idCatTramite]?></td>
                   <td data-title="Fecha de Inicio"><?=fancy_date($tramite->fechaInicio)?></td>
