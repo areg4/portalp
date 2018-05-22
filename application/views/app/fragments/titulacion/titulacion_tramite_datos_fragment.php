@@ -106,7 +106,7 @@
 
     <?php if (!is_null($investigadores)AND (!is_null($aprobacionesInves))): ?>
       <div class="col-md-12" id="tabla">
-        <h3 class="h3 tamañoh3">Investigación</h3>
+        <h3 class="h3 tamañoh3">Comité de Investigación</h3>
         <table class="table responsive">
           <thead>
             <tr>
