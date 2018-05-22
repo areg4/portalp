@@ -6,7 +6,7 @@
 */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Consejo_model extends CI_Model {
+class Titulacion_model extends CI_Model {
 	var $tablas = array();
 	private $db_b;
 	private $db_c;
@@ -30,10 +30,10 @@ class Consejo_model extends CI_Model {
    * Esta función regresa las materias de acuerdo al plan del alumno para
    * exámenes voluntarios.
    */
-  public function getTramitesConsejo()
+  public function getTramitesTitulacion()
   {
     $a = $this->tablas['tramites'];
-		$this->db_b->where('estatus', 'CONSEJO');
+		$this->db_b->where('estatus', 'TITULACION');
     $this->db_b->where('habilitado', 1);
 		$query = $this->db_b->get($a);
 		return ($query->num_rows() >= 1) ? $query->result() : NULL;
@@ -44,7 +44,7 @@ class Consejo_model extends CI_Model {
 		$a = $this->tablas['aprobacionTramites'];
 		$this->db_b->where('idMiembro', $idUsuario);
 		$this->db_b->where('aprobacion <>', 0);
-		$this->db_b->where('estatus', "CONSEJO");
+		$this->db_b->where('estatus', "TITULACION");
 		$query = $this->db_b->get($a);
 		return ($query->num_rows() >= 1) ? $query->result() : NULL;
 	}
@@ -53,11 +53,11 @@ class Consejo_model extends CI_Model {
 		$a = $this->tablas['aprobacionTramites'];
 		$this->db_b->where('idMiembro', $idUsuario);
 		$this->db_b->where('aprobacion', 0);
-		$this->db_b->where('estatus', "CONSEJO");
+		$this->db_b->where('estatus', "TITULACION");
 		$query = $this->db_b->get($a);
 		return ($query->num_rows() >= 1) ? $query->result() : NULL;
 	}
-	public function accesoTramiteConse($idTramite, $idMiembro, $estatus)
+	public function accesoTramiteTitu($idTramite, $idMiembro, $estatus)
 	{
 		$a = $this->tablas['aprobacionTramites'];
 		$this->db_b->where('idTramite', $idTramite);
@@ -68,5 +68,5 @@ class Consejo_model extends CI_Model {
 	}
 }
 
-/* End of file root_model.php */
-/* Location: ./application/models/root_model.php */
+/* End of file titulacion_model.php */
+/* Location: ./application/models/titulacion_model.php */

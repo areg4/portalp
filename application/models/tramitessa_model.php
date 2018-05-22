@@ -349,5 +349,5 @@ class Tramitessa_model extends CI_Model {
 
 }
 
-/* End of file root_model.php */
-/* Location: ./application/models/root_model.php */
+/* End of file tramitessa_model.php */
+/* Location: ./application/models/tramitessa_model.php */

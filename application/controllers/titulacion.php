@@ -44,7 +44,7 @@ class Titulacion extends CI_Controller {
   {
     $data['sys_app_title'] 	= 'TRÁMITES TITULACIÓN';
 		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRÁMITES TITULACIÓN';
-		$data['app_sub_menu'] 	= 'iTramiteConse';
+		$data['app_sub_menu'] 	= 'iTramiteTitu';
 		// $data['user']      	= $this->usuario;
 		$data['js']       = array('tramites');
 		$data['menu_app']   = $this->load->view('app/components/menu/titulacion_component', $data, TRUE);
