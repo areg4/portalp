@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Consejo extends CI_Controller {
+class Titulacion extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 		# Funcion constructor carga librerias, modelos y atributos globales de la clase.
@@ -15,9 +15,9 @@ class Consejo extends CI_Controller {
 		$this->load->model('common_model');
 		$this->load->model('alumno_model');
     // modelo de trámites
-		$this->load->model('consejo_model');
+		$this->load->model('titulacion_model');
     $this->load->model('tramitessa_model');
-		$this->folder 						= 'consejo';
+		$this->folder 						= 'titulacion';
 		$this->periodo 						= $this->common_model->getPeriodoActivo();
 		$this->fecha    					= date('Y-m-d');
 		$this->hora    						= date('H:i:s');
@@ -42,41 +42,39 @@ class Consejo extends CI_Controller {
 
   public function tramites()
   {
-    $data['sys_app_title'] 	= 'TRÁMITES CONSEJO';
-		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRÁMITES CONSEJO';
+    $data['sys_app_title'] 	= 'TRÁMITES TITULACIÓN';
+		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRÁMITES TITULACIÓN';
 		$data['app_sub_menu'] 	= 'iTramiteConse';
 		// $data['user']      	= $this->usuario;
 		$data['js']       = array('tramites');
-		$data['menu_app']   = $this->load->view('app/components/menu/consejo_component', $data, TRUE);
+		$data['menu_app']   = $this->load->view('app/components/menu/titulacion_component', $data, TRUE);
 		$data['menu'] 		= $this->load->view('app/components/head_component',$data,TRUE);
 		$data['catTramites'] = $this->catTramites();
     $data['expAlumno'] = $this->catAlumnosExp();
-		// $data['tramites'] = $this->consejo_model->getTramitesConsejo();
-		$data['tramitesA'] 	= $this->listaTramitesAtendidosByConsejero($this->idUsuario);
-		$data['tramitesNA'] = $this->listaTramitesNoAtendidosByConsejero($this->idUsuario);
-		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/consejo_tramites_fragment', $data, TRUE);
+		$data['tramitesA'] 	= $this->listaTramitesAtendidosByMiemTitulacion($this->idUsuario);
+		$data['tramitesNA'] = $this->listaTramitesNoAtendidosByMiemTitulacion($this->idUsuario);
+		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/titulacion_tramites_fragment', $data, TRUE);
 		$this->load->view('app/main_view', $data, FALSE);
   }
 
 	public function tramiteDatos($idTramite)
 	{
-		if (is_null($this->consejo_model->accesoTramiteConse($idTramite, $this->idUsuario, "CONSEJO"))) {
+		if (is_null($this->titulacion_model->accesoTramiteTitu($idTramite, $this->idUsuario, "TITULACION"))) {
 			$this->session->set_flashdata('error', 'accessTramiteFail');
-			redirect('portal-informatica-consejo-tramites');
+			redirect('portal-informatica-titulacion-tramites');
 		}
 		$tramite = $this->tramitessa_model->getTramitePById($idTramite);
 		$alumno = $this->alumno_model->getAlumno($tramite->idAlumno);
 		$archivos = $this->tramitessa_model->getArchivosByTramite($idTramite);
 		$investigadores = $this->tramitessa_model->getInvestigadores();
-		$consejeros = $this->tramitessa_model->getConsejeros();
+		$miemsTitulacion = $this->tramitessa_model->getMiemsTitulacion();
 		$aprobacionesInves = $this->ordenarAprobacionTramiteByIdMiembro($idTramite, "INVESTIGACION");
-		$aprobacionesConse = $this->ordenarAprobacionTramiteByIdMiembro($idTramite, "CONSEJO");
+		$aprobacionesTitu = $this->ordenarAprobacionTramiteByIdMiembro($idTramite, "TITULACION");
 
-		$data['sys_app_title'] 	= 'TRÁMITES CONSEJO';
-		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRÁMITES CONSEJO';
+		$data['sys_app_title'] 	= 'TRÁMITES TITULACIÓN';
+		$data['app_title'] 	= '<i class="fa fa-user"></i>  TRÁMITES TITULACIÓN';
 		$data['app_sub_menu'] 	= 'iTramiteInv';
-		// $data['user']      	= $this->usuario;
-		$data['menu_app']   = $this->load->view('app/components/menu/consejo_component', $data, TRUE);
+		$data['menu_app']   = $this->load->view('app/components/menu/titulacion_component', $data, TRUE);
 		$data['menu'] 		= $this->load->view('app/components/head_component',$data,TRUE);
     $data['js']       = array('tramites');
 		$data['alumno']     = $alumno;
@@ -84,41 +82,41 @@ class Consejo extends CI_Controller {
 		$data['archivos']		 = $archivos;
 		$data['tramite']		=	$tramite;
 		$data['investigadores']		=		$investigadores;
-		$data['consejeros']				=		$consejeros;
+		$data['miemsTitulacion']				=		$miemsTitulacion;
 		$data['aprobacionesInves']		=		$aprobacionesInves;
-		$data['aprobacionesConse']		=		$aprobacionesConse;
+		$data['aprobacionesTitu']		=		$aprobacionesTitu;
 		$data['idUsuario'] 	=	$this->idUsuario;
 		$data['idRol']			= $this->idRol;
 		$data['materia']			= $this->tramitessa_model->getMateriaById($tramite->idMateria);
-		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/consejo_tramite_datos_fragment', $data, TRUE);
+		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/titulacion_tramite_datos_fragment', $data, TRUE);
 		$this->load->view('app/main_view', $data, FALSE);
 	}
 
-	public function tramitesAddComentario()
-	{
-		$idTramite 	= $this->input->post('idTramite');
-		$idAlumno 	=	$this->input->post('idAlumno');
-		$comentario = $this->input->post('comentario');
-
-		$arrInsert = array(
-			'idTramite' 		=> $idTramite,
-			'idAlumno'			=> $idAlumno,
-			'observacion' 	=> $comentario,
-			// 'usumod'				=> $idUsuario,
-			'fecha'					=> $this->fecha,
-			'habilitado'		=> 1
-		);
-
-		if ($this->tramitessa_model->insertObservacion($arrInsert)) {
-			if ($this->updateTramiteTo($idTramite, 'OBSERVACIONES')) {
-				echo "OK";
-			}else{
-				echo "ERROR";
-			}
-		}else {
-			echo "ERROR";
-		}
-	}
+	// public function tramitesAddComentario()
+	// {
+	// 	$idTramite 	= $this->input->post('idTramite');
+	// 	$idAlumno 	=	$this->input->post('idAlumno');
+	// 	$comentario = $this->input->post('comentario');
+  //
+	// 	$arrInsert = array(
+	// 		'idTramite' 		=> $idTramite,
+	// 		'idAlumno'			=> $idAlumno,
+	// 		'observacion' 	=> $comentario,
+	// 		// 'usumod'				=> $idUsuario,
+	// 		'fecha'					=> $this->fecha,
+	// 		'habilitado'		=> 1
+	// 	);
+  //
+	// 	if ($this->tramitessa_model->insertObservacion($arrInsert)) {
+	// 		if ($this->updateTramiteTo($idTramite, 'OBSERVACIONES')) {
+	// 			echo "OK";
+	// 		}else{
+	// 			echo "ERROR";
+	// 		}
+	// 	}else {
+	// 		echo "ERROR";
+	// 	}
+	// }
 
 	private function catTramites()
 	{
@@ -127,7 +125,6 @@ class Consejo extends CI_Controller {
 		foreach ($catTramites as $tramite) {
 			$arrayTramites[$tramite->idCatTramite] = $tramite->tramite;
 		}
-		// die(var_dump($arrayTramites));
 		return $arrayTramites;
 	}
 
@@ -138,7 +135,6 @@ class Consejo extends CI_Controller {
 		foreach ($catExpAlumnos as $expAlumno) {
 			$arrayExpAlumnos[$expAlumno->idAlumno] = $expAlumno->expediente;
 		}
-		// die(var_dump($arrayTramites));
 		return $arrayExpAlumnos;
 	}
 
@@ -150,19 +146,18 @@ class Consejo extends CI_Controller {
 			foreach ($catAprobaciones as $aprobacion) {
 				$arrayAprobaciones[$aprobacion->idMiembro] = $aprobacion;
 			}
-			// die(var_dump($arrayAprobaciones));
 			return $arrayAprobaciones;
 		}else{
 			return null;
 		}
 	}
 
-	public function listaTramitesAtendidosByConsejero($idUsuario)
+	public function listaTramitesAtendidosByMiemTitulacion($idUsuario)
 	{
-		$idTramitesAprobConse = $this->consejo_model->getIdsTramitesAprobAtendidos($idUsuario);
+		$idTramitesAprobTitul = $this->titulacion_model->getIdsTramitesAprobAtendidos($idUsuario);
 		$allTramites = $this->tramitessa_model->getAllTramitesH();
 
-		if (is_null($idTramitesAprobConse) or is_null($allTramites)) {
+		if (is_null($idTramitesAprobTitul) or is_null($allTramites)) {
 			return null;
 		}
 
@@ -173,28 +168,24 @@ class Consejo extends CI_Controller {
 			$arrayAllTramites[$tramite->idTramite] = $tramite;
 		}
 
-		foreach ($idTramitesAprobConse as $idApro) {
+		foreach ($idTramitesAprobTitul as $idApro) {
 			if (isset($arrayAllTramites[$idApro->idTramite])) {
 				$arrayConver = (array)$arrayAllTramites[$idApro->idTramite];
 				$arrayConver['aprobacion'] = $idApro->aprobacion;
 				$arrayConver['fechaAtendida']	= fancy_date($idApro->fechaHora);
-				// array_push($arrayConver, $idApro->aprobacion);
-				// array_push($arrayLista, $arrayAllTramites[$idApro->idTramite]);
 				$arrayConver = (object)$arrayConver;
 				array_push($arrayLista, $arrayConver);
 			}
 		}
-		// die(var_dump($arrayLista));
-		// $arrayLista = (object)$arrayLista;
 		return $arrayLista;
 	}
 
-	public function listaTramitesNoAtendidosByConsejero($idUsuario)
+	public function listaTramitesNoAtendidosByMiemTitulacion($idUsuario)
 	{
-		$idTramitesAprobConse = $this->consejo_model->getIdsTramitesAprobNoAtendidos($idUsuario);
+		$idTramitesAprobTitul = $this->titulacion_model->getIdsTramitesAprobNoAtendidos($idUsuario);
 		$allTramites = $this->tramitessa_model->getAllTramitesH();
 
-		if (is_null($idTramitesAprobConse) or is_null($allTramites)) {
+		if (is_null($idTramitesAprobTitul) or is_null($allTramites)) {
 			return null;
 		}
 
@@ -205,18 +196,14 @@ class Consejo extends CI_Controller {
 			$arrayAllTramites[$tramite->idTramite] = $tramite;
 		}
 
-		foreach ($idTramitesAprobConse as $idApro) {
+		foreach ($idTramitesAprobTitul as $idApro) {
 			if (isset($arrayAllTramites[$idApro->idTramite])) {
 				$arrayConver = (array)$arrayAllTramites[$idApro->idTramite];
 				$arrayConver['aprobacion'] = $idApro->aprobacion;
-				// array_push($arrayConver, $idApro->aprobacion);
-				// array_push($arrayLista, $arrayAllTramites[$idApro->idTramite]);
 				$arrayConver = (object)$arrayConver;
 				array_push($arrayLista, $arrayConver);
 			}
 		}
-		// die(var_dump($arrayLista));
-		// $arrayLista = (object)$arrayLista;
 		return $arrayLista;
 	}
 
@@ -234,14 +221,12 @@ class Consejo extends CI_Controller {
 			'fechaHora'		=> $fecha
 		);
 
-		if ($this->tramitessa_model->updateAprobacion($idTramite, $idUsuario, "CONSEJO", $arrUpdate)) {
+		if ($this->tramitessa_model->updateAprobacion($idTramite, $idUsuario, "TITULACION", $arrUpdate)) {
 			$this->session->set_flashdata('error', 'updateOk');
-			// redirect('portal-informatica-investigacion-tramite-datos/'.$idTramite);
 			echo "OK";
 		}else{
 			$this->session->set_flashdata('error', 'updateFail');
 			echo "ERROR";
-			// redirect('portal-informatica-investigacion-tramite-datos/'.$idTramite);
 		}
 	}
 
@@ -259,13 +244,11 @@ class Consejo extends CI_Controller {
 			'fechaHora'		=> $fecha
 		);
 
-		if ($this->tramitessa_model->updateAprobacion($idTramite, $idUsuario, "CONSEJO", $arrUpdate)) {
+		if ($this->tramitessa_model->updateAprobacion($idTramite, $idUsuario, "TITULACION", $arrUpdate)) {
 			$this->session->set_flashdata('error', 'updateOk');
-			// redirect('portal-informatica-investigacion-tramite-datos/'.$idTramite);
 			echo "OK";
 		}else{
 			$this->session->set_flashdata('error', 'updateFail');
-			// redirect('portal-informatica-investigacion-tramite-datos/'.$idTramite);
 			echo "ERROR";
 		}
 	}
@@ -277,27 +260,24 @@ class Consejo extends CI_Controller {
 		$comentarioP 	= $this->input->post('comentarioP');
 		$asignaciones = json_decode($asignaciones);
 		$fecha = date('Y-m-d H:i:s');
-		// print_r(die(var_dump($asignaciones)));
 		foreach($asignaciones as $asignacion) {
-			// print_r(die(var_dump($asignacion->idUser)));
 			$idUsuario = $asignacion->idUser;
 			$arrUpdate = array(
 				'aprobacion'	=>	$asignacion->asignacion,
 				'fechaHora'		=>	$fecha
 			);
-			$this->tramitessa_model->updateAprobacion($idTramite, $idUsuario, "CONSEJO", $arrUpdate);
+			$this->tramitessa_model->updateAprobacion($idTramite, $idUsuario, "TITULACION", $arrUpdate);
 		}
 
 		$arrUpdate	=	array(
 			'comentario'	=>	$comentarioP
 		);
 
-		$this->tramitessa_model->updateAprobacion($idTramite, $idPresi, "CONSEJO", $arrUpdate);
+		$this->tramitessa_model->updateAprobacion($idTramite, $idPresi, "TITULACION", $arrUpdate);
 		$this->session->set_flashdata('error', 'updateOk');
-		// redirect('portal-informatica-investigacion-tramite-datos/'.$idTramite);
 		echo "OK";
 	}
 }
 
-/* End of file tramitessa.php */
-/* Location: ./application/controllers/alumno.php */
+/* End of file titulacion.php */
+/* Location: ./application/controllers/titulacion.php */

@@ -51,7 +51,6 @@ class Investigacion extends CI_Controller {
 		$data['menu'] 		= $this->load->view('app/components/head_component',$data,TRUE);
 		$data['catTramites'] = $this->catTramites();
     $data['expAlumno'] = $this->catAlumnosExp();
-		// $data['tramites'] = $this->investigacion_model->getTramitesInvestigacion();
 		$data['tramitesA'] 	= $this->listaTramitesAtendidosByInvestigador($this->idUsuario);
 		$data['tramitesNA'] = $this->listaTramitesNoAtendidosByInvestigador($this->idUsuario);
 		$data['fragment']  	= $this->load->view('app/fragments/'.$this->folder.'/tramites_investigacion_fragment', $data, TRUE);
@@ -90,31 +89,31 @@ class Investigacion extends CI_Controller {
 		$this->load->view('app/main_view', $data, FALSE);
 	}
 
-	public function tramitesAddComentario()
-	{
-		$idTramite 	= $this->input->post('idTramite');
-		$idAlumno 	=	$this->input->post('idAlumno');
-		$comentario = $this->input->post('comentario');
-
-		$arrInsert = array(
-			'idTramite' 		=> $idTramite,
-			'idAlumno'			=> $idAlumno,
-			'observacion' 	=> $comentario,
-			// 'usumod'				=> $idUsuario,
-			'fecha'					=> $this->fecha,
-			'habilitado'		=> 1
-		);
-
-		if ($this->tramitessa_model->insertObservacion($arrInsert)) {
-			if ($this->updateTramiteTo($idTramite, 'OBSERVACIONES')) {
-				echo "OK";
-			}else{
-				echo "ERROR";
-			}
-		}else {
-			echo "ERROR";
-		}
-	}
+	// public function tramitesAddComentario()
+	// {
+	// 	$idTramite 	= $this->input->post('idTramite');
+	// 	$idAlumno 	=	$this->input->post('idAlumno');
+	// 	$comentario = $this->input->post('comentario');
+  //
+	// 	$arrInsert = array(
+	// 		'idTramite' 		=> $idTramite,
+	// 		'idAlumno'			=> $idAlumno,
+	// 		'observacion' 	=> $comentario,
+	// 		// 'usumod'				=> $idUsuario,
+	// 		'fecha'					=> $this->fecha,
+	// 		'habilitado'		=> 1
+	// 	);
+  //
+	// 	if ($this->tramitessa_model->insertObservacion($arrInsert)) {
+	// 		if ($this->updateTramiteTo($idTramite, 'OBSERVACIONES')) {
+	// 			echo "OK";
+	// 		}else{
+	// 			echo "ERROR";
+	// 		}
+	// 	}else {
+	// 		echo "ERROR";
+	// 	}
+	// }
 
 	private function catTramites()
 	{
@@ -123,7 +122,6 @@ class Investigacion extends CI_Controller {
 		foreach ($catTramites as $tramite) {
 			$arrayTramites[$tramite->idCatTramite] = $tramite->tramite;
 		}
-		// die(var_dump($arrayTramites));
 		return $arrayTramites;
 	}
 
@@ -134,7 +132,6 @@ class Investigacion extends CI_Controller {
 		foreach ($catExpAlumnos as $expAlumno) {
 			$arrayExpAlumnos[$expAlumno->idAlumno] = $expAlumno->expediente;
 		}
-		// die(var_dump($arrayTramites));
 		return $arrayExpAlumnos;
 	}
 
@@ -146,7 +143,6 @@ class Investigacion extends CI_Controller {
 			foreach ($catAprobaciones as $aprobacion) {
 				$arrayAprobaciones[$aprobacion->idMiembro] = $aprobacion;
 			}
-			// die(var_dump($arrayAprobaciones));
 			return $arrayAprobaciones;
 		}else{
 			return null;
@@ -169,12 +165,10 @@ class Investigacion extends CI_Controller {
 
 		if ($this->tramitessa_model->updateAprobacion($idTramite, $idUsuario, "INVESTIGACION", $arrUpdate)) {
 			$this->session->set_flashdata('error', 'updateOk');
-			// redirect('portal-informatica-investigacion-tramite-datos/'.$idTramite);
 			echo "OK";
 		}else{
 			$this->session->set_flashdata('error', 'updateFail');
 			echo "ERROR";
-			// redirect('portal-informatica-investigacion-tramite-datos/'.$idTramite);
 		}
 	}
 
@@ -194,11 +188,9 @@ class Investigacion extends CI_Controller {
 
 		if ($this->tramitessa_model->updateAprobacion($idTramite, $idUsuario, "INVESTIGACION", $arrUpdate)) {
 			$this->session->set_flashdata('error', 'updateOk');
-			// redirect('portal-informatica-investigacion-tramite-datos/'.$idTramite);
 			echo "OK";
 		}else{
 			$this->session->set_flashdata('error', 'updateFail');
-			// redirect('portal-informatica-investigacion-tramite-datos/'.$idTramite);
 			echo "ERROR";
 		}
 	}
@@ -224,14 +216,10 @@ class Investigacion extends CI_Controller {
 				$arrayConver = (array)$arrayAllTramites[$idApro->idTramite];
 				$arrayConver['aprobacion'] = $idApro->aprobacion;
 				$arrayConver['fechaAtendida']	= fancy_date($idApro->fechaHora);
-				// array_push($arrayConver, $idApro->aprobacion);
-				// array_push($arrayLista, $arrayAllTramites[$idApro->idTramite]);
 				$arrayConver = (object)$arrayConver;
 				array_push($arrayLista, $arrayConver);
 			}
 		}
-		// die(var_dump($arrayLista));
-		// $arrayLista = (object)$arrayLista;
 		return $arrayLista;
 	}
 
@@ -255,14 +243,10 @@ class Investigacion extends CI_Controller {
 			if (isset($arrayAllTramites[$idApro->idTramite])) {
 				$arrayConver = (array)$arrayAllTramites[$idApro->idTramite];
 				$arrayConver['aprobacion'] = $idApro->aprobacion;
-				// array_push($arrayConver, $idApro->aprobacion);
-				// array_push($arrayLista, $arrayAllTramites[$idApro->idTramite]);
 				$arrayConver = (object)$arrayConver;
 				array_push($arrayLista, $arrayConver);
 			}
 		}
-		// die(var_dump($arrayLista));
-		// $arrayLista = (object)$arrayLista;
 		return $arrayLista;
 	}
 
@@ -275,7 +259,6 @@ class Investigacion extends CI_Controller {
 		$asignaciones = json_decode($asignaciones);
 		$fecha = date('Y-m-d H:i:s');
 		foreach($asignaciones as $asignacion) {
-			// print_r(die(var_dump($asignacion->idUser)));
 			$idUsuario = $asignacion->idUser;
 			$arrUpdate = array(
 				'aprobacion'	=>	$asignacion->asignacion,
@@ -290,12 +273,9 @@ class Investigacion extends CI_Controller {
 
 		$this->tramitessa_model->updateAprobacion($idTramite, $idPresi, "INVESTIGACION", $arrUpdate);
 		$this->session->set_flashdata('error', 'updateOk');
-		// redirect('portal-informatica-investigacion-tramite-datos/'.$idTramite);
 		echo "OK";
-		// print_r(die(var_dump($asignaciones)));
-		// die(var_dump($asignaciones));
 	}
 }
 
-/* End of file tramitessa.php */
-/* Location: ./application/controllers/alumno.php */
+/* End of file investigacion.php */
+/* Location: ./application/controllers/investigacion.php */

@@ -7,26 +7,22 @@ jQuery(document).ready(function($){
 
   $(".tr-notifi-alumno").click(function(){
     var data = $(this).attr('data');
-    // alert(data);
     window.location.href = base_url()+'portal-informatica-alumnos-tramites-datos/'+data;
   });
 
   $(".tr-notifi").click(function(){
     var data = $(this).attr('data');
-    // alert($(this).attr('data'));
     window.location.href = base_url()+'portal-informatica-tramites-datos/'+data;
   });
 
   $(".tr-notifi-investigacion").click(function(){
     var data = $(this).attr('data');
-    // alert($(this).attr('data'));
     window.location.href = base_url()+'portal-informatica-investigacion-tramite-datos/'+data;
   });
 
-  $(".tr-notifi-consejo").click(function(){
+  $(".tr-notifi-titulacion").click(function(){
     var data = $(this).attr('data');
-    // alert($(this).attr('data'));
-    window.location.href = base_url()+'portal-informatica-consejo-tramite-datos/'+data;
+    window.location.href = base_url()+'portal-informatica-titulacion-tramite-datos/'+data;
   });
 
   $(".ArchivoNuevo").change(function () {
@@ -41,11 +37,9 @@ jQuery(document).ready(function($){
   });
 
   $(".btnUpdateFile").click(function() {
-    // alert("update");
     var idRT      = $(this).attr('data-id');
     var fkRu      = $("#file-"+idRT).val();
     var idTramite = $(this).attr('data-tramite-id');
-    // alert(fkRu);
     if(fkRu != ""){
       var formData = new FormData($("#form-update-file-id-"+idRT)[0]);
       console.log(formData);
@@ -57,7 +51,6 @@ jQuery(document).ready(function($){
         contentType: false,
         processData: false,
         success:function(response) {
-
           if (response=="OK") {
             window.location.reload();
           }
@@ -65,7 +58,6 @@ jQuery(document).ready(function($){
         }
       });
     }
-    // alert(idRT);
   });
 
   $(".btn-enviar-revision").click(function() {
@@ -98,7 +90,6 @@ jQuery(document).ready(function($){
       type    : 'post',
       data    : parametros,
       success : function(data){
-        // console.log(data);
         if (data=='OK') {
           window.location.reload();
         }
@@ -132,11 +123,9 @@ jQuery(document).ready(function($){
           }
         }
       });
-      // alert(comentario);
     }else{
       $("#error-modal .modal-dialog > .modal-content > .modal-body").html('El comentario no puede ir vacío');
       $('#error-modal').modal('show');
-      // alert("El comentario no puede ir vacío");
     }
   });
 
@@ -157,7 +146,6 @@ jQuery(document).ready(function($){
         }
       });
     }
-    // alert(criterio);
   });
 
   $("#criterioB").keyup(function () {
@@ -215,11 +203,11 @@ jQuery(document).ready(function($){
     });
   });
 
-  $(".btnEnvCons").click(function () {
+  $(".btnEnvTitu").click(function () {
     var idTramite   = $(this).attr("data-id");
     parametros      = {
       'idTramite' : idTramite,
-      'estatus'   : "CONSEJO"
+      'estatus'   : "TITULACION"
     };
 
     $.ajax({
@@ -239,7 +227,6 @@ jQuery(document).ready(function($){
       $("#error-modal .modal-dialog > .modal-content > .modal-body").html('El trámite no ha sido atendido por los miembros del comité correspondiente.');
       $('#error-modal').modal('show');
     }else{
-      // alert(recomendacion);
       parametros      = {
         'idTramite' : idTramite,
         'estatus'   : "PREACTA",
@@ -343,7 +330,7 @@ jQuery(document).ready(function($){
     });
   });
 
-  $(".btnAproConsejo").click(function () {
+  $(".btnAproTitulacion").click(function () {
     var idTramite   = $(this).attr("data-id");
     var idUsuario   = $(this).attr("data-user");
     var comentarios = $("#comentarios").val();
@@ -354,7 +341,7 @@ jQuery(document).ready(function($){
     };
 
     $.ajax({
-      url     : base_url()+"portal-informatica-consejo-tramite-aprobar",
+      url     : base_url()+"portal-informatica-titulacion-tramite-aprobar",
       type    : 'post',
       data    : parametros,
       success : function (data) {
@@ -367,7 +354,7 @@ jQuery(document).ready(function($){
     });
   });
 
-  $(".btnRechaConsejo").click(function () {
+  $(".btnRechaTitulacion").click(function () {
     var idTramite   = $(this).attr("data-id");
     var idUsuario   = $(this).attr("data-user");
     var comentarios = $("#comentarios").val();
@@ -378,7 +365,7 @@ jQuery(document).ready(function($){
     };
 
     $.ajax({
-      url     : base_url()+"portal-informatica-consejo-tramite-rechazar",
+      url     : base_url()+"portal-informatica-titulacion-tramite-rechazar",
       type    : 'post',
       data    : parametros,
       success : function (data) {
@@ -396,7 +383,6 @@ jQuery(document).ready(function($){
 
   $(".file").click(function() {
     rutaIcono = $(this).find("img").attr("data-default-icon");
-    // alert(rutaIcono);
   });
   $(".file").on('change', function (event) {
     var file = event.target.files[0];
@@ -410,10 +396,7 @@ jQuery(document).ready(function($){
    }
    else{
     $(this).css("background", "#359AFF");
-    // cambio = document.getElementById(id);
     $(this).find("img").attr("src", base_url()+'static/img/upload.png');
-    // console.log(cambio);
-    // cambio.src = base_url()+'static/img/upload.png';
    }
  });
 
@@ -425,13 +408,7 @@ jQuery(document).ready(function($){
    var elementos = $(".designaciones").find("input:checked").each(function() {
      idUser = $(this).attr('data-user-id');
      asignacion = $("input[name=desig-"+idUser+"]:checked").val();
-     // idsAsig[idUser] = asignacion;
-     // alert(idUser);
-     // obj = {};
-     // obj[idUser] = asignacion;
-     // idsAsig.push(obj);
      idsAsig.push({idUser : idUser, asignacion : asignacion});
-     // console.log(asignacion);
    });
 
    $.ajax({
@@ -444,7 +421,6 @@ jQuery(document).ready(function($){
        comentarioP  : comentarioP
      },
      success : function (data) {
-       // alert(data);
        if (data == "OK") {
          window.location.reload();
        }else{
@@ -452,9 +428,6 @@ jQuery(document).ready(function($){
        }
      }
    });
-
-   // console.log(idsAsig);
-
  });
 
  $(".btnEnvDesigTitu").click(function () {
@@ -465,17 +438,11 @@ jQuery(document).ready(function($){
    var elementos = $(".designaciones").find("input:checked").each(function() {
      idUser = $(this).attr('data-user-id');
      asignacion = $("input[name=desig-"+idUser+"]:checked").val();
-     // idsAsig[idUser] = asignacion;
-     // alert(idUser);
-     // obj = {};
-     // obj[idUser] = asignacion;
-     // idsAsig.push(obj);
      idsAsig.push({idUser : idUser, asignacion : asignacion});
-     // console.log(asignacion);
    });
 
    $.ajax({
-     url     : base_url()+"portal-informatica-consejo-tramite-asignacion-presidente",
+     url     : base_url()+"portal-informatica-titulacion-tramite-asignacion-presidente",
      type    : 'post',
      data    : {
        asignaciones : JSON.stringify(idsAsig),
@@ -484,7 +451,6 @@ jQuery(document).ready(function($){
        comentarioP  : comentarioP
      },
      success : function (data) {
-       // alert(data);
        if (data == "OK") {
          window.location.reload();
        }else{
@@ -492,16 +458,10 @@ jQuery(document).ready(function($){
        }
      }
    });
-
-   // console.log(idsAsig);
-   // alert("titu");
-
  });
 
  $("#formAlta").submit(function (e) {
    if ($("#formAlta").find(".materias").val() != 0) {
-     // alert($("#formAlta").find(".materias").val());
-     // e.preventDefault();
      return;
    }else {
      alert("Por favor elija la materia a la cual aplicar.");
@@ -536,34 +496,12 @@ jQuery(document).ready(function($){
  $(".txtNoOficio").keyup(function () {
    return this.value.toUpperCase();
  });
-
- //  $("#formRespuesta").submit(function (e) {
- //   // if ($("#formRespuesta").find(".decision").val() != 0) {
- //     // alert($("#formAlta").find(".materias").val());
- //     // e.preventDefault();
- //     alert($("#decision").val());
-
- //     e.preventDefault();
- //   // }else {
- //   //   alert("");
- //   //   e.preventDefault();
- //   // }
- // })
-
 });
 
 function goToTramiteDatos(idTramite) {
-  // var data = $(this).attr('data');
   var data = idTramite;
-  // alert(data);
-  // alert($(this).attr('data'));
   window.location.href = base_url()+'portal-informatica-tramites-datos/'+data;
 }
-
-// function cambiarIcon(id){
-//   cambio = document.getElementById(id);
-//   cambio.src = base_url()+'static/img/upload.png';
-// }
 
 function bajar(id){
   menu = document.getElementById(id);
@@ -578,10 +516,8 @@ function quitar(id){
 function mostrarImg(){
   var ruta = document.getElementById("archivo");
   var id_ruta = ruta.getAttribute("data-ruta");
-  // var nombre_archivo = id_ruta;
   inicio = 0;
   fin  = 4;
-  // console.log(ruta);
   $('#contenedor>div').each(function(e){
     subCadena =  $(this).children("p").html().substring(inicio,fin);
     if(subCadena == 'soli'){
