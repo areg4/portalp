@@ -136,7 +136,7 @@
       <?php if (!is_null($investigadores)AND (!is_null($aprobacionesInves))): ?>
         <div id="listaInv">
           <div id="tabla" class="col-xs-12">
-            <h3 class="h3">Investigación</h3>
+            <h3 class="h3">Comité de Investigación</h3>
             <table class="table responsive">
               <thead>
                 <tr>
@@ -176,7 +176,7 @@
         </div>
       <?php endif; ?>
 
-      <?php if (!is_null($consejeros) AND !is_null($aprobacionesConse)): ?>
+      <?php if (!is_null($miemsTitulacion) AND !is_null($aprobacionesTitu)): ?>
         <div class="" id="listaConsejo">
           <div class="col-xs-12" id="tabla">
             <h3 class="h3">Comité de Titulación</h3>
@@ -190,27 +190,27 @@
                 </tr>
               </thead>
               <tbody>
-                <?php foreach ($consejeros as $consejero): ?>
+                <?php foreach ($miemsTitulacion as $miemTitulacion): ?>
                   <?php
-                    if ($aprobacionesConse[$consejero->idUsuario]->aprobacion == 0) {
+                    if ($aprobacionesTitu[$miemTitulacion->idUsuario]->aprobacion == 0) {
                       $aprobacion = "NO ATENDIDA";
-                    }if ($aprobacionesConse[$consejero->idUsuario]->aprobacion == 1) {
+                    }if ($aprobacionesTitu[$miemTitulacion->idUsuario]->aprobacion == 1) {
                       $aprobacion = "APROBADO";
-                    }if ($aprobacionesConse[$consejero->idUsuario]->aprobacion == 2) {
+                    }if ($aprobacionesTitu[$miemTitulacion->idUsuario]->aprobacion == 2) {
                       $aprobacion = "RECHAZADO";
                     }
 
-                    if ($aprobacionesConse[$consejero->idUsuario]->comentario == "" or is_null($aprobacionesConse[$consejero->idUsuario]->comentario)) {
+                    if ($aprobacionesTitu[$miemTitulacion->idUsuario]->comentario == "" or is_null($aprobacionesTitu[$miemTitulacion->idUsuario]->comentario)) {
                       $comenInv = "SIN COMENTARIOS";
                     }else {
-                      $comenInv = $aprobacionesConse[$consejero->idUsuario]->comentario;
+                      $comenInv = $aprobacionesTitu[$miemTitulacion->idUsuario]->comentario;
                     }
                   ?>
                   <tr>
-                    <td data-title="Miembro"><?php echo $consejero->nombre." ".$consejero->apellidoPaterno." ".$consejero->apellidoMaterno; ?></td>
+                    <td data-title="Miembro"><?php echo $miemTitulacion->nombre." ".$miemTitulacion->apellidoPaterno." ".$miemTitulacion->apellidoMaterno; ?></td>
                     <td data-title="Aprobación"><?php echo $aprobacion; ?></td>
                     <td data-title="Comentario"><?php echo $comenInv; ?></td>
-                    <td data-title="Fecha respuesta"><?=(($aprobacionesConse[$consejero->idUsuario]->fechaHora)!=0) ? fancy_date($aprobacionesConse[$consejero->idUsuario]->fechaHora) : " - " ; ?></td>
+                    <td data-title="Fecha respuesta"><?=(($aprobacionesTitu[$miemTitulacion->idUsuario]->fechaHora)!=0) ? fancy_date($aprobacionesTitu[$miemTitulacion->idUsuario]->fechaHora) : " - " ; ?></td>
                   </tr>
                 <?php endforeach; ?>
               </tbody>
@@ -355,7 +355,7 @@
             <div class="col-xs-12 right">
               <br>
               <br>
-              <p class="tamañop">En base a las respuestas de Comité de Titulación y Comité de Investigación, seleccione el estatus del trámite para finalizar.</p>
+              <p class="tamañop">En base a las respuestas del Consejo Académico, seleccione el estatus del trámite para finalizar.</p>
             </div>
           <?php endif; ?>
 
@@ -371,11 +371,11 @@
     <div class="col-xs-12 opciones-t-sa">
       <?php if ($tramite->estatus=="PROCESO" AND $tramite->estatus!="INVESTIGACION"): ?>
         <button type="submit" class="btn btn-info btnEnvInves" data-id="<?=$tramite->idTramite?>">Enviar a Comité de Investigación</button>
-        <button type="submit" class="btn btn-info btnEnvCons" data-id="<?=$tramite->idTramite?>">Enviar a Comité de Titulación</button>
+        <button type="submit" class="btn btn-info btnEnvTitu" data-id="<?=$tramite->idTramite?>">Enviar a Comité de Titulación</button>
       <?php endif; ?>
 
       <?php if ($tramite->estatus=='INVESTIGACION'): ?>
-        <button type="submit" class="btn btn-info btnEnvCons" data-id="<?=$tramite->idTramite?>">Enviar a Comité de Titulación</button>
+        <button type="submit" class="btn btn-info btnEnvTitu" data-id="<?=$tramite->idTramite?>">Enviar a Comité de Titulación</button>
       <?php endif; ?>
 
       <?php if (is_null($observacion) AND $tramite->estatus=="PROCESO"): ?>

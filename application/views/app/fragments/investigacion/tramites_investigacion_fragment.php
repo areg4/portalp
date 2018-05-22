@@ -1,5 +1,5 @@
 <div class="">
-  <h1 class="h1 text-center tamañoh1">Trámites de Investigación</h1>
+  <h1 class="h1 text-center tamañoh1">Trámites de Comité de Investigación</h1>
 </div>
 
 <details open="open" class="col-xs-12">

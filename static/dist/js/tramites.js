@@ -496,6 +496,8 @@ jQuery(document).ready(function($){
  $(".txtNoOficio").keyup(function () {
    return this.value.toUpperCase();
  });
+ // validación fechas
+ 
 });
 
 function goToTramiteDatos(idTramite) {

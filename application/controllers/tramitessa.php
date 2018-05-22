@@ -1393,7 +1393,7 @@ class Tramitessa extends CI_Controller {
  		// if ($tramite->estatus == "FINALIZADO") {
  		// 	$data['app_sub_menu_item'] = 'tramitesFinalizadosA';
  		// }else {
- 		// 	$data['app_sub_menu_item'] = 'tramitesProcesoA';
+ 		$data['app_sub_menu_item'] = 'tramitesProcesoA';
  		// }
 
  		// $data['user']      	= $this->usuario;
