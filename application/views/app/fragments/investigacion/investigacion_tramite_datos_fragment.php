@@ -68,7 +68,7 @@
         <label for="text">Título del Trabajo:</label>
         <p name="nTrabajo" id="nTrabajo"><?=$tramite->nombreTrabajo?></p>
       </div>
-    <?php endif; ?> 
+    <?php endif; ?>
 
     <div class="archivos col-xs-12" id="contenedor">
     <?php if (!is_null($archivos)): ?>
@@ -104,7 +104,7 @@
     <?php endif; ?>
     </div>
 
-    <?php if ($idRol != 9): ?>
+    <?php if ($idRol != 11): ?>
       <?php if (!is_null($investigadores)AND (!is_null($aprobacionesInves))): ?>
         <div id="listaInv">
           <div class="col-xs-12" id="tabla">
@@ -219,7 +219,7 @@
       </div>
     <?php endif; ?>
 
-    <?php if ($idRol != 9): ?>
+    <?php if ($idRol != 11): ?>
       <?php if (($aprobacionesInves[$idUsuario]->aprobacion == 0) AND ($tramite->estatus=="INVESTIGACION")): ?>
         <div class="col-xs-12 opciones-t-sa">
           <button type="submit" class="btn btn-success btnAproInves" data-id="<?=$tramite->idTramite?>" data-user="<?=$idUsuario?>">Aprobar</button>

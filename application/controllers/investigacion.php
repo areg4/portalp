@@ -21,8 +21,8 @@ class Investigacion extends CI_Controller {
 		$this->periodo 						= $this->common_model->getPeriodoActivo();
 		$this->fecha    					= date('Y-m-d');
 		$this->hora    						= date('H:i:s');
-		$this->idUsuario 					= 7;					//que jale el de sesión
-		$this->idRol 						= 9;					//id del rol del usuario
+		$this->idUsuario 					= 10;					//que jale el de sesión
+		$this->idRol 							= 11;					//id del rol del usuario
 		// $this->idRol 							= $this->session->userdata('idRol');
 		// $this->limiteMateriasPreregistro 	= 10;
 		// //die(var_dump($this->common_model->getPeriodoActivo()));
