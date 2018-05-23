@@ -193,6 +193,14 @@ class Tramitessa_model extends CI_Model {
 		return ($query->num_rows() >= 1) ? $query->result() : NULL;
 	}
 
+	public function getCatAlumnos()
+	{
+		$a = $this->tablas['alumno'];
+    $this->db_b->where('estatus', 1);
+		$query = $this->db_b->get($a);
+		return ($query->num_rows() >= 1) ? $query->result() : NULL;
+	}
+
 	public function getTramites()
 	{
 		$a = $this->tablas['tramites'];
@@ -235,7 +243,7 @@ class Tramitessa_model extends CI_Model {
 		$a = $this->tablas['tramites'];
 		$this->db_b->where('estatus', "PREACTA");
     $this->db_b->where('habilitado', 1);
-		$this->db_b->order_by('estatus', 'asc');
+		$this->db_b->order_by('idCatTramite');
 		$query = $this->db_b->get($a);
 		return ($query->num_rows() >= 1) ? $query->result() : NULL;
 	}
@@ -243,8 +251,8 @@ class Tramitessa_model extends CI_Model {
 	public function getInvestigadores()
 	{
 		$a = $this->tablas['usuario'];
-		$this->db_b->where('idRol', 7); //rol miembro
-		$this->db_b->or_where('idRol', 9); //rol presidente
+		$this->db_b->where('idRol', 11); //rol presidente
+		// $this->db_b->or_where('idRol', 9); //rol miembro
     $this->db_b->where('estatus', 1);
 		$query = $this->db_b->get($a);
 		return ($query->num_rows() >= 1) ? $query->result() : NULL;
@@ -253,8 +261,8 @@ class Tramitessa_model extends CI_Model {
 	public function getMiemsTitulacion()
 	{
 		$a = $this->tablas['usuario'];
-		$this->db_b->where('idRol', 8);		//rol miembro
-		$this->db_b->or_where('idRol', 10);	//rol presidente
+		$this->db_b->where('idRol', 10);		//rol presidente
+		// $this->db_b->or_where('idRol', 10);	//rol miembro
     $this->db_b->where('estatus', 1);
 		$query = $this->db_b->get($a);
 		return ($query->num_rows() >= 1) ? $query->result() : NULL;
