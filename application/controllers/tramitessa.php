@@ -569,7 +569,7 @@ class Tramitessa extends CI_Controller {
  		$data['app_sub_menu'] 	= 'iTramite';
  		$data['app_sub_menu_item'] = 'tramitesPreacta';
  		// $data['user']      	= $this->usuario;
- 		$data['js']       = array('tramites');
+ 		$data['js']       = array('tramites', 'html-docs/html-docx-js-master/test/vendor/FileSaver', 'html-docs/html-docx-js-master/dist/html-docx');
  		$data['menu_app']   = $this->load->view('app/components/menu/tramitessa_component', $data, TRUE);
  		$data['menu'] 		= $this->load->view('app/components/head_component',$data,TRUE);
  		$data['catTramites'] = $this->catTramites();
@@ -858,6 +858,32 @@ class Tramitessa extends CI_Controller {
 	/**
  	 * Fin función
  	 */
+
+	public function generarDocPreacta()
+	{
+		$data['catMaestros'] = $this->catProfesoresAll();
+		$data['catMaterias'] = $this->catMateriasAll();
+		$data['catPlanes'] = $this->catPlanesAll();
+		$data['catTramites'] = $this->catTramitesAll();
+
+ 		$tramites						=	$this->tramitessa_model->getTramitesPreacta();
+
+ 		if (!is_null($tramites)) {
+ 			foreach ($tramites as $tramite) {
+ 				$tramite->idPeriodo	=	$this->common_model->getPeriodo($tramite->idPeriodo)->periodo;
+ 			}
+ 		}
+
+ 		$data['tramites'] =	$tramites;
+ 		$data['expAlumno'] = $this->catAlumnosAll();
+ 		$data['observaciones'] = $this->observacionesG();
+ 		$html = $this->load->view('app/fragments/'.$this->folder.'/tramites_plantilla_preacta_fragment', $data, TRUE);
+		// print_r(die(var_dump($html)));
+		$acentos = array('Á','á','Ó','ó','É','é','Í','í','Ú', 'ú','Ñ', 'ñ','#');
+ 		$replac = array('&Aacute;','&aacute;','&Oacute;','&oacute;','&Eacute;','&eacute;','&Iacute;','&iacute;','&Uacute;','&uacute;','&Ntilde;','&ntilde;');
+ 		$html = str_replace($acentos, $replac, $html);
+		echo $html;
+	}
 
 	 /*********************** FIN TRÁMITES SA ***********************************/
 
@@ -1526,6 +1552,70 @@ class Tramitessa extends CI_Controller {
 	}
 
 	/**
+	 * Catálogo de trámites que se pueden tramitar
+	 * key 		= idCatTramite
+	 * value 	= tramite del catálogo
+	 * @return array
+	 */
+	private function catTramitesAll()
+	{
+		$arrayTramites = array();
+		$catTramites = $this->tramitessa_model->getCatTramites();
+		foreach ($catTramites as $tramite) {
+			$arrayTramites[$tramite->idCatTramite] = $tramite;
+		}
+		return $arrayTramites;
+	}
+
+	/**
+	 * Catálogo de planes
+	 * key 		= idPlan
+	 * value 	= plan
+	 * @return array
+	 */
+	private function catPlanesAll()
+	{
+		$arrayPlanes = array();
+		$catPlanes = $this->common_model->getPlanes();
+		foreach ($catPlanes as $plan) {
+			$arrayPlanes[$plan->idPlan] = $plan;
+		}
+		return $arrayPlanes;
+	}
+
+	/**
+	 * Catálogo de materias
+	 * key 		= idMateria
+	 * value 	= materia
+	 * @return array
+	 */
+	private function catMateriasAll()
+	{
+		$arrayMaterias = array();
+		$catMaterias = $this->common_model->getMaterias();
+		foreach ($catMaterias as $materia) {
+			$arrayMaterias[$materia->idMateria] = $materia;
+		}
+		return $arrayMaterias;
+	}
+
+	/**
+	 * Catálogo de profesores
+	 * key 		= idProfesor
+	 * value 	= profesor
+	 * @return array
+	 */
+	private function catProfesoresAll()
+	{
+		$arrayProfesores = array();
+		$catProfesores = $this->tramitessa_model->getMaestros();
+		foreach ($catProfesores as $profesor) {
+			$arrayProfesores[$profesor->idMaestro] = $profesor;
+		}
+		return $arrayProfesores;
+	}
+
+	/**
 	 * Catálogo de observaciones por alumno
 	 * idAlumno 	= id del alumno en cuestión
 	 * key 				= id del trámite con observacion
@@ -1594,6 +1684,22 @@ class Tramitessa extends CI_Controller {
 		$catExpAlumnos = $this->tramitessa_model->getCatExpAlumnos();
 		foreach ($catExpAlumnos as $expAlumno) {
 			$arrayExpAlumnos[$expAlumno->idAlumno] = $expAlumno->expediente;
+		}
+		return $arrayExpAlumnos;
+	}
+
+	/**
+	 * Catálogo de alumnos
+	 * key 					=	id del alumno
+	 * value				= expediente
+	 * @return array
+	 */
+	private function catAlumnosAll()
+	{
+		$arrayExpAlumnos = array();
+		$catExpAlumnos = $this->tramitessa_model->getCatAlumnos();
+		foreach ($catExpAlumnos as $expAlumno) {
+			$arrayExpAlumnos[$expAlumno->idAlumno] = $expAlumno;
 		}
 		return $arrayExpAlumnos;
 	}

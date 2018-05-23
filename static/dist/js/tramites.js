@@ -279,7 +279,24 @@ jQuery(document).ready(function($){
   });
 
   $(".btnGenerarPreacta").click(function () {
-    alert("PREACTA");
+    // window.location.href = base_url()+"portal-informatica-tramites-generar-preacta";
+    $.ajax({
+      url     : base_url()+"portal-informatica-tramites-generar-preacta",
+      type    : 'post',
+      success : function (data) {
+        var encabezado = '<!DOCTYPE html><html><head><title></title></head><body>';
+        var pie = '</body></html>';
+        var orientation = 'portrait';
+
+        data = encabezado+data+pie;
+        // alert(data);
+        // var editado = '<!DOCTYPE html>      <html>      <head>        <title></title>      </head>      <body>     <table style="border: 1px solid black;"><tbody><tr><th>Hola</th><th>es</th><th>prueba</th></tr><tr><td>r1</td><td>2</td><td>r3</td></tr></tbody></table>       </body>      </html>';
+        var converted = htmlDocx.asBlob(data, {orientation: orientation});
+        var date = new Date();
+        date = date.getDate() + "-" + date.getMonth() + "-" + date.getFullYear();
+        saveAs(converted, 'preacta_'+date+'.docx');
+      }
+    });
   });
 
   $(".btnAproInves").click(function () {
@@ -497,7 +514,7 @@ jQuery(document).ready(function($){
    return this.value.toUpperCase();
  });
  // validación fechas
- 
+
 });
 
 function goToTramiteDatos(idTramite) {

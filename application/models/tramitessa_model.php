@@ -193,6 +193,14 @@ class Tramitessa_model extends CI_Model {
 		return ($query->num_rows() >= 1) ? $query->result() : NULL;
 	}
 
+	public function getCatAlumnos()
+	{
+		$a = $this->tablas['alumno'];
+    $this->db_b->where('estatus', 1);
+		$query = $this->db_b->get($a);
+		return ($query->num_rows() >= 1) ? $query->result() : NULL;
+	}
+
 	public function getTramites()
 	{
 		$a = $this->tablas['tramites'];
@@ -235,7 +243,7 @@ class Tramitessa_model extends CI_Model {
 		$a = $this->tablas['tramites'];
 		$this->db_b->where('estatus', "PREACTA");
     $this->db_b->where('habilitado', 1);
-		$this->db_b->order_by('estatus', 'asc');
+		$this->db_b->order_by('idCatTramite');
 		$query = $this->db_b->get($a);
 		return ($query->num_rows() >= 1) ? $query->result() : NULL;
 	}
