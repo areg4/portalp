@@ -34,7 +34,7 @@
 			<tbody>
 				<tr>
 					<td align="center">
-						<b>MISD. CARLOS ALBERTO OLMOS TREJO<br>SECRETARIO DEL H. CONSEJO ACADÉMICO</b>
+						<b>MSI. GABRIELA XICOTÉNCATL RAMÍREZ<br>SECRETARIA DEL H. CONSEJO ACADÉMICO</b>
 					</td>	
 				</tr>
 			</tbody>
